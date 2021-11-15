@@ -1,2 +1,5 @@
 ﻿  Spick_Game.cpp
-  Spick_Game.vcxproj -> C:\Spic\Spick_Game\Spick_Game\x64\Debug\Spick_Game.exe
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Point.hpp(14,6): warning C4091: '__declspec(dllexport)': ignored on left of 'spic::Point' when no variable is declared
+Spick_Game.obj : error LNK2019: unresolved external symbol "bool __cdecl spic::Input::AnyKey(void)" (?AnyKey@Input@spic@@YA_NXZ) referenced in function main
+C:\Spic\Spick_Engine\Spick_Engine\Debug\Spick_Engine.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Spic\Spick_Game\Spick_Game\x64\Debug\Spick_Game.exe : fatal error LNK1120: 1 unresolved externals
