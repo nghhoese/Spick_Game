@@ -2,17 +2,13 @@
 //
 
 #include <iostream>
-#include "API_Headers/Input.hpp" 
-#include "API_Headers/Color.hpp" 
+#include "API_Headers/Importation.hpp"
 #include "API_Headers/Point.hpp"
-using namespace spic;
 
 int main()
 {
-    {
-        Color* color = new Color();
-        //Input* input = new Input();
+    spic::Importation* k = new spic::Importation();
+    spic::Point point = k->MousePosition();
         
-        std::cout << "hello" << std::endl;
-    }
+    std::cout << point.x << point.y << std::endl;
 }
