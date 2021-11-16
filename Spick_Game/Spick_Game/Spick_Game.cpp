@@ -5,15 +5,22 @@
 #include "API_Headers/Importation.hpp"
 #include "API_Headers/Point.hpp"
 #include "API_Headers/KeyCode.hpp"
+#include "API_Headers/Scene.hpp"
 
 int main()
 {
     spic::Importation* k = new spic::Importation();
     spic::KeyCode c = spic::KeyCode::W;
+    spic::MouseButton m = spic::MouseButton::RIGHT;
+    spic::MouseButton l = spic::MouseButton::LEFT;
+
+    spic::Scene* scene = new spic::Scene("test");
     
     while (true) {
-        spic::Point point = k->MousePosition();
-        std::cout << point.x << point.y << std::endl;
-        //k->GetKeyDown(c);
+        //spic::Point point = k->MousePosition();
+        //std::cout << "x " << point.x << " y " << point.y << std::endl;
+        
+        std::cout << k->GetMouseButton(m) << std::endl;
+        std::cout << k->GetMouseButton(l) << std::endl;
     }
 }
