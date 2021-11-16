@@ -11,7 +11,7 @@ private:
 	double x;
 	double y;
 public:
-	void checkMouseButtons();
-	void checkKeys();
+	const void checkMouseButtons();
+	const void checkKeys();
 	const spic::Point checkMousePosition();
 };

@@ -18,7 +18,7 @@ spic::MouseButton RIGHT = spic::MouseButton::RIGHT;
 
 spic::Importation* input = new spic::Importation();
 
-void Player::checkMouseButtons()
+const void Player::checkMouseButtons()
 {
 	if (input->GetMouseButton(LEFT)) {
 		// schieten
@@ -33,7 +33,7 @@ void Player::checkMouseButtons()
 	}
 }
 
-void Player::checkKeys()
+const void Player::checkKeys()
 {
 	//waardes nog aanpassen
 	if (input->GetKey(W)) {
