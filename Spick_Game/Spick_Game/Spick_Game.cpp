@@ -10,7 +10,7 @@
 int main()
 {
     spic::Importation* k = new spic::Importation();
-    spic::KeyCode c = spic::KeyCode::W;
+    spic::KeyCode c = spic::KeyCode::A;
     spic::MouseButton m = spic::MouseButton::RIGHT;
     spic::MouseButton l = spic::MouseButton::LEFT;
 
@@ -20,7 +20,17 @@ int main()
         //spic::Point point = k->MousePosition();
         //std::cout << "x " << point.x << " y " << point.y << std::endl;
         
-        std::cout << k->GetMouseButton(m) << std::endl;
-        std::cout << k->GetMouseButton(l) << std::endl;
+        //std::cout << k->GetMouseButton(m) << std::endl;
+        //std::cout << k->GetMouseButton(l) << std::endl;
+
+        //std::cout << k->GetMouseButtonUp(m) << std::endl;
+        //std::cout << k->GetMouseButtonDown(m) << std::endl;
+
+        //std::cout << k->AnyKeyDown() << std::endl;
+        //std::cout << k->GetKey(c) << std::endl;
+        //std::cout << k->AnyKey() << std::endl; ----------- werkt gedeeltelijk
+
+        //std::cout << k->GetKeyDown(c) << std::endl;
+        //std::cout << k->GetKeyUp(c) << std::endl;
     }
 }
