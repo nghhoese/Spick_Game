@@ -1,5 +1,1 @@
-﻿  Player.cpp
-  Spick_Game.cpp
-C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\GameObject.hpp(40,60): warning C4834: discarding return value of function with 'nodiscard' attribute
-  Generating Code...
-  Spick_Game.vcxproj -> C:\Spic\Spick_Game\Spick_Game\Debug\Spick_Game.exe
+﻿  Spick_Game.vcxproj -> C:\Spic\Spick_Game\Spick_Game\Debug\Spick_Game.exe
