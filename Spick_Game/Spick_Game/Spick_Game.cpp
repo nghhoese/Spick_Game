@@ -43,6 +43,8 @@ int main()
 
         playerObject->setTransform(&transfrom);
         scene->Render();
+
+        std::cout << scene->CalculateFPS() << "   \r";
     }
 
 }
