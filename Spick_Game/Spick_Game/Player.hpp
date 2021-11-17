@@ -8,9 +8,9 @@ class Player {
 private:
 	int healthpoints;
 	int ammo;
+public:
 	double x;
 	double y;
-public:
 	const void checkMouseButtons();
 	const void checkKeys();
 	const spic::Point checkMousePosition();

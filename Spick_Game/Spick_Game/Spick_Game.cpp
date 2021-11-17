@@ -22,10 +22,16 @@ int main()
     transfrom.position.x = 1;
     transfrom.position.y = 1;
 
+    Player player;
+    player.x = transfrom.position.x;
+    player.y = transfrom.position.y;
+
     while (true) {
 
-        transfrom.position.x += 1;
-        transfrom.position.y += 1;
+        player.checkKeys();
+
+        transfrom.position.x = player.x;
+        transfrom.position.y = player.y;
         playerObject->setTransform(&transfrom);
         scene->Render();
     }

@@ -37,19 +37,19 @@ const void Player::checkKeys()
 {
 	//waardes nog aanpassen
 	if (input->GetKey(W)) {
-		y += 5;
+		y += 1;
 		std::cout << "w" << std::endl;
 	}
 	else if (input->GetKey(A)) {
-		x -= 5;
+		x -= 1;
 		std::cout << "a" << std::endl;
 	}
 	else if (input->GetKey(S)) {
-		y -= 5;
+		y -= 1;
 		std::cout << "s" << std::endl;
 	}
 	else if (input->GetKey(D)) {
-		x += 5;
+		x += 1;
 		std::cout << "d" << std::endl;
 	}
 	else if (input->GetKey(E)) {
