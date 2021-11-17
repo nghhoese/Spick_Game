@@ -26,12 +26,21 @@ int main()
     player.x = transfrom.position.x;
     player.y = transfrom.position.y;
 
+    spic::Point point;
+
     while (true) {
 
         player.checkKeys();
-
         transfrom.position.x = player.x;
         transfrom.position.y = player.y;
+
+        point = player.checkMousePosition();
+        double Delta_x = transfrom.position.x - point.x;
+        double Delta_y = transfrom.position.y - point.y;
+
+        double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
+        transfrom.rotation = Result;
+
         playerObject->setTransform(&transfrom);
         scene->Render();
     }
