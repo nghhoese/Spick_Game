@@ -39,7 +39,7 @@ int main()
         double Delta_y = transfrom.position.y - point.y;
 
         double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
-        transfrom.rotation = Result;
+        transfrom.rotation = Result + 95;
 
         playerObject->setTransform(&transfrom);
         scene->Render();
