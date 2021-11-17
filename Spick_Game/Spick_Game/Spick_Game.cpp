@@ -20,7 +20,7 @@ int main()
     sprite->SetSprite("assets/player_sub-machinegun.bmp");
     transfrom.position.x = 1;
     transfrom.position.y = 1;
-
+    transfrom.scale = 1;
     Player player;
     player.x = transfrom.position.x;
     player.y = transfrom.position.y;
