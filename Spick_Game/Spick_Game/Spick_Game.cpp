@@ -11,10 +11,8 @@ int main()
     std::shared_ptr<spic::GameObject> gameObject = std::make_shared<spic::GameObject>("lol");
     std::shared_ptr<spic::Scene> scene = std::make_shared<spic::Scene>("lol");
     scene->AddGameObject(gameObject);
-    gameObject->SetScene(scene);
     std::shared_ptr<spic::Sprite> sprite = std::make_shared<spic::Sprite>();
     gameObject->AddComponent(sprite);
-    sprite->SetGameObject(gameObject.get());
     sprite->SetSprite("assets/player_sub-machinegun.bmp");
     scene->Render();
     
