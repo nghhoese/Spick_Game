@@ -4,20 +4,30 @@
 #define SDL_MAIN_HANDLED
 #include "API_Headers/Scene.hpp"
 #include "API_Headers/Sprite.hpp"
+#include "API_Headers/Transform.hpp"
 #include "Player.hpp"
 
 int main()
 {
-    std::shared_ptr<spic::GameObject> gameObject = std::make_shared<spic::GameObject>("lol");
+
+    std::shared_ptr<spic::GameObject> playerObject = std::make_shared<spic::GameObject>("Player");
     std::shared_ptr<spic::Scene> scene = std::make_shared<spic::Scene>("lol");
-    scene->AddGameObject(gameObject);
     std::shared_ptr<spic::Sprite> sprite = std::make_shared<spic::Sprite>();
-    gameObject->AddComponent(sprite);
+
+    scene->AddGameObject(playerObject);
+    spic::Transform transfrom = *playerObject->getTransform();
+
+    playerObject->AddComponent(sprite);
     sprite->SetSprite("assets/player_sub-machinegun.bmp");
-    scene->Render();
-    
+    transfrom.position.x = 1;
+    transfrom.position.y = 1;
+
     while (true) {
-        
+
+        transfrom.position.x += 1;
+        transfrom.position.y += 1;
+        playerObject->setTransform(&transfrom);
+        scene->Render();
     }
 
 }
