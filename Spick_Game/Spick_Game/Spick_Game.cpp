@@ -9,9 +9,8 @@
 
 int main()
 {
-
     std::shared_ptr<spic::GameObject> playerObject = std::make_shared<spic::GameObject>("Player");
-    std::shared_ptr<spic::Scene> scene = std::make_shared<spic::Scene>("lol");
+    std::shared_ptr<spic::Scene> scene = std::make_shared<spic::Scene>("test");
     std::shared_ptr<spic::Sprite> sprite = std::make_shared<spic::Sprite>();
 
     scene->AddGameObject(playerObject);

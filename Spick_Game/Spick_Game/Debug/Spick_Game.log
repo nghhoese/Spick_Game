@@ -7,4 +7,5 @@ C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(155,21): w
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(156,15): warning C4251: 'spic::Sprite::color': class 'spic::Color' needs to have dll-interface to be used by clients of class 'spic::Sprite'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Color.hpp(11): message : see declaration of 'spic::Color'
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Spick_Game.cpp(28,17): warning C4101: 'point': unreferenced local variable
   Spick_Game.vcxproj -> C:\Spic\Spick_Game\Spick_Game\Debug\Spick_Game.exe
