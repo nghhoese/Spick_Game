@@ -158,7 +158,7 @@
     <ClInclude Include="Player.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\nazipiloot.png" />
+    <Image Include="assets\player_sub-machinegun.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
