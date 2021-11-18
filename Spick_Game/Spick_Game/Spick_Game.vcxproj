@@ -164,6 +164,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Scenes\MainMenuBuilder.cpp" />
     <ClCompile Include="Spick_Game.cpp" />
     <ClCompile Include="TextTest.cpp" />
   </ItemGroup>
