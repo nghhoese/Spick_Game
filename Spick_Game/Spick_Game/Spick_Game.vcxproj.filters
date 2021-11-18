@@ -31,5 +31,35 @@
     <Image Include="assets\player_sub-machinegun.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="assets\images\backgrounds\background.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\bright-wood-hitler-floor.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\bright-wood-statue-floor.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\dark-wood-floor.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\dark-wood-hitler-floor.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\dark-wood-statue-floor.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\red-nazi-wall.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\red-wall.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\bright-wood-floor.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\levels\level1.json" />
   </ItemGroup>
 </Project>
