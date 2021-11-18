@@ -1,12 +1,23 @@
 // Spick_Game.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
+#define SDL_MAIN_HANDLED
 #include <iostream>
+#include "API_Headers/Scene.hpp"
+#include "API_Headers/Text.hpp"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::shared_ptr<spic::Scene> scene = std::make_shared<spic::Scene>("test");
+    spic::Color textColor =spic::Color(0.0, 0.0, 0.0, 1.0);
+    std::shared_ptr<spic::Text> text = std::make_shared<spic::Text>("Advanced Stealth", "Capsmall", 60, textColor, 10, 50);
+
+    scene->AddGameObject(text);
+
+    while (true) {
+        scene->Render();
+    }
 }
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
