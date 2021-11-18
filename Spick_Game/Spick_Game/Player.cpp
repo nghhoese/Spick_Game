@@ -1,5 +1,6 @@
 #include "Player.hpp"
 
+
 spic::KeyCode W = spic::KeyCode::W;
 spic::KeyCode A = spic::KeyCode::A;
 spic::KeyCode S = spic::KeyCode::S;
@@ -35,16 +36,16 @@ const void Player::checkKeys()
 {
 	//waardes nog aanpassen
 	if (input->GetKey(W)) {
-		y -= 0.5;
+		y -= 0.2;
 	}
 	else if (input->GetKey(A)) {
-		x -= 0.5;
+		x -= 0.2;
 	}
 	else if (input->GetKey(S)) {
-		y += 0.5;
+		y += 0.2;
 	}
 	else if (input->GetKey(D)) {
-		x += 0.5;
+		x += 0.2;
 	}
 	else if (input->GetKey(E)) {
 		// interactie
@@ -72,8 +73,57 @@ const void Player::checkKeys()
 	}
 }
 
+	
 const spic::Point Player::checkMousePosition()
 {
 	spic::Point point = input->MousePosition();
 	return point;
+}
+
+void Player::OnAwake()
+{
+}
+
+void Player::OnStart()
+{
+}
+
+void Player::OnUpdate()
+{
+	spic::Transform transfrom = *GetGameObject()->getTransform();
+	x = transfrom.position.x;
+	y = transfrom.position.y;
+	spic::Point point;
+	checkKeys();
+	transfrom.position.x = x;
+	transfrom.position.y = y;
+
+	point = checkMousePosition();
+	double Delta_x = transfrom.position.x - point.x;
+	double Delta_y = transfrom.position.y - point.y;
+
+	double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
+	transfrom.rotation = Result + 95;
+
+	GetGameObject()->setTransform(&transfrom);
+}
+
+void Player::OnRender()
+{
+}
+
+void Player::OnTriggerEnter2D(const Collider& collider)
+{
+}
+
+Player::Player()
+{
+}
+
+void Player::OnTriggerExit2D(const Collider& collider)
+{
+}
+
+void Player::OnTriggerStay2D(const Collider& collider)
+{
 }
