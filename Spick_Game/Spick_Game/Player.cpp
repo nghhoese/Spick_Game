@@ -36,16 +36,16 @@ const void Player::checkKeys()
 {
 	//waardes nog aanpassen
 	if (input->GetKey(W)) {
-		y -= 1;
+		y -= 5;
 	}
 	else if (input->GetKey(A)) {
-		x -= 1;
+		x -= 5;
 	}
 	else if (input->GetKey(S)) {
-		y += 1;
+		y += 5;
 	}
 	else if (input->GetKey(D)) {
-		x += 1;
+		x += 5;
 	}
 	else if (input->GetKey(E)) {
 		// interactie

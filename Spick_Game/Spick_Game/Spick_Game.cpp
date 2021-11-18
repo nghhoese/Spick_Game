@@ -20,7 +20,8 @@ int main()
 
     std::shared_ptr<spic::TiledFacade> tiledFacade = std::make_shared<spic::TiledFacade>();
 
-    const std::string& path = "assets/levels/level1.json";
+    //const std::string& path = "assets/levels/level1.json";
+    const std::string& path = "assets/levels/testlevel.json";
     fs::path filePath = path;
 
     auto level_layers = tiledFacade->Read(filePath);
@@ -35,7 +36,7 @@ int main()
     // Tile layers
     for (std::pair<int, std::vector<std::vector<int>>> tileset : tiles) {
         // background
-        if (tileset.first == 4) {
+        if (tileset.first == 2) {
             int x = 0;
             int y = 0;
             for (std::vector<int> vector : tileset.second) {
@@ -76,95 +77,73 @@ int main()
                     std::shared_ptr<spic::Sprite> tileSprite = std::make_shared<spic::Sprite>();
                     spic::Transform transform = *tileObject->getTransform();
                     switch (object + 1) {
-                    // red wall
-                    case 489:
+                    // bottom right corner red half wall
+                    case 8:
                         scene->AddGameObject(tileObject);
 
                         tileObject->AddComponent(tileSprite);
-                        tileSprite->SetSprite("assets/images/foregrounds/red-wall.bmp");
+                        tileSprite->SetSprite("assets/images/foregrounds/inside_4.png");
                         transform.position.x = (double)x * 64;
-                        transform.position.y = (double)y * 64;
+                        transform.position.y = (double)y * 63;
                         transform.scale = 1;
                         tileObject->setTransform(&transform);
                         break;
-                    // red nazi wall
-                    case 491:
+                    // bottom half red wall
+                    case 1:
                         scene->AddGameObject(tileObject);
 
                         tileObject->AddComponent(tileSprite);
-                        tileSprite->SetSprite("assets/images/foregrounds/red-nazi-wall.bmp");
+                        tileSprite->SetSprite("assets/images/foregrounds/half_4.png");
                         transform.position.x = (double)x * 64;
-                        transform.position.y = (double)y * 64;
+                        transform.position.y = (double)y * 63;
                         transform.scale = 1;
                         tileObject->setTransform(&transform);
                         break;
-                    // dark wood floor
-                    case 480:
+                    // bottom left corner red half wall
+                    case 6:
                         scene->AddGameObject(tileObject);
 
                         tileObject->AddComponent(tileSprite);
-                        tileSprite->SetSprite("assets/images/foregrounds/dark-wood-floor.bmp");
+                        tileSprite->SetSprite("assets/images/foregrounds/inside_2.png");
                         transform.position.x = (double)x * 64;
-                        transform.position.y = (double)y * 64;
+                        transform.position.y = (double)y * 63;
+                        transform.scale = 1;
+                        tileObject->setTransform(&transform);
+                        break;
+                    // right half red wall
+                    case 4:
+                        scene->AddGameObject(tileObject);
+
+                        tileObject->AddComponent(tileSprite);
+                        tileSprite->SetSprite("assets/images/foregrounds/half_3.png");
+                        transform.position.x = (double)x * 64;
+                        transform.position.y = (double)y * 63;
                         transform.scale = 1;
                         tileObject->setTransform(&transform);
                         break;
                     // bright wood floor
-                    case 479:
+                    case 31:
                         scene->AddGameObject(tileObject);
 
                         tileObject->AddComponent(tileSprite);
                         tileSprite->SetSprite("assets/images/foregrounds/bright-wood-floor.bmp");
                         transform.position.x = (double)x * 64;
-                        transform.position.y = (double)y * 64;
+                        transform.position.y = (double)y * 63;
                         transform.scale = 1;
                         tileObject->setTransform(&transform);
                         break;
-                    // bright wood hitler floor
-                    case 477:
+                    // left half red wall
+                    case 572:
                         scene->AddGameObject(tileObject);
 
                         tileObject->AddComponent(tileSprite);
-                        tileSprite->SetSprite("assets/images/foregrounds/bright-wood-hitler-floor.bmp");
+                        tileSprite->SetSprite("");
                         transform.position.x = (double)x * 64;
-                        transform.position.y = (double)y * 64;
+                        transform.position.y = (double)y * 63;
                         transform.scale = 1;
                         tileObject->setTransform(&transform);
                         break;
-                    // bright wood statue floor
-                    case 475:
-                        scene->AddGameObject(tileObject);
-
-                        tileObject->AddComponent(tileSprite);
-                        tileSprite->SetSprite("assets/images/foregrounds/bright-wood-statue-floor.bmp");
-                        transform.position.x = (double)x * 64;
-                        transform.position.y = (double)y * 64;
-                        transform.scale = 1;
-                        tileObject->setTransform(&transform);
-                        break;
-                    // dark wood hitler floor
-                    case 478:
-                        scene->AddGameObject(tileObject);
-
-                        tileObject->AddComponent(tileSprite);
-                        tileSprite->SetSprite("assets/images/foregrounds/dark-wood-hitler-floor.bmp");
-                        transform.position.x = (double)x * 64;
-                        transform.position.y = (double)y * 64;
-                        transform.scale = 1;
-                        tileObject->setTransform(&transform);
-                        break;
-                     // dark wood statue floor
-                    case 476:
-                        scene->AddGameObject(tileObject);
-
-                        tileObject->AddComponent(tileSprite);
-                        tileSprite->SetSprite("assets/images/foregrounds/bright-wood-statue-floor.bmp");
-                        transform.position.x = (double)x * 64;
-                        transform.position.y = (double)y * 64;
-                        transform.scale = 1;
-                        tileObject->setTransform(&transform);
-                        break;
-                    
+                                     
                     }
 
                     x++;

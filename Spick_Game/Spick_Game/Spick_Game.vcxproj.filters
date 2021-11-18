@@ -58,8 +58,45 @@
     <Image Include="assets\images\foregrounds\bright-wood-floor.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="assets\images\foregrounds\inside_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\inside_2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\inside_3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\inside_4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\outside_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\outside_2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\outside_3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\outside_4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\half_4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\half_3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\half_2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\half_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\levels\level1.json" />
+    <None Include="assets\levels\testlevel.json" />
   </ItemGroup>
 </Project>
