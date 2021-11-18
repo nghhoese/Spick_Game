@@ -133,11 +133,96 @@ int main()
                         tileObject->setTransform(&transform);
                         break;
                     // left half red wall
-                    case 572:
+                    case 2:
                         scene->AddGameObject(tileObject);
 
                         tileObject->AddComponent(tileSprite);
-                        tileSprite->SetSprite("");
+                        tileSprite->SetSprite("assets/images/foregrounds/half_1.png");
+                        transform.position.x = (double)x * 64;
+                        transform.position.y = (double)y * 63;
+                        transform.scale = 1;
+                        tileObject->setTransform(&transform);
+                        break;
+
+                    // bright wood floor
+                    case 29:
+                        scene->AddGameObject(tileObject);
+
+                        tileObject->AddComponent(tileSprite);
+                        tileSprite->SetSprite("assets/images/foregrounds/bright-wood-hitler-floor.bmp");
+                        transform.position.x = (double)x * 64;
+                        transform.position.y = (double)y * 63;
+                        transform.scale = 1;
+                        tileObject->setTransform(&transform);
+                        break;
+
+                    // red wall
+                    case 42:
+                        scene->AddGameObject(tileObject);
+
+                        tileObject->AddComponent(tileSprite);
+                        tileSprite->SetSprite("assets/images/foregrounds/red-wall.bmp");
+                        transform.position.x = (double)x * 64;
+                        transform.position.y = (double)y * 63;
+                        transform.scale = 1;
+                        tileObject->setTransform(&transform);
+                        break;
+
+                    // red nazi wall
+                    case 44:
+                        scene->AddGameObject(tileObject);
+
+                        tileObject->AddComponent(tileSprite);
+                        tileSprite->SetSprite("assets/images/foregrounds/red-nazi-wall.bmp");
+                        transform.position.x = (double)x * 64;
+                        transform.position.y = (double)y * 63;
+                        transform.scale = 1;
+                        tileObject->setTransform(&transform);
+                        break;
+
+
+                    // bright wood statue floor
+                    case 28:
+                        scene->AddGameObject(tileObject);
+
+                        tileObject->AddComponent(tileSprite);
+                        tileSprite->SetSprite("assets/images/foregrounds/bright-wood-statue-floor.bmp");
+                        transform.position.x = (double)x * 64;
+                        transform.position.y = (double)y * 63;
+                        transform.scale = 1;
+                        tileObject->setTransform(&transform);
+                        break;
+
+                    // top right corner red half wall
+                    case 7:
+                        scene->AddGameObject(tileObject);
+
+                        tileObject->AddComponent(tileSprite);
+                        tileSprite->SetSprite("assets/images/foregrounds/inside_3.png");
+                        transform.position.x = (double)x * 64;
+                        transform.position.y = (double)y * 63;
+                        transform.scale = 1;
+                        tileObject->setTransform(&transform);
+                        break;
+
+                    // top red half wall
+                    case 3:
+                        scene->AddGameObject(tileObject);
+
+                        tileObject->AddComponent(tileSprite);
+                        tileSprite->SetSprite("assets/images/foregrounds/half_2.png");
+                        transform.position.x = (double)x * 64;
+                        transform.position.y = (double)y * 63;
+                        transform.scale = 1;
+                        tileObject->setTransform(&transform);
+                        break;
+
+                    // top left corner red half wall
+                    case 5:
+                        scene->AddGameObject(tileObject);
+
+                        tileObject->AddComponent(tileSprite);
+                        tileSprite->SetSprite("assets/images/foregrounds/inside_1.png");
                         transform.position.x = (double)x * 64;
                         transform.position.y = (double)y * 63;
                         transform.scale = 1;
