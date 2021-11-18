@@ -7,6 +7,7 @@
 #include "API_Headers/Sprite.hpp"
 #include "API_Headers/Transform.hpp"
 #include "Player.hpp"
+#include <API_Headers/Text.hpp>
 
 int main()
 {
@@ -25,6 +26,14 @@ int main()
     std::shared_ptr<Player> player = std::make_shared<Player>();
     playerObject->AddComponent(player);
     playerObject->setTransform(&transfrom);
+
+    //addText
+
+    spic::Color textColor = spic::Color(0.0, 0.0, 0.0, 1.0);
+    std::shared_ptr<spic::Text> text = std::make_shared<spic::Text>("TopSecret", "Capsmall", 60, textColor, 10, 50);
+
+    scene->AddGameObject(text);
+
     spic::Engine* engine = new spic::Engine();
     engine->AddScene(scene);
     engine->SetActiveScene(scene);

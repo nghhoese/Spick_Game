@@ -5,11 +5,11 @@
 #include "API_Headers/Scene.hpp"
 #include "API_Headers/Text.hpp"
 
-int main()
+int texttest()
 {
     std::shared_ptr<spic::Scene> scene = std::make_shared<spic::Scene>("test");
     spic::Color textColor = spic::Color(0.0, 0.0, 0.0, 1.0);
-    std::shared_ptr<spic::Text> text = std::make_shared<spic::Text>("Advanced Stealth", "Capsmall", 60, textColor, 10, 50);
+    std::shared_ptr<spic::Text> text = std::make_shared<spic::Text>("TopSecret", "Capsmall", 60, textColor, 10, 50);
 
     scene->AddGameObject(text);
 

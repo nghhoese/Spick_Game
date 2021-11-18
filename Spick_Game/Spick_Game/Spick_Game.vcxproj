@@ -170,6 +170,7 @@
   <ItemGroup>
     <Font Include="Fonts\Capsmall.ttf" />
     <ClInclude Include="Player.hpp" />
+    <Font Include="Fonts\TopSecret.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\player_sub-machinegun.bmp" />

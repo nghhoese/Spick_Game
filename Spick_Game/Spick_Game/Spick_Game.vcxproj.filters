@@ -37,5 +37,6 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\Capsmall.ttf" />
+    <Font Include="Fonts\TopSecret.ttf" />
   </ItemGroup>
 </Project>
