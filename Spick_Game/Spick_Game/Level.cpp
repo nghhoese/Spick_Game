@@ -1,4 +1,5 @@
 #include "Level.hpp"
+#include "Player.hpp"
 
 void Level::BuildLevel(std::shared_ptr<spic::Scene> scene, fs::path filePath) {
     auto level_layers = this->Read(filePath);
@@ -41,7 +42,7 @@ void Level::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, 
                     backgroundObject->AddComponent(backgroundSprite);
                     backgroundSprite->SetSprite("assets/images/foregrounds/dark-wood-statue-floor.bmp");
                     transform.position.x = (double)x * xTilesize;
-                    transform.position.y = (double)y * 64;
+                    transform.position.y = (double)y * yTilesize;
                     transform.scale = 1;
                     backgroundObject->setTransform(&transform);
                     break;
@@ -285,7 +286,78 @@ void Level::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, 
 }
 
 void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<std::pair<std::string, std::any>> object){
-    for (std::pair<std::string, std::any> value : object) {
 
+
+    if (get_value<std::string>("type", object) == "Waypoint") {
+
+        if (get_value<std::string>("name", object) == "StartPoint") {
+
+            for (std::pair<std::string, std::any> value : object) {
+                if (value.first._Equal("position")) {
+                    std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
+
+                    std::shared_ptr<spic::GameObject> playerObject = std::make_shared<spic::GameObject>("Player");
+                    std::shared_ptr<spic::Sprite> sprite = std::make_shared<spic::Sprite>();
+
+                    scene->AddGameObject(playerObject);
+                    spic::Transform transfrom = *playerObject->getTransform();
+                    playerObject->AddComponent(sprite);
+                    sprite->SetSprite("assets/player_sub-machinegun.bmp");
+                    transfrom.position.x = std::get<0>(position);
+                    transfrom.position.y = std::get<1>(position);
+                    transfrom.scale = 0.75;
+                    std::shared_ptr<Player> player = std::make_shared<Player>();
+                    playerObject->AddComponent(player);
+                    playerObject->setTransform(&transfrom);
+                }
+            }
+        }
     }
+
+    if (get_value<std::string>("type", object) == "Enemy") {
+
+        if (get_value<std::string>("name", object) == "GreenGuard") {
+
+            for (std::pair<std::string, std::any> value : object) {
+
+                if (value.first._Equal("position")) {
+                    std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
+                }
+            }
+
+        }
+
+        if (get_value<std::string>("name", object) == "RedGuard") {
+
+            for (std::pair<std::string, std::any> value : object) {
+
+                if (value.first._Equal("position")) {
+                    std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
+                }
+            }
+
+        }
+
+        if (get_value<std::string>("name", object) == "BlueGuard") {
+
+            for (std::pair<std::string, std::any> value : object) {
+
+                if (value.first._Equal("position")) {
+                    std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
+                }
+            }
+
+        }
+    }
+
+    //for (std::pair<std::string, std::any> value : object) {
+    //    if (value.first._Equal("type")) {
+    //        auto test = get_value(value.second,);
+    //        auto tes2 = "jeoma";
+    //    }
+
+    //    if (value.first._Equal("position")) {
+    //        std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
+    //    }
+    //}
 }
