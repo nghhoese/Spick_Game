@@ -6,6 +6,7 @@
 class Enemy : public spic::BehaviourScript {
 private:
     int healthpoints;
+    int damagePerBullet;
     std::string path;
 public:
     void OnAwake();
@@ -21,4 +22,7 @@ public:
 
     void setHealthpoints(const int& healthpoints);
     const int& getHealthpoints();
+
+    void setDamagePerBullet(const int& damagePerBullet);
+    const int& getDamagePerBullet();
 };

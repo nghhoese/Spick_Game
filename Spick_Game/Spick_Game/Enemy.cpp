@@ -47,3 +47,13 @@ const int& Enemy::getHealthpoints()
 {
 	return this->healthpoints;
 }
+
+void Enemy::setDamagePerBullet(const int& damagePerBullet)
+{
+	this->damagePerBullet = damagePerBullet;
+}
+
+const int& Enemy::getDamagePerBullet()
+{
+	return this->damagePerBullet;
+}
