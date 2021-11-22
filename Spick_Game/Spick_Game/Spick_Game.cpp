@@ -27,7 +27,7 @@ int main()
     sprite->SetSprite("assets/player_sub-machinegun.bmp");
     transfrom.position.x = 1;
     transfrom.position.y = 1;
-    transfrom.scale = 1;
+    transfrom.scale = 0.75;
     std::shared_ptr<Player> player = std::make_shared<Player>(); 
     playerObject->AddComponent(player);
     playerObject->setTransform(&transfrom);
