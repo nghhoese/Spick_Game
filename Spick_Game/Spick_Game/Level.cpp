@@ -1,8 +1,13 @@
 #include "Level.hpp"
 #include "Player.hpp"
 
-void Level::BuildLevel(std::shared_ptr<spic::Scene> scene, fs::path filePath) {
-    auto level_layers = this->Read(filePath);
+Level::Level()
+{
+    engine = new spic::Engine();
+}
+
+void Level::BuildLevel(std::shared_ptr<spic::Scene> scene, std::filesystem::path filePath) {
+    auto level_layers = engine->GetLevel(filePath);
 
     std::vector<std::pair<int, std::vector<std::vector<int>>>> tiles = level_layers.first;
     std::vector<std::vector<std::pair<std::string, std::any>>> objects = level_layers.second;
@@ -49,7 +54,7 @@ void Level::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, 
                 }
 
                 x++;
-                if (x == level_height - 1) {
+                if (x == level_height) {
                     y++;
                     x = 0;
                 }
@@ -309,6 +314,21 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     std::shared_ptr<Player> player = std::make_shared<Player>();
                     playerObject->AddComponent(player);
                     playerObject->setTransform(&transfrom);
+                }
+            }
+        }
+
+        if (get_value<std::string>("name", object) == "EndPoint") {
+            for (std::pair<std::string, std::any> value : object) {
+                if (value.first._Equal("position")) {
+                    std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
+
+                    std::shared_ptr<spic::GameObject> endPointObject = std::make_shared<spic::GameObject>("Endpoint");
+
+                    scene->AddGameObject(endPointObject);
+                    spic::Transform transfrom = *endPointObject->getTransform();
+                    transfrom.position.x = std::get<0>(position);
+                    transfrom.position.y = std::get<1>(position);
                 }
             }
         }
