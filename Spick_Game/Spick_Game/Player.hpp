@@ -14,15 +14,15 @@ private:
 public:
 	double x;
 	double y;
+    Player();
 	const void checkMouseButtons();
 	const void checkKeys();
 	const spic::Point checkMousePosition();
-   virtual void OnAwake();
-   void OnStart();
+    void OnAwake();
+    void OnStart();
     void OnUpdate();
     void OnRender();
-   void OnTriggerEnter2D(const Collider& collider);
-   Player();
+    void OnTriggerEnter2D(const Collider& collider);
     /**
      * @brief Sent when another object leaves a trigger collider
      *        attached to this object (2D physics only).
@@ -33,5 +33,5 @@ public:
      * @brief Sent each frame where another object is within a trigger
      *        collider attached to this object (2D physics only).
      */
-   void OnTriggerStay2D(const Collider& collider);
+    void OnTriggerStay2D(const Collider& collider);
 };
