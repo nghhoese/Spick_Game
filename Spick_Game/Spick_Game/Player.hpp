@@ -6,6 +6,7 @@
 #include "API_Headers/BehaviourScript.hpp"
 #include "API_Headers/Transform.hpp"
 #include "API_Headers/GameObject.hpp"
+#include "API_Headers/Scene.hpp"
 
 class Player : public spic::BehaviourScript {
 private:

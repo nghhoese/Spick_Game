@@ -9,6 +9,8 @@
 
 class Level {
 private:
+	std::string bmpFileString = ".bmp";
+	std::string pngFileString = ".png";
 	int xTilesize;
 	int yTilesize;
 	int level_height;
@@ -23,6 +25,8 @@ public:
 	void BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, std::vector<std::vector<int>>> tileset);
 
 	void BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<std::pair<std::string, std::any>> object);
+
+	void BuildLevelTile(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::GameObject> tileObject, std::shared_ptr<spic::Sprite> tileSprite, spic::Transform transform, int x, int y, const std::string& spriteName);
 
 	template<typename T>
 	const T get_value(const std::string& valueName, const std::vector<std::pair<std::string, std::any>>& object) {
