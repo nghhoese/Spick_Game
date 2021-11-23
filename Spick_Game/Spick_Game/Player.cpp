@@ -129,6 +129,17 @@ void Player::OnUpdate()
 	double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
 	transfrom.rotation = Result + 95;
 
+	auto endPoint = GetGameObject()->getScene()->GetGameObjectsByName("Endpoint")[0];
+	auto endPointPosition = endPoint->getTransform();
+	spic::Point endBottomRight;
+	endBottomRight.x = endPointPosition->position.x + 64;
+	endBottomRight.y = endPointPosition->position.y + 64;
+	if ((x > endPointPosition->position.x && y > endPointPosition->position.y) ) {
+		if (x < endBottomRight.x && y < endBottomRight.y) {
+			std::cout << "Level behaald" << std::endl;
+		}
+	}
+
 	GetGameObject()->setTransform(&transfrom);
 }
 
