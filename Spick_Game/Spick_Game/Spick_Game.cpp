@@ -16,10 +16,10 @@ int main()
     std::shared_ptr<spic::GameObject> playerObject = std::make_shared<spic::GameObject>("Player");
     std::shared_ptr<spic::Scene> scene = std::make_shared<spic::Scene>("test");
     std::shared_ptr<spic::Sprite> sprite = std::make_shared<spic::Sprite>();
-
     const std::string& path = "assets/levels/level1.json";
     std::shared_ptr<Level> level = std::make_shared<Level>();
     level->BuildLevel(scene, path);
+
 
     scene->AddGameObject(playerObject);
     spic::Transform transfrom = *playerObject->getTransform();
@@ -32,6 +32,7 @@ int main()
     playerObject->AddComponent(player);
     playerObject->setTransform(&transfrom);
     spic::Engine* engine = new spic::Engine();
+    engine->CreateNewWindow("yolo");
     engine->AddScene(scene);
     engine->SetActiveScene(scene);
     engine->StartGameLoop();
