@@ -30,39 +30,8 @@ void Level::BuildLevel(std::shared_ptr<spic::Scene> scene, std::filesystem::path
 }
 
 void Level::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, std::vector<std::vector<int>>> tileset) {
-    // background
-    if (tileset.first == 1) {
-        int x = 0;
-        int y = 0;
-        for (std::vector<int> vector : tileset.second) {
-            for (int object : vector) {
-                std::shared_ptr<spic::GameObject> backgroundObject = std::make_shared<spic::GameObject>("background-tile");
-                std::shared_ptr<spic::Sprite> backgroundSprite = std::make_shared<spic::Sprite>();
-                spic::Transform transform = *backgroundObject->getTransform();
-                switch (object + 1) {
-                    // background black stars 
-                case 0:
-                    scene->AddGameObject(backgroundObject);
-
-                    backgroundObject->AddComponent(backgroundSprite);
-                    backgroundSprite->SetSprite("assets/images/foregrounds/dark-wood-statue-floor.bmp");
-                    transform.position.x = (double)x * xTilesize;
-                    transform.position.y = (double)y * yTilesize;
-                    transform.scale = 1;
-                    backgroundObject->setTransform(&transform);
-                    break;
-                }
-
-                x++;
-                if (x == level_height) {
-                    y++;
-                    x = 0;
-                }
-            }
-        }
-    }
-    // foreground (tileset.first == 4)
-    else {
+    // foreground
+    if(tileset.first == 4) {
         int x = 0;
         int y = 0;
         for (std::vector<int> vector : tileset.second) {
@@ -142,7 +111,7 @@ void Level::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, 
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "outside_1");
                     break;
 
-                    // top right angled red half wall
+                // top right angled red half wall
                 case 124:
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "outside_2");
                     break;
@@ -152,7 +121,7 @@ void Level::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, 
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "outside_3");
                     break;
 
-                    // top right angled red half wall
+                // top right angled red half wall
                 case 126:
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "outside_4");
                     break;

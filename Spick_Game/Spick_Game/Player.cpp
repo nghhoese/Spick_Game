@@ -107,7 +107,6 @@ void Player::OnUpdate()
 
 	auto endPoint = GetGameObject()->getScene()->GetGameObjectsByName("Endpoint")[0];
 	auto endPointPosition = endPoint->getTransform();
-
 	spic::Point endBottomRight;
 	endBottomRight.x = endPointPosition->position.x + 64;
 	endBottomRight.y = endPointPosition->position.y + 64;
@@ -116,10 +115,6 @@ void Player::OnUpdate()
 			std::cout << "Level behaald" << std::endl;
 		}
 	}
-
-	//if (res->position.x == x && res->position.y == y) {
-	//	std::cout << "Level behaald" << std::endl;
-	//}
 
 	GetGameObject()->setTransform(&transfrom);
 }
