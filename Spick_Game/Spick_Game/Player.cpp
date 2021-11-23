@@ -1,4 +1,5 @@
 #include "Player.hpp"
+#include <API_Headers/Sprite.hpp>
 
 
 spic::KeyCode W = spic::KeyCode::W;
@@ -104,6 +105,13 @@ void Player::OnUpdate()
 
 	double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
 	transfrom.rotation = Result + 95;
+
+	GetGameObject()->getScene()->GetActiveCamera()->setX(x - 768);
+	GetGameObject()->getScene()->GetActiveCamera()->setY(y - 768);
+	GetGameObject()->getScene()->GetActiveCamera()->UpdateCamera();
+
+	std::cout << "x " << GetGameObject()->getScene()->GetActiveCamera()->getX() << std::endl;
+	std::cout << "y " << GetGameObject()->getScene()->GetActiveCamera()->getY() << std::endl;
 
 	GetGameObject()->setTransform(&transfrom);
 }

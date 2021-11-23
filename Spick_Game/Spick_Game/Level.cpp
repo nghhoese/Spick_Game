@@ -303,6 +303,7 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     spic::Transform transfrom = *playerObject->getTransform();
                     playerObject->AddComponent(sprite);
                     sprite->SetSprite("assets/player_sub-machinegun.bmp");
+                    sprite->SetPlayerBool(true);
                     transfrom.position.x = std::get<0>(position);
                     transfrom.position.y = std::get<1>(position);
                     transfrom.scale = 0.75;

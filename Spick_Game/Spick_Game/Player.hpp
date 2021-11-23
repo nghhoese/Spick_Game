@@ -6,15 +6,18 @@
 #include "API_Headers/BehaviourScript.hpp"
 #include "API_Headers/Transform.hpp"
 #include "API_Headers/GameObject.hpp"
+#include <API_Headers/Rectangle.hpp>
+#include <API_Headers/Scene.hpp>
+#include <API_Headers/Camera.hpp>
 
 class Player : public spic::BehaviourScript {
 private:
 	int healthpoints;
 	int ammo;
 public:
+    Player();
 	double x;
 	double y;
-    Player();
 	const void checkMouseButtons();
 	const void checkKeys();
 	const spic::Point checkMousePosition();

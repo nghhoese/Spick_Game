@@ -22,13 +22,15 @@ int main()
     level->BuildLevel(scene, path);
 
     spic::Camera* camera = new spic::Camera("mainCamera");
-    camera->setAspectWidth(800);
-    camera->setAspectHeight(640);
+    camera->setAspectWidth(1536);
+    camera->setAspectHeight(1536);
     camera->setX(0);
     camera->setY(0);
-    camera->createRectangle();
-    spic::Rectangle rectangle = camera->getRectangle();
+    camera->CreateCamera();
+    //spic::Rectangle rectangle = *camera->GetCamera();
 
+    scene->AddCamera(*camera);
+    scene->SetActiveCamera("mainCamera");
 
     spic::Engine* engine = new spic::Engine();
     engine->AddScene(scene);
