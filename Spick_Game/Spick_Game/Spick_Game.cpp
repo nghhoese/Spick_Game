@@ -22,8 +22,8 @@ int main()
     level->BuildLevel(scene, path);
 
     spic::Camera* camera = new spic::Camera("mainCamera");
-    camera->setAspectWidth(800);
-    camera->setAspectHeight(640);
+    camera->setAspectWidth(1536);
+    camera->setAspectHeight(1536);
     camera->setX(0);
     camera->setY(0);
     camera->CreateCamera();
