@@ -1,4 +1,7 @@
-﻿  Spick_Game.cpp
+﻿  Player.cpp
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(11,55): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(15): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(11): message : see declaration of 'spic::BehaviourScript'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\GameObject.hpp(42,60): warning C4834: discarding return value of function with 'nodiscard' attribute
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Camera.hpp(14,47): warning C4275: non dll-interface class 'spic::GameObject' used as base for dll-interface class 'spic::Camera'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\GameObject.hpp(17): message : see declaration of 'spic::GameObject'
@@ -16,7 +19,8 @@ C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(160,15): w
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Color.hpp(11): message : see declaration of 'spic::Color'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(172,44): warning C4251: 'spic::Sprite::imageFacade': class 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(172): message : see declaration of 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>'
-C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(11,55): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::BehaviourScript'
-C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(15): message : see declaration of 'spic::Component'
-C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(11): message : see declaration of 'spic::BehaviourScript'
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Player.cpp(105,58): warning C4244: '=': conversion from 'const double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Player.cpp(106,58): warning C4244: '=': conversion from 'const double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Player.cpp(107,68): warning C4244: '=': conversion from 'const double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Player.cpp(108,69): warning C4244: '=': conversion from 'const double' to 'int', possible loss of data
   Spick_Game.vcxproj -> C:\Spic\Spick_Game\Spick_Game\Debug\Spick_Game.exe

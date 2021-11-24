@@ -1,7 +1,4 @@
 #include "Player.hpp"
-#include <API_Headers/Sprite.hpp>
-#include <API_Headers/Text.hpp>
-
 
 spic::KeyCode W = spic::KeyCode::W;
 spic::KeyCode A = spic::KeyCode::A;
@@ -38,16 +35,16 @@ const void Player::checkKeys()
 {
 	//waardes nog aanpassen
 	if (input->GetKey(W)) {
-		y -= 1;
+		y -= speed;
 	}
 	else if (input->GetKey(A)) {
-		x -= 1;
+		x -= speed;
 	}
 	else if (input->GetKey(S)) {
-		y += 1;
+		y += speed;
 	}
 	else if (input->GetKey(D)) {
-		x += 1;
+		x += speed;
 	}
 	else if (input->GetKey(E)) {
 		// interactie
@@ -143,8 +140,16 @@ void Player::OnUpdate()
 
 	GetGameObject()->setTransform(&transfrom);
 
-	//std::shared_ptr<spic::Text> object = GetGameObject()->FindWithTag("hp");
+	currentHealthPoints = this->healthpoints;
+	if (this->healthpoints > 50) {
+		this->healthpoints -= 1;
+	}
 
+	std::shared_ptr<spic::GameObject> object = GetGameObject()->getScene()->GetGameObjectsByTag("hp")[0];
+	std::shared_ptr<spic::Text> text = std::dynamic_pointer_cast<spic::Text>(object);
+	if (currentHealthPoints != healthpoints) {
+		text->SetText("Health: " + std::to_string(this->healthpoints));
+	}
 }
 
 void Player::OnRender()

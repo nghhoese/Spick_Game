@@ -9,15 +9,20 @@
 #include <API_Headers/Rectangle.hpp>
 #include <API_Headers/Scene.hpp>
 #include <API_Headers/Camera.hpp>
+#include <API_Headers/Sprite.hpp>
+#include <API_Headers/Text.hpp>
+#include <iostream>
 
 class Player : public spic::BehaviourScript {
 private:
-	int healthpoints;
-	int ammo;
+    int currentHealthPoints;
+	int healthpoints = 100;
+	int ammo = 0;
 public:
     Player();
 	double x;
 	double y;
+    double speed = 1;
 	const void checkMouseButtons();
 	const void checkKeys();
 	const spic::Point checkMousePosition();
