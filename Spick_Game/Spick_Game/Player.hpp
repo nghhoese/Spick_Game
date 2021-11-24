@@ -17,6 +17,8 @@ class Player : public spic::BehaviourScript {
 private:
     int currentHealthPoints;
 	int healthpoints = 100;
+    int currentCoins;
+    int coins = 10;
 	int ammo = 0;
 public:
     Player();

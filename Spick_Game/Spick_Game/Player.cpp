@@ -141,14 +141,27 @@ void Player::OnUpdate()
 	GetGameObject()->setTransform(&transfrom);
 
 	currentHealthPoints = this->healthpoints;
-	if (this->healthpoints > 50) {
+	if (this->healthpoints > 70) {
 		this->healthpoints -= 1;
 	}
 
-	std::shared_ptr<spic::GameObject> object = GetGameObject()->getScene()->GetGameObjectsByTag("hp")[0];
-	std::shared_ptr<spic::Text> text = std::dynamic_pointer_cast<spic::Text>(object);
+	currentCoins = this->coins;
+	if (this->coins < 20) {
+		this->coins += 1;
+	}
+
+	// Update Healthpoints in HUD
+	std::shared_ptr<spic::GameObject> healthObject = GetGameObject()->getScene()->GetGameObjectsByTag("hp")[0];
+	std::shared_ptr<spic::Text> healthText = std::dynamic_pointer_cast<spic::Text>(healthObject);
 	if (currentHealthPoints != healthpoints) {
-		text->SetText("Health: " + std::to_string(this->healthpoints));
+		healthText->SetText("Health: " + std::to_string(this->healthpoints));
+	}
+
+	// Update Coins in HUD
+	std::shared_ptr<spic::GameObject> coinsObject = GetGameObject()->getScene()->GetGameObjectsByTag("coins")[0];
+	std::shared_ptr<spic::Text> CoinsText = std::dynamic_pointer_cast<spic::Text>(coinsObject);
+	if (currentCoins != coins) {
+		CoinsText->SetText("Coins: " + std::to_string(this->coins));
 	}
 }
 

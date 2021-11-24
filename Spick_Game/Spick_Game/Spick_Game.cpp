@@ -39,9 +39,11 @@ int main()
 
     spic::Color textColor = spic::Color(1.0, 1.0, 1.0, 1.0);
     std::shared_ptr<spic::Text> fps = std::make_shared<spic::Text>("FPS: " + std::to_string(engine->GetFPS()), "Capsmall", 30, textColor, 0, 0);
+    fps->AddTag("fps");
     std::shared_ptr<spic::Text> hp = std::make_shared<spic::Text>("Health: 0", "Capsmall", 30, textColor, 150, 0);
     hp->AddTag("hp");
     std::shared_ptr<spic::Text> coins = std::make_shared<spic::Text>("Coins: 0", "Capsmall", 30, textColor, 350, 0);
+    coins->AddTag("coins");
 
     scene->AddGameObject(fps);
     scene->AddGameObject(hp);
