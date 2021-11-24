@@ -140,11 +140,13 @@ void Player::OnUpdate()
 
 	GetGameObject()->setTransform(&transfrom);
 
+	// Test
 	currentHealthPoints = this->healthpoints;
 	if (this->healthpoints > 70) {
 		this->healthpoints -= 1;
 	}
 
+	// Test
 	currentCoins = this->coins;
 	if (this->coins < 20) {
 		this->coins += 1;
