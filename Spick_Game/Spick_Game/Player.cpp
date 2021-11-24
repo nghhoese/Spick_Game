@@ -1,5 +1,6 @@
 #include "Player.hpp"
 #include <API_Headers/Sprite.hpp>
+#include <API_Headers/Text.hpp>
 
 
 spic::KeyCode W = spic::KeyCode::W;
@@ -141,6 +142,9 @@ void Player::OnUpdate()
 	}
 
 	GetGameObject()->setTransform(&transfrom);
+
+	//std::shared_ptr<spic::Text> object = GetGameObject()->FindWithTag("hp");
+
 }
 
 void Player::OnRender()
