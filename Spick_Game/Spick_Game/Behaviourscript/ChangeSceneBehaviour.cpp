@@ -11,7 +11,7 @@ ChangeSceneBehaviour::ChangeSceneBehaviour(std::string name, std::string scene, 
 void ChangeSceneBehaviour::OnUpdate()
 {
 	std::cout << _scene << std::endl;
-	_engine->SetActiveScene(_engine->GetSceneByName(_scene));	
+	_engine->SetActiveScene(_scene);	
 }
 
 void ChangeSceneBehaviour::OnAwake()
