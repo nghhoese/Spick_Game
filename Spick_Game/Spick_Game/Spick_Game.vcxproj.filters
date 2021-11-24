@@ -34,6 +34,10 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Scenes\PlaySceneBuilder.cpp">
+    <ClCompile Include="Level.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -54,6 +58,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Scenes\PlaySceneBuilderr.hpp">
+    <ClInclude Include="Level.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -68,11 +76,74 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="..\..\..\..\Users\rensa\Pictures\Eric.png">
+    <Image Include="assets\images\backgrounds\background.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\bright-wood-hitler-floor.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\bright-wood-statue-floor.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\dark-wood-floor.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\dark-wood-hitler-floor.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\dark-wood-statue-floor.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\red-nazi-wall.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\red-wall.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\bright-wood-floor.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\inside_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\inside_2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\inside_3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\inside_4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\outside_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\outside_2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\outside_3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\outside_4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\half_4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\half_3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\half_2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\half_1.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\Capsmall.ttf" />
     <Font Include="Fonts\TopSecret.ttf" />
+    <None Include="assets\levels\level1.json" />
+    <None Include="assets\levels\testlevel.json" />
   </ItemGroup>
 </Project>

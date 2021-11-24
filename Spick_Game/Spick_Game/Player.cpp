@@ -1,4 +1,5 @@
 #include "Player.hpp"
+#include <API_Headers/Sprite.hpp>
 
 
 spic::KeyCode W = spic::KeyCode::W;
@@ -98,12 +99,46 @@ void Player::OnUpdate()
 	transfrom.position.x = x;
 	transfrom.position.y = y;
 
+	GetGameObject()->getScene()->GetActiveCamera()->setX(x - 768);
+	GetGameObject()->getScene()->GetActiveCamera()->setY(y - 768);
+	GetGameObject()->getScene()->GetActiveCamera()->UpdateCamera();
+
+	int x, y, w, h;
+	x = GetGameObject()->getScene()->GetActiveCamera()->getX();
+	y = GetGameObject()->getScene()->GetActiveCamera()->getY();
+	w = GetGameObject()->getScene()->GetActiveCamera()->getAspectWidth();
+	h = GetGameObject()->getScene()->GetActiveCamera()->getAspectHeight();
+
+	if (x < 0) {
+		GetGameObject()->getScene()->GetActiveCamera()->setX(0);
+	}
+	if (y < 0) {
+		GetGameObject()->getScene()->GetActiveCamera()->setY(0);
+	}
+	if (x > w) {
+		GetGameObject()->getScene()->GetActiveCamera()->setX(w);
+	}
+	if (y > h) {
+		GetGameObject()->getScene()->GetActiveCamera()->setY(h);
+	}
+
 	point = checkMousePosition();
-	double Delta_x = transfrom.position.x - point.x;
-	double Delta_y = transfrom.position.y - point.y;
+	double Delta_x = (transfrom.position.x - GetGameObject()->getScene()->GetActiveCamera()->getX()) - point.x;
+	double Delta_y = (transfrom.position.y - GetGameObject()->getScene()->GetActiveCamera()->getY()) - point.y;
 
 	double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
 	transfrom.rotation = Result + 95;
+
+	auto endPoint = GetGameObject()->getScene()->GetGameObjectsByName("Endpoint")[0];
+	auto endPointPosition = endPoint->getTransform();
+	spic::Point endBottomRight;
+	endBottomRight.x = endPointPosition->position.x + 64;
+	endBottomRight.y = endPointPosition->position.y + 64;
+	if ((x > endPointPosition->position.x && y > endPointPosition->position.y) ) {
+		if (x < endBottomRight.x && y < endBottomRight.y) {
+			std::cout << "Level behaald" << std::endl;
+		}
+	}
 
 	GetGameObject()->setTransform(&transfrom);
 }
