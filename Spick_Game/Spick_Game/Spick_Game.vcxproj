@@ -156,12 +156,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="HUD.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Spick_Game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enemy.hpp" />
+    <ClInclude Include="HUD.hpp" />
     <ClInclude Include="Level.hpp" />
     <ClInclude Include="Player.hpp" />
   </ItemGroup>
@@ -192,6 +194,10 @@
   <ItemGroup>
     <None Include="assets\levels\level1.json" />
     <None Include="assets\levels\testlevel.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Fonts\Fonts\Capsmall.ttf" />
+    <Font Include="Fonts\Fonts\TopSecret.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
