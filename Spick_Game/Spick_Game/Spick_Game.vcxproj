@@ -163,17 +163,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Behaviourscript\ChangeSceneBehaviour.cpp" />
+    <ClCompile Include="Behaviourscript\Standard\ButtonBehaviour.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scenes\MainMenuBuilder.cpp" />
+    <ClCompile Include="Scenes\PlaySceneBuilder.cpp" />
     <ClCompile Include="Spick_Game.cpp" />
     <ClCompile Include="TextTest.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Behaviourscript\ChangeSceneBehaviour.hpp" />
+    <ClInclude Include="Scenes\MainMenuBuilder.hpp" />
+    <ClInclude Include="Scenes\PlaySceneBuilderr.hpp" />
+    <ClInclude Include="Scenes\SceneBuilder.hpp" />
     <Font Include="Fonts\Capsmall.ttf" />
+    <ClInclude Include="Behaviourscript\Standard\ButtonBehaviour.hpp" />
     <ClInclude Include="Player.hpp" />
     <Font Include="Fonts\TopSecret.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\..\Users\rensa\Pictures\Eric.png" />
+    <Image Include="assets\button.jpg" />
+    <Image Include="assets\menu.png" />
     <Image Include="assets\player_sub-machinegun.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
