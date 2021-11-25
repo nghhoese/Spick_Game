@@ -61,12 +61,6 @@
     <Image Include="assets\images\foregrounds\dark-wood-statue-floor.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="assets\images\foregrounds\red-nazi-wall.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\red-wall.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="assets\images\foregrounds\bright-wood-floor.bmp">
       <Filter>Resource Files</Filter>
     </Image>
@@ -131,6 +125,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="assets\images\foregrounds\dark-blue-stone-wall.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\red-nazi-wall.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\foregrounds\red-wall.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

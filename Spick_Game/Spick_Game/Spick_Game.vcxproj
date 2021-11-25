@@ -193,8 +193,8 @@
     <Image Include="assets\images\foregrounds\outside_2.png" />
     <Image Include="assets\images\foregrounds\outside_3.png" />
     <Image Include="assets\images\foregrounds\outside_4.png" />
-    <Image Include="assets\images\foregrounds\red-nazi-wall.bmp" />
-    <Image Include="assets\images\foregrounds\red-wall.bmp" />
+    <Image Include="assets\images\foregrounds\red-nazi-wall.png" />
+    <Image Include="assets\images\foregrounds\red-wall.png" />
     <Image Include="assets\images\foregrounds\stone-floor.png" />
     <Image Include="assets\player_sub-machinegun.bmp" />
   </ItemGroup>
