@@ -141,16 +141,14 @@ void Player::OnUpdate()
 	GetGameObject()->setTransform(&transfrom);
 
 	// Test
-	currentHealthPoints = this->healthpoints;
-	if (this->healthpoints > 70) {
-		this->healthpoints -= 1;
-	}
+	//if (this->healthpoints > 70) {
+	//	this->healthpoints -= 1;
+	//}
 
-	// Test
-	currentCoins = this->coins;
-	if (this->coins < 20) {
-		this->coins += 1;
-	}
+	//// Test
+	//if (this->coins < 20) {
+	//	this->coins += 1;
+	//}
 
 	// Update Healthpoints in HUD
 	std::shared_ptr<spic::GameObject> healthObject = GetGameObject()->getScene()->GetGameObjectsByTag("hp")[0];
@@ -158,6 +156,7 @@ void Player::OnUpdate()
 	if (currentHealthPoints != healthpoints) {
 		healthText->SetText("Health: " + std::to_string(this->healthpoints));
 	}
+	currentHealthPoints = this->healthpoints;
 
 	// Update Coins in HUD
 	std::shared_ptr<spic::GameObject> coinsObject = GetGameObject()->getScene()->GetGameObjectsByTag("coins")[0];
@@ -165,6 +164,7 @@ void Player::OnUpdate()
 	if (currentCoins != coins) {
 		CoinsText->SetText("Coins: " + std::to_string(this->coins));
 	}
+	currentCoins = this->coins;
 }
 
 void Player::OnRender()
