@@ -35,16 +35,16 @@ const void Player::checkKeys()
 {
 	//waardes nog aanpassen
 	if (input->GetKey(W)) {
-		y -= speed;
+		yPlayer -= speed;
 	}
 	else if (input->GetKey(A)) {
-		x -= speed;
+		xPlayer -= speed;
 	}
 	else if (input->GetKey(S)) {
-		y += speed;
+		yPlayer += speed;
 	}
 	else if (input->GetKey(D)) {
-		x += speed;
+		xPlayer += speed;
 	}
 	else if (input->GetKey(E)) {
 		// interactie
