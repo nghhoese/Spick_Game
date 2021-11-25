@@ -27,6 +27,9 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.hpp">
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -139,5 +145,9 @@
     <None Include="assets\levels\testlevel.json" />
     <None Include="assets\levels\level2.json" />
     <None Include="assets\levels\level3.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Fonts\Fonts\Capsmall.ttf" />
+    <Font Include="Fonts\Fonts\TopSecret.ttf" />
   </ItemGroup>
 </Project>

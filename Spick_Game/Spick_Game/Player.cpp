@@ -1,6 +1,4 @@
 #include "Player.hpp"
-#include <API_Headers/Sprite.hpp>
-
 
 spic::KeyCode W = spic::KeyCode::W;
 spic::KeyCode A = spic::KeyCode::A;
@@ -37,16 +35,16 @@ const void Player::checkKeys()
 {
 	//waardes nog aanpassen
 	if (input->GetKey(W)) {
-		yPlayer -= 1;
+		y -= speed;
 	}
 	else if (input->GetKey(A)) {
-		xPlayer -= 1;
+		x -= speed;
 	}
 	else if (input->GetKey(S)) {
-		yPlayer += 1;
+		y += speed;
 	}
 	else if (input->GetKey(D)) {
-		xPlayer += 1;
+		x += speed;
 	}
 	else if (input->GetKey(E)) {
 		// interactie
@@ -141,6 +139,32 @@ void Player::OnUpdate()
 	}
 
 	GetGameObject()->setTransform(&transfrom);
+
+	// Test
+	//if (this->healthpoints > 70) {
+	//	this->healthpoints -= 1;
+	//}
+
+	//// Test
+	//if (this->coins < 20) {
+	//	this->coins += 1;
+	//}
+
+	// Update Healthpoints in HUD
+	std::shared_ptr<spic::GameObject> healthObject = GetGameObject()->getScene()->GetGameObjectsByTag("hp")[0];
+	std::shared_ptr<spic::Text> healthText = std::dynamic_pointer_cast<spic::Text>(healthObject);
+	if (currentHealthPoints != healthpoints) {
+		healthText->SetText("Health: " + std::to_string(this->healthpoints));
+	}
+	currentHealthPoints = this->healthpoints;
+
+	// Update Coins in HUD
+	std::shared_ptr<spic::GameObject> coinsObject = GetGameObject()->getScene()->GetGameObjectsByTag("coins")[0];
+	std::shared_ptr<spic::Text> CoinsText = std::dynamic_pointer_cast<spic::Text>(coinsObject);
+	if (currentCoins != coins) {
+		CoinsText->SetText("Coins: " + std::to_string(this->coins));
+	}
+	currentCoins = this->coins;
 }
 
 void Player::OnRender()
