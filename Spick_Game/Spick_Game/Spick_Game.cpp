@@ -17,7 +17,7 @@ int main()
 {
     std::shared_ptr<spic::Scene> scene = std::make_shared<spic::Scene>("test");
 
-    const std::string& path = "assets/levels/level1.json";
+    const std::string& path = "assets/levels/level3.json";
     std::shared_ptr<Level> level = std::make_shared<Level>();
     level->BuildLevel(scene, path);
 

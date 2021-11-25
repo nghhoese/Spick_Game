@@ -37,16 +37,16 @@ const void Player::checkKeys()
 {
 	//waardes nog aanpassen
 	if (input->GetKey(W)) {
-		y -= 1;
+		yPlayer -= 1;
 	}
 	else if (input->GetKey(A)) {
-		x -= 1;
+		xPlayer -= 1;
 	}
 	else if (input->GetKey(S)) {
-		y += 1;
+		yPlayer += 1;
 	}
 	else if (input->GetKey(D)) {
-		x += 1;
+		xPlayer += 1;
 	}
 	else if (input->GetKey(E)) {
 		// interactie
@@ -92,15 +92,15 @@ void Player::OnStart()
 void Player::OnUpdate()
 {
 	spic::Transform transfrom = *GetGameObject()->getTransform();
-	x = transfrom.position.x;
-	y = transfrom.position.y;
+	xPlayer = transfrom.position.x;
+	yPlayer = transfrom.position.y;
 	spic::Point point;
 	checkKeys();
-	transfrom.position.x = x;
-	transfrom.position.y = y;
+	transfrom.position.x = xPlayer;
+	transfrom.position.y = yPlayer;
 
-	GetGameObject()->getScene()->GetActiveCamera()->setX(x - 768);
-	GetGameObject()->getScene()->GetActiveCamera()->setY(y - 768);
+	GetGameObject()->getScene()->GetActiveCamera()->setX(xPlayer - 768);
+	GetGameObject()->getScene()->GetActiveCamera()->setY(yPlayer - 768);
 	GetGameObject()->getScene()->GetActiveCamera()->UpdateCamera();
 
 	int x, y, w, h;
@@ -134,8 +134,8 @@ void Player::OnUpdate()
 	spic::Point endBottomRight;
 	endBottomRight.x = endPointPosition->position.x + 64;
 	endBottomRight.y = endPointPosition->position.y + 64;
-	if ((x > endPointPosition->position.x && y > endPointPosition->position.y) ) {
-		if (x < endBottomRight.x && y < endBottomRight.y) {
+	if ((xPlayer > endPointPosition->position.x && yPlayer > endPointPosition->position.y) ) {
+		if (xPlayer < endBottomRight.x && yPlayer < endBottomRight.y) {
 			std::cout << "Level behaald" << std::endl;
 		}
 	}

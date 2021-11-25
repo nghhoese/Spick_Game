@@ -67,6 +67,36 @@ void Level::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, 
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "red-nazi-wall");
                     break;
 
+                // dark blue skull stone wall
+                case 68:
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-blue-skull-stone-wall");
+                    break;
+
+                // dark stone wall
+                case 70:
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-stone-wall");
+                    break;
+
+                // dark blue nazi stone wall
+                case 72:
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-blue-nazi-stone-wall");
+                    break;
+
+                // dark blue nazi stone wall
+                case 80:
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-blue-stone-wall");
+                    break;
+
+                // bright vent
+                case 105:
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "bright-vent");
+                    break;
+
+                // stone floor
+                case 109:
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone-floor");
+                    break;
+
                 // left half red wall
                 case 115:
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "half_1");

@@ -16,8 +16,8 @@ private:
 	int ammo;
 public:
     Player();
-	double x;
-	double y;
+	double xPlayer;
+	double yPlayer;
 	const void checkMouseButtons();
 	const void checkKeys();
 	const spic::Point checkMousePosition();
