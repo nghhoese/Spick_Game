@@ -187,6 +187,9 @@
     <Image Include="assets\menu.png" />
     <Image Include="assets\player_sub-machinegun.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\any" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
