@@ -12,16 +12,18 @@
 #include "API_Headers/Rectangle.hpp"
 #include "API_Headers/Text.hpp"
 #include "HUD.hpp"
+#include "Scenes/MainMenuBuilder.hpp"
+#include "Scenes/PlaySceneBuilderr.hpp"
 
 namespace fs = std::filesystem;
 
 int main()
 {
-    std::shared_ptr<spic::Scene> scene = std::make_shared<spic::Scene>("test");
+    std::shared_ptr<spic::Scene> GameScene = std::make_shared<spic::Scene>("GameScene");
 
     const std::string& path = "assets/levels/level1.json";
     std::shared_ptr<Level> level = std::make_shared<Level>();
-    level->BuildLevel(scene, path);
+    level->BuildLevel(GameScene, path);
 
     spic::Camera* camera = new spic::Camera("mainCamera");
     camera->setAspectWidth(1536);
@@ -30,8 +32,8 @@ int main()
     camera->setY(0);
     camera->CreateCamera();
 
-    scene->AddCamera(*camera);
-    scene->SetActiveCamera("mainCamera");
+    GameScene->AddCamera(*camera);
+    GameScene->SetActiveCamera("mainCamera");
 
     spic::Engine* engine = new spic::Engine();
 
@@ -45,13 +47,27 @@ int main()
     std::shared_ptr<spic::Text> coins = std::make_shared<spic::Text>("Coins: 0", "Capsmall", 30, textColor, 350, 0);
     coins->AddTag("coins");
 
-    scene->AddGameObject(fps);
-    scene->AddGameObject(hp);
-    scene->AddGameObject(coins);
+    GameScene->AddGameObject(fps);
+    GameScene->AddGameObject(hp);
+    GameScene->AddGameObject(coins);
 
     engine->CreateNewWindow("yolo");
-    engine->AddScene(scene);
-    engine->SetActiveScene(scene);
+    engine->AddScene(GameScene);
+    engine->CreateNewWindow("yolo");
+    
+    //non game
+    std::shared_ptr<MainMenuBuilder> mainMenuBUilder = std::make_shared<MainMenuBuilder>();
+    std::shared_ptr<spic::Scene> mainMenu = mainMenuBUilder->BuildScene();
+
+    engine->AddScene(mainMenu);
+    mainMenuBUilder->BuildScript(engine);
+
+
+    std::shared_ptr<PlaySceneBuilder> playSceneBuilder = std::make_shared<PlaySceneBuilder>();
+    std::shared_ptr<spic::Scene> playScene = playSceneBuilder->BuildScene();
+    engine->AddScene(playScene);
+
+    engine->SetActiveScene(mainMenu);
     engine->StartGameLoop();
 
 }

@@ -33,6 +33,6 @@ std::shared_ptr<spic::Scene> MainMenuBuilder::BuildScene() {
 }
 
 void MainMenuBuilder::BuildScript(spic::Engine* engine) {
-    std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("buttonScript", "PlayScene", engine);
+    std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("buttonScript", "GameScene", engine);
     buttonPlay->AddComponent(scriptPlay);
 }

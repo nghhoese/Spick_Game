@@ -57,3 +57,7 @@ const int& Enemy::getDamagePerBullet()
 {
 	return this->damagePerBullet;
 }
+
+void Enemy::OnClick()
+{
+}

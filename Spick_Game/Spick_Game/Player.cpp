@@ -27,7 +27,7 @@ const void Player::checkMouseButtons()
 		// reloaden
 	}
 	else {
-		
+
 	}
 }
 
@@ -68,11 +68,11 @@ const void Player::checkKeys()
 		// opent een cheats menu
 	}
 	else {
-		
+
 	}
 }
 
-	
+
 const spic::Point Player::checkMousePosition()
 {
 	spic::Point point = input->MousePosition();
@@ -84,6 +84,10 @@ void Player::OnAwake()
 }
 
 void Player::OnStart()
+{
+}
+
+void Player::OnClick()
 {
 }
 
@@ -132,7 +136,7 @@ void Player::OnUpdate()
 	spic::Point endBottomRight;
 	endBottomRight.x = endPointPosition->position.x + 64;
 	endBottomRight.y = endPointPosition->position.y + 64;
-	if ((xPlayer > endPointPosition->position.x && yPlayer > endPointPosition->position.y) ) {
+	if ((xPlayer > endPointPosition->position.x && yPlayer > endPointPosition->position.y)) {
 		if (xPlayer < endBottomRight.x && yPlayer < endBottomRight.y) {
 			std::cout << "Level behaald" << std::endl;
 		}

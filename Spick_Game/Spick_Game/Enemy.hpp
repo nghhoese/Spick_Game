@@ -13,6 +13,7 @@ public:
     void OnStart();
     void OnUpdate();
     void OnRender();
+    void OnClick();
     void OnTriggerEnter2D(const Collider& collider);
     void OnTriggerExit2D(const Collider& collider);
     void OnTriggerStay2D(const Collider& collider);

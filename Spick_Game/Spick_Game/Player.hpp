@@ -16,23 +16,24 @@
 class Player : public spic::BehaviourScript {
 private:
     int currentHealthPoints;
-	int healthpoints = 100;
+    int healthpoints = 100;
     int currentCoins;
     int coins = 10;
-	int ammo = 0;
+    int ammo = 0;
 public:
     Player();
-	double xPlayer;
-	double yPlayer;
+    double xPlayer;
+    double yPlayer;
     double speed = 1;
-	const void checkMouseButtons();
-	const void checkKeys();
-	const spic::Point checkMousePosition();
+    const void checkMouseButtons();
+    const void checkKeys();
+    const spic::Point checkMousePosition();
     void OnAwake();
     void OnStart();
     void OnUpdate();
     void OnRender();
     void OnTriggerEnter2D(const Collider& collider);
+    void OnClick();
     /**
      * @brief Sent when another object leaves a trigger collider
      *        attached to this object (2D physics only).
