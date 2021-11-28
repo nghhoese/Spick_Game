@@ -27,7 +27,7 @@ public:
     Player();
     double xPlayer;
     double yPlayer;
-    double speed = 10;
+    double speed = 1.5;
     const void checkMouseButtons();
     const void checkKeys();
     const spic::Point checkMousePosition();

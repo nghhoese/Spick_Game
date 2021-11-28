@@ -173,7 +173,7 @@ void Player::OnUpdate()
 	}
 	currentCoins = this->coins;
 
-	deltaTime = (time->CalculateDeltaTime() / 100);
+	deltaTime = (time->CalculateDeltaTime() / 10);
 }
 
 void Player::OnRender()
