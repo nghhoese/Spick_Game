@@ -1,4 +1,5 @@
 #include "Player.hpp"
+#include "Collision.h"
 
 spic::KeyCode W = spic::KeyCode::W;
 spic::KeyCode A = spic::KeyCode::A;
@@ -34,17 +35,39 @@ const void Player::checkMouseButtons()
 const void Player::checkKeys()
 {
 	//waardes nog aanpassen
-	if (input->GetKey(W)) {
-		yPlayer -= speed;
+	if (input->GetKey(W)) { 
+		if (Collision::AABB(GetGameObject(), "wall")) {
+			yPlayer += 20;
+		}
+		else {
+			yPlayer -= speed;
+		}
+		
 	}
 	else if (input->GetKey(A)) {
-		xPlayer -= speed;
+		if (Collision::AABB(GetGameObject(), "wall")) {
+			xPlayer += 20;
+		}
+		else {
+			xPlayer -= speed;
+		}
 	}
 	else if (input->GetKey(S)) {
-		yPlayer += speed;
+		if (Collision::AABB(GetGameObject(), "wall")) {
+			yPlayer -= 20;
+		}
+		else {
+			yPlayer += speed;
+		}
+
 	}
 	else if (input->GetKey(D)) {
-		xPlayer += speed;
+		if (Collision::AABB(GetGameObject(), "wall")) {
+			xPlayer -= 20;
+		}
+		else {
+			xPlayer += speed;
+		}
 	}
 	else if (input->GetKey(E)) {
 		// interactie
@@ -93,11 +116,17 @@ void Player::OnClick()
 
 void Player::OnUpdate()
 {
+	if (Collision::AABB(GetGameObject(), "wall")) {
+		std::cout << "ik zit in een muur wollah" << std::endl;
+	}
+
 	spic::Transform transfrom = *GetGameObject()->getTransform();
 	xPlayer = transfrom.position.x;
 	yPlayer = transfrom.position.y;
 	spic::Point point;
-	checkKeys();
+
+		checkKeys();
+
 	transfrom.position.x = xPlayer;
 	transfrom.position.y = yPlayer;
 
