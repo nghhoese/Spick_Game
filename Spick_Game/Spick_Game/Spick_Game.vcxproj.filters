@@ -30,6 +30,15 @@
     <ClCompile Include="HUD.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Behaviourscript\ChangeSceneBehaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenes\MainMenuBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenes\PlaySceneBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.hpp">
@@ -42,6 +51,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HUD.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Behaviourscript\ChangeSceneBehaviour.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenes\MainMenuBuilder.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenes\PlaySceneBuilderr.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenes\SceneBuilder.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -137,6 +158,15 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="assets\images\foregrounds\red-wall.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\button.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\Eric.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\menu.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

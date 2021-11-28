@@ -155,22 +155,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Behaviourscript\ChangeSceneBehaviour.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Scenes\MainMenuBuilder.cpp" />
+    <ClCompile Include="Scenes\PlaySceneBuilder.cpp" />
     <ClCompile Include="Spick_Game.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Behaviourscript\ChangeSceneBehaviour.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="HUD.hpp" />
     <ClInclude Include="Level.hpp" />
     <ClInclude Include="Player.hpp" />
+    <ClInclude Include="Scenes\MainMenuBuilder.hpp" />
+    <ClInclude Include="Scenes\PlaySceneBuilderr.hpp" />
+    <ClInclude Include="Scenes\SceneBuilder.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\button.jpg" />
     <Image Include="assets\enemy_blue.bmp" />
     <Image Include="assets\enemy_green.bmp" />
     <Image Include="assets\enemy_red.bmp" />
+    <Image Include="assets\Eric.png" />
     <Image Include="assets\images\backgrounds\background.bmp" />
     <Image Include="assets\images\foregrounds\bright-vent.png" />
     <Image Include="assets\images\foregrounds\bright-wood-floor.bmp" />
@@ -198,6 +207,7 @@
     <Image Include="assets\images\foregrounds\red-nazi-wall.png" />
     <Image Include="assets\images\foregrounds\red-wall.png" />
     <Image Include="assets\images\foregrounds\stone-floor.png" />
+    <Image Include="assets\menu.png" />
     <Image Include="assets\player_sub-machinegun.bmp" />
   </ItemGroup>
   <ItemGroup>
