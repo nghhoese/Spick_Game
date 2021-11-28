@@ -21,8 +21,10 @@ int main()
 {
     std::shared_ptr<spic::Scene> GameScene = std::make_shared<spic::Scene>("GameScene");
 
+    spic::Engine* engine = new spic::Engine();
+
     const std::string& path = "assets/levels/level1.json";
-    std::shared_ptr<Level> level = std::make_shared<Level>();
+    std::shared_ptr<Level> level = std::make_shared<Level>(engine);
     level->BuildLevel(GameScene, path);
 
     spic::Camera* camera = new spic::Camera("mainCamera");
@@ -34,8 +36,6 @@ int main()
 
     GameScene->AddCamera(*camera);
     GameScene->SetActiveCamera("mainCamera");
-
-    spic::Engine* engine = new spic::Engine();
 
     //std::shared_ptr<HUD> hud = std::make_shared<HUD>(engine);
 
