@@ -1,6 +1,4 @@
 #include "Level.hpp"
-#include "Player.hpp"
-#include "Enemy.hpp"
 
 Level::Level(spic::Engine* engine)
 {
@@ -233,8 +231,11 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     transfrom.position.y = std::get<1>(position);
                     endPointObject->setTransform(&transfrom);
 
-                    std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("EndLevelScript", "MainMenu", engine);
+                    std::string counterString = std::to_string(currentLevel + 1);
+                    std::string levelString = "level" + counterString;
+                    std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("EndLevelScript", levelString, engine);
                     endPointObject->AddComponent(scriptPlay);
+                    currentLevel + 1;
                 }
             }
         }

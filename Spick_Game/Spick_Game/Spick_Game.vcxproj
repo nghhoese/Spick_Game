@@ -161,7 +161,7 @@
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scenes\MainMenuBuilder.cpp" />
-    <ClCompile Include="Scenes\PlaySceneBuilder.cpp" />
+    <ClCompile Include="Scenes\LevelSceneBuilder.cpp" />
     <ClCompile Include="Spick_Game.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -171,7 +171,7 @@
     <ClInclude Include="Level.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Scenes\MainMenuBuilder.hpp" />
-    <ClInclude Include="Scenes\PlaySceneBuilderr.hpp" />
+    <ClInclude Include="Scenes\LevelSceneBuilder.hpp" />
     <ClInclude Include="Scenes\SceneBuilder.hpp" />
   </ItemGroup>
   <ItemGroup>
