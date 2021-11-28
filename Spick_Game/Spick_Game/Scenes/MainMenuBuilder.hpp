@@ -8,7 +8,9 @@
 class MainMenuBuilder : public SceneBuilder {
 private:
 	std::shared_ptr<spic::Button> buttonPlay;
+	std::shared_ptr<spic::Button> buttonOptions;
 public:
 	void BuildScript(spic::Engine* engine);
 	std::shared_ptr<spic::Scene> BuildScene();
+	
 };

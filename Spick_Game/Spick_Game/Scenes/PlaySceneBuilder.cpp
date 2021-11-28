@@ -2,7 +2,7 @@
 #include "../Behaviourscript/ChangeSceneBehaviour.hpp"
 
 std::shared_ptr<spic::Scene> PlaySceneBuilder::BuildScene() {
-    std::shared_ptr<spic::Scene> scene = std::make_shared<spic::Scene>("PlayScene");
+    std::shared_ptr<spic::Scene> scene = std::make_shared<spic::Scene>("TestScene");
 
     std::shared_ptr<spic::GameObject> background = std::make_shared<spic::GameObject>("Background");
     std::shared_ptr<spic::Sprite> sprite = std::make_shared<spic::Sprite>();
