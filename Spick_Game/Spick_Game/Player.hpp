@@ -12,6 +12,7 @@
 #include <API_Headers/Sprite.hpp>
 #include <API_Headers/Text.hpp>
 #include <iostream>
+#include <API_Headers/Time.hpp>
 
 class Player : public spic::BehaviourScript {
 private:
@@ -20,11 +21,13 @@ private:
     int currentCoins;
     int coins = 10;
     int ammo = 0;
+    spic::Time* time;
+    float deltaTime;
 public:
     Player();
     double xPlayer;
     double yPlayer;
-    double speed = 1;
+    double speed = 10;
     const void checkMouseButtons();
     const void checkKeys();
     const spic::Point checkMousePosition();

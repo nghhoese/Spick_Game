@@ -35,16 +35,16 @@ const void Player::checkKeys()
 {
 	//waardes nog aanpassen
 	if (input->GetKey(W)) {
-		yPlayer -= speed;
+		yPlayer -= (speed * deltaTime);
 	}
 	else if (input->GetKey(A)) {
-		xPlayer -= speed;
+		xPlayer -= (speed * deltaTime);
 	}
 	else if (input->GetKey(S)) {
-		yPlayer += speed;
+		yPlayer += (speed * deltaTime);
 	}
 	else if (input->GetKey(D)) {
-		xPlayer += speed;
+		xPlayer += (speed * deltaTime);
 	}
 	else if (input->GetKey(E)) {
 		// interactie
@@ -172,6 +172,8 @@ void Player::OnUpdate()
 		CoinsText->SetText("Coins: " + std::to_string(this->coins));
 	}
 	currentCoins = this->coins;
+
+	deltaTime = (time->CalculateDeltaTime() / 100);
 }
 
 void Player::OnRender()
@@ -184,6 +186,7 @@ void Player::OnTriggerEnter2D(const Collider& collider)
 
 Player::Player()
 {
+	time = new spic::Time();
 }
 
 void Player::OnTriggerExit2D(const Collider& collider)
