@@ -6,6 +6,7 @@
 #include "API_Headers/Sprite.hpp"
 #include "API_Headers/Transform.hpp"
 #include "API_Headers/Engine.hpp"
+#include "Behaviourscript/ChangeSceneBehaviour.hpp"
 
 class Level {
 private:

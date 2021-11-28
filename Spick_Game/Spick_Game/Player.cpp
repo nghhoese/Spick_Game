@@ -138,7 +138,10 @@ void Player::OnUpdate()
 	endBottomRight.y = endPointPosition->position.y + 64;
 	if ((xPlayer > endPointPosition->position.x && yPlayer > endPointPosition->position.y)) {
 		if (xPlayer < endBottomRight.x && yPlayer < endBottomRight.y) {
-			std::cout << "Level behaald" << std::endl;
+			std::shared_ptr<spic::Component> script = endPoint->GetComponentByName("EndLevelScript");
+			if (script != nullptr) {
+				script->OnClick();
+			}
 		}
 	}
 

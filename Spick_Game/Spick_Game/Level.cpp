@@ -232,6 +232,9 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     transfrom.position.x = std::get<0>(position);
                     transfrom.position.y = std::get<1>(position);
                     endPointObject->setTransform(&transfrom);
+
+                    std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("EndLevelScript", "MainMenu", engine);
+                    endPointObject->AddComponent(scriptPlay);
                 }
             }
         }
