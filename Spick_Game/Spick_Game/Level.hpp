@@ -19,7 +19,7 @@ private:
 	spic::Engine* engine;
 
 public:
-	Level();
+	Level(spic::Engine* engine);
 
 	void BuildLevel(std::shared_ptr<spic::Scene> scene, std::filesystem::path filePath);
 

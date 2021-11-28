@@ -2,9 +2,9 @@
 #include "Player.hpp"
 #include "Enemy.hpp"
 
-Level::Level()
+Level::Level(spic::Engine* engine)
 {
-    engine = new spic::Engine();
+    this->engine = engine;
 }
 
 void Level::BuildLevel(std::shared_ptr<spic::Scene> scene, std::filesystem::path filePath) {
