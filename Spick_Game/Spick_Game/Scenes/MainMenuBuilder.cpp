@@ -21,14 +21,8 @@ std::shared_ptr<spic::Scene> MainMenuBuilder::BuildScene() {
     buttonPlay = std::make_shared<spic::Button>("", 314, 165, 72, 134, "StartGameScript");
     scene->AddGameObject(buttonPlay);
 
-    buttonOptions = std::make_shared<spic::Button>("button", 295, 245, 72, 180, "OpenOptionsScript");
+    buttonOptions = std::make_shared<spic::Button>("", 295, 245, 72, 180, "OpenOptionsScript");
     scene->AddGameObject(buttonOptions);
-
-    spic::Color textColor = spic::Color(1.0, 1.0, 1.0, 1.0);
-    std::shared_ptr<spic::Text> text = std::make_shared<spic::Text>("Hallo", "Capsmall", 60, textColor, 10, 50);
-
-    scene->AddGameObject(text);
-
     return scene;
 }
 

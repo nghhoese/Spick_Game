@@ -20,7 +20,7 @@ int main() {
 
     spic::Engine* engine = new spic::Engine();
 
-    engine->CreateNewWindow("yolo");
+    engine->CreateNewWindow("Advanced Stealth");
   
     //non game
     std::shared_ptr<MainMenuBuilder> mainMenuBuilder = std::make_shared<MainMenuBuilder>();
