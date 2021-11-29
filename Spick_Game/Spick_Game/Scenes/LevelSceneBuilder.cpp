@@ -21,16 +21,16 @@ std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(spic::Engine* en
     GameScene->SetActiveCamera("mainCamera");
 
     spic::Color textColor = spic::Color(1.0, 1.0, 1.0, 1.0);
-    std::shared_ptr<spic::Text> fps = std::make_shared<spic::Text>("FPS: 0", "Capsmall", 30, textColor, 0, 0);
-    fps->AddTag("fps");
-    std::shared_ptr<spic::Text> hp = std::make_shared<spic::Text>("Health: 0", "Capsmall", 30, textColor, 150, 0);
+    std::shared_ptr<spic::Text> hp = std::make_shared<spic::Text>("Health: 0", "Capsmall", 30, textColor, 0, 0);
     hp->AddTag("hp");
-    std::shared_ptr<spic::Text> coins = std::make_shared<spic::Text>("Coins: 0", "Capsmall", 30, textColor, 350, 0);
+    std::shared_ptr<spic::Text> coins = std::make_shared<spic::Text>("Coins: 0", "Capsmall", 30, textColor, 175, 0);
     coins->AddTag("coins");
+    std::shared_ptr<spic::Text> fps = std::make_shared<spic::Text>("FPS: 0", "Capsmall", 30, textColor, 325, 0);
+    fps->AddTag("fps");
 
-    GameScene->AddGameObject(fps);
     GameScene->AddGameObject(hp);
     GameScene->AddGameObject(coins);
+    GameScene->AddGameObject(fps);
 
     return GameScene;
 }
