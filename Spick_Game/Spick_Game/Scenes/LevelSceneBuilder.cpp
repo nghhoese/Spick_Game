@@ -21,7 +21,7 @@ std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(spic::Engine* en
     GameScene->SetActiveCamera("mainCamera");
 
     spic::Color textColor = spic::Color(1.0, 1.0, 1.0, 1.0);
-    std::shared_ptr<spic::Text> fps = std::make_shared<spic::Text>("FPS: " + std::to_string(engine->GetFPS()), "Capsmall", 30, textColor, 0, 0);
+    std::shared_ptr<spic::Text> fps = std::make_shared<spic::Text>("FPS: 0", "Capsmall", 30, textColor, 0, 0);
     fps->AddTag("fps");
     std::shared_ptr<spic::Text> hp = std::make_shared<spic::Text>("Health: 0", "Capsmall", 30, textColor, 150, 0);
     hp->AddTag("hp");

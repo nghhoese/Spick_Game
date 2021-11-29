@@ -13,6 +13,7 @@
 #include <API_Headers/Text.hpp>
 #include <iostream>
 #include <API_Headers/Time.hpp>
+#include <API_Headers/Engine.hpp>
 
 class Player : public spic::BehaviourScript {
 private:
@@ -23,8 +24,10 @@ private:
     int ammo = 0;
     spic::Time* time;
     float deltaTime;
+    spic::Engine* engine;
 public:
     Player();
+    Player(spic::Engine* engine);
     double xPlayer;
     double yPlayer;
     double speed = 1.5;

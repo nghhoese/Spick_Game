@@ -216,7 +216,7 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     transfrom.position.x = std::get<0>(position);
                     transfrom.position.y = std::get<1>(position);
                     transfrom.scale = 0.75;
-                    std::shared_ptr<Player> player = std::make_shared<Player>();
+                    std::shared_ptr<Player> player = std::make_shared<Player>(engine);
                     playerObject->AddComponent(player);
                     playerObject->setTransform(&transfrom);
                 }
