@@ -59,4 +59,5 @@ int main()
 
     engine->SetActiveScene(mainMenu);
     engine->StartGameLoop();
+    _CrtDumpMemoryLeaks();
 }

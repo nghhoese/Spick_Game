@@ -13,6 +13,7 @@
 #include <API_Headers/Text.hpp>
 #include "Bullet.h"
 #include <iostream>
+#include <API_Headers/Time.hpp>
 
 class Player : public spic::BehaviourScript {
 private:
@@ -26,12 +27,13 @@ private:
     spic::Point aimPos;
     std::vector<std::shared_ptr<spic::GameObject>> bullets;
     std::shared_ptr<spic::Sprite> sprite;
-
+    spic::Time* time;
+    float deltaTime;
 public:
     Player();
     double xPlayer;
     double yPlayer;
-    double speed = 1;
+    double speed = 1.5;
     const void checkMouseButtons();
     const void checkKeys();
     const spic::Point checkMousePosition();
