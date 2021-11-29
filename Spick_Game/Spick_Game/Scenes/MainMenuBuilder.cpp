@@ -35,6 +35,4 @@ std::shared_ptr<spic::Scene> MainMenuBuilder::BuildScene() {
 void MainMenuBuilder::BuildScript(spic::Engine* engine) {
     std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("StartGameScript", "level1", engine);
     buttonPlay->AddComponent(scriptPlay);
-    std::shared_ptr<ChangeSceneBehaviour> scriptOptions = std::make_shared<ChangeSceneBehaviour>("OpenOptionsScript", "TestScene", engine);
-    buttonOptions->AddComponent(scriptOptions);
 }

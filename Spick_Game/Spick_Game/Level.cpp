@@ -214,6 +214,9 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     std::shared_ptr<Player> player = std::make_shared<Player>();
                     playerObject->AddComponent(player);
                     playerObject->setTransform(&transfrom);
+
+                    std::shared_ptr<ChangeSceneBehaviour> gameOverScript = std::make_shared<ChangeSceneBehaviour>("GameOverScript", "GameOverMenu", engine);
+                    playerObject->AddComponent(gameOverScript);
                 }
             }
         }

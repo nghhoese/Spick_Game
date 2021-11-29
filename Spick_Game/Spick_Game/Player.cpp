@@ -147,10 +147,17 @@ void Player::OnUpdate()
 
 	GetGameObject()->setTransform(&transfrom);
 
-	// Test
-	//if (this->healthpoints > 70) {
-	//	this->healthpoints -= 1;
-	//}
+	if (currentHealthPoints <= 0) {
+		std::shared_ptr<spic::Component> script = GetGameObject()->GetComponentByName("GameOverScript");
+		if (script != nullptr) {
+			script->OnClick();
+		}
+	}
+
+
+	if (this->healthpoints > 0) {
+		this->healthpoints -= 1;
+	}
 
 	//// Test
 	//if (this->coins < 20) {

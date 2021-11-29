@@ -14,8 +14,7 @@
 #include "HUD.hpp"
 #include "Scenes/MainMenuBuilder.hpp"
 #include "Scenes/LevelSceneBuilder.hpp"
-
-namespace fs = std::filesystem;
+#include "Scenes/GameOverSceneBuilder.hpp"
 
 int main() {
 
@@ -31,7 +30,6 @@ int main() {
     mainMenuBuilder->BuildScript(engine);
 
     std::shared_ptr<LevelSceneBuilder> levelSceneBuilder = std::make_shared<LevelSceneBuilder>();
-
     std::shared_ptr<spic::Scene> level1Scene = levelSceneBuilder->BuildLevelScene(engine, 1);
     engine->AddScene(level1Scene);
 
@@ -40,6 +38,11 @@ int main() {
 
     std::shared_ptr<spic::Scene> level3Scene = levelSceneBuilder->BuildLevelScene(engine, 3);
     engine->AddScene(level3Scene);
+
+    std::shared_ptr<GameOverBuilder> gameOverSceneBuilder = std::make_shared<GameOverBuilder>();
+    std::shared_ptr<spic::Scene> gameOverScene = gameOverSceneBuilder->BuildScene();
+    engine->AddScene(gameOverScene);
+    gameOverSceneBuilder->BuildScript(engine);
 
     engine->SetActiveScene(mainMenu);
     engine->StartGameLoop();
