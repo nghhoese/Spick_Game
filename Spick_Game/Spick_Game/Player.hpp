@@ -11,6 +11,7 @@
 #include <API_Headers/Camera.hpp>
 #include <API_Headers/Sprite.hpp>
 #include <API_Headers/Text.hpp>
+#include "Bullet.h"
 #include <iostream>
 
 class Player : public spic::BehaviourScript {
@@ -20,6 +21,12 @@ private:
     int currentCoins;
     int coins = 10;
     int ammo = 0;
+    int bulletSpeed = 10;
+    spic::Point aimAngle;
+    spic::Point aimPos;
+    std::vector<std::shared_ptr<spic::GameObject>> bullets;
+    std::shared_ptr<spic::Sprite> sprite;
+
 public:
     Player();
     double xPlayer;
@@ -45,4 +52,8 @@ public:
      *        collider attached to this object (2D physics only).
      */
     void OnTriggerStay2D(const Collider& collider);
+
+    std::shared_ptr<spic::GameObject> createBullet();
+    void Shoot();
+    void CalculateAimPosition();
 };

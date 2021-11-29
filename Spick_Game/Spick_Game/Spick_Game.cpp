@@ -17,7 +17,23 @@
 
 namespace fs = std::filesystem;
 
-int main() {
+int main()
+{
+    std::shared_ptr<spic::Scene> GameScene = std::make_shared<spic::Scene>("GameScene");
+
+    const std::string& path = "assets/levels/level1.json";
+    std::shared_ptr<Level> level = std::make_shared<Level>();
+    level->BuildLevel(GameScene, path);
+    
+    spic::Camera* camera = new spic::Camera("mainCamera");
+    camera->setAspectWidth(1536);
+    camera->setAspectHeight(1536);
+    camera->setX(0);
+    camera->setY(0);
+    camera->CreateCamera();
+
+    GameScene->AddCamera(*camera);
+    GameScene->SetActiveCamera("mainCamera");
 
     spic::Engine* engine = new spic::Engine();
 
@@ -43,5 +59,4 @@ int main() {
 
     engine->SetActiveScene(mainMenu);
     engine->StartGameLoop();
-
 }

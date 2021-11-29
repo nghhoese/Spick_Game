@@ -21,7 +21,7 @@ spic::Importation* input = new spic::Importation();
 const void Player::checkMouseButtons()
 {
 	if (input->GetMouseButton(LEFT)) {
-		// schieten
+		Shoot();
 	}
 	else if (input->GetMouseButton(RIGHT)) {
 		// reloaden
@@ -129,7 +129,7 @@ void Player::OnUpdate()
 	double Delta_y = (transfrom.position.y - GetGameObject()->getScene()->GetActiveCamera()->getY()) - point.y;
 
 	double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
-	transfrom.rotation = Result + 95;
+	transfrom.rotation = Result + 30;
 
 	auto endPoint = GetGameObject()->getScene()->GetGameObjectsByName("Endpoint")[0];
 	auto endPointPosition = endPoint->getTransform();
@@ -146,7 +146,7 @@ void Player::OnUpdate()
 	}
 
 	GetGameObject()->setTransform(&transfrom);
-
+	checkMouseButtons();
 	// Test
 	//if (this->healthpoints > 70) {
 	//	this->healthpoints -= 1;
@@ -184,6 +184,7 @@ void Player::OnTriggerEnter2D(const Collider& collider)
 
 Player::Player()
 {
+	sprite = std::make_shared<spic::Sprite>();
 }
 
 void Player::OnTriggerExit2D(const Collider& collider)
@@ -192,4 +193,53 @@ void Player::OnTriggerExit2D(const Collider& collider)
 
 void Player::OnTriggerStay2D(const Collider& collider)
 {
+}
+
+void Player::Shoot() {
+	auto temp = createBullet();
+	auto bullet = std::dynamic_pointer_cast<Bullet>(temp.get()->GetComponent<Bullet>());
+	bullet->position = GetGameObject()->getTransform()->position;
+	bullet->speed = 1;
+	bullet->idle = false;
+	//for (auto i : bullets) {
+	//	if (i.get()->getTransform()->position.x < 0 && i.get()->getTransform()->position.y < 0){
+	//		//->GetComponent()->getTransform()->position.x != 0 && i->GetComponent()->getTransform()->position.y != 0)
+	//		auto bullet = std::dynamic_pointer_cast<Bullet>(i.get()->GetComponent<Bullet>());
+	//		bullet->position = GetGameObject()->getTransform()->position;
+	//		bullet->speed = 1;
+	//		bullet->idle = false;
+	//		break;
+	//	}
+	//}
+}
+
+std::shared_ptr<spic::GameObject> Player::createBullet()
+{
+	std::shared_ptr<spic::GameObject> bulletObject = std::make_shared<spic::GameObject>("Bullet");
+	GetGameObject()->getScene()->AddGameObject(bulletObject);
+	auto test = GetGameObject()->getScene();
+	spic::Transform transfrom = *bulletObject->getTransform();
+
+	bulletObject->AddComponent(sprite);
+	sprite->SetSprite("assets/shot.bmp");
+
+	transfrom.position.x = -20;
+	transfrom.position.y = -20;
+	transfrom.scale = 0.75;
+
+	std::shared_ptr<Bullet> bullet = std::make_shared<Bullet>();
+	bulletObject->AddComponent(bullet);
+	bulletObject->setTransform(&transfrom);
+
+	return bulletObject;
+}
+
+void Player::CalculateAimPosition()
+{
+	//aimPos.Set(mousePos.x, mousePos.y);
+	//auto pos = GetGameObject()->getTransform()->position;
+	//aimPos = input->MousePosition();
+	//spic::Point mouseAngle(input->MousePosition().x - (pos.x), aimPos.y - (pos.y - camera->offset.y));
+	//double angle = std::atan2(mouseAngle.y, mouseAngle.x);
+	//aimAngle = Vector2(pos.x + std::cos(angle) * 15, pos.y + std::sin(angle) * 15);
 }
