@@ -129,11 +129,6 @@ Player::Player(spic::Engine* engine)
 	this->engine = engine;
 }
 
-Player::Player(spic::Engine* engine)
-{
-	this->engine = engine;
-}
-
 void Player::OnTriggerExit2D(const Collider& collider)
 {
 }
