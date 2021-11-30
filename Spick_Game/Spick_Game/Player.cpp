@@ -1,4 +1,5 @@
 #include "Player.hpp"
+#include <API_Headers/Engine.hpp>
 
 spic::KeyCode W = spic::KeyCode::W;
 spic::KeyCode A = spic::KeyCode::A;
@@ -139,7 +140,7 @@ void Player::OnUpdate()
 	if ((xPlayer > endPointPosition->position.x && yPlayer > endPointPosition->position.y)) {
 		if (xPlayer < endBottomRight.x && yPlayer < endBottomRight.y) {
 			std::shared_ptr<spic::Component> script = endPoint->GetComponentByName("EndLevelScript");
-			if (script != nullptr) {
+			if (script != nullptr) {		
 				script->OnClick();
 			}
 		}
@@ -147,17 +148,19 @@ void Player::OnUpdate()
 
 	GetGameObject()->setTransform(&transfrom);
 
-	if (currentHealthPoints <= 0) {
+	if (currentHealthPoints == 0) {
+		std::cout << currentHealthPoints;
 		std::shared_ptr<spic::Component> script = GetGameObject()->GetComponentByName("GameOverScript");
 		if (script != nullptr) {
+			engine->setGameOver(true);
 			script->OnClick();
 		}
 	}
 
 
-	if (this->healthpoints > 0) {
-		this->healthpoints -= 1;
-	}
+	//if (this->healthpoints > 0) {
+	//	this->healthpoints -= 1;
+	//}
 
 	//// Test
 	//if (this->coins < 20) {
@@ -189,8 +192,9 @@ void Player::OnTriggerEnter2D(const Collider& collider)
 {
 }
 
-Player::Player()
+Player::Player(spic::Engine* engine)
 {
+	this->engine = engine;
 }
 
 void Player::OnTriggerExit2D(const Collider& collider)

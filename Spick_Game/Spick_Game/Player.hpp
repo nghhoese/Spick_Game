@@ -11,6 +11,7 @@
 #include <API_Headers/Camera.hpp>
 #include <API_Headers/Sprite.hpp>
 #include <API_Headers/Text.hpp>
+#include "API_Headers/Engine.hpp"
 #include <iostream>
 
 class Player : public spic::BehaviourScript {
@@ -20,8 +21,9 @@ private:
     int currentCoins;
     int coins = 10;
     int ammo = 0;
+    spic::Engine* engine;
 public:
-    Player();
+    Player(spic::Engine* engine);
     double xPlayer;
     double yPlayer;
     double speed = 1;
