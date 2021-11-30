@@ -55,6 +55,11 @@ void Level::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, 
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "bright-wood-floor");
                     break;
 
+                // dark wood floor
+                case 24:
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-wood-floor");
+                    break;
+
                 // red wall
                 case 34:
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "red-wall");
