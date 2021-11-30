@@ -71,7 +71,7 @@ void Player::OnUpdate()
 	}
 
 	GetGameObject()->setTransform(&transfrom);
-	checkMouseButtons();
+	InputComponent->checkMouseButtons();
 	// Test
 	//if (this->healthpoints > 70) {
 	//	this->healthpoints -= 1;
@@ -116,12 +116,13 @@ void Player::OnTriggerEnter2D(const Collider& collider)
 
 Player::Player()
 {
-	sprite = std::make_shared<spic::Sprite>();
+
 }
 
 Player::Player(spic::Engine* engine)
 {
 	this->engine = engine;
+	sprite = std::make_shared<spic::Sprite>();
 }
 
 void Player::OnTriggerExit2D(const Collider& collider)
@@ -134,6 +135,7 @@ void Player::OnTriggerStay2D(const Collider& collider)
 
 void Player::Shoot()
 {
+	auto InputComponent = InputObject->GetComponent<InputScript>();
 	std::shared_ptr<spic::GameObject> bulletObject = std::make_shared<spic::GameObject>("Bullet");
 	GetGameObject()->getScene()->AddGameObject(bulletObject);
 	spic::Transform transfrom = *bulletObject->getTransform();
@@ -145,7 +147,7 @@ void Player::Shoot()
 	transfrom.position.y = GetGameObject()->getTransform()->position.y;
 	transfrom.scale = 0.75;
 
-	std::shared_ptr<Bullet> bullet = std::make_shared<Bullet>(transfrom.position, checkMousePosition(), 10);
+	std::shared_ptr<Bullet> bullet = std::make_shared<Bullet>(transfrom.position, InputComponent->checkMousePosition(), 10);
 	bulletObject->AddComponent(bullet);
 	bulletObject->setTransform(&transfrom);
 }

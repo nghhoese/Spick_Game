@@ -28,15 +28,16 @@ private:
     std::vector<std::shared_ptr<spic::GameObject>> bullets;
     std::shared_ptr<spic::Sprite> sprite;
     spic::Time* time;
-    bool notClicked = true;
     spic::Engine* engine;
     std::shared_ptr<spic::GameObject> InputObject;
+
 public:
     Player();
     Player(spic::Engine* engine);
     double xPlayer;
     double yPlayer;
     double speed = 1.5;
+    bool notClicked = true;
     void OnAwake();
     void OnStart();
     void OnUpdate();
