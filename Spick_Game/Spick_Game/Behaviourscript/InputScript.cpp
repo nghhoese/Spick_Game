@@ -77,13 +77,16 @@ const void InputScript::checkKeys()
 	if (input->GetKey(W)) {
 		if (PlayerComponent != nullptr) {
 
-			if (Collision::AABB(objk1.get(), "wall")) {
+			if (Collision::AABB(objk1.get(), "wall") ) {
 				if (Collision::AABB(objk1.get(), "wall")->GetGameObject()->getTransform()->position.y < PlayerComponent->yPlayer) {
 					PlayerComponent->yPlayer += (PlayerComponent->speed);
 				}
 				else {
 					PlayerComponent->yPlayer -= (PlayerComponent->speed);
 				}
+			}
+			else if(Collision::AABB(objk1.get(), "guard")){
+				PlayerComponent->yPlayer += (PlayerComponent->speed);
 			}
 			else {
 				PlayerComponent->yPlayer -= (PlayerComponent->speed);
@@ -102,6 +105,9 @@ const void InputScript::checkKeys()
 
 				}
 			}
+			else if (Collision::AABB(objk1.get(), "guard")) {
+				PlayerComponent->xPlayer += (PlayerComponent->speed);
+			}
 			else {
 				PlayerComponent->xPlayer -= (PlayerComponent->speed);
 
@@ -119,6 +125,9 @@ const void InputScript::checkKeys()
 
 				}
 			}
+			else if (Collision::AABB(objk1.get(), "guard")) {
+				PlayerComponent->yPlayer -= (PlayerComponent->speed);
+			}
 			else {
 				PlayerComponent->yPlayer += (PlayerComponent->speed);
 
@@ -135,6 +144,9 @@ const void InputScript::checkKeys()
 					PlayerComponent->xPlayer += (PlayerComponent->speed);
 
 				}
+			}
+			else if (Collision::AABB(objk1.get(), "guard")) {
+				PlayerComponent->xPlayer -= (PlayerComponent->speed);
 			}
 			else {
 				PlayerComponent->xPlayer += (PlayerComponent->speed);
