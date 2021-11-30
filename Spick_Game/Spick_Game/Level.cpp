@@ -289,6 +289,7 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
 
                     std::shared_ptr<spic::GameObject> GreenGuardObject = std::make_shared<spic::GameObject>("GreenGuard");
+                    GreenGuardObject->AddTag("guard");
 
                     scene->AddGameObject(GreenGuardObject);
                     spic::Transform transfrom = *GreenGuardObject->getTransform();
@@ -301,13 +302,16 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     enemy->setHealthpoints(100);
                     enemy->setDamagePerBullet(40);
                     enemy->setPath("assets/enemy_green.bmp");
-
+                    std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
+                    boxCollider->Height(45);
+                    boxCollider->Width(45);
+                    GreenGuardObject->AddComponent(boxCollider);
                     GreenGuardObject->AddComponent(sprite);
                     sprite->SetSprite(enemy->getPath());
                     GreenGuardObject->AddComponent(enemy);
                     GreenGuardObject->setTransform(&transfrom);
                 }
-            }
+            } 
 
         }
 
@@ -319,7 +323,7 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
 
                     std::shared_ptr<spic::GameObject> RedGuardObject = std::make_shared<spic::GameObject>("GreenGuard");
-
+                    RedGuardObject->AddTag("guard");
                     scene->AddGameObject(RedGuardObject);
                     spic::Transform transfrom = *RedGuardObject->getTransform();
 
@@ -331,7 +335,10 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     enemy->setHealthpoints(75);
                     enemy->setDamagePerBullet(50);
                     enemy->setPath("assets/enemy_red.bmp");
-
+                    std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
+                    boxCollider->Height(45);
+                    boxCollider->Width(45);
+                    RedGuardObject->AddComponent(boxCollider);
                     RedGuardObject->AddComponent(sprite);
                     sprite->SetSprite(enemy->getPath());
                     RedGuardObject->AddComponent(enemy);
