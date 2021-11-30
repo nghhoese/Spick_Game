@@ -1,4 +1,5 @@
 #include "InputScript.hpp"
+#include "../Collision.hpp"
 
 spic::KeyCode W = spic::KeyCode::W;
 spic::KeyCode A = spic::KeyCode::A;
@@ -21,6 +22,7 @@ InputScript::InputScript()
 {
 	this->input = new spic::Importation();
 	this->time = new spic::Time();
+	this->engine = new spic::Engine();
 }
 
 const void InputScript::checkMouseButtons()
@@ -49,26 +51,75 @@ const void InputScript::checkKeys()
 {
 	const spic::GameObject* playerObject = GetPlayer();
 	auto PlayerComponent = playerObject->GetComponent<Player>();
+	auto objk1 = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
 
 	//waardes nog aanpassen
 	if (input->GetKey(W)) {
 		if (PlayerComponent != nullptr) {
-			PlayerComponent->yPlayer -= (PlayerComponent->speed * deltaTime);
+
+			if (Collision::AABB(objk1.get(), "wall")) {
+				if (Collision::AABB(objk1.get(), "wall")->GetGameObject()->getTransform()->position.y < PlayerComponent->yPlayer) {
+					PlayerComponent->yPlayer += (PlayerComponent->speed);
+				}
+				else {
+					PlayerComponent->yPlayer -= (PlayerComponent->speed);
+				}
+			}
+			else {
+				PlayerComponent->yPlayer -= (PlayerComponent->speed);
+			}
+
 		}
 	}
 	else if (input->GetKey(A)) {
 		if (PlayerComponent != nullptr) {
-			PlayerComponent->xPlayer -= (PlayerComponent->speed * deltaTime);
+			if (Collision::AABB(objk1.get(), "wall")) {
+				if (Collision::AABB(objk1.get(), "wall")->GetGameObject()->getTransform()->position.x < PlayerComponent->xPlayer) {
+					PlayerComponent->xPlayer += (PlayerComponent->speed);
+				}
+				else {
+					PlayerComponent->xPlayer -= (PlayerComponent->speed);
+
+				}
+			}
+			else {
+				PlayerComponent->xPlayer -= (PlayerComponent->speed);
+
+			}
 		}
 	}
 	else if (input->GetKey(S)) {
 		if (PlayerComponent != nullptr) {
-			PlayerComponent->yPlayer += (PlayerComponent->speed * deltaTime);
+			if (Collision::AABB(objk1.get(), "wall")) {
+				if (Collision::AABB(objk1.get(), "wall")->GetGameObject()->getTransform()->position.y > PlayerComponent->yPlayer) {
+					PlayerComponent->yPlayer -= (PlayerComponent->speed);
+				}
+				else {
+					PlayerComponent->yPlayer += (PlayerComponent->speed);
+
+				}
+			}
+			else {
+				PlayerComponent->yPlayer += (PlayerComponent->speed);
+
+			}
 		}
 	}
 	else if (input->GetKey(D)) {
 		if (PlayerComponent != nullptr) {
-			PlayerComponent->xPlayer += (PlayerComponent->speed * deltaTime);
+			if (Collision::AABB(objk1.get(), "wall")) {
+				if (Collision::AABB(objk1.get(), "wall")->GetGameObject()->getTransform()->position.x > PlayerComponent->xPlayer) {
+					PlayerComponent->xPlayer -= (PlayerComponent->speed);
+				}
+				else {
+					PlayerComponent->xPlayer += (PlayerComponent->speed);
+
+				}
+			}
+			else {
+				PlayerComponent->xPlayer += (PlayerComponent->speed);
+
+			}
 		}
 	}
 	else if (input->GetKey(E)) {
@@ -82,9 +133,36 @@ const void InputScript::checkKeys()
 	}
 	else if (input->GetKey(PU)) {
 		// gameplay snelheid versnellen
+		if (!speedup) {
+			std::cout << "speedup: ";
+			speedup = true;
+			if (time->TimeScale() == 0.5) {
+				time->TimeScale(1.0);
+				std::cout << time->TimeScale();
+			}
+			else if (time->TimeScale() == 1.0) {
+				time->TimeScale(1.9);
+				std::cout << time->TimeScale();
+			}
+		}
+		
+
 	}
 	else if (input->GetKey(PD)) {
-		// gameplay snelheid vertragen
+		
+		if (!speeddown) {
+			std::cout << "slowdown: ";
+			speeddown = true;
+			if (time->TimeScale() == 1.9) {
+				time->TimeScale(1.0);
+				std::cout << time->TimeScale();
+			}
+			else if (time->TimeScale() == 1.0) {
+				time->TimeScale(0.5);
+				std::cout << time->TimeScale();
+			}
+		}
+		
 	}
 	else if (input->GetKey(P)) {
 		// pauze knop
@@ -93,10 +171,20 @@ const void InputScript::checkKeys()
 		// opent een cheats menu
 	}
 	else if (input->GetKey(F)) {
-		// toggle fps
+		if (clicked) {
+			if (loadFps) {
+				loadFps = false;
+			}
+			else {
+				loadFps = true;
+			}
+			clicked = false;
+		}
 	}
 	else {
-
+		speedup = false;
+		speeddown = false;
+		clicked = true;
 	}
 }
 

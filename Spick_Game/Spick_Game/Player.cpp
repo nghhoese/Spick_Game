@@ -1,4 +1,5 @@
 #include "Player.hpp"
+#include <API_Headers/Engine.hpp>
 
 void Player::OnAwake()
 {
@@ -64,7 +65,7 @@ void Player::OnUpdate()
 	if ((xPlayer > endPointPosition->position.x && yPlayer > endPointPosition->position.y)) {
 		if (xPlayer < endBottomRight.x && yPlayer < endBottomRight.y) {
 			std::shared_ptr<spic::Component> script = endPoint->GetComponentByName("EndLevelScript");
-			if (script != nullptr) {
+			if (script != nullptr) {		
 				script->OnClick();
 			}
 		}
@@ -72,15 +73,15 @@ void Player::OnUpdate()
 
 	GetGameObject()->setTransform(&transfrom);
 	InputComponent->checkMouseButtons();
-	// Test
-	//if (this->healthpoints > 70) {
-	//	this->healthpoints -= 1;
-	//}
 
-	//// Test
-	//if (this->coins < 20) {
-	//	this->coins += 1;
-	//}
+	if (currentHealthPoints == 0) {
+		std::cout << currentHealthPoints;
+		std::shared_ptr<spic::Component> script = GetGameObject()->GetComponentByName("GameOverScript");
+		if (script != nullptr) {
+			engine->setGameOver(true);
+			script->OnClick();
+		}
+	}
 
 	// Update Healthpoints in HUD
 	std::shared_ptr<spic::GameObject> healthObject = GetGameObject()->getScene()->GetGameObjectsByTag("hp")[0];
@@ -98,12 +99,15 @@ void Player::OnUpdate()
 	}
 	currentCoins = this->coins;
 
-	// Update Coins in HUD
+	// Update fps in HUD
 	std::shared_ptr<spic::GameObject> fpsObject = GetGameObject()->getScene()->GetGameObjectsByTag("fps")[0];
 	std::shared_ptr<spic::Text> fpsText = std::dynamic_pointer_cast<spic::Text>(fpsObject);
-	fpsText->SetText("FPS: " + std::to_string(engine->GetFPS()));
-
-
+	if (InputComponent->loadFps) {
+		fpsText->SetText("FPS: " + std::to_string(engine->GetFPS()));
+	}
+	if (!InputComponent->loadFps) {
+		fpsText->SetText("");
+	}
 }
 
 void Player::OnRender()
@@ -112,11 +116,6 @@ void Player::OnRender()
 
 void Player::OnTriggerEnter2D(const Collider& collider)
 {
-}
-
-Player::Player()
-{
-
 }
 
 Player::Player(spic::Engine* engine)

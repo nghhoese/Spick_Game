@@ -157,11 +157,13 @@
   <ItemGroup>
     <ClCompile Include="Behaviourscript\ChangeSceneBehaviour.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="Behaviourscript\InputScript.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Scenes\GameOverSceneBuilder.cpp" />
     <ClCompile Include="Scenes\MainMenuBuilder.cpp" />
     <ClCompile Include="Scenes\LevelSceneBuilder.cpp" />
     <ClCompile Include="Spick_Game.cpp" />
@@ -169,11 +171,13 @@
   <ItemGroup>
     <ClInclude Include="Behaviourscript\ChangeSceneBehaviour.hpp" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Collision.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="HUD.hpp" />
     <ClInclude Include="Behaviourscript\InputScript.hpp" />
     <ClInclude Include="Level.hpp" />
     <ClInclude Include="Player.hpp" />
+    <ClInclude Include="Scenes\GameOverSceneBuilder.hpp" />
     <ClInclude Include="Scenes\MainMenuBuilder.hpp" />
     <ClInclude Include="Scenes\LevelSceneBuilder.hpp" />
     <ClInclude Include="Scenes\SceneBuilder.hpp" />
