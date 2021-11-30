@@ -83,7 +83,8 @@ void Player::OnUpdate()
 		}
 	}
 
-	if (!isDamageless) {
+	// nog weghalen is om te testen
+	if (isDamageless) {
 		if (this->healthpoints > 0) {
 			this->healthpoints -= 1;
 		}
