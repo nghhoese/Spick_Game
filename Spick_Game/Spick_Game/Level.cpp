@@ -1,4 +1,5 @@
 #include "Level.hpp"
+#include <API_Headers/BoxCollider.hpp>
 
 Level::Level(spic::Engine* engine)
 {
@@ -62,31 +63,37 @@ void Level::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, 
 
                 // red wall
                 case 34:
+                    tileObject->AddTag("wall");
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "red-wall");
                     break;
 
                 // red wall
                 case 36:
+                    tileObject->AddTag("wall");
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "red-nazi-wall");
                     break;
 
                 // dark blue skull stone wall
                 case 68:
+                    tileObject->AddTag("wall");
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-blue-skull-stone-wall");
                     break;
 
                 // dark stone wall
                 case 70:
+                    tileObject->AddTag("wall");
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-stone-wall");
                     break;
 
                 // dark blue nazi stone wall
                 case 72:
+                    tileObject->AddTag("wall");
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-blue-nazi-stone-wall");
                     break;
 
                 // dark blue nazi stone wall
                 case 80:
+                    tileObject->AddTag("wall");
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-blue-stone-wall");
                     break;
 
@@ -102,61 +109,73 @@ void Level::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, 
 
                 // left half red wall
                 case 115:
+                    tileObject->AddTag("wall");
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "half_1");
                     break;
 
                 // top red half wall
                 case 116:
+                    tileObject->AddTag("wall");
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "half_2");
                     break;
 
                 // right half red wall
                 case 117:
+                    tileObject->AddTag("wall");
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "half_3");
                     break;
 
                 // bottom half red wall
                 case 118:
+                    tileObject->AddTag("wall");
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "half_4");
                     break;
 
                 // top left corner red half wall
                 case 119:
+                    tileObject->AddTag("wall");
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "inside_1");
                     break;
 
                 // bottom left corner red half wall
                 case 120:
+                    tileObject->AddTag("wall");
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "inside_2");
                     break;
 
                 // top right red wall
                 case 121:
+                    tileObject->AddTag("wall");
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "inside_3");
                     break;
 
                 // bottom right corner red half wall
                 case 122:
+                    tileObject->AddTag("wall");
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "inside_4");
                     break;
 
                 // top right angled red half wall
                 case 123:
+                    tileObject->AddTag("wall");
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "outside_1");
                     break;
 
                 // top right angled red half wall
                 case 124:
+                    tileObject->AddTag("wall");
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "outside_2");
                     break;
 
                 // top right angled red half wall
                 case 125:
+                    tileObject->AddTag("wall");
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "outside_3");
                     break;
 
                 // top right angled red half wall
                 case 126:
+                    tileObject->AddTag("wall");
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "outside_4");
                     break;
 
@@ -178,7 +197,10 @@ void Level::BuildLevelTile(std::shared_ptr<spic::Scene> scene, std::shared_ptr<s
 
     scene->AddGameObject(tileObject);
     tileObject->AddComponent(tileSprite);
-
+        std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
+    boxCollider->Height(55);
+    boxCollider->Width(55);
+    tileObject->AddComponent(boxCollider);
     if (std::filesystem::exists(basePath + bmpFileString)) {
         tileSprite->SetSprite(basePath + bmpFileString);
     }
@@ -222,8 +244,14 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
 
                     std::shared_ptr<ChangeSceneBehaviour> gameOverScript = std::make_shared<ChangeSceneBehaviour>("GameOverScript", "GameOverMenu", engine);
                     playerObject->AddComponent(gameOverScript);
+
                     std::shared_ptr<ChangeSceneBehaviour> cheatsMenuScript = std::make_shared<ChangeSceneBehaviour>("CheatsMenuScript", "CheatsMenu", engine);
                     playerObject->AddComponent(cheatsMenuScript);
+
+                    std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
+                    boxCollider->Height(55);
+                    boxCollider->Width(55);
+                    playerObject->AddComponent(boxCollider);
                 }
             }
         }

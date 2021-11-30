@@ -25,12 +25,15 @@ std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(spic::Engine* en
     hp->AddTag("hp");
     std::shared_ptr<spic::Text> coins = std::make_shared<spic::Text>("Coins: 0", "Capsmall", 30, textColor, 175, 0);
     coins->AddTag("coins");
-    std::shared_ptr<spic::Text> fps = std::make_shared<spic::Text>("FPS: 0", "Capsmall", 30, textColor, 325, 0);
+    std::shared_ptr<spic::Text> fps = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, 870, 0);
     fps->AddTag("fps");
+    std::shared_ptr<spic::Text> paused = std::make_shared<spic::Text>("", "Capsmall", 140, textColor, 250, 175);
+    paused->AddTag("paused");
 
     GameScene->AddGameObject(hp);
     GameScene->AddGameObject(coins);
     GameScene->AddGameObject(fps);
+    GameScene->AddGameObject(paused);
 
     return GameScene;
 }
