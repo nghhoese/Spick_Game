@@ -3,9 +3,9 @@
 #include "Enemy.hpp"
 #include <API_Headers/BoxCollider.hpp>
 
-Level::Level()
+Level::Level(spic::Engine* engine)
 {
-    engine = new spic::Engine();
+    this->engine = engine;
 }
 
 void Level::BuildLevel(std::shared_ptr<spic::Scene> scene, std::filesystem::path filePath) {
@@ -56,6 +56,11 @@ void Level::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, 
                 // bright wood floor
                 case 23:
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "bright-wood-floor");
+                    break;
+
+                // dark wood floor
+                case 24:
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-wood-floor");
                     break;
 
                 // red wall
@@ -176,7 +181,7 @@ void Level::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, 
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "outside_4");
                     break;
 
-                }              
+                }
 
                 x++;
                 if (x == level_width) {
@@ -238,16 +243,23 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     transfrom.position.x = std::get<0>(position);
                     transfrom.position.y = std::get<1>(position);
                     transfrom.scale = 0.75;
-                    std::shared_ptr<Player> player = std::make_shared<Player>();
-                    player->Velocity.x = 0;
-                    player->Velocity.y = 0;
 
-                    playerObject->AddComponent(player);
-                    playerObject->setTransform(&transfrom);
+
+
+
+
                     std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
                     boxCollider->Height(55);
                     boxCollider->Width(55);
                     playerObject->AddComponent(boxCollider);
+
+                    std::shared_ptr<Player> player = std::make_shared<Player>(engine);
+                    playerObject->AddComponent(player);
+                    playerObject->setTransform(&transfrom);
+
+                    std::shared_ptr<ChangeSceneBehaviour> gameOverScript = std::make_shared<ChangeSceneBehaviour>("GameOverScript", "GameOverMenu", engine);
+                    playerObject->AddComponent(gameOverScript);
+
                 }
             }
         }
@@ -264,6 +276,12 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     transfrom.position.x = std::get<0>(position);
                     transfrom.position.y = std::get<1>(position);
                     endPointObject->setTransform(&transfrom);
+
+                    std::string counterString = std::to_string(currentLevel + 1);
+                    std::string levelString = "level" + counterString;
+                    std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("EndLevelScript", levelString, engine);
+                    endPointObject->AddComponent(scriptPlay);
+                    currentLevel + 1;
                 }
             }
         }
