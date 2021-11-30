@@ -83,6 +83,12 @@ void Player::OnUpdate()
 		}
 	}
 
+	if (!isDamageless) {
+		if (this->healthpoints > 0) {
+			this->healthpoints -= 1;
+		}
+	}
+
 	// Update Healthpoints in HUD
 	std::shared_ptr<spic::GameObject> healthObject = GetGameObject()->getScene()->GetGameObjectsByTag("hp")[0];
 	std::shared_ptr<spic::Text> healthText = std::dynamic_pointer_cast<spic::Text>(healthObject);

@@ -17,8 +17,7 @@
 
 class Player : public spic::BehaviourScript {
 private:
-    int currentHealthPoints;
-    int healthpoints = 100;
+    int healthpoints = 1000;
     int currentCoins;
     int coins = 10;
     int ammo = 0;
@@ -33,10 +32,12 @@ private:
 
 public:
     Player(spic::Engine* engine);
+    int currentHealthPoints;
     double xPlayer;
     double yPlayer;
     double speed = 5;
     bool notClicked = true;
+    bool isDamageless = false;
     void OnAwake();
     void OnStart();
     void OnUpdate();

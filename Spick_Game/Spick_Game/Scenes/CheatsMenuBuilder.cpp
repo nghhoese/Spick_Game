@@ -22,6 +22,9 @@ std::shared_ptr<spic::Scene> CheatsMenuBuilder::BuildScene(spic::Engine* engine)
     std::shared_ptr<spic::Text> text5 = std::make_shared<spic::Text>("Enable Undetectability: U", "Capsmall", 40, textColor, 10, 300);
     scene->AddGameObject(text5);
 
+    std::shared_ptr<spic::Text> text6 = std::make_shared<spic::Text>("Instakill the player: Y", "Capsmall", 40, textColor, 10, 350);
+    scene->AddGameObject(text6);
+
     return scene;
     
 }
