@@ -18,12 +18,16 @@ private:
 	float deltaTime;
 	bool speedup = false;
 	bool speeddown = false;
+	bool pausing = false;
 	bool clicked = true;
+	
 public:
 	InputScript();
+	bool paused = false;
 	bool loadFps = false;
 	const void checkMouseButtons();
 	const void checkKeys();
+	const void CheckPause();
 	const spic::Point checkMousePosition();
 	const spic::GameObject* GetPlayer();
     void OnAwake();

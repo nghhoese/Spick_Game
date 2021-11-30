@@ -121,6 +121,18 @@ void Player::OnUpdate()
 
 void Player::OnRender()
 {
+	InputObject = GetGameObject()->getScene()->GetGameObjectsByName("Input")[0];
+	auto InputComponent = InputObject->GetComponent<InputScript>();
+	InputComponent->CheckPause();
+	// Update paused in HUD
+	std::shared_ptr<spic::GameObject> pausedObject = GetGameObject()->getScene()->GetGameObjectsByTag("paused")[0];
+	std::shared_ptr<spic::Text> pausedText = std::dynamic_pointer_cast<spic::Text>(pausedObject);
+	if (InputComponent->paused) {
+		pausedText->SetText("PAUSED");
+	}
+	if (!InputComponent->paused) {
+		pausedText->SetText("");
+	}
 }
 
 void Player::OnTriggerEnter2D(const Collider& collider)
