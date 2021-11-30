@@ -159,6 +159,7 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="Behaviourscript\InputScript.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scenes\MainMenuBuilder.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="HUD.hpp" />
+    <ClInclude Include="Behaviourscript\InputScript.hpp" />
     <ClInclude Include="Level.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Scenes\MainMenuBuilder.hpp" />

@@ -55,6 +55,11 @@ void Level::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, 
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "bright-wood-floor");
                     break;
 
+                // dark wood floor
+                case 24:
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-wood-floor");
+                    break;
+
                 // red wall
                 case 34:
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "red-wall");
@@ -211,7 +216,7 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     transfrom.position.x = std::get<0>(position);
                     transfrom.position.y = std::get<1>(position);
                     transfrom.scale = 0.75;
-                    std::shared_ptr<Player> player = std::make_shared<Player>();
+                    std::shared_ptr<Player> player = std::make_shared<Player>(engine);
                     playerObject->AddComponent(player);
                     playerObject->setTransform(&transfrom);
                 }

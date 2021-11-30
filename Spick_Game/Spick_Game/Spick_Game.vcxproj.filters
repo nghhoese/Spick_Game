@@ -39,7 +39,11 @@
     <ClCompile Include="Scenes\LevelSceneBuilder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Bullet.cpp">
+=======
+    <ClCompile Include="Behaviourscript\InputScript.cpp">
+>>>>>>> Develop
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -68,7 +72,11 @@
     <ClInclude Include="Scenes\SceneBuilder.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Bullet.h">
+=======
+    <ClInclude Include="Behaviourscript\InputScript.hpp">
+>>>>>>> Develop
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

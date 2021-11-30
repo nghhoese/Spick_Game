@@ -1,88 +1,5 @@
 #include "Player.hpp"
 
-spic::KeyCode W = spic::KeyCode::W;
-spic::KeyCode A = spic::KeyCode::A;
-spic::KeyCode S = spic::KeyCode::S;
-spic::KeyCode D = spic::KeyCode::D;
-spic::KeyCode E = spic::KeyCode::E;
-spic::KeyCode ESC = spic::KeyCode::ESCAPE;
-spic::KeyCode H = spic::KeyCode::HOME;
-spic::KeyCode PU = spic::KeyCode::PAGE_UP;
-spic::KeyCode PD = spic::KeyCode::PAGE_DOWN;
-spic::KeyCode P = spic::KeyCode::P;
-spic::KeyCode EP = spic::KeyCode::EQUAL_AND_PLUS;
-
-spic::MouseButton LEFT = spic::MouseButton::LEFT;
-spic::MouseButton MIDDLE = spic::MouseButton::MIDDLE;
-spic::MouseButton RIGHT = spic::MouseButton::RIGHT;
-
-spic::Importation* input = new spic::Importation();
-
-const void Player::checkMouseButtons()
-{
-	if (input->GetMouseButton(LEFT)) {
-		if (notClicked)
-		{
-			Shoot();
-			notClicked = false;
-		}
-	}
-	else if (input->GetMouseButton(RIGHT)) {
-		// reloaden
-	}
-	else {
-		notClicked = true;
-	}
-}
-
-const void Player::checkKeys()
-{
-	//waardes nog aanpassen
-	if (input->GetKey(W)) {
-		yPlayer -= (speed * deltaTime);
-	}
-	else if (input->GetKey(A)) {
-		xPlayer -= (speed * deltaTime);
-	}
-	else if (input->GetKey(S)) {
-		yPlayer += (speed * deltaTime);
-	}
-	else if (input->GetKey(D)) {
-		xPlayer += (speed * deltaTime);
-	}
-	else if (input->GetKey(E)) {
-		// interactie
-	}
-	else if (input->GetKey(ESC)) {
-		// pauze menu
-	}
-	else if (input->GetKey(H)) {
-		// gameplay snelheid resetten
-	}
-	else if (input->GetKey(PU)) {
-		// gameplay snelheid versnellen
-	}
-	else if (input->GetKey(PD)) {
-		// gameplay snelheid vertragen
-	}
-	else if (input->GetKey(P)) {
-		// dpauze knop
-	}
-	else if (input->GetKey(EP)) {
-		// opent een cheats menu
-	}
-	else {
-
-	}
-}
-
-
-const spic::Point Player::checkMousePosition()
-{
-	spic::Point point = input->MousePosition();
-	return point;
-}
-
 void Player::OnAwake()
 {
 }
@@ -101,7 +18,11 @@ void Player::OnUpdate()
 	xPlayer = transfrom.position.x;
 	yPlayer = transfrom.position.y;
 	spic::Point point;
-	checkKeys();
+
+	InputObject = GetGameObject()->getScene()->GetGameObjectsByName("Input")[0];
+	auto InputComponent = InputObject->GetComponent<InputScript>();
+
+	InputComponent->checkKeys();
 	transfrom.position.x = xPlayer;
 	transfrom.position.y = yPlayer;
 
@@ -128,7 +49,7 @@ void Player::OnUpdate()
 		GetGameObject()->getScene()->GetActiveCamera()->setY(h);
 	}
 
-	point = checkMousePosition();
+	point = InputComponent->checkMousePosition();
 	double Delta_x = (transfrom.position.x - GetGameObject()->getScene()->GetActiveCamera()->getX()) - point.x;
 	double Delta_y = (transfrom.position.y - GetGameObject()->getScene()->GetActiveCamera()->getY()) - point.y;
 
@@ -177,7 +98,12 @@ void Player::OnUpdate()
 	}
 	currentCoins = this->coins;
 
-	deltaTime = (time->CalculateDeltaTime() / 10);
+	// Update Coins in HUD
+	std::shared_ptr<spic::GameObject> fpsObject = GetGameObject()->getScene()->GetGameObjectsByTag("fps")[0];
+	std::shared_ptr<spic::Text> fpsText = std::dynamic_pointer_cast<spic::Text>(fpsObject);
+	fpsText->SetText("FPS: " + std::to_string(engine->GetFPS()));
+
+
 }
 
 void Player::OnRender()
@@ -191,7 +117,11 @@ void Player::OnTriggerEnter2D(const Collider& collider)
 Player::Player()
 {
 	sprite = std::make_shared<spic::Sprite>();
-	time = new spic::Time();
+}
+
+Player::Player(spic::Engine* engine)
+{
+	this->engine = engine;
 }
 
 void Player::OnTriggerExit2D(const Collider& collider)
