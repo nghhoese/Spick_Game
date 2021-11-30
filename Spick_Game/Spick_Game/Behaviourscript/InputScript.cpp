@@ -21,6 +21,7 @@ InputScript::InputScript()
 {
 	this->input = new spic::Importation();
 	this->time = new spic::Time();
+	this->engine = new spic::Engine();
 }
 
 const void InputScript::checkMouseButtons()
@@ -85,10 +86,18 @@ const void InputScript::checkKeys()
 		// opent een cheats menu
 	}
 	else if (input->GetKey(F)) {
-		// toggle fps
+		if (clicked) {
+			if (loadFps) {
+				loadFps = false;
+			}
+			else {
+				loadFps = true;
+			}
+			clicked = false;
+		}
 	}
 	else {
-
+		clicked = true;
 	}
 }
 

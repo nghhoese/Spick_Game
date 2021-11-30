@@ -4,17 +4,21 @@
 #include "API_Headers/KeyCode.hpp"
 #include "API_Headers/GameObject.hpp"
 #include "API_Headers/BehaviourScript.hpp"
-#include <API_Headers/Time.hpp>
+#include "API_Headers/Time.hpp"
 #include "API_Headers/Importation.hpp"
+#include "API_Headers/Engine.hpp"
 #include "../Player.hpp"
 
 class InputScript : public spic::BehaviourScript {
 private:
 	spic::Importation* input;
 	spic::Time* time;
+	spic::Engine* engine;
 	float deltaTime;
+	bool clicked = true;
 public:
 	InputScript();
+	bool loadFps = false;
 	const void checkMouseButtons();
 	const void checkKeys();
 	const spic::Point checkMousePosition();

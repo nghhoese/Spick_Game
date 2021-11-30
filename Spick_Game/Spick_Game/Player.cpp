@@ -108,12 +108,15 @@ void Player::OnUpdate()
 	}
 	currentCoins = this->coins;
 
-	// Update Coins in HUD
+	// Update fps in HUD
 	std::shared_ptr<spic::GameObject> fpsObject = GetGameObject()->getScene()->GetGameObjectsByTag("fps")[0];
 	std::shared_ptr<spic::Text> fpsText = std::dynamic_pointer_cast<spic::Text>(fpsObject);
-	fpsText->SetText("FPS: " + std::to_string(engine->GetFPS()));
-
-
+	if (InputComponent->loadFps) {
+		fpsText->SetText("FPS: " + std::to_string(engine->GetFPS()));
+	}
+	if (!InputComponent->loadFps) {
+		fpsText->SetText("");
+	}
 }
 
 void Player::OnRender()
