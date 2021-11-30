@@ -156,6 +156,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Behaviourscript\ChangeSceneBehaviour.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="Level.cpp" />
@@ -166,6 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behaviourscript\ChangeSceneBehaviour.hpp" />
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="HUD.hpp" />
     <ClInclude Include="Level.hpp" />

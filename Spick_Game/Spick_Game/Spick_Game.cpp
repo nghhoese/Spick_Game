@@ -20,7 +20,6 @@ namespace fs = std::filesystem;
 int main() {
 
     spic::Engine* engine = new spic::Engine();
-
     engine->CreateNewWindow("yolo");
   
     //non game
@@ -42,7 +41,8 @@ int main() {
     engine->AddScene(level3Scene);
 
     engine->SetActiveScene(mainMenu);
+    engine->SetGameLoopTimeScale(0);
     engine->StartGameLoop();
 
-    _CrtDumpMemoryLeaks();
+    //_CrtDumpMemoryLeaks();
 }

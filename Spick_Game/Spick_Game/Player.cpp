@@ -21,13 +21,17 @@ spic::Importation* input = new spic::Importation();
 const void Player::checkMouseButtons()
 {
 	if (input->GetMouseButton(LEFT)) {
-		// schieten
+		if (notClicked)
+		{
+			Shoot();
+			notClicked = false;
+		}
 	}
 	else if (input->GetMouseButton(RIGHT)) {
 		// reloaden
 	}
 	else {
-
+		notClicked = true;
 	}
 }
 
@@ -129,7 +133,7 @@ void Player::OnUpdate()
 	double Delta_y = (transfrom.position.y - GetGameObject()->getScene()->GetActiveCamera()->getY()) - point.y;
 
 	double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
-	transfrom.rotation = Result + 95;
+	transfrom.rotation = Result + 90;
 
 	auto endPoint = GetGameObject()->getScene()->GetGameObjectsByName("Endpoint")[0];
 	auto endPointPosition = endPoint->getTransform();
@@ -146,7 +150,7 @@ void Player::OnUpdate()
 	}
 
 	GetGameObject()->setTransform(&transfrom);
-
+	checkMouseButtons();
 	// Test
 	//if (this->healthpoints > 70) {
 	//	this->healthpoints -= 1;
@@ -186,6 +190,7 @@ void Player::OnTriggerEnter2D(const Collider& collider)
 
 Player::Player()
 {
+	sprite = std::make_shared<spic::Sprite>();
 	time = new spic::Time();
 }
 
@@ -195,4 +200,22 @@ void Player::OnTriggerExit2D(const Collider& collider)
 
 void Player::OnTriggerStay2D(const Collider& collider)
 {
+}
+
+void Player::Shoot()
+{
+	std::shared_ptr<spic::GameObject> bulletObject = std::make_shared<spic::GameObject>("Bullet");
+	GetGameObject()->getScene()->AddGameObject(bulletObject);
+	spic::Transform transfrom = *bulletObject->getTransform();
+
+	bulletObject->AddComponent(sprite);
+	sprite->SetSprite("assets/bullet.bmp");
+
+	transfrom.position.x = GetGameObject()->getTransform()->position.x;
+	transfrom.position.y = GetGameObject()->getTransform()->position.y;
+	transfrom.scale = 0.75;
+
+	std::shared_ptr<Bullet> bullet = std::make_shared<Bullet>(transfrom.position, checkMousePosition(), 10);
+	bulletObject->AddComponent(bullet);
+	bulletObject->setTransform(&transfrom);
 }
