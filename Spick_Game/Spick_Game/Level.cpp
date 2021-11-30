@@ -303,8 +303,8 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     enemy->setDamagePerBullet(40);
                     enemy->setPath("assets/enemy_green.bmp");
                     std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
-                    boxCollider->Height(45);
-                    boxCollider->Width(45);
+                    boxCollider->Height(35);
+                    boxCollider->Width(35);
                     GreenGuardObject->AddComponent(boxCollider);
                     GreenGuardObject->AddComponent(sprite);
                     sprite->SetSprite(enemy->getPath());
@@ -336,8 +336,8 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     enemy->setDamagePerBullet(50);
                     enemy->setPath("assets/enemy_red.bmp");
                     std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
-                    boxCollider->Height(45);
-                    boxCollider->Width(45);
+                    boxCollider->Height(35);
+                    boxCollider->Width(35);
                     RedGuardObject->AddComponent(boxCollider);
                     RedGuardObject->AddComponent(sprite);
                     sprite->SetSprite(enemy->getPath());
