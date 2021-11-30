@@ -13,57 +13,61 @@
 #include "API_Headers/Text.hpp"
 #include "HUD.hpp"
 #include "Scenes/MainMenuBuilder.hpp"
-#include "Scenes/LevelSceneBuilder.hpp"
-#include "Scenes/GameOverSceneBuilder.hpp"
-#include "Behaviourscript/InputScript.hpp"
+#include "Scenes/PlaySceneBuilderr.hpp"
 
 namespace fs = std::filesystem;
 
-int main() {
+int main()
+{
+    std::shared_ptr<spic::Scene> GameScene = std::make_shared<spic::Scene>("GameScene");
+
+    const std::string& path = "assets/levels/level1.json";
+    std::shared_ptr<Level> level = std::make_shared<Level>();
+    level->BuildLevel(GameScene, path);
+
+    spic::Camera* camera = new spic::Camera("mainCamera");
+    camera->setAspectWidth(1536);
+    camera->setAspectHeight(1536);
+    camera->setX(0);
+    camera->setY(0);
+    camera->CreateCamera();
+
+    GameScene->AddCamera(*camera);
+    GameScene->SetActiveCamera("mainCamera");
 
     spic::Engine* engine = new spic::Engine();
 
-    engine->CreateNewWindow("Tactical Stealth");
-  
-    std::shared_ptr<MainMenuBuilder> mainMenuBuilder = std::make_shared<MainMenuBuilder>();
-    std::shared_ptr<spic::Scene> mainMenu = mainMenuBuilder->BuildScene();
+    //std::shared_ptr<HUD> hud = std::make_shared<HUD>(engine);
+
+    spic::Color textColor = spic::Color(1.0, 1.0, 1.0, 1.0);
+    std::shared_ptr<spic::Text> fps = std::make_shared<spic::Text>("FPS: " + std::to_string(engine->GetFPS()), "Capsmall", 30, textColor, 0, 0);
+    fps->AddTag("fps");
+    std::shared_ptr<spic::Text> hp = std::make_shared<spic::Text>("Health: 0", "Capsmall", 30, textColor, 150, 0);
+    hp->AddTag("hp");
+    std::shared_ptr<spic::Text> coins = std::make_shared<spic::Text>("Coins: 0", "Capsmall", 30, textColor, 350, 0);
+    coins->AddTag("coins");
+
+    GameScene->AddGameObject(fps);
+    GameScene->AddGameObject(hp);
+    GameScene->AddGameObject(coins);
+
+    engine->CreateNewWindow("yolo");
+    engine->AddScene(GameScene);
+    engine->CreateNewWindow("yolo");
+    
+    //non game
+    std::shared_ptr<MainMenuBuilder> mainMenuBUilder = std::make_shared<MainMenuBuilder>();
+    std::shared_ptr<spic::Scene> mainMenu = mainMenuBUilder->BuildScene();
 
     engine->AddScene(mainMenu);
-    mainMenuBuilder->BuildScript(engine);
+    mainMenuBUilder->BuildScript(engine);
 
-    std::shared_ptr<LevelSceneBuilder> levelSceneBuilder = std::make_shared<LevelSceneBuilder>();
 
-    std::shared_ptr<spic::GameObject> InputObject1 = std::make_shared<spic::GameObject>("Input");
-    std::shared_ptr<InputScript> inputScript1 = std::make_shared<InputScript>();
-    InputObject1->AddComponent(inputScript1);
-
-    std::shared_ptr<spic::Scene> level1Scene = levelSceneBuilder->BuildLevelScene(engine, 1);
-    level1Scene->AddGameObject(InputObject1);
-    engine->AddScene(level1Scene);
-
-    std::shared_ptr<spic::GameObject> InputObject2 = std::make_shared<spic::GameObject>("Input");
-    std::shared_ptr<InputScript> inputScript2 = std::make_shared<InputScript>();
-    InputObject2->AddComponent(inputScript2);
-
-    std::shared_ptr<spic::Scene> level2Scene = levelSceneBuilder->BuildLevelScene(engine, 2);
-    level2Scene->AddGameObject(InputObject2);
-    engine->AddScene(level2Scene);
-
-    std::shared_ptr<spic::GameObject> InputObject3 = std::make_shared<spic::GameObject>("Input");
-    std::shared_ptr<InputScript> inputScript3 = std::make_shared<InputScript>();
-    InputObject3->AddComponent(inputScript3);
-
-    std::shared_ptr<spic::Scene> level3Scene = levelSceneBuilder->BuildLevelScene(engine, 3);
-    level3Scene->AddGameObject(InputObject3);
-    engine->AddScene(level3Scene);
-
-    std::shared_ptr<GameOverBuilder> gameOverSceneBuilder = std::make_shared<GameOverBuilder>();
-    std::shared_ptr<spic::Scene> gameOverScene = gameOverSceneBuilder->BuildScene();
-    engine->AddScene(gameOverScene);
-    gameOverSceneBuilder->BuildScript(engine);
+    std::shared_ptr<PlaySceneBuilder> playSceneBuilder = std::make_shared<PlaySceneBuilder>();
+    std::shared_ptr<spic::Scene> playScene = playSceneBuilder->BuildScene();
+    engine->AddScene(playScene);
 
     engine->SetActiveScene(mainMenu);
     engine->StartGameLoop();
 
-    _CrtDumpMemoryLeaks();
 }

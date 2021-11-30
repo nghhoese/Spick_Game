@@ -10,6 +10,5 @@ class SceneBuilder {
 
 	public: 
 		std::shared_ptr<spic::Scene> BuildScene();
-
 		void scriptBuilder(const spic::Engine& engine);
 };

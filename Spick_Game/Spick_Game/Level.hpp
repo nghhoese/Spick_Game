@@ -6,9 +6,6 @@
 #include "API_Headers/Sprite.hpp"
 #include "API_Headers/Transform.hpp"
 #include "API_Headers/Engine.hpp"
-#include "Behaviourscript/ChangeSceneBehaviour.hpp"
-#include "Player.hpp"
-#include "Enemy.hpp"
 
 class Level {
 private:
@@ -21,9 +18,7 @@ private:
 	spic::Engine* engine;
 
 public:
-	int currentLevel = 1;
-
-	Level(spic::Engine* engine);
+	Level();
 
 	void BuildLevel(std::shared_ptr<spic::Scene> scene, std::filesystem::path filePath);
 
