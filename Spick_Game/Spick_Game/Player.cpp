@@ -55,7 +55,7 @@ void Player::OnUpdate()
 	double Delta_y = (transfrom.position.y - GetGameObject()->getScene()->GetActiveCamera()->getY()) - point.y;
 
 	double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
-	transfrom.rotation = Result + 95;
+	transfrom.rotation = Result + 90;
 
 	auto endPoint = GetGameObject()->getScene()->GetGameObjectsByName("Endpoint")[0];
 	auto endPointPosition = endPoint->getTransform();
@@ -65,13 +65,14 @@ void Player::OnUpdate()
 	if ((xPlayer > endPointPosition->position.x && yPlayer > endPointPosition->position.y)) {
 		if (xPlayer < endBottomRight.x && yPlayer < endBottomRight.y) {
 			std::shared_ptr<spic::Component> script = endPoint->GetComponentByName("EndLevelScript");
-			if (script != nullptr) {		
+			if (script != nullptr) {
 				script->OnClick();
 			}
 		}
 	}
 
 	GetGameObject()->setTransform(&transfrom);
+	InputComponent->checkMouseButtons();
 
 	if (currentHealthPoints == 0) {
 		std::cout << currentHealthPoints;
@@ -81,16 +82,6 @@ void Player::OnUpdate()
 			script->OnClick();
 		}
 	}
-
-
-	//if (this->healthpoints > 0) {
-	//	this->healthpoints -= 1;
-	//}
-
-	//// Test
-	//if (this->coins < 20) {
-	//	this->coins += 1;
-	//}
 
 	// Update Healthpoints in HUD
 	std::shared_ptr<spic::GameObject> healthObject = GetGameObject()->getScene()->GetGameObjectsByTag("hp")[0];
@@ -130,6 +121,7 @@ void Player::OnTriggerEnter2D(const Collider& collider)
 Player::Player(spic::Engine* engine)
 {
 	this->engine = engine;
+	sprite = std::make_shared<spic::Sprite>();
 }
 
 void Player::OnTriggerExit2D(const Collider& collider)
@@ -138,4 +130,26 @@ void Player::OnTriggerExit2D(const Collider& collider)
 
 void Player::OnTriggerStay2D(const Collider& collider)
 {
+}
+
+void Player::Shoot()
+{
+	auto InputComponent = InputObject->GetComponent<InputScript>();
+	std::shared_ptr<spic::GameObject> bulletObject = std::make_shared<spic::GameObject>("Bullet");
+	GetGameObject()->getScene()->AddGameObject(bulletObject);
+	spic::Transform transfrom = *bulletObject->getTransform();
+
+	bulletObject->AddComponent(sprite);
+	sprite->SetSprite("assets/bullet.bmp");
+	sprite->SetPlayerBool(true);
+
+	transfrom.position.x = GetGameObject()->getTransform()->position.x + 20;
+	transfrom.position.y = GetGameObject()->getTransform()->position.y + 32;
+	transfrom.scale = 0.75;
+
+
+	std::shared_ptr<Bullet> bullet = std::make_shared<Bullet>(transfrom.position, InputComponent->checkMousePosition(), 20);
+	bulletObject->AddComponent(bullet);
+	bulletObject->setTransform(&transfrom);
+	bullet->CalculateAmountToMove();
 }

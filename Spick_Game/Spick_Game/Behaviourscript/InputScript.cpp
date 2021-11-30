@@ -14,9 +14,9 @@ spic::KeyCode PD = spic::KeyCode::PAGE_DOWN;
 spic::KeyCode P = spic::KeyCode::P;
 spic::KeyCode EP = spic::KeyCode::EQUAL_AND_PLUS;
 
-spic::MouseButton LEFT1 = spic::MouseButton::LEFT;
-spic::MouseButton MIDDLE1 = spic::MouseButton::MIDDLE;
-spic::MouseButton RIGHT1 = spic::MouseButton::RIGHT;
+spic::MouseButton LEFT = spic::MouseButton::LEFT;
+spic::MouseButton MIDDLE = spic::MouseButton::MIDDLE;
+spic::MouseButton RIGHT = spic::MouseButton::RIGHT;
 
 InputScript::InputScript()
 {
@@ -27,15 +27,21 @@ InputScript::InputScript()
 
 const void InputScript::checkMouseButtons()
 {
-	//GetPlayer();
-	if (input->GetMouseButton(LEFT1)) {
+	const spic::GameObject* playerObject = GetPlayer();
+	auto PlayerComponent = playerObject->GetComponent<Player>();
+	if (input->GetMouseButton(LEFT)) {
 		// schieten
+		if (PlayerComponent->notClicked)
+		{
+			PlayerComponent->Shoot();
+			PlayerComponent->notClicked = false;
+		}
 	}
-	else if (input->GetMouseButton(RIGHT1)) {
+	else if (input->GetMouseButton(RIGHT)) {
 		// reloaden
 	}
 	else {
-
+		PlayerComponent->notClicked = true;
 	}
 }
 

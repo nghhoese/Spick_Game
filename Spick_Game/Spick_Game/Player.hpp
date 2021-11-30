@@ -10,7 +10,7 @@
 #include <API_Headers/Camera.hpp>
 #include <API_Headers/Sprite.hpp>
 #include <API_Headers/Text.hpp>
-#include "API_Headers/Engine.hpp"
+#include "Bullet.hpp"
 #include <iostream>
 #include <API_Headers/Engine.hpp>
 #include "Behaviourscript/InputScript.hpp"
@@ -22,13 +22,21 @@ private:
     int currentCoins;
     int coins = 10;
     int ammo = 0;
+    int bulletSpeed = 10;
+    spic::Point aimAngle;
+    spic::Point aimPos;
+    std::vector<std::shared_ptr<spic::GameObject>> bullets;
+    std::shared_ptr<spic::Sprite> sprite;
+    spic::Time* time;
     spic::Engine* engine;
     std::shared_ptr<spic::GameObject> InputObject;
+
 public:
     Player(spic::Engine* engine);
     double xPlayer;
     double yPlayer;
     double speed = 5;
+    bool notClicked = true;
     void OnAwake();
     void OnStart();
     void OnUpdate();
@@ -37,4 +45,5 @@ public:
     void OnClick();
     void OnTriggerExit2D(const Collider& collider);
     void OnTriggerStay2D(const Collider& collider);
+    void Shoot();
 };
