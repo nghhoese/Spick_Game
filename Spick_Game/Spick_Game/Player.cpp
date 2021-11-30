@@ -19,7 +19,7 @@ void Player::OnUpdate()
 	yPlayer = transfrom.position.y;
 	spic::Point point;
 
-	auto InputObject = GetGameObject()->getScene()->GetGameObjectsByName("Input")[0];
+	InputObject = GetGameObject()->getScene()->GetGameObjectsByName("Input")[0];
 	auto InputComponent = InputObject->GetComponent<InputScript>();
 
 	InputComponent->checkKeys();

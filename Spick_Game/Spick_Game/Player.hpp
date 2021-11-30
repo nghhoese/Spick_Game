@@ -22,6 +22,7 @@ private:
     int coins = 10;
     int ammo = 0;
     spic::Engine* engine;
+    std::shared_ptr<spic::GameObject> InputObject;
 public:
     Player();
     Player(spic::Engine* engine);
