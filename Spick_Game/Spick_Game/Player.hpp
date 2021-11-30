@@ -28,7 +28,7 @@ public:
     Player(spic::Engine* engine);
     double xPlayer;
     double yPlayer;
-    double speed = 1.5;
+    double speed = 5;
     void OnAwake();
     void OnStart();
     void OnUpdate();

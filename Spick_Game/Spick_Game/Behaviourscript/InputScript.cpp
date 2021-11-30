@@ -45,22 +45,22 @@ const void InputScript::checkKeys()
 	//waardes nog aanpassen
 	if (input->GetKey(W)) {
 		if (PlayerComponent != nullptr) {
-			PlayerComponent->yPlayer -= (PlayerComponent->speed * deltaTime);
+			PlayerComponent->yPlayer -= (PlayerComponent->speed);
 		}
 	}
 	else if (input->GetKey(A)) {
 		if (PlayerComponent != nullptr) {
-			PlayerComponent->xPlayer -= (PlayerComponent->speed * deltaTime);
+			PlayerComponent->xPlayer -= (PlayerComponent->speed);
 		}
 	}
 	else if (input->GetKey(S)) {
 		if (PlayerComponent != nullptr) {
-			PlayerComponent->yPlayer += (PlayerComponent->speed * deltaTime);
+			PlayerComponent->yPlayer += (PlayerComponent->speed);
 		}
 	}
 	else if (input->GetKey(D)) {
 		if (PlayerComponent != nullptr) {
-			PlayerComponent->xPlayer += (PlayerComponent->speed * deltaTime);
+			PlayerComponent->xPlayer += (PlayerComponent->speed);
 		}
 	}
 	else if (input->GetKey(E)) {
