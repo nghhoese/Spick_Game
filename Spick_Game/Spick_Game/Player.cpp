@@ -134,7 +134,6 @@ void Player::OnTriggerEnter2D(const Collider& collider)
 Player::Player(spic::Engine* engine)
 {
 	this->engine = engine;
-	sprite = std::make_shared<spic::Sprite>();
 }
 
 void Player::OnTriggerExit2D(const Collider& collider)
@@ -152,6 +151,7 @@ void Player::Shoot()
 	GetGameObject()->getScene()->AddGameObject(bulletObject);
 	spic::Transform transfrom = *bulletObject->getTransform();
 
+	sprite = std::make_shared<spic::Sprite>();
 	bulletObject->AddComponent(sprite);
 	sprite->SetSprite("assets/bullet.bmp");
 	sprite->SetPlayerBool(true);
