@@ -1,4 +1,5 @@
 #include "InputScript.hpp"
+#include "../Collision.hpp"
 
 spic::KeyCode W = spic::KeyCode::W;
 spic::KeyCode A = spic::KeyCode::A;
@@ -47,21 +48,69 @@ const void InputScript::checkKeys()
 	if (input->GetKey(W)) {
 		if (PlayerComponent != nullptr) {
 			PlayerComponent->yPlayer -= (PlayerComponent->speed * deltaTime);
+			if (Collision::AABB(GetGameObject(), "wall")) {
+				if (Collision::AABB(GetGameObject(), "wall")->GetGameObject()->getTransform()->position.y < PlayerComponent->yPlayer) {
+					PlayerComponent->yPlayer += (PlayerComponent->speed * deltaTime);
+				}
+				else {
+					PlayerComponent->yPlayer -= (PlayerComponent->speed * deltaTime);
+				}
+			}
+			else {
+				PlayerComponent->yPlayer -= (PlayerComponent->speed * deltaTime);
+			}
+
 		}
 	}
 	else if (input->GetKey(A)) {
 		if (PlayerComponent != nullptr) {
-			PlayerComponent->xPlayer -= (PlayerComponent->speed * deltaTime);
+			if (Collision::AABB(GetGameObject(), "wall")) {
+				if (Collision::AABB(GetGameObject(), "wall")->GetGameObject()->getTransform()->position.x < PlayerComponent->xPlayer) {
+					PlayerComponent->xPlayer += (PlayerComponent->speed * deltaTime);
+				}
+				else {
+					PlayerComponent->xPlayer -= (PlayerComponent->speed * deltaTime);
+
+				}
+			}
+			else {
+				PlayerComponent->xPlayer -= (PlayerComponent->speed * deltaTime);
+
+			}
 		}
 	}
 	else if (input->GetKey(S)) {
 		if (PlayerComponent != nullptr) {
-			PlayerComponent->yPlayer += (PlayerComponent->speed * deltaTime);
+			if (Collision::AABB(GetGameObject(), "wall")) {
+				if (Collision::AABB(GetGameObject(), "wall")->GetGameObject()->getTransform()->position.y > PlayerComponent->yPlayer) {
+					PlayerComponent->yPlayer -= (PlayerComponent->speed * deltaTime);
+				}
+				else {
+					PlayerComponent->yPlayer += (PlayerComponent->speed * deltaTime);
+
+				}
+			}
+			else {
+				PlayerComponent->yPlayer += (PlayerComponent->speed * deltaTime);
+
+			}
 		}
 	}
 	else if (input->GetKey(D)) {
 		if (PlayerComponent != nullptr) {
-			PlayerComponent->xPlayer += (PlayerComponent->speed * deltaTime);
+			if (Collision::AABB(GetGameObject(), "wall")) {
+				if (Collision::AABB(GetGameObject(), "wall")->GetGameObject()->getTransform()->position.x > PlayerComponent->xPlayer) {
+					PlayerComponent->xPlayer -= (PlayerComponent->speed * deltaTime);
+				}
+				else {
+					PlayerComponent->xPlayer += (PlayerComponent->speed * deltaTime);
+
+				}
+			}
+			else {
+				PlayerComponent->xPlayer += (PlayerComponent->speed * deltaTime);
+
+			}
 		}
 	}
 	else if (input->GetKey(E)) {
