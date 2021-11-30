@@ -34,39 +34,68 @@ const void Player::checkMouseButtons()
 
 const void Player::checkKeys()
 {
+	spic::Transform transfrom = *GetGameObject()->getTransform();
 	//waardes nog aanpassen
 	if (input->GetKey(W)) { 
 		if (Collision::AABB(GetGameObject(), "wall")) {
-			yPlayer += 20;
+			if (Collision::AABB(GetGameObject(), "wall")->GetGameObject()->getTransform()->position.y < yPlayer) {
+				yPlayer += speed;
+			}
+			else {
+				yPlayer -= speed;
+
+			}
 		}
 		else {
 			yPlayer -= speed;
+
 		}
-		
+
 	}
+
 	else if (input->GetKey(A)) {
 		if (Collision::AABB(GetGameObject(), "wall")) {
-			xPlayer += 20;
+			if (Collision::AABB(GetGameObject(), "wall")->GetGameObject()->getTransform()->position.x < xPlayer) {
+				xPlayer += speed;
+			}
+			else {
+				xPlayer -= speed;
+
+			}
 		}
 		else {
 			xPlayer -= speed;
+
 		}
 	}
 	else if (input->GetKey(S)) {
 		if (Collision::AABB(GetGameObject(), "wall")) {
-			yPlayer -= 20;
+			if (Collision::AABB(GetGameObject(), "wall")->GetGameObject()->getTransform()->position.y > yPlayer) {
+				yPlayer -= speed;
+			}
+			else {
+				yPlayer += speed;
+
+			}
 		}
 		else {
 			yPlayer += speed;
-		}
 
+		}
 	}
 	else if (input->GetKey(D)) {
 		if (Collision::AABB(GetGameObject(), "wall")) {
-			xPlayer -= 20;
+			if (Collision::AABB(GetGameObject(), "wall")->GetGameObject()->getTransform()->position.x > xPlayer) {
+				xPlayer -= speed;
+			}
+			else {
+				xPlayer += speed;
+
+			}
 		}
 		else {
 			xPlayer += speed;
+
 		}
 	}
 	else if (input->GetKey(E)) {
@@ -129,6 +158,8 @@ void Player::OnUpdate()
 
 	transfrom.position.x = xPlayer;
 	transfrom.position.y = yPlayer;
+
+
 
 	GetGameObject()->getScene()->GetActiveCamera()->setX(xPlayer - 768);
 	GetGameObject()->getScene()->GetActiveCamera()->setY(yPlayer - 768);

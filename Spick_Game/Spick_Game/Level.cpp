@@ -195,8 +195,8 @@ void Level::BuildLevelTile(std::shared_ptr<spic::Scene> scene, std::shared_ptr<s
     scene->AddGameObject(tileObject);
     tileObject->AddComponent(tileSprite);
     std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
-    boxCollider->Height(64);
-    boxCollider->Width(64);
+    boxCollider->Height(55);
+    boxCollider->Width(55);
     tileObject->AddComponent(boxCollider);
 
 
@@ -239,11 +239,14 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     transfrom.position.y = std::get<1>(position);
                     transfrom.scale = 0.75;
                     std::shared_ptr<Player> player = std::make_shared<Player>();
+                    player->Velocity.x = 0;
+                    player->Velocity.y = 0;
+
                     playerObject->AddComponent(player);
                     playerObject->setTransform(&transfrom);
                     std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
-                    boxCollider->Height(64);
-                    boxCollider->Width(64);
+                    boxCollider->Height(55);
+                    boxCollider->Width(55);
                     playerObject->AddComponent(boxCollider);
                 }
             }

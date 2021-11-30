@@ -1,8 +1,8 @@
 #include "Collision.h"
 #include "API_Headers/Scene.hpp"
-#include "API_Headers/BoxCollider.hpp"
 
-bool Collision::AABB(spic::GameObject* obj1,std::string tag)
+
+std::shared_ptr<spic::BoxCollider> Collision::AABB(spic::GameObject* obj1,std::string tag)
 {
     std::shared_ptr<spic::BoxCollider> collider = std::dynamic_pointer_cast<spic::BoxCollider>(obj1->GetComponent <spic::BoxCollider>());
     int obj1ColliderWidth = collider->Width();
@@ -18,9 +18,9 @@ bool Collision::AABB(spic::GameObject* obj1,std::string tag)
             obj1->getTransform()->position.y + obj1ColliderWidth >= obj2->getTransform()->position.y &&
             obj2->getTransform()->position.y + obj2ColliderHeight >= obj1->getTransform()->position.y
             ) {
-            return true;
+            return collider2;
         }
     }
 
-    return false;
+    return nullptr;
 }

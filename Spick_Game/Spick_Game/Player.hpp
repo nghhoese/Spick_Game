@@ -20,11 +20,13 @@ private:
     int currentCoins;
     int coins = 10;
     int ammo = 0;
+    bool isColliding = false;
 public:
+    spic::Point Velocity;
     Player();
     double xPlayer;
     double yPlayer;
-    double speed = 1;
+    double speed = 5;
     const void checkMouseButtons();
     const void checkKeys();
     const spic::Point checkMousePosition();
