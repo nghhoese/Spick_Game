@@ -45,6 +45,28 @@ const void InputScript::checkMouseButtons()
 	}
 }
 
+const void InputScript::CheckPause() {
+	if (input->GetKey(ESC)) {
+	// pauze menu
+		if (!pausing) {
+			pausing = true;
+			if (time->TimeScale() > 0.0) {
+				time->TimeScale(0.0);
+				std::cout << "paused";
+				paused = true;
+			}
+			else if (time->TimeScale() == 0) {
+				time->TimeScale(1.0);
+				std::cout << "play";
+				paused = false;
+			}
+		}
+	}
+	else {
+		pausing = false;
+	}
+}
+
 const void InputScript::checkKeys()
 {
 	const spic::GameObject* playerObject = GetPlayer();
@@ -123,9 +145,21 @@ const void InputScript::checkKeys()
 	else if (input->GetKey(E)) {
 		// interactie
 	}
-	else if (input->GetKey(ESC)) {
+	/*else if (input->GetKey(ESC)) {
 		// pauze menu
-	}
+		if (!pausing) {
+			pausing = true;
+			if (time->TimeScale() > 0.0) {
+				time->TimeScale(0.0);
+				std::cout << "paused";
+			}
+			else if (time->TimeScale() == 0) {
+				time->TimeScale(1.0);
+				std::cout << "play";
+			}
+		}
+
+	}*/
 	else if (input->GetKey(H)) {
 		// gameplay snelheid resetten
 	}
