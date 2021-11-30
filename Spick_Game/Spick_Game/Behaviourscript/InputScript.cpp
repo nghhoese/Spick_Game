@@ -1,4 +1,5 @@
 #include "InputScript.hpp"
+#include "ChangeSceneBehaviour.hpp"
 
 spic::KeyCode W = spic::KeyCode::W;
 spic::KeyCode A = spic::KeyCode::A;
@@ -83,6 +84,11 @@ const void InputScript::checkKeys()
 	}
 	else if (input->GetKey(EP)) {
 		// opent een cheats menu
+		std::shared_ptr<spic::Component> script = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0]->GetComponentByName("CheatsMenuScript");
+
+		if (script != nullptr) {
+			script->OnClick();
+		}
 	}
 	else if (input->GetKey(F)) {
 		// toggle fps

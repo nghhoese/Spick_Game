@@ -40,11 +40,14 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Scenes\GameOverSceneBuilder.cpp">
-		<Filter>Source Files</Filter>
-	</ClCompile>
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Behaviourscript\InputScript.cpp">
-		<Filter>Source Files</Filter>
-	</ClCompile>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenes\CheatsMenuBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.hpp">
@@ -72,9 +75,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Scenes\GameOverSceneBuilder.hpp">
-		<Filter>Source Files</Filter>
-	</ClInclude>
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="Behaviourscript\InputScript.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenes\CheatsMenuBuilder.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

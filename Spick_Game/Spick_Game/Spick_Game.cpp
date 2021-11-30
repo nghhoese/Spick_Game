@@ -16,6 +16,7 @@
 #include "Scenes/LevelSceneBuilder.hpp"
 #include "Scenes/GameOverSceneBuilder.hpp"
 #include "Behaviourscript/InputScript.hpp"
+#include "Scenes/CheatsMenuBuilder.hpp"
 
 namespace fs = std::filesystem;
 
@@ -61,6 +62,11 @@ int main() {
     std::shared_ptr<spic::Scene> gameOverScene = gameOverSceneBuilder->BuildScene();
     engine->AddScene(gameOverScene);
     gameOverSceneBuilder->BuildScript(engine);
+
+    std::shared_ptr<CheatsMenuBuilder> cheatsMenuBuilder = std::make_shared<CheatsMenuBuilder>();
+    std::shared_ptr<spic::Scene> cheatsMenuScene = cheatsMenuBuilder->BuildScene(engine);
+    engine->AddScene(cheatsMenuScene);
+    cheatsMenuBuilder->BuildScript(engine);
 
     engine->SetActiveScene(mainMenu);
     engine->StartGameLoop();
