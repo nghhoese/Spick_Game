@@ -9,6 +9,8 @@
 class CheatsMenuBuilder : public SceneBuilder {
 private:
 	std::shared_ptr<spic::Button> buttonDamageLess;
+	std::shared_ptr<spic::Button> buttonUpMovementSpeed;
+	std::shared_ptr<spic::Button> buttonMakeUndetectable;
 	std::shared_ptr<spic::Button> buttonBackToLevel;
 public:
 	void BuildScript(spic::Engine* engine);
