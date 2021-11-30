@@ -23,6 +23,7 @@ public:
     void OnRender();
     void OnTriggerEnter2D(const Collider& collider);
     void OnClick();
+    void CalculateAmountToMove();
     /**
      * @brief Sent when another object leaves a trigger collider
      *        attached to this object (2D physics only).

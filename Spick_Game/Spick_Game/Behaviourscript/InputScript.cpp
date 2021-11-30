@@ -36,7 +36,6 @@ const void InputScript::checkMouseButtons()
 			PlayerComponent->Shoot();
 			PlayerComponent->notClicked = false;
 		}
-		
 	}
 	else if (input->GetMouseButton(RIGHT)) {
 		// reloaden

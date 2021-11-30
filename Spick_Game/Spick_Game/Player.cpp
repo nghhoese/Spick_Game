@@ -142,12 +142,15 @@ void Player::Shoot()
 
 	bulletObject->AddComponent(sprite);
 	sprite->SetSprite("assets/bullet.bmp");
+	sprite->SetPlayerBool(true);
 
-	transfrom.position.x = GetGameObject()->getTransform()->position.x;
-	transfrom.position.y = GetGameObject()->getTransform()->position.y;
+	transfrom.position.x = GetGameObject()->getTransform()->position.x + 20;
+	transfrom.position.y = GetGameObject()->getTransform()->position.y + 32;
 	transfrom.scale = 0.75;
 
-	std::shared_ptr<Bullet> bullet = std::make_shared<Bullet>(transfrom.position, InputComponent->checkMousePosition(), 10);
+
+	std::shared_ptr<Bullet> bullet = std::make_shared<Bullet>(transfrom.position, InputComponent->checkMousePosition(), 20);
 	bulletObject->AddComponent(bullet);
 	bulletObject->setTransform(&transfrom);
+	bullet->CalculateAmountToMove();
 }

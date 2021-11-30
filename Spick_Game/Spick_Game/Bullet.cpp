@@ -4,22 +4,22 @@
 #include "API_Headers/Scene.hpp"
 Bullet::Bullet(spic::Point pos, spic::Point direction, double speed)
 {
+	this->position = pos;
 	this->direction = direction;
 	this->speed = speed;
-	float distance = (float)sqrt(pow(direction.x - pos.x, 2) + pow(direction.y - pos.y, 2));
-	amountToMoveX = (((direction.x - pos.x) / distance) * speed);
-	amountToMoveY = (((direction.y - pos.y) / distance) * speed);
 }
 
 Bullet::Bullet()
 {
+
 }
 
 void Bullet::Update()
 {
 	auto trans = *GetGameObject()->getTransform();
-	trans.position.x += amountToMoveX;
-	trans.position.y += amountToMoveY;
+	spic::Time time;
+	trans.position.x += amountToMoveX * speed;
+	trans.position.y += amountToMoveY * speed;
 	GetGameObject()->setTransform(&trans);
 }
 
@@ -47,6 +47,13 @@ void Bullet::OnTriggerEnter2D(const Collider& collider)
 
 void Bullet::OnClick()
 {
+}
+
+void Bullet::CalculateAmountToMove()
+{
+	float distance = (float)sqrt(pow(position.x - GetGameObject()->getScene()->GetActiveCamera()->getX() - direction.x, 2) + pow(position.y - GetGameObject()->getScene()->GetActiveCamera()->getY() - direction.y, 2));
+	amountToMoveX = (((position.x - GetGameObject()->getScene()->GetActiveCamera()->getX()) - direction.x) * -1) / distance;
+	amountToMoveY = (((position.y - GetGameObject()->getScene()->GetActiveCamera()->getY()) - direction.y) * -1) / distance;
 }
 
 void Bullet::OnTriggerExit2D(const Collider& collider)
