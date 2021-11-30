@@ -7,12 +7,15 @@
 #include <API_Headers/Time.hpp>
 #include "API_Headers/Importation.hpp"
 #include "../Player.hpp"
+#include <IOSTREAM>
 
 class InputScript : public spic::BehaviourScript {
 private:
 	spic::Importation* input;
 	spic::Time* time;
 	float deltaTime;
+	bool speedup = false;
+	bool speeddown = false;
 public:
 	InputScript();
 	const void checkMouseButtons();

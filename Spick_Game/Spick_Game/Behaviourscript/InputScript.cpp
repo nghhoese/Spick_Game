@@ -74,9 +74,36 @@ const void InputScript::checkKeys()
 	}
 	else if (input->GetKey(PU)) {
 		// gameplay snelheid versnellen
+		if (!speedup) {
+			std::cout << "speedup: ";
+			speedup = true;
+			if (time->TimeScale() == 0.5) {
+				time->TimeScale(1.0);
+				std::cout << time->TimeScale();
+			}
+			else if (time->TimeScale() == 1.0) {
+				time->TimeScale(1.9);
+				std::cout << time->TimeScale();
+			}
+		}
+		
+
 	}
 	else if (input->GetKey(PD)) {
-		// gameplay snelheid vertragen
+		
+		if (!speeddown) {
+			std::cout << "slowdown: ";
+			speeddown = true;
+			if (time->TimeScale() == 1.9) {
+				time->TimeScale(1.0);
+				std::cout << time->TimeScale();
+			}
+			else if (time->TimeScale() == 1.0) {
+				time->TimeScale(0.5);
+				std::cout << time->TimeScale();
+			}
+		}
+		
 	}
 	else if (input->GetKey(P)) {
 		// pauze knop
@@ -88,7 +115,8 @@ const void InputScript::checkKeys()
 		// toggle fps
 	}
 	else {
-
+		speedup = false;
+		speeddown = false;
 	}
 }
 
