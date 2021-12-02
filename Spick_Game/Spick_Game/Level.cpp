@@ -61,6 +61,11 @@ void Level::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, 
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-wood-floor");
                     break;
 
+                // elevator
+                case 26:
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "elevator");
+                    break;
+
                 // red wall
                 case 34:
                     tileObject->AddTag("wall");
@@ -91,6 +96,12 @@ void Level::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, 
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-blue-nazi-stone-wall");
                     break;
 
+                // red-grey-brown-wall
+                case 76:
+                    tileObject->AddTag("wall");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "red-grey-brown-wall");
+                    break;
+
                 // dark blue nazi stone wall
                 case 80:
                     tileObject->AddTag("wall");
@@ -99,6 +110,11 @@ void Level::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, 
 
                 // bright vent
                 case 105:
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "bright-vent");
+                    break;
+
+                // dark vent
+                case 106:
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "bright-vent");
                     break;
 
@@ -155,7 +171,7 @@ void Level::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, 
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "inside_4");
                     break;
 
-                // top right angled red half wall
+                // top left angled red half wall
                 case 123:
                     tileObject->AddTag("wall");
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "outside_1");
@@ -167,16 +183,88 @@ void Level::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, 
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "outside_2");
                     break;
 
-                // top right angled red half wall
+                // bottom left angled red half wall
                 case 125:
                     tileObject->AddTag("wall");
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "outside_3");
                     break;
 
-                // top right angled red half wall
+                // bottom right angled red half wall
                 case 126:
                     tileObject->AddTag("wall");
                     BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "outside_4");
+                    break;
+
+                // bottom right angled stone half wall
+                case 127:
+                    tileObject->AddTag("wall");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_bottom-right-corner");
+                    break;
+
+                // top right angled stone half wall
+                case 128:
+                    tileObject->AddTag("wall");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_top-right-corner");
+                    break; 
+
+                // top left angled stone half wall
+                case 129:
+                    tileObject->AddTag("wall");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_top-left-corner");
+                    break; 
+
+                // bottom left angled stone half wall
+                case 130:
+                    tileObject->AddTag("wall");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_bottom-left-corner");
+                    break;
+
+                // top half stone wall
+                case 131:
+                    tileObject->AddTag("wall");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_top");
+                    break;
+
+                // left half stone wall
+                case 132:
+                    tileObject->AddTag("wall");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_left");
+                    break;
+
+                // bottom half stone wall
+                case 133:
+                    tileObject->AddTag("wall");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_bottom");
+                    break;
+
+                // right half stone wall
+                case 134:
+                    tileObject->AddTag("wall");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_right");
+                    break;
+
+                // top left angled red stone wall
+                case 135:
+                    tileObject->AddTag("wall");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_top-left");
+                    break;
+
+                // top right angled red stone wall
+                case 136:
+                    tileObject->AddTag("wall");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_top-right");
+                    break;
+
+                // bottom left angled red stone wall
+                case 137:
+                    tileObject->AddTag("wall");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_bottom-left");
+                    break;
+
+                // bottom right angled red stone wall
+                case 138:
+                    tileObject->AddTag("wall");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_bottom-right");
                     break;
 
                 }              
