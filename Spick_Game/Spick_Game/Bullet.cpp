@@ -2,11 +2,14 @@
 #include <math.h>
 #include "API_Headers/Time.hpp"
 #include "API_Headers/Scene.hpp"
-Bullet::Bullet(spic::Point pos, spic::Point direction, double speed)
+#include "Collision.hpp"
+
+Bullet::Bullet(spic::Point pos, spic::Point direction, double speed, int damage)
 {
 	this->position = pos;
 	this->direction = direction;
 	this->speed = speed;
+	this->damage = damage;
 }
 
 Bullet::Bullet()
@@ -21,6 +24,18 @@ void Bullet::Update()
 	trans.position.x += amountToMoveX * speed;
 	trans.position.y += amountToMoveY * speed;
 	GetGameObject()->setTransform(&trans);
+	if (Collision::AABB(GetGameObject(), "guard")) {
+		if (hit) {
+			auto enemy = Collision::AABB(GetGameObject(), "guard")->GetGameObject()->GetComponent<spic::BehaviourScript>();
+			std::shared_ptr<Enemy> enemtObj = std::dynamic_pointer_cast<Enemy>(enemy);
+			enemtObj->setHealthpoints(enemtObj->getHealthpoints() - damage);
+			hit = false;
+			std::cout << "hit" << std::endl;
+		}
+	}
+	else {
+		hit = true;
+	}
 }
 
 void Bullet::OnAwake()

@@ -1,5 +1,6 @@
 #include "Player.hpp"
 #include <API_Headers/Engine.hpp>
+#include <API_Headers/BoxCollider.hpp>
 
 void Player::OnAwake()
 {
@@ -83,6 +84,13 @@ void Player::OnUpdate()
 		}
 	}
 
+	// nog weghalen is om te testen
+	if (isDamageless) {
+		if (this->healthpoints > 0) {
+			this->healthpoints -= 1;
+		}
+	}
+
 	// Update Healthpoints in HUD
 	std::shared_ptr<spic::GameObject> healthObject = GetGameObject()->getScene()->GetGameObjectsByTag("hp")[0];
 	std::shared_ptr<spic::Text> healthText = std::dynamic_pointer_cast<spic::Text>(healthObject);
@@ -133,7 +141,6 @@ void Player::OnTriggerEnter2D(const Collider& collider)
 Player::Player(spic::Engine* engine)
 {
 	this->engine = engine;
-	sprite = std::make_shared<spic::Sprite>();
 }
 
 void Player::OnTriggerExit2D(const Collider& collider)
@@ -151,16 +158,20 @@ void Player::Shoot()
 	GetGameObject()->getScene()->AddGameObject(bulletObject);
 	spic::Transform transfrom = *bulletObject->getTransform();
 
+	sprite = std::make_shared<spic::Sprite>();
 	bulletObject->AddComponent(sprite);
 	sprite->SetSprite("assets/bullet.bmp");
 	sprite->SetPlayerBool(true);
-
+	bulletObject->AddTag("PlayerBullet");
 	transfrom.position.x = GetGameObject()->getTransform()->position.x + 20;
 	transfrom.position.y = GetGameObject()->getTransform()->position.y + 32;
 	transfrom.scale = 0.75;
 
-
-	std::shared_ptr<Bullet> bullet = std::make_shared<Bullet>(transfrom.position, InputComponent->checkMousePosition(), 20);
+	std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
+	boxCollider->Height(55);
+	boxCollider->Width(55);
+	bulletObject->AddComponent(boxCollider);
+	std::shared_ptr<Bullet> bullet = std::make_shared<Bullet>(transfrom.position, InputComponent->checkMousePosition(), 20, bulletDamage);
 	bulletObject->AddComponent(bullet);
 	bulletObject->setTransform(&transfrom);
 	bullet->CalculateAmountToMove();

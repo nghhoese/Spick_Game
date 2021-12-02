@@ -1,4 +1,7 @@
 #include "Enemy.hpp"
+#include "API_Headers/Scene.hpp"
+#include <API_Headers/Sprite.hpp>
+#include <API_Headers/BoxCollider.hpp>
 
 void Enemy::OnAwake()
 {
@@ -10,6 +13,15 @@ void Enemy::OnStart()
 
 void Enemy::OnUpdate()
 {
+	if (healthpoints < 0) {
+		auto trans = *GetGameObject()->getTransform();
+		trans.scale = 0.01;
+		trans.position.x = -20;
+		trans.position.x = -20;
+		GetGameObject()->setTransform(&trans);
+		GetGameObject()->GetComponent<spic::Sprite>()->OnRender();
+	
+	}
 }
 
 void Enemy::OnRender()

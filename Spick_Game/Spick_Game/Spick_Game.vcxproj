@@ -163,6 +163,7 @@
     <ClCompile Include="Behaviourscript\InputScript.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Scenes\CheatsMenuBuilder.cpp" />
     <ClCompile Include="Scenes\GameOverSceneBuilder.cpp" />
     <ClCompile Include="Scenes\MainMenuBuilder.cpp" />
     <ClCompile Include="Scenes\LevelSceneBuilder.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="Behaviourscript\InputScript.hpp" />
     <ClInclude Include="Level.hpp" />
     <ClInclude Include="Player.hpp" />
+    <ClInclude Include="Scenes\CheatsMenuBuilder.hpp" />
     <ClInclude Include="Scenes\GameOverSceneBuilder.hpp" />
     <ClInclude Include="Scenes\MainMenuBuilder.hpp" />
     <ClInclude Include="Scenes\LevelSceneBuilder.hpp" />

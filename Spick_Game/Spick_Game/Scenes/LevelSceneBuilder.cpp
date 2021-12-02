@@ -37,3 +37,13 @@ std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(spic::Engine* en
 
     return GameScene;
 }
+
+void LevelSceneBuilder::BuildLevel(spic::Engine* engine, int levelNumber) {
+    std::shared_ptr<spic::GameObject> InputObject = std::make_shared<spic::GameObject>("Input");
+    std::shared_ptr<InputScript> inputScript = std::make_shared<InputScript>();
+    InputObject->AddComponent(inputScript);
+
+    std::shared_ptr<spic::Scene> levelScene = BuildLevelScene(engine, levelNumber);
+    levelScene->AddGameObject(InputObject);
+    engine->AddScene(levelScene);
+}

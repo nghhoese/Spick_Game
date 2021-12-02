@@ -1,4 +1,5 @@
 #include "InputScript.hpp"
+#include "ChangeSceneBehaviour.hpp"
 #include "../Collision.hpp"
 
 spic::KeyCode W = spic::KeyCode::W;
@@ -13,6 +14,11 @@ spic::KeyCode PU = spic::KeyCode::PAGE_UP;
 spic::KeyCode PD = spic::KeyCode::PAGE_DOWN;
 spic::KeyCode P = spic::KeyCode::P;
 spic::KeyCode EP = spic::KeyCode::EQUAL_AND_PLUS;
+spic::KeyCode UA = spic::KeyCode::UP_ARROW;
+spic::KeyCode DA = spic::KeyCode::DOWN_ARROW;
+spic::KeyCode L = spic::KeyCode::L;
+spic::KeyCode U = spic::KeyCode::U;
+spic::KeyCode Y = spic::KeyCode::Y;
 
 spic::MouseButton LEFT = spic::MouseButton::LEFT;
 spic::MouseButton MIDDLE = spic::MouseButton::MIDDLE;
@@ -77,13 +83,16 @@ const void InputScript::checkKeys()
 	if (input->GetKey(W)) {
 		if (PlayerComponent != nullptr) {
 
-			if (Collision::AABB(objk1.get(), "wall")) {
+			if (Collision::AABB(objk1.get(), "wall") ) {
 				if (Collision::AABB(objk1.get(), "wall")->GetGameObject()->getTransform()->position.y < PlayerComponent->yPlayer) {
 					PlayerComponent->yPlayer += (PlayerComponent->speed);
 				}
 				else {
 					PlayerComponent->yPlayer -= (PlayerComponent->speed);
 				}
+			}
+			else if(Collision::AABB(objk1.get(), "guard")){
+				PlayerComponent->yPlayer += (PlayerComponent->speed);
 			}
 			else {
 				PlayerComponent->yPlayer -= (PlayerComponent->speed);
@@ -102,6 +111,9 @@ const void InputScript::checkKeys()
 
 				}
 			}
+			else if (Collision::AABB(objk1.get(), "guard")) {
+				PlayerComponent->xPlayer += (PlayerComponent->speed);
+			}
 			else {
 				PlayerComponent->xPlayer -= (PlayerComponent->speed);
 
@@ -119,6 +131,9 @@ const void InputScript::checkKeys()
 
 				}
 			}
+			else if (Collision::AABB(objk1.get(), "guard")) {
+				PlayerComponent->yPlayer -= (PlayerComponent->speed);
+			}
 			else {
 				PlayerComponent->yPlayer += (PlayerComponent->speed);
 
@@ -135,6 +150,9 @@ const void InputScript::checkKeys()
 					PlayerComponent->xPlayer += (PlayerComponent->speed);
 
 				}
+			}
+			else if (Collision::AABB(objk1.get(), "guard")) {
+				PlayerComponent->xPlayer -= (PlayerComponent->speed);
 			}
 			else {
 				PlayerComponent->xPlayer += (PlayerComponent->speed);
@@ -201,7 +219,44 @@ const void InputScript::checkKeys()
 	}
 	else if (input->GetKey(EP)) {
 		// opent een cheats menu
+		std::shared_ptr<spic::Component> script = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0]->GetComponentByName("CheatsMenuScript");
+
+		if (script != nullptr) {
+			script->OnClick();
+		}
 	}
+	else if (input->GetKey(Y)) {
+		// instakill the player
+		PlayerComponent->currentHealthPoints = 0;
+		engine->setGameOver(true);
+	}
+	else if (input->GetKey(UA)) {
+		// movement speed up
+		PlayerComponent->speed += 1;
+	}
+	else if (input->GetKey(DA)) {
+		// movement speed down
+		if (PlayerComponent->speed > 0) {
+			PlayerComponent->speed -= 1;
+		}
+	}
+	else if (input->GetKey(L)) {
+		// enable/disable damageless
+		if (clicked) {
+			if (PlayerComponent->isDamageless) {
+				PlayerComponent->isDamageless = false;
+			}
+			else {
+				PlayerComponent->isDamageless = true;
+			}
+			clicked = false;
+		}
+	}
+
+	//else if (input->GetKey(U)) {
+	//	// make player undedectable
+	//}
+
 	else if (input->GetKey(F)) {
 		if (clicked) {
 			if (loadFps) {
