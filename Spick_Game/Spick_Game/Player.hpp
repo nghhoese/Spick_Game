@@ -22,6 +22,7 @@ private:
     int coins = 10;
     int ammo = 0;
     int bulletSpeed = 10;
+    int bulletDamage = 30;
     spic::Point aimAngle;
     spic::Point aimPos;
     std::vector<std::shared_ptr<spic::GameObject>> bullets;
