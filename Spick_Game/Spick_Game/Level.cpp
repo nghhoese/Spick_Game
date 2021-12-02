@@ -302,6 +302,7 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
 
                     std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>();
                     enemy->setHealthpoints(100);
+                    enemy->setSpeed(1.5);
                     enemy->setDamagePerBullet(40);
                     enemy->setPath("assets/enemy_green.bmp");
                     std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
@@ -339,6 +340,7 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
 
                     std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>();
                     enemy->setHealthpoints(75);
+                    enemy->setSpeed(2.5);
                     enemy->setDamagePerBullet(50);
                     enemy->setPath("assets/enemy_red.bmp");
 
@@ -351,7 +353,6 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     RedGuardObject->AddComponent(enemy);
                     RedGuardObject->setTransform(&transfrom);
                     enemy->OnStart();
-
                 }
             }
 
@@ -377,6 +378,7 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
 
                     std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>();
                     enemy->setHealthpoints(150);
+                    enemy->setSpeed(1.5);
                     enemy->setDamagePerBullet(50);
                     enemy->setPath("assets/enemy_blue.bmp");
 
@@ -385,7 +387,6 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     BlueGuardObject->AddComponent(enemy);
                     BlueGuardObject->setTransform(&transfrom);
                     enemy->OnStart();
-
                 }
                 
             }

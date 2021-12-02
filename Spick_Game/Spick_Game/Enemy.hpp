@@ -30,4 +30,7 @@ public:
 
     void setDamagePerBullet(const int& damagePerBullet);
     const int& getDamagePerBullet();
+
+    void setSpeed(const double& speed) { this->speed = speed; }
+    const int& getSpeed() { return this->speed; }
 };
