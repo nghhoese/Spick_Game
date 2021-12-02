@@ -250,6 +250,9 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
 
                     std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
                     boxCollider->Height(55);
+                    boxCollider->ShowBoxBool(true);
+                    boxCollider->SetPlayerBool(true);
+
                     boxCollider->Width(55);
                     playerObject->AddComponent(boxCollider);
                 }
@@ -303,8 +306,10 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     enemy->setDamagePerBullet(40);
                     enemy->setPath("assets/enemy_green.bmp");
                     std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
-                    boxCollider->Height(35);
-                    boxCollider->Width(35);
+                    boxCollider->Height(58);
+                    boxCollider->Width(50);
+                    boxCollider->ShowBoxBool(true);
+
                     GreenGuardObject->AddComponent(boxCollider);
                     GreenGuardObject->AddComponent(sprite);
                     sprite->SetSprite(enemy->getPath());
@@ -336,8 +341,9 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     enemy->setDamagePerBullet(50);
                     enemy->setPath("assets/enemy_red.bmp");
                     std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
-                    boxCollider->Height(35);
-                    boxCollider->Width(35);
+                    boxCollider->Height(58);
+                    boxCollider->Width(50);
+                    boxCollider->ShowBoxBool(true);
                     RedGuardObject->AddComponent(boxCollider);
                     RedGuardObject->AddComponent(sprite);
                     sprite->SetSprite(enemy->getPath());

@@ -2,7 +2,7 @@
 #include <math.h>
 #include "API_Headers/Time.hpp"
 #include "API_Headers/Scene.hpp"
-#include "Collision.hpp"
+#include <API_Headers/Collision.hpp>
 
 Bullet::Bullet(spic::Point pos, spic::Point direction, double speed, int damage)
 {
