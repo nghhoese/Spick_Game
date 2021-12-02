@@ -14,14 +14,16 @@
 #include <iostream>
 #include <API_Headers/Engine.hpp>
 #include "Behaviourscript/InputScript.hpp"
+#include "HUD.hpp"
 
 class Player : public spic::BehaviourScript {
 private:
-    int healthpoints = 1000;
+    int healthpoints = 100;
     int currentCoins;
-    int coins = 10;
+    int coins = 0;
     int ammo = 0;
     int bulletSpeed = 10;
+    int bulletDamage = 30;
     spic::Point aimAngle;
     spic::Point aimPos;
     std::vector<std::shared_ptr<spic::GameObject>> bullets;

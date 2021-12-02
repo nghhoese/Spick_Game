@@ -18,10 +18,10 @@ std::shared_ptr<spic::Scene> MainMenuBuilder::BuildScene() {
     background->setTransform(&transfrom);
 
 
-    buttonPlay = std::make_shared<spic::Button>("", 314, 165, 72, 134, "StartGameScript");
+    buttonPlay = std::make_shared<spic::Button>("", 314, 165, 134, 72, "StartGameScript");
     scene->AddGameObject(buttonPlay);
 
-    buttonOptions = std::make_shared<spic::Button>("", 295, 245, 72, 180, "OpenOptionsScript");
+    buttonOptions = std::make_shared<spic::Button>("button", 295, 245, 180, 72, "OpenOptionsScript");
     scene->AddGameObject(buttonOptions);
     return scene;
 }
@@ -29,4 +29,6 @@ std::shared_ptr<spic::Scene> MainMenuBuilder::BuildScene() {
 void MainMenuBuilder::BuildScript(spic::Engine* engine) {
     std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("StartGameScript", "level1", engine);
     buttonPlay->AddComponent(scriptPlay);
+    std::shared_ptr<ChangeSceneBehaviour> scriptOptions = std::make_shared<ChangeSceneBehaviour>("OpenOptionsScript", "level1", engine);
+    buttonOptions->AddComponent(scriptOptions);
 }

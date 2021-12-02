@@ -23,7 +23,7 @@ void Enemy::OnStart()
 
 void Enemy::OnUpdate()
 {
-	if (healthpoints < 0) {
+	if (this->healthpoints < 0) {
 		auto trans = *GetGameObject()->getTransform();
 		trans.scale = 0.01;
 		trans.position.x = -20;

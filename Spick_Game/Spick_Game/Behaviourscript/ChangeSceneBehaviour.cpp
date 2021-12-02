@@ -11,22 +11,14 @@ ChangeSceneBehaviour::ChangeSceneBehaviour(std::string name, std::string scene, 
 
 void ChangeSceneBehaviour::OnClick()
 {
-	std::cout << _scene << std::endl;
-
 	if (_engine->getGameOver()) {
 
+		// Reset levels
 		std::shared_ptr<LevelSceneBuilder> levelSceneBuilder = std::make_shared<LevelSceneBuilder>();
-		std::shared_ptr<spic::Scene> levelOneScene = _engine->GetSceneByName("level1");
-		levelOneScene = levelSceneBuilder->BuildLevelScene(_engine, 1);
-		_engine->AddScene(levelOneScene);
 
-		std::shared_ptr<spic::Scene> levelTwoScene = _engine->GetSceneByName("level2");
-		levelTwoScene = levelSceneBuilder->BuildLevelScene(_engine, 2);
-		_engine->AddScene(levelTwoScene);
-
-		std::shared_ptr<spic::Scene> levelThreeScene = _engine->GetSceneByName("level3");
-		levelThreeScene = levelSceneBuilder->BuildLevelScene(_engine, 3);
-		_engine->AddScene(levelThreeScene);
+		levelSceneBuilder->BuildLevel(_engine, 1);
+		levelSceneBuilder->BuildLevel(_engine, 2);
+		levelSceneBuilder->BuildLevel(_engine, 3);
 
 		_engine->setGameOver(false);
 	}
