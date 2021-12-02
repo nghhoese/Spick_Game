@@ -8,11 +8,11 @@ private:
     int healthpoints;
     int damagePerBullet;
     std::string path;
-    bool isMoving = false;
     bool isTurned = false;
     int turnCount = 0;
     double speed = 1.5;
 public:
+    bool isAlive = true;
     void OnAwake();
     void OnStart();
     void OnUpdate();

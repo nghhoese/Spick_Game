@@ -22,15 +22,16 @@ void Enemy::OnStart()
 void Enemy::OnUpdate()
 {
 	if (this->healthpoints < 0) {
+        isAlive = false;
 		auto trans = *GetGameObject()->getTransform();
 		trans.scale = 0.01;
-		trans.position.x = -20;
-		trans.position.x = -20;
+		trans.position.x = -50;
+		trans.position.y = -10;
 		GetGameObject()->setTransform(&trans);
 		GetGameObject()->GetComponent<spic::Sprite>()->OnRender();
 	}
 
-    if (!isMoving)
+    if (isAlive)
     {
         auto trans = *GetGameObject()->getTransform();
 
