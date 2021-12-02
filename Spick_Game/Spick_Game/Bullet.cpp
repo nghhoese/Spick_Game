@@ -30,7 +30,6 @@ void Bullet::Update()
 			std::shared_ptr<Enemy> enemtObj = std::dynamic_pointer_cast<Enemy>(enemy);
 			enemtObj->setHealthpoints(enemtObj->getHealthpoints() - damage);
 			hit = false;
-			std::cout << "hit" << std::endl;
 		}
 	}
 	else {

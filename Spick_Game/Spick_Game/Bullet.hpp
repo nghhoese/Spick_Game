@@ -2,12 +2,7 @@
 #include "API_Headers/BehaviourScript.hpp"
 #include "API_Headers/Point.hpp"
 #include "API_Headers/GameObject.hpp"
-
-
 #include "Enemy.hpp"
-
-
-
 
 class Bullet : public spic::BehaviourScript {
 public:
