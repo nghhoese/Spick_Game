@@ -289,7 +289,9 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
 
                     std::shared_ptr<spic::GameObject> GreenGuardObject = std::make_shared<spic::GameObject>("GreenGuard");
+                    GreenGuardObject->AddTag("green");
                     GreenGuardObject->AddTag("guard");
+
 
                     scene->AddGameObject(GreenGuardObject);
                     spic::Transform transfrom = *GreenGuardObject->getTransform();
@@ -310,6 +312,8 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     sprite->SetSprite(enemy->getPath());
                     GreenGuardObject->AddComponent(enemy);
                     GreenGuardObject->setTransform(&transfrom);
+                    enemy->OnStart();
+
                 }
             } 
 
@@ -323,7 +327,9 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
 
                     std::shared_ptr<spic::GameObject> RedGuardObject = std::make_shared<spic::GameObject>("GreenGuard");
+                    RedGuardObject->AddTag("red");
                     RedGuardObject->AddTag("guard");
+
                     scene->AddGameObject(RedGuardObject);
                     spic::Transform transfrom = *RedGuardObject->getTransform();
 
@@ -335,6 +341,7 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     enemy->setHealthpoints(75);
                     enemy->setDamagePerBullet(50);
                     enemy->setPath("assets/enemy_red.bmp");
+
                     std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
                     boxCollider->Height(35);
                     boxCollider->Width(35);
@@ -343,6 +350,8 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     sprite->SetSprite(enemy->getPath());
                     RedGuardObject->AddComponent(enemy);
                     RedGuardObject->setTransform(&transfrom);
+                    enemy->OnStart();
+
                 }
             }
 
@@ -356,6 +365,8 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
 
                     std::shared_ptr<spic::GameObject> BlueGuardObject = std::make_shared<spic::GameObject>("GreenGuard");
+                    BlueGuardObject->AddTag("blue");
+                    BlueGuardObject->AddTag("guard");
 
                     scene->AddGameObject(BlueGuardObject);
                     spic::Transform transfrom = *BlueGuardObject->getTransform();
@@ -373,9 +384,12 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     sprite->SetSprite(enemy->getPath());
                     BlueGuardObject->AddComponent(enemy);
                     BlueGuardObject->setTransform(&transfrom);
-                }
-            }
+                    enemy->OnStart();
 
+                }
+                
+            }
+            
         }
     }
 

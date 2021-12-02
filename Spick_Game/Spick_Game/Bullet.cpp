@@ -27,7 +27,6 @@ void Bullet::Update()
 		auto enemy = Collision::AABB(GetGameObject(), "guard")->GetGameObject()->GetComponent<spic::BehaviourScript>();
 		std::shared_ptr<Enemy> enemtObj = std::dynamic_pointer_cast<Enemy>(enemy);
         enemtObj->setHealthpoints(enemtObj->getHealthpoints() - 30);
-		
 	}
 }
 

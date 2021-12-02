@@ -2,12 +2,23 @@
 #include "API_Headers/Scene.hpp"
 #include <API_Headers/Sprite.hpp>
 #include <API_Headers/BoxCollider.hpp>
+#include "Collision.hpp"
+
+
+
 void Enemy::OnAwake()
 {
 }
 
 void Enemy::OnStart()
 {
+    auto trans = *GetGameObject()->getTransform();
+    double Delta_x = (trans.position.x);
+    double Delta_y = (trans.position.y);
+
+    double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
+    trans.rotation = Result + (rand() % 180 + 90);
+    GetGameObject()->setTransform(&trans);
 }
 
 void Enemy::OnUpdate()
@@ -19,9 +30,50 @@ void Enemy::OnUpdate()
 		trans.position.x = -20;
 		GetGameObject()->setTransform(&trans);
 		GetGameObject()->GetComponent<spic::Sprite>()->OnRender();
-	
 	}
+
+    if (!isMoving)
+    {
+        auto trans = *GetGameObject()->getTransform();
+
+        auto tag = GetGameObject()->GetTags()[0];
+        // move till destination is reached
+        if (tag == "red")
+        {
+            //up and down
+            trans.position.y += speed;
+        }
+        else if (tag == "blue")
+        {
+            //left and right
+            trans.position.x += speed;
+        }
+        else
+        {
+            trans.position.x += speed;
+            trans.position.y += speed;
+        }
+
+        if (Collision::AABB(GetGameObject(), "wall") && !isTurned)
+        {
+            isTurned = true;
+            speed = speed * -1;
+            double Result = (atan2(trans.position.y, trans.position.x) * 180.0000) / 3.14159265;
+            trans.rotation = Result + (rand() % 180 + 90);
+
+        }
+        else {
+            turnCount++;
+            if (turnCount == 64)
+            {
+                isTurned = false;
+                turnCount = 0;
+            }
+        }
+        GetGameObject()->setTransform(&trans);
+    }
 }
+
 
 void Enemy::OnRender()
 {
