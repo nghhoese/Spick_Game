@@ -2,9 +2,7 @@
 #include "API_Headers/Scene.hpp"
 #include <API_Headers/Sprite.hpp>
 #include <API_Headers/BoxCollider.hpp>
-#include "Collision.hpp"
-
-
+#include <API_Headers/Collision.hpp>
 
 void Enemy::OnAwake()
 {
