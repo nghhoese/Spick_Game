@@ -4,11 +4,12 @@
 #include "API_Headers/Scene.hpp"
 #include "Collision.hpp"
 
-Bullet::Bullet(spic::Point pos, spic::Point direction, double speed)
+Bullet::Bullet(spic::Point pos, spic::Point direction, double speed, int damage)
 {
 	this->position = pos;
 	this->direction = direction;
 	this->speed = speed;
+	this->damage = damage;
 }
 
 Bullet::Bullet()
@@ -24,10 +25,16 @@ void Bullet::Update()
 	trans.position.y += amountToMoveY * speed;
 	GetGameObject()->setTransform(&trans);
 	if (Collision::AABB(GetGameObject(), "guard")) {
-		auto enemy = Collision::AABB(GetGameObject(), "guard")->GetGameObject()->GetComponent<spic::BehaviourScript>();
-		std::shared_ptr<Enemy> enemtObj = std::dynamic_pointer_cast<Enemy>(enemy);
-        enemtObj->setHealthpoints(enemtObj->getHealthpoints() - 30);
-		
+		if (hit) {
+			auto enemy = Collision::AABB(GetGameObject(), "guard")->GetGameObject()->GetComponent<spic::BehaviourScript>();
+			std::shared_ptr<Enemy> enemtObj = std::dynamic_pointer_cast<Enemy>(enemy);
+			enemtObj->setHealthpoints(enemtObj->getHealthpoints() - damage);
+			hit = false;
+			std::cout << "hit" << std::endl;
+		}
+	}
+	else {
+		hit = true;
 	}
 }
 

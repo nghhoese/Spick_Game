@@ -237,7 +237,7 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
 
                     transfrom.position.x = std::get<0>(position);
                     transfrom.position.y = std::get<1>(position);
-                    transfrom.scale = 0.75;
+                    transfrom.scale = 0.65;
                     std::shared_ptr<Player> player = std::make_shared<Player>(engine);
                     playerObject->AddComponent(player);
                     playerObject->setTransform(&transfrom);
@@ -296,7 +296,7 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
 
                     transfrom.position.x = std::get<0>(position);
                     transfrom.position.y = std::get<1>(position);
-                    transfrom.scale = 0.75;
+                    transfrom.scale = 0.65;
 
                     std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>();
                     enemy->setHealthpoints(100);
@@ -329,7 +329,7 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
 
                     transfrom.position.x = std::get<0>(position);
                     transfrom.position.y = std::get<1>(position);
-                    transfrom.scale = 0.75;
+                    transfrom.scale = 0.65;
 
                     std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>();
                     enemy->setHealthpoints(75);
@@ -362,7 +362,7 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
 
                     transfrom.position.x = std::get<0>(position);
                     transfrom.position.y = std::get<1>(position);
-                    transfrom.scale = 0.75;
+                    transfrom.scale = 0.65;
 
                     std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>();
                     enemy->setHealthpoints(150);

@@ -171,7 +171,7 @@ void Player::Shoot()
 	boxCollider->Height(55);
 	boxCollider->Width(55);
 	bulletObject->AddComponent(boxCollider);
-	std::shared_ptr<Bullet> bullet = std::make_shared<Bullet>(transfrom.position, InputComponent->checkMousePosition(), 20);
+	std::shared_ptr<Bullet> bullet = std::make_shared<Bullet>(transfrom.position, InputComponent->checkMousePosition(), 20, bulletDamage);
 	bulletObject->AddComponent(bullet);
 	bulletObject->setTransform(&transfrom);
 	bullet->CalculateAmountToMove();
