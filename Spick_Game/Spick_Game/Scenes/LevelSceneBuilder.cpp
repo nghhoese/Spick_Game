@@ -21,19 +21,24 @@ std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(spic::Engine* en
     GameScene->SetActiveCamera("mainCamera");
 
     spic::Color textColor = spic::Color(1.0, 1.0, 1.0, 1.0);
-    std::shared_ptr<spic::Text> hp = std::make_shared<spic::Text>("Health: 0", "Capsmall", 30, textColor, 0, 0);
+    std::shared_ptr<spic::Text> hp = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, 0, 0);
     hp->AddTag("hp");
-    std::shared_ptr<spic::Text> coins = std::make_shared<spic::Text>("Coins: 0", "Capsmall", 30, textColor, 175, 0);
+    std::shared_ptr<spic::Text> coins = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, 175, 0);
     coins->AddTag("coins");
     std::shared_ptr<spic::Text> fps = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, 870, 0);
     fps->AddTag("fps");
     std::shared_ptr<spic::Text> paused = std::make_shared<spic::Text>("", "Capsmall", 140, textColor, 250, 175);
     paused->AddTag("paused");
-
     GameScene->AddGameObject(hp);
     GameScene->AddGameObject(coins);
     GameScene->AddGameObject(fps);
     GameScene->AddGameObject(paused);
+
+    std::shared_ptr<HUD> Hud = std::make_shared<HUD>(engine);
+    std::shared_ptr<spic::GameObject> HudObject = std::make_shared<spic::GameObject>();
+    HudObject->AddTag("hud");
+    HudObject->AddComponent(Hud);
+    GameScene->AddGameObject(HudObject);
 
     return GameScene;
 }

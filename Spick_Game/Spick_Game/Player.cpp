@@ -1,5 +1,4 @@
 #include "Player.hpp"
-#include <API_Headers/Engine.hpp>
 #include <API_Headers/BoxCollider.hpp>
 
 void Player::OnAwake()
@@ -91,31 +90,10 @@ void Player::OnUpdate()
 		}
 	}
 
-	// Update Healthpoints in HUD
-	std::shared_ptr<spic::GameObject> healthObject = GetGameObject()->getScene()->GetGameObjectsByTag("hp")[0];
-	std::shared_ptr<spic::Text> healthText = std::dynamic_pointer_cast<spic::Text>(healthObject);
-	if (currentHealthPoints != healthpoints) {
-		healthText->SetText("Health: " + std::to_string(this->healthpoints));
-	}
-	currentHealthPoints = this->healthpoints;
-
-	// Update Coins in HUD
-	std::shared_ptr<spic::GameObject> coinsObject = GetGameObject()->getScene()->GetGameObjectsByTag("coins")[0];
-	std::shared_ptr<spic::Text> CoinsText = std::dynamic_pointer_cast<spic::Text>(coinsObject);
-	if (currentCoins != coins) {
-		CoinsText->SetText("Coins: " + std::to_string(this->coins));
-	}
-	currentCoins = this->coins;
-
-	// Update fps in HUD
-	std::shared_ptr<spic::GameObject> fpsObject = GetGameObject()->getScene()->GetGameObjectsByTag("fps")[0];
-	std::shared_ptr<spic::Text> fpsText = std::dynamic_pointer_cast<spic::Text>(fpsObject);
-	if (InputComponent->loadFps) {
-		fpsText->SetText("FPS: " + std::to_string(engine->GetFPS()));
-	}
-	if (!InputComponent->loadFps) {
-		fpsText->SetText("");
-	}
+	std::shared_ptr<spic::GameObject> HudObject = GetGameObject()->getScene()->GetGameObjectsByTag("hud")[0];
+	auto HudComponent = HudObject->GetComponent<HUD>();
+	HudComponent->SetHealthPoints(this->healthpoints);
+	HudComponent->SetCoins(this->coins);	
 }
 
 void Player::OnRender()
