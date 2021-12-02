@@ -1,213 +1,77 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="Behaviourscript\ChangeSceneBehaviour.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="Behaviourscript\InputScript.cpp" />
+    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Scenes\CheatsMenuBuilder.cpp" />
+    <ClCompile Include="Scenes\GameOverSceneBuilder.cpp" />
+    <ClCompile Include="Scenes\MainMenuBuilder.cpp" />
+    <ClCompile Include="Scenes\LevelSceneBuilder.cpp" />
+    <ClCompile Include="Spick_Game.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Spick_Game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Level.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HUD.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Behaviourscript\ChangeSceneBehaviour.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scenes\MainMenuBuilder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scenes\LevelSceneBuilder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scenes\GameOverSceneBuilder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Behaviourscript\InputScript.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scenes\CheatsMenuBuilder.cpp">
-	   <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClCompile Include="Collision.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="Behaviourscript\ChangeSceneBehaviour.hpp" />
+    <ClInclude Include="Bullet.hpp" />
+    <ClInclude Include="Enemy.hpp" />
+    <ClInclude Include="HUD.hpp" />
+    <ClInclude Include="Behaviourscript\InputScript.hpp" />
+    <ClInclude Include="Level.hpp" />
+    <ClInclude Include="Player.hpp" />
+    <ClInclude Include="Scenes\CheatsMenuBuilder.hpp" />
+    <ClInclude Include="Scenes\GameOverSceneBuilder.hpp" />
+    <ClInclude Include="Scenes\MainMenuBuilder.hpp" />
+    <ClInclude Include="Scenes\LevelSceneBuilder.hpp" />
+    <ClInclude Include="Scenes\SceneBuilder.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Player.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Level.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HUD.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Behaviourscript\ChangeSceneBehaviour.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Scenes\MainMenuBuilder.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Scenes\LevelSceneBuilder.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Scenes\SceneBuilder.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Scenes\GameOverSceneBuilder.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Behaviourscript\InputScript.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Scenes\CheatsMenuBuilder.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Collision.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullet.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="assets\player_sub-machinegun.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\backgrounds\background.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\bright-wood-hitler-floor.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\bright-wood-statue-floor.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\dark-wood-floor.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\dark-wood-hitler-floor.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\dark-wood-statue-floor.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\bright-wood-floor.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\inside_1.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\inside_2.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\inside_3.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\inside_4.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\outside_1.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\outside_2.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\outside_3.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\outside_4.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\half_4.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\half_3.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\half_2.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\half_1.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\enemy_blue.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\enemy_green.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\enemy_red.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\dark-stone-wall.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\bright-vent.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\stone-floor.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\dark-blue-nazi-stone-wall.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\dark-blue-skull-stone-wall.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\dark-blue-stone-wall.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\red-nazi-wall.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\foregrounds\red-wall.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\button.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\Eric.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\menu.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="assets\levels\level1.json" />
-    <None Include="assets\levels\testlevel.json" />
-    <None Include="assets\levels\level2.json" />
-    <None Include="assets\levels\level3.json" />
+    <Image Include="assets\button.jpg" />
+    <Image Include="assets\enemy_blue.bmp" />
+    <Image Include="assets\enemy_green.bmp" />
+    <Image Include="assets\enemy_red.bmp" />
+    <Image Include="assets\Eric.png" />
+    <Image Include="assets\images\backgrounds\background.bmp" />
+    <Image Include="assets\images\foregrounds\bright-vent.png" />
+    <Image Include="assets\images\foregrounds\bright-wood-floor.bmp" />
+    <Image Include="assets\images\foregrounds\bright-wood-hitler-floor.bmp" />
+    <Image Include="assets\images\foregrounds\bright-wood-statue-floor.bmp" />
+    <Image Include="assets\images\foregrounds\dark-blue-nazi-stone-wall.png" />
+    <Image Include="assets\images\foregrounds\dark-blue-skull-stone-wall.png" />
+    <Image Include="assets\images\foregrounds\dark-blue-stone-wall.png" />
+    <Image Include="assets\images\foregrounds\dark-stone-wall.png" />
+    <Image Include="assets\images\foregrounds\dark-wood-floor.bmp" />
+    <Image Include="assets\images\foregrounds\dark-wood-hitler-floor.bmp" />
+    <Image Include="assets\images\foregrounds\dark-wood-statue-floor.bmp" />
+    <Image Include="assets\images\foregrounds\half_1.png" />
+    <Image Include="assets\images\foregrounds\half_2.png" />
+    <Image Include="assets\images\foregrounds\half_3.png" />
+    <Image Include="assets\images\foregrounds\half_4.png" />
+    <Image Include="assets\images\foregrounds\inside_1.png" />
+    <Image Include="assets\images\foregrounds\inside_2.png" />
+    <Image Include="assets\images\foregrounds\inside_3.png" />
+    <Image Include="assets\images\foregrounds\inside_4.png" />
+    <Image Include="assets\images\foregrounds\outside_1.png" />
+    <Image Include="assets\images\foregrounds\outside_2.png" />
+    <Image Include="assets\images\foregrounds\outside_3.png" />
+    <Image Include="assets\images\foregrounds\outside_4.png" />
+    <Image Include="assets\images\foregrounds\red-nazi-wall.png" />
+    <Image Include="assets\images\foregrounds\red-wall.png" />
+    <Image Include="assets\images\foregrounds\stone-floor.png" />
+    <Image Include="assets\menu.png" />
+    <Image Include="assets\player_sub-machinegun.bmp" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\Fonts\Capsmall.ttf" />
     <Font Include="Fonts\Fonts\TopSecret.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\levels\level1.json" />
+    <None Include="assets\levels\level2.json" />
+    <None Include="assets\levels\level3.json" />
+    <None Include="assets\levels\testlevel.json" />
   </ItemGroup>
 </Project>
