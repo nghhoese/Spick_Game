@@ -100,7 +100,7 @@ const void InputScript::checkKeys()
 
 		}
 	}
-	else if (input->GetKey(A)) {
+	if (input->GetKey(A)) {
 		if (PlayerComponent != nullptr) {
 			if (Collision::AABB(objk1.get(), "wall")) {
 				if (Collision::AABB(objk1.get(), "wall")->GetGameObject()->getTransform()->position.x < PlayerComponent->xPlayer) {
@@ -120,7 +120,7 @@ const void InputScript::checkKeys()
 			}
 		}
 	}
-	else if (input->GetKey(S)) {
+	if (input->GetKey(S)) {
 		if (PlayerComponent != nullptr) {
 			if (Collision::AABB(objk1.get(), "wall")) {
 				if (Collision::AABB(objk1.get(), "wall")->GetGameObject()->getTransform()->position.y > PlayerComponent->yPlayer) {
@@ -140,7 +140,7 @@ const void InputScript::checkKeys()
 			}
 		}
 	}
-	else if (input->GetKey(D)) {
+	if (input->GetKey(D)) {
 		if (PlayerComponent != nullptr) {
 			if (Collision::AABB(objk1.get(), "wall")) {
 				if (Collision::AABB(objk1.get(), "wall")->GetGameObject()->getTransform()->position.x > PlayerComponent->xPlayer) {
@@ -160,7 +160,7 @@ const void InputScript::checkKeys()
 			}
 		}
 	}
-	else if (input->GetKey(E)) {
+	if (input->GetKey(E)) {
 		// interactie
 	}
 	/*else if (input->GetKey(ESC)) {
@@ -178,10 +178,10 @@ const void InputScript::checkKeys()
 		}
 
 	}*/
-	else if (input->GetKey(H)) {
+	if (input->GetKey(H)) {
 		// gameplay snelheid resetten
 	}
-	else if (input->GetKey(PU)) {
+	if (input->GetKey(PU)) {
 		// gameplay snelheid versnellen
 		if (!speedup) {
 			std::cout << "speedup: ";
@@ -198,7 +198,7 @@ const void InputScript::checkKeys()
 		
 
 	}
-	else if (input->GetKey(PD)) {
+	if (input->GetKey(PD)) {
 		
 		if (!speeddown) {
 			std::cout << "slowdown: ";
@@ -214,10 +214,10 @@ const void InputScript::checkKeys()
 		}
 		
 	}
-	else if (input->GetKey(P)) {
+	if (input->GetKey(P)) {
 		// pauze knop
 	}
-	else if (input->GetKey(EP)) {
+	if (input->GetKey(EP)) {
 		// opent een cheats menu
 		std::shared_ptr<spic::Component> script = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0]->GetComponentByName("CheatsMenuScript");
 
@@ -225,22 +225,22 @@ const void InputScript::checkKeys()
 			script->OnClick();
 		}
 	}
-	else if (input->GetKey(Y)) {
+	if (input->GetKey(Y)) {
 		// instakill the player
 		PlayerComponent->currentHealthPoints = 0;
 		engine->setGameOver(true);
 	}
-	else if (input->GetKey(UA)) {
+	if (input->GetKey(UA)) {
 		// movement speed up
 		PlayerComponent->speed += 1;
 	}
-	else if (input->GetKey(DA)) {
+	if (input->GetKey(DA)) {
 		// movement speed down
 		if (PlayerComponent->speed > 0) {
 			PlayerComponent->speed -= 1;
 		}
 	}
-	else if (input->GetKey(L)) {
+	if (input->GetKey(L)) {
 		// enable/disable damageless
 		if (clicked) {
 			if (PlayerComponent->isDamageless) {
@@ -257,7 +257,7 @@ const void InputScript::checkKeys()
 	//	// make player undedectable
 	//}
 
-	else if (input->GetKey(F)) {
+	if (input->GetKey(F)) {
 		if (clicked) {
 			if (loadFps) {
 				loadFps = false;
