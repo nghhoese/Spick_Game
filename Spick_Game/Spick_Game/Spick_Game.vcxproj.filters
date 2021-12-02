@@ -33,7 +33,6 @@
     <Image Include="assets\enemy_blue.bmp" />
     <Image Include="assets\enemy_green.bmp" />
     <Image Include="assets\enemy_red.bmp" />
-    <Image Include="assets\Eric.png" />
     <Image Include="assets\images\backgrounds\background.bmp" />
     <Image Include="assets\images\foregrounds\bright-vent.png" />
     <Image Include="assets\images\foregrounds\bright-wood-floor.bmp" />
@@ -63,6 +62,8 @@
     <Image Include="assets\images\foregrounds\stone-floor.png" />
     <Image Include="assets\menu.png" />
     <Image Include="assets\player_sub-machinegun.bmp" />
+    <Image Include="assets\bullet.bmp" />
+    <Image Include="assets\player_pistol_silenced.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\Fonts\Capsmall.ttf" />

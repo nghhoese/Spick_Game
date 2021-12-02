@@ -148,7 +148,6 @@ void Player::Shoot()
 	std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
 	boxCollider->Height(10);
 	boxCollider->Width(10);
-	boxCollider->ShowBoxBool(true);
 	bulletObject->AddComponent(boxCollider);
 	std::shared_ptr<Bullet> bullet = std::make_shared<Bullet>(transfrom.position, InputComponent->checkMousePosition(), 20, bulletDamage);
 	bulletObject->AddComponent(bullet);
