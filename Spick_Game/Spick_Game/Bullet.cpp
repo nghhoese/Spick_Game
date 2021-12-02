@@ -26,13 +26,34 @@ void Bullet::Update()
 		trans.position.y += amountToMoveY * speed;
 		GetGameObject()->setTransform(&trans);
 		if (Collision::AABB(GetGameObject(), "guard")) {
+			auto enemy = Collision::AABB(GetGameObject(), "guard")->GetGameObject()->GetComponent<spic::BehaviourScript>();
+			std::shared_ptr<Enemy> enemtObj = std::dynamic_pointer_cast<Enemy>(enemy);
 			if (hit) {
-				auto enemy = Collision::AABB(GetGameObject(), "guard")->GetGameObject()->GetComponent<spic::BehaviourScript>();
-				std::shared_ptr<Enemy> enemtObj = std::dynamic_pointer_cast<Enemy>(enemy);
 				enemtObj->setHealthpoints(enemtObj->getHealthpoints() - damage);
 				hit = false;
 				broken = true;
+				enemtObj->setPath("assets/enemy_hit.png");
+				
 			}
+			/*else
+			{	
+				auto tag = enemtObj->GetGameObject()->GetTags();
+				for (auto t : tag) {
+					if (t == "red")
+					{
+						enemtObj->setPath("assets/enemy_red.bmp");
+					} else if(t == "blue") 
+					{
+						enemtObj->setPath("assets/enemy_blue.bmp");
+
+					}
+					else if (t == "green") 
+					{
+						enemtObj->setPath("assets/enemy_green.bmp");
+
+					}
+				}
+			}*/
 		}
 		if (Collision::AABB(GetGameObject(), "wall")) {
 			broken = true;

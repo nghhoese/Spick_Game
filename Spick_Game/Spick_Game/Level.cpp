@@ -307,6 +307,7 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     enemy->setHealthpoints(100);
                     enemy->setSpeed(1.5);
                     enemy->setDamagePerBullet(40);
+                    GreenGuardObject->AddComponent(enemy);
                     enemy->setPath("assets/enemy_green.bmp");
                     std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
                     boxCollider->Height(58);
@@ -316,7 +317,7 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     GreenGuardObject->AddComponent(boxCollider);
                     GreenGuardObject->AddComponent(sprite);
                     sprite->SetSprite(enemy->getPath());
-                    GreenGuardObject->AddComponent(enemy);
+                    
                     GreenGuardObject->setTransform(&transfrom);
                     enemy->OnStart();
 
@@ -347,6 +348,7 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     enemy->setHealthpoints(75);
                     enemy->setSpeed(2.5);
                     enemy->setDamagePerBullet(50);
+                    RedGuardObject->AddComponent(enemy);
                     enemy->setPath("assets/enemy_red.bmp");
 
                     std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
@@ -356,7 +358,6 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     RedGuardObject->AddComponent(boxCollider);
                     RedGuardObject->AddComponent(sprite);
                     sprite->SetSprite(enemy->getPath());
-                    RedGuardObject->AddComponent(enemy);
                     RedGuardObject->setTransform(&transfrom);
                     enemy->OnStart();
                 }
@@ -386,11 +387,11 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     enemy->setHealthpoints(150);
                     enemy->setSpeed(1.5);
                     enemy->setDamagePerBullet(50);
+                    BlueGuardObject->AddComponent(enemy);
                     enemy->setPath("assets/enemy_blue.bmp");
 
                     BlueGuardObject->AddComponent(sprite);
                     sprite->SetSprite(enemy->getPath());
-                    BlueGuardObject->AddComponent(enemy);
                     BlueGuardObject->setTransform(&transfrom);
                     enemy->OnStart();
                 }

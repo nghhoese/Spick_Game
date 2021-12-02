@@ -93,6 +93,11 @@ void Enemy::OnTriggerStay2D(const Collider& collider)
 void Enemy::setPath(const std::string& path)
 {
 	this->path = path;
+    auto sprite = GetGameObject()->GetComponent<spic::Sprite>();
+    if (sprite != nullptr)
+    {
+        sprite->SetSprite(path);
+    }
 }
 
 const std::string& Enemy::getPath()
