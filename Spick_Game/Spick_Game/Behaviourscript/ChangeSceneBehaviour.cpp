@@ -11,8 +11,6 @@ ChangeSceneBehaviour::ChangeSceneBehaviour(std::string name, std::string scene, 
 
 void ChangeSceneBehaviour::OnClick()
 {
-	std::cout << _scene << std::endl;
-
 	if (_engine->getGameOver()) {
 
 		// Reset levels
