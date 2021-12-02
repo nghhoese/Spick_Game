@@ -27,4 +27,5 @@ public:
     void OnTriggerStay2D(const Collider& collider);
 private:
     bool hit = true;
+    bool broken = false;
 };

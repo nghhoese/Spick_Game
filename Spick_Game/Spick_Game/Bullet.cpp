@@ -19,21 +19,34 @@ Bullet::Bullet()
 
 void Bullet::Update()
 {
-	auto trans = *GetGameObject()->getTransform();
-	spic::Time time;
-	trans.position.x += amountToMoveX * speed;
-	trans.position.y += amountToMoveY * speed;
-	GetGameObject()->setTransform(&trans);
-	if (Collision::AABB(GetGameObject(), "guard")) {
-		if (hit) {
-			auto enemy = Collision::AABB(GetGameObject(), "guard")->GetGameObject()->GetComponent<spic::BehaviourScript>();
-			std::shared_ptr<Enemy> enemtObj = std::dynamic_pointer_cast<Enemy>(enemy);
-			enemtObj->setHealthpoints(enemtObj->getHealthpoints() - damage);
-			hit = false;
+	if (!broken) {
+		auto trans = *GetGameObject()->getTransform();
+		spic::Time time;
+		trans.position.x += amountToMoveX * speed;
+		trans.position.y += amountToMoveY * speed;
+		GetGameObject()->setTransform(&trans);
+		if (Collision::AABB(GetGameObject(), "guard")) {
+			if (hit) {
+				auto enemy = Collision::AABB(GetGameObject(), "guard")->GetGameObject()->GetComponent<spic::BehaviourScript>();
+				std::shared_ptr<Enemy> enemtObj = std::dynamic_pointer_cast<Enemy>(enemy);
+				enemtObj->setHealthpoints(enemtObj->getHealthpoints() - damage);
+				hit = false;
+				broken = true;
+			}
+		}
+		if (Collision::AABB(GetGameObject(), "wall")) {
+			broken = true;
+		}
+		else {
+			hit = true;
 		}
 	}
 	else {
-		hit = true;
+		auto trans = *GetGameObject()->getTransform();
+		trans.scale = 0.01;
+		trans.position.x = -50;
+		trans.position.y = -10;
+		GetGameObject()->setTransform(&trans);
 	}
 }
 
