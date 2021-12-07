@@ -19,8 +19,6 @@
 
 class Player : public spic::BehaviourScript {
 private:
-    double xPlayer;
-    double yPlayer;
     int healthpoints;
     int currentHealthPoints;
     int coins;
@@ -28,6 +26,8 @@ private:
     int ammo;
     int bulletSpeed;
     int bulletDamage;
+    double xPlayer;
+    double yPlayer;
     double speed;
     bool notClicked;
     bool isDamageless;
@@ -35,7 +35,6 @@ private:
     spic::Point aimPos;
     std::vector<std::shared_ptr<spic::GameObject>> bullets;
     std::shared_ptr<spic::Sprite> sprite;
-    spic::Time* time;
     std::shared_ptr<spic::GameObject> InputObject;
 public:
     Player();

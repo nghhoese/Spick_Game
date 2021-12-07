@@ -1,6 +1,6 @@
 #include "ChangeSceneBehaviour.hpp"
 
-ChangeSceneBehaviour::ChangeSceneBehaviour(std::string name, std::string scene) : _scene(scene){
+ChangeSceneBehaviour::ChangeSceneBehaviour(const std::string& name, const std::string& scene) : _scene(scene){
 	Name(name);
 }
 

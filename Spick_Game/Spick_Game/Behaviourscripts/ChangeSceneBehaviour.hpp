@@ -6,8 +6,10 @@
 #include "../Controllers/EngineController.hpp"
 
 class ChangeSceneBehaviour : public spic::BehaviourScript {
+private:
+	std::string _scene;
 public:
-	ChangeSceneBehaviour(std::string name, std::string scene);
+	ChangeSceneBehaviour(const std::string& name, const std::string& scene);
 	void OnUpdate();
 	virtual void OnAwake();
 	void OnStart();
@@ -16,6 +18,4 @@ public:
 	void OnTriggerEnter2D(const Collider& collider);
 	void OnTriggerExit2D(const Collider& collider);
 	void OnTriggerStay2D(const Collider& collider);
-private:
-	std::string _scene;
 };
