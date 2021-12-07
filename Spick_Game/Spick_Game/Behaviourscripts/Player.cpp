@@ -1,7 +1,7 @@
 #include "Player.hpp"
 #include <API_Headers/BoxCollider.hpp>
 
-Player::Player() : healthpoints(100), coins(0), ammo(0), bulletSpeed(10), bulletDamage(30), speed(5), notClicked(true), isDamageless(false)
+Player::Player() : healthpoints(100), coins(0), ammo(0), bulletSpeed(10), bulletDamage(30), speed(5), notClicked(true), isDamageless(false), magazine(5), coolDown(10)
 {
 }
 
@@ -84,7 +84,7 @@ void Player::OnUpdate()
 	auto HudComponent = HudObject->GetComponent<HUD>();
 	HudComponent->SetHealthPoints(this->healthpoints);
 	HudComponent->SetCoins(this->coins);
-	HudComponent->Setmagazine(this->magazine);
+	HudComponent->SetMagazine(this->magazine);
 	if (magazine == 0) {
 		coolDown -= 1;
 		if (coolDown == 0) {
@@ -127,14 +127,14 @@ void Player::Shoot()
 	if (magazine > 0) {
 		magazine = magazine - 1;
 		for (std::shared_ptr<Bullet> b : bullets) {
-			if (b->broken) {
-				b->broken = false;
+			if (b->GetBroken()) {
+				b->SetBroken(false);
 				auto InputComponent = InputObject->GetComponent<InputScript>();
 				spic::Transform transfrom = *b->GetGameObject()->getTransform();
 				transfrom.position.x = GetGameObject()->getTransform()->position.x + 20;
 				transfrom.position.y = GetGameObject()->getTransform()->position.y + 32;
-				b->direction = InputComponent->checkMousePosition();
-				b->position = transfrom.position;
+				b->SetDirection(InputComponent->checkMousePosition());
+				b->SetPosition(transfrom.position);
 				b->GetGameObject()->setTransform(&transfrom);
 				b->CalculateAmountToMove();
 				return;

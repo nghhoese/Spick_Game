@@ -32,8 +32,8 @@ public:
     int GetFps() { return this->fps; };
     void SetHealthPoints(int healthpoints) { this->healthpoints = healthpoints; };
     int GetHealthPoints() { return this->healthpoints; };
-    void Setmagazine(int magazine) { this->magazine = magazine; };
-    int Getmagazine() { return this->magazine; };
+    void SetMagazine(int magazine) { this->magazine = magazine; };
+    int GetMagazine() { return this->magazine; };
     void SetCoins(int coins) { this->coins = coins; };
     int GetCoins() { return this->coins; };
 };

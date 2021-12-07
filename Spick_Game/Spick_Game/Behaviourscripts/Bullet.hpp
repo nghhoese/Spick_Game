@@ -30,4 +30,10 @@ public:
     void CalculateAmountToMove();
     void OnTriggerExit2D(const Collider& collider);
     void OnTriggerStay2D(const Collider& collider);
+    void SetBroken(bool value) { this->broken = value; };
+    bool GetBroken() { return this->broken; };
+    void SetDirection(spic::Point direction) { this->direction = direction; };
+    spic::Point GetDirection() { return direction; };
+    void SetPosition(spic::Point position) { this->position = position; };
+    spic::Point GetPosition() { return this->position; };
 };
