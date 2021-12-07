@@ -1,14 +1,8 @@
 #include "Bullet.hpp"
 #include <API_Headers/Collision.hpp>
 
-Bullet::Bullet(spic::Point pos, spic::Point direction, double speed, int damage)
+Bullet::Bullet(spic::Point pos, spic::Point direction, double speed, int damage) : position(pos), direction(direction), speed(speed), damage(damage), hit(false), broken(false)
 {
-	this->position = pos;
-	this->direction = direction;
-	this->speed = speed;
-	this->damage = damage;
-	this->hit = true;
-	this->broken = false;
 }
 
 void Bullet::Update()
@@ -75,7 +69,6 @@ void Bullet::OnStart()
 
 void Bullet::OnUpdate()
 {
-
 	Update();
 }
 

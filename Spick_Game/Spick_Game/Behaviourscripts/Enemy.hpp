@@ -5,12 +5,12 @@
 
 class Enemy : public spic::BehaviourScript {
 private:
+    std::string path;
     int healthpoints;
     int damagePerBullet;
-    std::string path;
-    bool isTurned;
     int turnCount;
     double speed;
+    bool isTurned;
     bool isAlive;
 public:
     Enemy();

@@ -1,8 +1,7 @@
 #include "HUD.hpp"
 
-HUD::HUD()
+HUD::HUD() : fps(0)
 {
-	this->fps = 0;
 }
 
 void HUD::OnAwake()

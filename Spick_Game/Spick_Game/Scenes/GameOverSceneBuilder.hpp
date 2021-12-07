@@ -12,5 +12,4 @@ private:
 public:
 	void BuildScript();
 	std::shared_ptr<spic::Scene> BuildScene();
-
 };

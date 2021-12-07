@@ -12,8 +12,8 @@
 
 class InputScript : public spic::BehaviourScript {
 private:
-	spic::Importation* input;
-	spic::Time* time;
+	std::unique_ptr<spic::Time> time;
+	std::unique_ptr<spic::Importation> input;
 	float deltaTime;
 	bool speedup;
 	bool speeddown;

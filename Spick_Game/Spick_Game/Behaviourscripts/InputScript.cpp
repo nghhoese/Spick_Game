@@ -23,16 +23,8 @@ spic::MouseButton LEFT = spic::MouseButton::LEFT;
 spic::MouseButton MIDDLE = spic::MouseButton::MIDDLE;
 spic::MouseButton RIGHT = spic::MouseButton::RIGHT;
 
-InputScript::InputScript()
+InputScript::InputScript() : input(std::make_unique<spic::Importation>()), time(std::make_unique<spic::Time>()), speedup(false), speeddown(false), pausing(false), clicked(true), paused(false), loadFps(false)
 {
-	this->input = new spic::Importation();
-	this->time = new spic::Time();
-	this->speedup = false;
-	this->speeddown = false;
-	this->pausing = false;
-	this->clicked = true;
-	this->paused = false;
-	this->loadFps = false;
 }
 
 const void InputScript::checkMouseButtons()

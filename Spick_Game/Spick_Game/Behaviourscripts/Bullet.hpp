@@ -9,6 +9,15 @@
 #include "Enemy.hpp"
 
 class Bullet : public spic::BehaviourScript {
+private:
+    bool hit;
+    bool broken;
+    double speed;
+    double amountToMoveX;
+    double amountToMoveY;
+    int damage;
+    spic::Point direction;
+    spic::Point position;
 public:
     Bullet(spic::Point pos, spic::Point direction, double speed, int damage);
     void Update();
@@ -21,13 +30,4 @@ public:
     void CalculateAmountToMove();
     void OnTriggerExit2D(const Collider& collider);
     void OnTriggerStay2D(const Collider& collider);
-private:
-    bool hit;
-    bool broken;
-    spic::Point position;
-    double speed;
-    double amountToMoveX;
-    double amountToMoveY;
-    spic::Point direction;
-    int damage;
 };

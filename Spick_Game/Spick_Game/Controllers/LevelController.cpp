@@ -1,7 +1,7 @@
 #include "../Controllers/LevelController.hpp"
 #include <API_Headers/BoxCollider.hpp>
 
-LevelController::LevelController()
+LevelController::LevelController() : bmpFileString(".bmp"), pngFileString(".png"), currentLevel(1)
 {
 }
 

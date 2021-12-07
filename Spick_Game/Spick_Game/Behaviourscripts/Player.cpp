@@ -1,16 +1,8 @@
 #include "Player.hpp"
 #include <API_Headers/BoxCollider.hpp>
 
-Player::Player()
+Player::Player() : healthpoints(100), coins(0), ammo(0), bulletSpeed(10), bulletDamage(30), speed(5), notClicked(true), isDamageless(false)
 {
-	this->healthpoints = 100;
-	this->coins = 0;
-	this->ammo = 0;
-	this->bulletSpeed = 10;
-	this->bulletDamage = 30;
-	this->speed = 5;
-	this->notClicked = true;
-	this->isDamageless = false;
 }
 
 void Player::OnAwake()

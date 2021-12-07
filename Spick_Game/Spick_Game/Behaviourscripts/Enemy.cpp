@@ -4,12 +4,8 @@
 #include <API_Headers/BoxCollider.hpp>
 #include <API_Headers/Collision.hpp>
 
-Enemy::Enemy()
+Enemy::Enemy() : speed(1.5), turnCount(0), isTurned(false), isAlive(true)
 {
-    this->speed = 1.5;
-    this->turnCount = 0;
-    this->isTurned = false;
-    this->isAlive = true;
 }
 
 void Enemy::OnAwake()

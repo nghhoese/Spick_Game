@@ -13,6 +13,5 @@ private:
 
 public:
 	std::shared_ptr<spic::Scene> BuildLevelScene(int levelNumber);
-
 	void BuildLevel(int levelNumber);
 };
