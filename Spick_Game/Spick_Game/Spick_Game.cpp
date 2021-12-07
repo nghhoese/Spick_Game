@@ -17,20 +17,16 @@
 #include "Behaviourscripts/InputScript.hpp"
 #include "Scenes/CheatsMenuBuilder.hpp"
 
-namespace fs = std::filesystem;
-
 int main() {
     {
         EngineController::GetInstance()->CreateNewWindow("Tactical Stealth");
 
         std::shared_ptr<MainMenuBuilder> mainMenuBuilder = std::make_shared<MainMenuBuilder>();
         std::shared_ptr<spic::Scene> mainMenu = mainMenuBuilder->BuildScene();
-
         EngineController::GetInstance()->AddScene(mainMenu);
         mainMenuBuilder->BuildScript();
 
         std::shared_ptr<LevelSceneBuilder> levelSceneBuilder = std::make_shared<LevelSceneBuilder>();
-
         levelSceneBuilder->BuildLevel(1);
         levelSceneBuilder->BuildLevel(2);
         levelSceneBuilder->BuildLevel(3);
