@@ -7,8 +7,7 @@
 #include "API_Headers/Time.hpp"
 #include "API_Headers/Importation.hpp"
 #include "API_Headers/Engine.hpp"
-#include "../Player.hpp"
-
+#include "Player.hpp"
 #include <IOSTREAM>
 
 class InputScript : public spic::BehaviourScript {

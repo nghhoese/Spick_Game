@@ -13,7 +13,7 @@
 #include "Bullet.hpp"
 #include <iostream>
 #include <API_Headers/Engine.hpp>
-#include "Behaviourscript/InputScript.hpp"
+#include "InputScript.hpp"
 #include "HUD.hpp"
 
 class Player : public spic::BehaviourScript {

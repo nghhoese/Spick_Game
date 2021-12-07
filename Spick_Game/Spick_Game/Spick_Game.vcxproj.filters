@@ -2,12 +2,12 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="Behaviourscript\ChangeSceneBehaviour.cpp" />
-    <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="Behaviourscript\Bullet.cpp" />
+    <ClCompile Include="Behaviourscript\Enemy.cpp" />
+    <ClCompile Include="Behaviourscript\HUD.cpp" />
     <ClCompile Include="Behaviourscript\InputScript.cpp" />
     <ClCompile Include="Level.cpp" />
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Behaviourscript\Player.cpp" />
     <ClCompile Include="Scenes\CheatsMenuBuilder.cpp" />
     <ClCompile Include="Scenes\GameOverSceneBuilder.cpp" />
     <ClCompile Include="Scenes\MainMenuBuilder.cpp" />
@@ -16,12 +16,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behaviourscript\ChangeSceneBehaviour.hpp" />
-    <ClInclude Include="Bullet.hpp" />
-    <ClInclude Include="Enemy.hpp" />
-    <ClInclude Include="HUD.hpp" />
+    <ClInclude Include="Behaviourscript\Bullet.hpp" />
+    <ClInclude Include="Behaviourscript\Enemy.hpp" />
+    <ClInclude Include="Behaviourscript\HUD.hpp" />
     <ClInclude Include="Behaviourscript\InputScript.hpp" />
     <ClInclude Include="Level.hpp" />
-    <ClInclude Include="Player.hpp" />
+    <ClInclude Include="Behaviourscript\Player.hpp" />
     <ClInclude Include="Scenes\CheatsMenuBuilder.hpp" />
     <ClInclude Include="Scenes\GameOverSceneBuilder.hpp" />
     <ClInclude Include="Scenes\MainMenuBuilder.hpp" />

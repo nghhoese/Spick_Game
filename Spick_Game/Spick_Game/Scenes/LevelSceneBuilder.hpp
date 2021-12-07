@@ -6,7 +6,7 @@
 #include <API_Headers/Text.hpp>
 #include "../Behaviourscript/ChangeSceneBehaviour.hpp"
 #include "../Level.hpp"
-#include "../HUD.hpp"
+#include "../Behaviourscript/HUD.hpp"
 
 class LevelSceneBuilder : public SceneBuilder {
 private:

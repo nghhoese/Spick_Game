@@ -7,8 +7,7 @@
 #include "API_Headers/Transform.hpp"
 #include "API_Headers/Engine.hpp"
 #include "Behaviourscript/ChangeSceneBehaviour.hpp"
-#include "Player.hpp"
-#include "Enemy.hpp"
+#include "Behaviourscript/Player.hpp"
 
 class Level {
 private:

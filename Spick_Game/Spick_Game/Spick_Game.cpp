@@ -1,17 +1,16 @@
 // Spick_Game.cpp : This file contains the 'main' function. Program execution begins and ends there.
 
-#include <iostream>
 #define SDL_MAIN_HANDLED
+#include <iostream>
 #include "API_Headers/Scene.hpp"
 #include "API_Headers/Engine.hpp"
 #include "API_Headers/Camera.hpp"
 #include "API_Headers/Sprite.hpp"
 #include "API_Headers/Transform.hpp"
-#include "Player.hpp"
 #include "Level.hpp"
 #include "API_Headers/Rectangle.hpp"
 #include "API_Headers/Text.hpp"
-#include "HUD.hpp"
+#include "Behaviourscript/HUD.hpp"
 #include "Scenes/MainMenuBuilder.hpp"
 #include "Scenes/LevelSceneBuilder.hpp"
 #include "Scenes/GameOverSceneBuilder.hpp"
