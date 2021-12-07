@@ -74,6 +74,7 @@
     <Image Include="assets\images\foregrounds\elevator.png" />
     <Image Include="assets\enemy_hit.png" />
     <Image Include="assets\player_pistol_silenced_hit.png" />
+    <Image Include="assets\images\foregrounds\error.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\Fonts\Capsmall.ttf" />

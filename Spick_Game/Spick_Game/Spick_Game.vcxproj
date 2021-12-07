@@ -197,6 +197,7 @@
     <Image Include="assets\images\foregrounds\dark-vent.png" />
     <Image Include="assets\images\foregrounds\dark-wood-floor.bmp" />
     <Image Include="assets\images\foregrounds\elevator.png" />
+    <Image Include="assets\images\foregrounds\error.png" />
     <Image Include="assets\images\foregrounds\half_1.png" />
     <Image Include="assets\images\foregrounds\half_2.png" />
     <Image Include="assets\images\foregrounds\half_3.png" />

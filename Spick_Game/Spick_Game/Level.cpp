@@ -228,8 +228,6 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
 
                     scene->AddGameObject(playerObject);
 
-                    BuildLevelObjectPosition(playerObject, position);
-
                     playerObject->AddComponent(sprite);
                     sprite->SetSprite("assets/player_pistol_silenced.png");
                     sprite->SetPlayerBool(true);
