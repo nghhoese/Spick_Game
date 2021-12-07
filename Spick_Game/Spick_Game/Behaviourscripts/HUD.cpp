@@ -38,7 +38,7 @@ void HUD::OnUpdate()
 			magazineText->SetText("Magazine: reloading...");
 		}
 		else {
-			magazineText->SetText("Magazine: 5/" + std::to_string(this->magazine));
+			magazineText->SetText("Magazine: " + std::to_string(this->magazine) + "/5");
 		}
 	}
 	
