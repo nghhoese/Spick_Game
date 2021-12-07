@@ -55,6 +55,7 @@ public:
     void Shoot();
     void CheckGameOver();
     void CheckEndPoint();
+    void CameraFixture();
     void SetXPlayer(double x) { this->xPlayer = x; };
     double GetXPlayer() { return this->xPlayer; };
     void SetYPlayer(double y) { this->yPlayer = y; };

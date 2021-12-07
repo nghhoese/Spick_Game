@@ -5,8 +5,6 @@ Player::Player() : healthpoints(100), coins(0), ammo(0), bulletSpeed(10), bullet
 {
 }
 
-
-
 void Player::OnAwake()
 {
 }
@@ -40,34 +38,14 @@ void Player::OnUpdate()
 	InputComponent->checkKeys();
 	transfrom.position.x = xPlayer;
 	transfrom.position.y = yPlayer;
-
 	GetGameObject()->getScene()->GetActiveCamera()->setX(xPlayer - 768);
 	GetGameObject()->getScene()->GetActiveCamera()->setY(yPlayer - 768);
 	GetGameObject()->getScene()->GetActiveCamera()->UpdateCamera();
-
-	int x, y, w, h;
-	x = GetGameObject()->getScene()->GetActiveCamera()->getX();
-	y = GetGameObject()->getScene()->GetActiveCamera()->getY();
-	w = GetGameObject()->getScene()->GetActiveCamera()->getAspectWidth();
-	h = GetGameObject()->getScene()->GetActiveCamera()->getAspectHeight();
-
-	if (x < 0) {
-		GetGameObject()->getScene()->GetActiveCamera()->setX(0);
-	}
-	if (y < 0) {
-		GetGameObject()->getScene()->GetActiveCamera()->setY(0);
-	}
-	if (x > w) {
-		GetGameObject()->getScene()->GetActiveCamera()->setX(w);
-	}
-	if (y > h) {
-		GetGameObject()->getScene()->GetActiveCamera()->setY(h);
-	}
+	this->CameraFixture();
 
 	point = InputComponent->checkMousePosition();
 	double Delta_x = (transfrom.position.x - GetGameObject()->getScene()->GetActiveCamera()->getX()) - point.x;
 	double Delta_y = (transfrom.position.y - GetGameObject()->getScene()->GetActiveCamera()->getY()) - point.y;
-
 	double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
 	transfrom.rotation = Result + 90;
 
@@ -165,6 +143,28 @@ void Player::CheckEndPoint()
 			}
 		}
 
+	}
+}
+
+void Player::CameraFixture()
+{
+	int x, y, w, h;
+	x = GetGameObject()->getScene()->GetActiveCamera()->getX();
+	y = GetGameObject()->getScene()->GetActiveCamera()->getY();
+	w = GetGameObject()->getScene()->GetActiveCamera()->getAspectWidth();
+	h = GetGameObject()->getScene()->GetActiveCamera()->getAspectHeight();
+
+	if (x < 0) {
+		GetGameObject()->getScene()->GetActiveCamera()->setX(0);
+	}
+	if (y < 0) {
+		GetGameObject()->getScene()->GetActiveCamera()->setY(0);
+	}
+	if (x > w) {
+		GetGameObject()->getScene()->GetActiveCamera()->setX(w);
+	}
+	if (y > h) {
+		GetGameObject()->getScene()->GetActiveCamera()->setY(h);
 	}
 }
 
