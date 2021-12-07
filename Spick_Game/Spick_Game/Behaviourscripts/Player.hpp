@@ -56,7 +56,7 @@ public:
     int GetHealtpoints() { return this->healthpoints; };
     void Setcoins(int value) { this->coins = value; };
     int GetCoins() { return this->coins; };
-    void SetSpeed(double value) { this->speed = speed; };
+    void SetSpeed(double value) { this->speed = value; };
     double GetSpeed() { return this->speed; };
     void SetNotClicked(bool value) { this->notClicked = value; };
     bool GetNotClicked() { return this->notClicked; };
