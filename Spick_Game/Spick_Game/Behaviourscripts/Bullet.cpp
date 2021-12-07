@@ -23,25 +23,6 @@ void Bullet::Update()
 				enemtObj->setPath("assets/enemy_hit.png");
 				
 			}
-			/*else
-			{	
-				auto tag = enemtObj->GetGameObject()->GetTags();
-				for (auto t : tag) {
-					if (t == "red")
-					{
-						enemtObj->setPath("assets/enemy_red.bmp");
-					} else if(t == "blue") 
-					{
-						enemtObj->setPath("assets/enemy_blue.bmp");
-
-					}
-					else if (t == "green") 
-					{
-						enemtObj->setPath("assets/enemy_green.bmp");
-
-					}
-				}
-			}*/
 		}
 		if (Collision::AABB(GetGameObject(), "wall")) {
 			broken = true;

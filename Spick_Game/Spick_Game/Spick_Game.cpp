@@ -52,7 +52,7 @@ int main(char* argv[]) {
         std::cerr << argv[0] << ": unknown error\n";
         return EXIT_FAILURE;
     }
-
+    int* q = new int;
     _CrtDumpMemoryLeaks();
     return EXIT_SUCCESS;
 }

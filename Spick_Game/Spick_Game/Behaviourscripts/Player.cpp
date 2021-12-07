@@ -1,7 +1,7 @@
 #include "Player.hpp"
 #include <API_Headers/BoxCollider.hpp>
 
-Player::Player() : healthpoints(100), coins(0), ammo(0), bulletSpeed(10), bulletDamage(30), speed(5), notClicked(true), isDamageless(false), magazine(5), coolDown(10)
+Player::Player() : healthpoints(100), coins(0), ammo(0), bulletSpeed(10), bulletDamage(30), speed(5), notClicked(true), isDamageless(false), magazine(20), coolDown(10)
 {
 }
 
@@ -66,7 +66,7 @@ void Player::OnUpdate()
 	if (magazine == 0) {
 		coolDown -= 1;
 		if (coolDown == 0) {
-			magazine = magazine + 5;
+			magazine = magazine + 80;
 			coolDown = 100;
 		}
 	}	
@@ -171,7 +171,7 @@ void Player::CameraFixture()
 void Player::FillBucket()
 {
 	int index = 0;
-	while (index < 10) {
+	while (index < 20) {
 
 		std::shared_ptr<spic::GameObject> bulletObject = std::make_shared<spic::GameObject>("Bullet");
 		GetGameObject()->getScene()->AddGameObject(bulletObject);
@@ -181,8 +181,8 @@ void Player::FillBucket()
 		sprite->SetSprite("assets/bullet.bmp");
 		sprite->SetPlayerBool(true);
 		bulletObject->AddTag("PlayerBullet");
-		transfrom.position.x = GetGameObject()->getTransform()->position.x + 20;
-		transfrom.position.y = GetGameObject()->getTransform()->position.y + 32;
+		transfrom.position.x = 0;
+		transfrom.position.y = 0;
 		transfrom.scale = 0.75;
 		std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
 		boxCollider->Height(10);
