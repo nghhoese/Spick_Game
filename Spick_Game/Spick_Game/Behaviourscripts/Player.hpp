@@ -19,12 +19,18 @@
 
 class Player : public spic::BehaviourScript {
 private:
-    int healthpoints = 100;
+    double xPlayer;
+    double yPlayer;
+    int healthpoints;
+    int currentHealthPoints;
+    int coins;
     int currentCoins;
-    int coins = 0;
-    int ammo = 0;
-    int bulletSpeed = 10;
-    int bulletDamage = 30;
+    int ammo;
+    int bulletSpeed;
+    int bulletDamage;
+    double speed;
+    bool notClicked;
+    bool isDamageless;
     spic::Point aimAngle;
     spic::Point aimPos;
     std::vector<std::shared_ptr<spic::GameObject>> bullets;
@@ -33,12 +39,6 @@ private:
     std::shared_ptr<spic::GameObject> InputObject;
 public:
     Player();
-    int currentHealthPoints;
-    double xPlayer;
-    double yPlayer;
-    double speed = 5;
-    bool notClicked = true;
-    bool isDamageless = false;
     void OnAwake();
     void OnStart();
     void OnUpdate();
@@ -48,4 +48,18 @@ public:
     void OnTriggerExit2D(const Collider& collider);
     void OnTriggerStay2D(const Collider& collider);
     void Shoot();
+    void SetXPlayer(double x) { this->xPlayer = x; };
+    double GetXPlayer() { return this->xPlayer; };
+    void SetYPlayer(double y) { this->yPlayer = y; };
+    double GetYPlayer() { return this->yPlayer; };
+    void SetHealthpoints(int value) { this->healthpoints = value; };
+    int GetHealtpoints() { return this->healthpoints; };
+    void Setcoins(int value) { this->coins = value; };
+    int GetCoins() { return this->coins; };
+    void SetSpeed(double value) { this->speed = speed; };
+    double GetSpeed() { return this->speed; };
+    void SetNotClicked(bool value) { this->notClicked = value; };
+    bool GetNotClicked() { return this->notClicked; };
+    void SetIsDamageless(bool value) { this->isDamageless = value; };
+    bool GetIsDamageLess() { return this->isDamageless; };
 };

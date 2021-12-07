@@ -27,7 +27,7 @@ void EngineController::SetGameOver(bool value)
 
 bool EngineController::GetGameOver()
 {
-	return false;
+	return engine->getGameOver();
 }
 
 void EngineController::SetActiveScene(std::string sceneName)

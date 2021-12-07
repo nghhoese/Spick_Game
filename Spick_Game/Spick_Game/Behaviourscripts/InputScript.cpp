@@ -27,7 +27,12 @@ InputScript::InputScript()
 {
 	this->input = new spic::Importation();
 	this->time = new spic::Time();
-	this->engine = new spic::Engine();
+	this->speedup = false;
+	this->speeddown = false;
+	this->pausing = false;
+	this->clicked = true;
+	this->paused = false;
+	this->loadFps = false;
 }
 
 const void InputScript::checkMouseButtons()
@@ -36,39 +41,37 @@ const void InputScript::checkMouseButtons()
 	auto PlayerComponent = playerObject->GetComponent<Player>();
 	if (input->GetMouseButton(LEFT)) {
 		// schieten
-		if (PlayerComponent->notClicked)
+		if (PlayerComponent->GetNotClicked())
 		{
 			PlayerComponent->Shoot();
-			PlayerComponent->notClicked = false;
+			PlayerComponent->SetNotClicked(false);
 		}
 	}
 	else if (input->GetMouseButton(RIGHT)) {
 		// reloaden
 	}
 	else {
-		PlayerComponent->notClicked = true;
+		PlayerComponent->SetNotClicked(true);
 	}
 }
 
 const void InputScript::CheckPause() {
 	if (input->GetKey(ESC)) {
 	// pauze menu
-		if (!pausing) {
-			pausing = true;
+		if (!GetPausing()) {
+			SetPausing(true);
 			if (time->TimeScale() > 0.0) {
 				time->TimeScale(0.0);
-				std::cout << "paused";
-				paused = true;
+				SetPaused(true);
 			}
 			else if (time->TimeScale() == 0) {
 				time->TimeScale(1.0);
-				std::cout << "play";
-				paused = false;
+				SetPaused(false);
 			}
 		}
 	}
 	else {
-		pausing = false;
+		SetPausing(false);
 	}
 }
 
@@ -83,79 +86,72 @@ const void InputScript::checkKeys()
 		if (PlayerComponent != nullptr) {
 
 			if (Collision::AABB(objk1.get(), "wall") ) {
-				if (Collision::AABB(objk1.get(), "wall")->GetGameObject()->getTransform()->position.y < PlayerComponent->yPlayer) {
-					PlayerComponent->yPlayer += (PlayerComponent->speed);
+				if (Collision::AABB(objk1.get(), "wall")->GetGameObject()->getTransform()->position.y < PlayerComponent->GetYPlayer()) {
+					PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() + (PlayerComponent->GetSpeed()));
 				}
 				else {
-					PlayerComponent->yPlayer -= (PlayerComponent->speed);
+					PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() - (PlayerComponent->GetSpeed()));
 				}
 			}
 			else if(Collision::AABB(objk1.get(), "guard")){
-				PlayerComponent->yPlayer += (PlayerComponent->speed);
+				PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() + (PlayerComponent->GetSpeed()));
 			}
 			else {
-				PlayerComponent->yPlayer -= (PlayerComponent->speed);
+				PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() - (PlayerComponent->GetSpeed()));
 			}
-
 		}
 	}
 	if (input->GetKey(A)) {
 		if (PlayerComponent != nullptr) {
 			if (Collision::AABB(objk1.get(), "wall")) {
-				if (Collision::AABB(objk1.get(), "wall")->GetGameObject()->getTransform()->position.x < PlayerComponent->xPlayer) {
-					PlayerComponent->xPlayer += (PlayerComponent->speed);
+				if (Collision::AABB(objk1.get(), "wall")->GetGameObject()->getTransform()->position.x < PlayerComponent->GetXPlayer()) {
+					PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() + (PlayerComponent->GetSpeed()));
 				}
 				else {
-					PlayerComponent->xPlayer -= (PlayerComponent->speed);
-
+					PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() - (PlayerComponent->GetSpeed()));
 				}
 			}
 			else if (Collision::AABB(objk1.get(), "guard")) {
-				PlayerComponent->xPlayer += (PlayerComponent->speed);
+				PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() + (PlayerComponent->GetSpeed()));
 			}
 			else {
-				PlayerComponent->xPlayer -= (PlayerComponent->speed);
-
+				PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() - (PlayerComponent->GetSpeed()));
 			}
 		}
 	}
 	if (input->GetKey(S)) {
 		if (PlayerComponent != nullptr) {
 			if (Collision::AABB(objk1.get(), "wall")) {
-				if (Collision::AABB(objk1.get(), "wall")->GetGameObject()->getTransform()->position.y > PlayerComponent->yPlayer) {
-					PlayerComponent->yPlayer -= (PlayerComponent->speed);
+				if (Collision::AABB(objk1.get(), "wall")->GetGameObject()->getTransform()->position.y > PlayerComponent->GetYPlayer()) {
+					PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() - (PlayerComponent->GetSpeed()));
 				}
 				else {
-					PlayerComponent->yPlayer += (PlayerComponent->speed);
-
+					PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() + (PlayerComponent->GetSpeed()));
 				}
 			}
 			else if (Collision::AABB(objk1.get(), "guard")) {
-				PlayerComponent->yPlayer -= (PlayerComponent->speed);
+				PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() - (PlayerComponent->GetSpeed()));
 			}
 			else {
-				PlayerComponent->yPlayer += (PlayerComponent->speed);
-
+				PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() + (PlayerComponent->GetSpeed()));
 			}
 		}
 	}
 	if (input->GetKey(D)) {
 		if (PlayerComponent != nullptr) {
 			if (Collision::AABB(objk1.get(), "wall")) {
-				if (Collision::AABB(objk1.get(), "wall")->GetGameObject()->getTransform()->position.x > PlayerComponent->xPlayer) {
-					PlayerComponent->xPlayer -= (PlayerComponent->speed);
+				if (Collision::AABB(objk1.get(), "wall")->GetGameObject()->getTransform()->position.x > PlayerComponent->GetXPlayer()) {
+					PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() - (PlayerComponent->GetSpeed()));
 				}
 				else {
-					PlayerComponent->xPlayer += (PlayerComponent->speed);
-
+					PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() + (PlayerComponent->GetSpeed()));
 				}
 			}
 			else if (Collision::AABB(objk1.get(), "guard")) {
-				PlayerComponent->xPlayer -= (PlayerComponent->speed);
+				PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() - (PlayerComponent->GetSpeed()));
 			}
 			else {
-				PlayerComponent->xPlayer += (PlayerComponent->speed);
-
+				PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() + (PlayerComponent->GetSpeed()));
 			}
 		}
 	}
@@ -182,9 +178,9 @@ const void InputScript::checkKeys()
 	}
 	if (input->GetKey(PU)) {
 		// gameplay snelheid versnellen
-		if (!speedup) {
+		if (!GetSpeedUp()) {
 			std::cout << "speedup: ";
-			speedup = true;
+			SetSpeedUp(true);
 			if (time->TimeScale() == 0.5) {
 				time->TimeScale(1.0);
 				std::cout << time->TimeScale();
@@ -199,9 +195,9 @@ const void InputScript::checkKeys()
 	}
 	if (input->GetKey(PD)) {
 		
-		if (!speeddown) {
+		if (!GetSpeedDown()) {
 			std::cout << "slowdown: ";
-			speeddown = true;
+			SetSpeedDown(true);
 			if (time->TimeScale() == 1.9) {
 				time->TimeScale(1.0);
 				std::cout << time->TimeScale();
@@ -226,29 +222,29 @@ const void InputScript::checkKeys()
 	}
 	if (input->GetKey(Y)) {
 		// instakill the player
-		PlayerComponent->currentHealthPoints = 0;
-		engine->setGameOver(true);
+		PlayerComponent->SetHealthpoints(0);
+		EngineController::GetInstance()->SetGameOver(true);
 	}
 	if (input->GetKey(UA)) {
 		// movement speed up
-		PlayerComponent->speed += 1;
+		PlayerComponent->SetSpeed(PlayerComponent->GetSpeed() + 1);
 	}
 	if (input->GetKey(DA)) {
 		// movement speed down
-		if (PlayerComponent->speed > 0) {
-			PlayerComponent->speed -= 1;
+		if (PlayerComponent->GetSpeed() > 0) {
+			PlayerComponent->SetSpeed(PlayerComponent->GetSpeed() - 1);
 		}
 	}
 	if (input->GetKey(L)) {
 		// enable/disable damageless
-		if (clicked) {
-			if (PlayerComponent->isDamageless) {
-				PlayerComponent->isDamageless = false;
+		if (GetClicked()) {
+			if (PlayerComponent->GetIsDamageLess()) {
+				PlayerComponent->SetIsDamageless(false);
 			}
 			else {
-				PlayerComponent->isDamageless = true;
+				PlayerComponent->SetIsDamageless(true);
 			}
-			clicked = false;
+			SetClicked(false);
 		}
 	}
 
@@ -257,20 +253,20 @@ const void InputScript::checkKeys()
 	//}
 
 	if (input->GetKey(F)) {
-		if (clicked) {
-			if (loadFps) {
-				loadFps = false;
+		if (GetClicked()) {
+			if (GetLoadFps()) {
+				SetLoadFps(false);
 			}
 			else {
-				loadFps = true;
+				SetLoadFps(true);
 			}
-			clicked = false;
+			SetClicked(false);
 		}
 	}
 	else {
-		speedup = false;
-		speeddown = false;
-		clicked = true;
+		SetSpeedUp(false);
+		SetSpeedDown(false);
+		SetClicked(true);
 	}
 }
 
@@ -296,7 +292,7 @@ void InputScript::OnStart()
 
 void InputScript::OnUpdate()
 {
-	deltaTime = (time->CalculateDeltaTime() / 10);
+	SetDeltaTime(time->CalculateDeltaTime() / 10);
 }
 
 void InputScript::OnRender()

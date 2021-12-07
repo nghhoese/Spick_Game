@@ -4,6 +4,14 @@
 #include <API_Headers/BoxCollider.hpp>
 #include <API_Headers/Collision.hpp>
 
+Enemy::Enemy()
+{
+    this->speed = 1.5;
+    this->turnCount = 0;
+    this->isTurned = false;
+    this->isAlive = true;
+}
+
 void Enemy::OnAwake()
 {
 }
@@ -103,26 +111,6 @@ void Enemy::setPath(const std::string& path)
 const std::string& Enemy::getPath()
 {
 	return this->path;
-}
-
-void Enemy::setHealthpoints(const int& healthpoints)
-{
-	this->healthpoints = healthpoints;
-}
-
-const int& Enemy::getHealthpoints()
-{
-	return this->healthpoints;
-}
-
-void Enemy::setDamagePerBullet(const int& damagePerBullet)
-{
-	this->damagePerBullet = damagePerBullet;
-}
-
-const int& Enemy::getDamagePerBullet()
-{
-	return this->damagePerBullet;
 }
 
 void Enemy::OnClick()

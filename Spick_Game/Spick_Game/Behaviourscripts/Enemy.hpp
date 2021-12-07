@@ -8,11 +8,12 @@ private:
     int healthpoints;
     int damagePerBullet;
     std::string path;
-    bool isTurned = false;
-    int turnCount = 0;
-    double speed = 1.5;
+    bool isTurned;
+    int turnCount;
+    double speed;
+    bool isAlive;
 public:
-    bool isAlive = true;
+    Enemy();
     void OnAwake();
     void OnStart();
     void OnUpdate();
@@ -21,16 +22,12 @@ public:
     void OnTriggerEnter2D(const Collider& collider);
     void OnTriggerExit2D(const Collider& collider);
     void OnTriggerStay2D(const Collider& collider);
-
     void setPath(const std::string& path);
     const std::string& getPath();
-
-    void setHealthpoints(const int& healthpoints);
-    const int& getHealthpoints();
-
-    void setDamagePerBullet(const int& damagePerBullet);
-    const int& getDamagePerBullet();
-
-    void setSpeed(const double& speed) { this->speed = speed; }
-    const int& getSpeed() { return this->speed; }
+    void setHealthpoints(int healthpoints) { this->healthpoints = healthpoints; };
+    int getHealthpoints() { return this->healthpoints; };
+    void setDamagePerBullet(int damagePerBullet) { this->damagePerBullet = damagePerBullet; };
+    int getDamagePerBullet() { return this->damagePerBullet; };
+    void setSpeed(double speed) { this->speed = speed; }
+    double getSpeed() { return this->speed; }
 };

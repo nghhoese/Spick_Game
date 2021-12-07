@@ -47,5 +47,3 @@ void ChangeSceneBehaviour::OnTriggerExit2D(const Collider& collider)
 void ChangeSceneBehaviour::OnTriggerStay2D(const Collider& collider)
 {
 }
-
-

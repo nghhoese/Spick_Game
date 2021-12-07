@@ -2,7 +2,7 @@
 
 HUD::HUD()
 {
-
+	this->fps = 0;
 }
 
 void HUD::OnAwake()
@@ -37,10 +37,10 @@ void HUD::OnUpdate()
 	// Update fps in HUD
 	std::shared_ptr<spic::GameObject> fpsObject = GetGameObject()->getScene()->GetGameObjectsByTag("fps")[0];
 	std::shared_ptr<spic::Text> fpsText = std::dynamic_pointer_cast<spic::Text>(fpsObject);
-	if (InputComponent->loadFps) {
+	if (InputComponent->GetLoadFps()) {
 		fpsText->SetText("FPS: " + std::to_string(EngineController::GetInstance()->GetFPS()));
 	}
-	if (!InputComponent->loadFps) {
+	if (!InputComponent->GetLoadFps()) {
 		fpsText->SetText("");
 	}
 }
@@ -63,34 +63,4 @@ void HUD::OnTriggerExit2D(const Collider& collider)
 
 void HUD::OnTriggerStay2D(const Collider& collider)
 {
-}
-
-void HUD::SetFps(const int& fps)
-{
-	this->fps = fps;
-}
-
-const int& HUD::GetFps()
-{
-	return this->fps;
-}
-
-void HUD::SetHealthPoints(const int& healthpoints)
-{
-	this->healthpoints = healthpoints;
-}
-
-const int& HUD::GetHealthPoints()
-{
-	return this->healthpoints;
-}
-
-void HUD::SetCoins(const int& coins)
-{
-	this->coins = coins;
-}
-
-const int& HUD::GetCoins()
-{
-	return this->coins;
 }

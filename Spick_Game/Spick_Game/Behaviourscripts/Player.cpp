@@ -3,7 +3,14 @@
 
 Player::Player()
 {
-
+	this->healthpoints = 100;
+	this->coins = 0;
+	this->ammo = 0;
+	this->bulletSpeed = 10;
+	this->bulletDamage = 30;
+	this->speed = 5;
+	this->notClicked = true;
+	this->isDamageless = false;
 }
 
 void Player::OnAwake()
@@ -79,7 +86,7 @@ void Player::OnUpdate()
 	GetGameObject()->setTransform(&transfrom);
 	InputComponent->checkMouseButtons();
 
-	if (currentHealthPoints == 0) {
+	if (healthpoints == 0) {
 		std::cout << currentHealthPoints;
 		std::shared_ptr<spic::Component> script = GetGameObject()->GetComponentByName("GameOverScript");
 		if (script != nullptr) {
@@ -109,10 +116,10 @@ void Player::OnRender()
 	// Update paused in HUD
 	std::shared_ptr<spic::GameObject> pausedObject = GetGameObject()->getScene()->GetGameObjectsByTag("paused")[0];
 	std::shared_ptr<spic::Text> pausedText = std::dynamic_pointer_cast<spic::Text>(pausedObject);
-	if (InputComponent->paused) {
+	if (InputComponent->GetPaused()) {
 		pausedText->SetText("PAUSED");
 	}
-	if (!InputComponent->paused) {
+	if (!InputComponent->GetPaused()) {
 		pausedText->SetText("");
 	}
 }
