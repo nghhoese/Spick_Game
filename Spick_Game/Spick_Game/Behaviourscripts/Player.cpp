@@ -11,6 +11,14 @@ void Player::OnAwake()
 
 void Player::OnStart()
 {
+	if (GetGameObject()->getScene()->GetGameObjectsByName("Endpoint")[0] != nullptr) {
+		endPointObject = GetGameObject()->getScene()->GetGameObjectsByName("Endpoint")[0];
+		auto endPointPosition = endPointObject->getTransform();
+		endPointTopLeft.x = endPointPosition->position.x;
+		endPointTopLeft.y = endPointPosition->position.y;
+		endPointBottomRight.x = endPointPosition->position.x + 64;
+		endPointBottomRight.y = endPointPosition->position.y + 64;
+	}
 }
 
 void Player::OnClick()
@@ -61,18 +69,8 @@ void Player::OnUpdate()
 	double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
 	transfrom.rotation = Result + 90;
 
-	auto endPoint = GetGameObject()->getScene()->GetGameObjectsByName("Endpoint")[0];
-	auto endPointPosition = endPoint->getTransform();
-	spic::Point endBottomRight;
-	endBottomRight.x = endPointPosition->position.x + 64;
-	endBottomRight.y = endPointPosition->position.y + 64;
-	if ((xPlayer > endPointPosition->position.x && yPlayer > endPointPosition->position.y)) {
-		if (xPlayer < endBottomRight.x && yPlayer < endBottomRight.y) {
-			std::shared_ptr<spic::Component> script = endPoint->GetComponentByName("EndLevelScript");
-			if (script != nullptr) {
-				script->OnClick();
-			}
-		}
+	if (endPointObject != nullptr) {
+		CheckEndPoint();
 	}
 
 	GetGameObject()->setTransform(&transfrom);
@@ -149,5 +147,18 @@ void Player::CheckGameOver()
 			EngineController::GetInstance()->SetGameOver(true);
 			script->OnClick();
 		}
+	}
+}
+
+void Player::CheckEndPoint()
+{
+	if ((xPlayer > endPointTopLeft.x && yPlayer > endPointTopLeft.y)) {
+		if (xPlayer < endPointBottomRight.x && yPlayer < endPointBottomRight.y) {
+			std::shared_ptr<spic::Component> script = endPointObject->GetComponentByName("EndLevelScript");
+			if (script != nullptr) {
+				script->OnClick();
+			}
+		}
+
 	}
 }

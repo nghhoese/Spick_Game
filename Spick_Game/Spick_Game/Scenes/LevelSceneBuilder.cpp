@@ -10,7 +10,7 @@ std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(int levelNumber)
     std::string path = "assets/levels/level" + levelString + ".json";
     level->BuildLevel(GameScene, path);
 
-    spic::Camera* camera = new spic::Camera("mainCamera");
+    std::unique_ptr<spic::Camera> camera = std::make_unique<spic::Camera>("mainCamera");
     camera->setAspectWidth(1536);
     camera->setAspectHeight(1536);
     camera->setX(0);

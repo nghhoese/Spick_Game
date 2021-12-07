@@ -31,11 +31,14 @@ private:
     double speed;
     bool notClicked;
     bool isDamageless;
+    spic::Point endPointTopLeft;
+    spic::Point endPointBottomRight;
     spic::Point aimAngle;
     spic::Point aimPos;
     std::vector<std::shared_ptr<spic::GameObject>> bullets;
     std::shared_ptr<spic::Sprite> sprite;
     std::shared_ptr<spic::GameObject> InputObject;
+    std::shared_ptr<spic::GameObject> endPointObject;
 public:
     Player();
     void OnAwake();
@@ -48,6 +51,7 @@ public:
     void OnTriggerStay2D(const Collider& collider);
     void Shoot();
     void CheckGameOver();
+    void CheckEndPoint();
     void SetXPlayer(double x) { this->xPlayer = x; };
     double GetXPlayer() { return this->xPlayer; };
     void SetYPlayer(double y) { this->yPlayer = y; };

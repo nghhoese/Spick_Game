@@ -220,6 +220,10 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
                     std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("EndLevelScript", levelString);
                     endPointObject->AddComponent(scriptPlay);
                     currentLevel + 1;
+
+                    auto PlayerObject = scene->GetGameObjectsByName("Player")[0];
+                    auto PlayerComponent = PlayerObject->GetComponent<Player>();
+                    PlayerComponent->OnStart();
                 }
             }
         }
@@ -251,7 +255,6 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
             }          
         }
     }
-
 }
 
 void LevelController::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, std::tuple<int, int> position, const std::string& spriteName, const std::string& colourTag, const std::string& typeTag, int healthPoints, double speed, int damage) {
