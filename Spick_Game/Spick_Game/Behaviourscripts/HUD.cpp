@@ -17,7 +17,6 @@ void HUD::OnUpdate()
 	InputObject = GetGameObject()->getScene()->GetGameObjectsByName("Input")[0];
 	auto InputComponent = InputObject->GetComponent<InputScript>();
 
-	// Update Healthpoints in HUD
 	std::shared_ptr<spic::GameObject> healthObject = GetGameObject()->getScene()->GetGameObjectsByTag("hp")[0];
 	std::shared_ptr<spic::Text> healthText = std::dynamic_pointer_cast<spic::Text>(healthObject);
 	if (currentHealthPoints != healthpoints) {
@@ -25,7 +24,6 @@ void HUD::OnUpdate()
 	}
 	currentHealthPoints = this->healthpoints;
 
-	// Update Coins in HUD
 	std::shared_ptr<spic::GameObject> coinsObject = GetGameObject()->getScene()->GetGameObjectsByTag("coins")[0];
 	std::shared_ptr<spic::Text> CoinsText = std::dynamic_pointer_cast<spic::Text>(coinsObject);
 	if (currentCoins != coins) {
@@ -33,7 +31,6 @@ void HUD::OnUpdate()
 	}
 	currentCoins = this->coins;
 
-	// Update fps in HUD
 	std::shared_ptr<spic::GameObject> fpsObject = GetGameObject()->getScene()->GetGameObjectsByTag("fps")[0];
 	std::shared_ptr<spic::Text> fpsText = std::dynamic_pointer_cast<spic::Text>(fpsObject);
 	if (InputComponent->GetLoadFps()) {

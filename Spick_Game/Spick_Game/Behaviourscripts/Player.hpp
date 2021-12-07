@@ -47,6 +47,7 @@ public:
     void OnTriggerExit2D(const Collider& collider);
     void OnTriggerStay2D(const Collider& collider);
     void Shoot();
+    void CheckGameOver();
     void SetXPlayer(double x) { this->xPlayer = x; };
     double GetXPlayer() { return this->xPlayer; };
     void SetYPlayer(double y) { this->yPlayer = y; };

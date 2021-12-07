@@ -36,11 +36,9 @@ std::shared_ptr<spic::Scene> CheatsMenuBuilder::BuildScene() {
     scene->AddGameObject(InstakillButtonText);
 
     return scene;
-    
 }
 
 void CheatsMenuBuilder::BuildScript() {
-    // Ophalen in welk level de player momenteel zit
     std::shared_ptr<ChangeSceneBehaviour> scriptBackToLevel = std::make_shared<ChangeSceneBehaviour>("StartGameScript", "level1");
     buttonBackToLevel->AddComponent(scriptBackToLevel);
 }
