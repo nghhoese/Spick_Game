@@ -78,21 +78,7 @@ void Player::OnUpdate()
 	GetGameObject()->setTransform(&transfrom);
 	InputComponent->checkMouseButtons();
 
-	if (healthpoints == 0) {
-		std::cout << currentHealthPoints;
-		std::shared_ptr<spic::Component> script = GetGameObject()->GetComponentByName("GameOverScript");
-		if (script != nullptr) {
-			EngineController::GetInstance()->SetGameOver(true);
-			script->OnClick();
-		}
-	}
-
-	// nog weghalen is om te testen
-	if (isDamageless) {
-		if (this->healthpoints > 0) {
-			this->healthpoints -= 1;
-		}
-	}
+	this->CheckGameOver();
 
 	std::shared_ptr<spic::GameObject> HudObject = GetGameObject()->getScene()->GetGameObjectsByTag("hud")[0];
 	auto HudComponent = HudObject->GetComponent<HUD>();
@@ -105,7 +91,7 @@ void Player::OnRender()
 	InputObject = GetGameObject()->getScene()->GetGameObjectsByName("Input")[0];
 	auto InputComponent = InputObject->GetComponent<InputScript>();
 	InputComponent->CheckPause();
-	// Update paused in HUD
+
 	std::shared_ptr<spic::GameObject> pausedObject = GetGameObject()->getScene()->GetGameObjectsByTag("paused")[0];
 	std::shared_ptr<spic::Text> pausedText = std::dynamic_pointer_cast<spic::Text>(pausedObject);
 	if (InputComponent->GetPaused()) {
@@ -152,4 +138,16 @@ void Player::Shoot()
 	bulletObject->AddComponent(bullet);
 	bulletObject->setTransform(&transfrom);
 	bullet->CalculateAmountToMove();
+}
+
+void Player::CheckGameOver()
+{
+	if (healthpoints == 0) {
+		std::cout << currentHealthPoints;
+		std::shared_ptr<spic::Component> script = GetGameObject()->GetComponentByName("GameOverScript");
+		if (script != nullptr) {
+			EngineController::GetInstance()->SetGameOver(true);
+			script->OnClick();
+		}
+	}
 }

@@ -20,7 +20,7 @@ void Bullet::Update()
 				enemtObj->setHealthpoints(enemtObj->getHealthpoints() - damage);
 				hit = false;
 				broken = true;
-				enemtObj->setPath("../assets/enemy_hit.png");
+				enemtObj->setPath("assets/enemy_hit.png");
 				
 			}
 			/*else

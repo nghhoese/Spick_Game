@@ -47,6 +47,7 @@ public:
     void OnTriggerExit2D(const Collider& collider);
     void OnTriggerStay2D(const Collider& collider);
     void Shoot();
+    void CheckGameOver();
     void SetXPlayer(double x) { this->xPlayer = x; };
     double GetXPlayer() { return this->xPlayer; };
     void SetYPlayer(double y) { this->yPlayer = y; };
@@ -55,7 +56,7 @@ public:
     int GetHealtpoints() { return this->healthpoints; };
     void Setcoins(int value) { this->coins = value; };
     int GetCoins() { return this->coins; };
-    void SetSpeed(double value) { this->speed = speed; };
+    void SetSpeed(double value) { this->speed = value; };
     double GetSpeed() { return this->speed; };
     void SetNotClicked(bool value) { this->notClicked = value; };
     bool GetNotClicked() { return this->notClicked; };

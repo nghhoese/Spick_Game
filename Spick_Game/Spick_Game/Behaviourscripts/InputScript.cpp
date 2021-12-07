@@ -32,7 +32,6 @@ const void InputScript::checkMouseButtons()
 	const spic::GameObject* playerObject = GetPlayer();
 	auto PlayerComponent = playerObject->GetComponent<Player>();
 	if (input->GetMouseButton(LEFT)) {
-		// schieten
 		if (PlayerComponent->GetNotClicked())
 		{
 			PlayerComponent->Shoot();
@@ -40,7 +39,7 @@ const void InputScript::checkMouseButtons()
 		}
 	}
 	else if (input->GetMouseButton(RIGHT)) {
-		// reloaden
+
 	}
 	else {
 		PlayerComponent->SetNotClicked(true);
@@ -49,7 +48,6 @@ const void InputScript::checkMouseButtons()
 
 const void InputScript::CheckPause() {
 	if (input->GetKey(ESC)) {
-	// pauze menu
 		if (!GetPausing()) {
 			SetPausing(true);
 			if (time->TimeScale() > 0.0) {
@@ -73,7 +71,6 @@ const void InputScript::checkKeys()
 	auto PlayerComponent = playerObject->GetComponent<Player>();
 	auto objk1 = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
 
-	//waardes nog aanpassen
 	if (input->GetKey(W)) {
 		if (PlayerComponent != nullptr) {
 
@@ -150,26 +147,10 @@ const void InputScript::checkKeys()
 	if (input->GetKey(E)) {
 		// interactie
 	}
-	/*else if (input->GetKey(ESC)) {
-		// pauze menu
-		if (!pausing) {
-			pausing = true;
-			if (time->TimeScale() > 0.0) {
-				time->TimeScale(0.0);
-				std::cout << "paused";
-			}
-			else if (time->TimeScale() == 0) {
-				time->TimeScale(1.0);
-				std::cout << "play";
-			}
-		}
-
-	}*/
 	if (input->GetKey(H)) {
 		// gameplay snelheid resetten
 	}
 	if (input->GetKey(PU)) {
-		// gameplay snelheid versnellen
 		if (!GetSpeedUp()) {
 			std::cout << "speedup: ";
 			SetSpeedUp(true);
@@ -182,11 +163,8 @@ const void InputScript::checkKeys()
 				std::cout << time->TimeScale();
 			}
 		}
-		
-
 	}
 	if (input->GetKey(PD)) {
-		
 		if (!GetSpeedDown()) {
 			std::cout << "slowdown: ";
 			SetSpeedDown(true);
@@ -205,30 +183,24 @@ const void InputScript::checkKeys()
 		// pauze knop
 	}
 	if (input->GetKey(EP)) {
-		// opent een cheats menu
 		std::shared_ptr<spic::Component> script = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0]->GetComponentByName("CheatsMenuScript");
-
 		if (script != nullptr) {
 			script->OnClick();
 		}
 	}
 	if (input->GetKey(Y)) {
-		// instakill the player
 		PlayerComponent->SetHealthpoints(0);
 		EngineController::GetInstance()->SetGameOver(true);
 	}
 	if (input->GetKey(UA)) {
-		// movement speed up
 		PlayerComponent->SetSpeed(PlayerComponent->GetSpeed() + 1);
 	}
 	if (input->GetKey(DA)) {
-		// movement speed down
 		if (PlayerComponent->GetSpeed() > 0) {
 			PlayerComponent->SetSpeed(PlayerComponent->GetSpeed() - 1);
 		}
 	}
 	if (input->GetKey(L)) {
-		// enable/disable damageless
 		if (GetClicked()) {
 			if (PlayerComponent->GetIsDamageLess()) {
 				PlayerComponent->SetIsDamageless(false);
@@ -239,11 +211,6 @@ const void InputScript::checkKeys()
 			SetClicked(false);
 		}
 	}
-
-	//else if (input->GetKey(U)) {
-	//	// make player undedectable
-	//}
-
 	if (input->GetKey(F)) {
 		if (GetClicked()) {
 			if (GetLoadFps()) {

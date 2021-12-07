@@ -38,17 +38,13 @@ void Enemy::OnUpdate()
     if (isAlive)
     {
         auto trans = *GetGameObject()->getTransform();
-
         auto tag = GetGameObject()->GetTags()[0];
-        // move till destination is reached
         if (tag == "red")
         {
-            //up and down
             trans.position.y += speed;
         }
         else if (tag == "blue")
         {
-            //left and right
             trans.position.x += speed;
         }
         else

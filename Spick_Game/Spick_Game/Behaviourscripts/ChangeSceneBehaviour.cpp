@@ -7,18 +7,13 @@ ChangeSceneBehaviour::ChangeSceneBehaviour(const std::string& name, const std::s
 void ChangeSceneBehaviour::OnClick()
 {
 	if (EngineController::GetInstance()->GetGameOver()) {
-		// Reset levels
 		std::shared_ptr<LevelSceneBuilder> levelSceneBuilder = std::make_shared<LevelSceneBuilder>();
-
 		levelSceneBuilder->BuildLevel(1);
 		levelSceneBuilder->BuildLevel(2);
 		levelSceneBuilder->BuildLevel(3);
-
 		EngineController::GetInstance()->SetGameOver(false);
 	}
-
 	EngineController::GetInstance()->SetActiveScene(_scene);
-
 }
 
 void ChangeSceneBehaviour::OnUpdate() {
