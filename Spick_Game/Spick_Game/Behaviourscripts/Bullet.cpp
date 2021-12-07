@@ -1,7 +1,7 @@
 #include "Bullet.hpp"
 #include <API_Headers/Collision.hpp>
 
-Bullet::Bullet(spic::Point pos, spic::Point direction, double speed, int damage) : position(pos), direction(direction), speed(speed), damage(damage), hit(false), broken(false)
+Bullet::Bullet(spic::Point pos, spic::Point direction, double speed, int damage) : position(pos), direction(direction), speed(speed), damage(damage), hit(false), broken(true)
 {
 }
 
@@ -52,7 +52,6 @@ void Bullet::Update()
 	}
 	else {
 		auto trans = *GetGameObject()->getTransform();
-		trans.scale = 0.01;
 		trans.position.x = -50;
 		trans.position.y = -10;
 		GetGameObject()->setTransform(&trans);

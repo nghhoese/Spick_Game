@@ -24,6 +24,8 @@ private:
     int coins;
     int currentCoins;
     int ammo;
+    int magazine;
+    int coolDown;
     int bulletSpeed;
     int bulletDamage;
     double xPlayer;
@@ -35,12 +37,13 @@ private:
     spic::Point endPointBottomRight;
     spic::Point aimAngle;
     spic::Point aimPos;
-    std::vector<std::shared_ptr<spic::GameObject>> bullets;
+    std::vector<std::shared_ptr<Bullet>> bullets;
     std::shared_ptr<spic::Sprite> sprite;
     std::shared_ptr<spic::GameObject> InputObject;
     std::shared_ptr<spic::GameObject> endPointObject;
 public:
     Player();
+    void FillBucket();
     void OnAwake();
     void OnStart();
     void OnUpdate();

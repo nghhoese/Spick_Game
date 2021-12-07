@@ -31,6 +31,17 @@ void HUD::OnUpdate()
 	}
 	currentCoins = this->coins;
 
+	std::shared_ptr<spic::GameObject> magazineObject = GetGameObject()->getScene()->GetGameObjectsByTag("Magazine")[0];
+	std::shared_ptr<spic::Text> magazineText = std::dynamic_pointer_cast<spic::Text>(magazineObject);
+	if (currentMagazine != magazine) {
+		if (magazine == 0) {
+			magazineText->SetText("Magazine: reloading...");
+		}
+		else {
+			magazineText->SetText("Magazine: 5/" + std::to_string(this->magazine));
+		}
+	}
+	
 	std::shared_ptr<spic::GameObject> fpsObject = GetGameObject()->getScene()->GetGameObjectsByTag("fps")[0];
 	std::shared_ptr<spic::Text> fpsText = std::dynamic_pointer_cast<spic::Text>(fpsObject);
 	if (InputComponent->GetLoadFps()) {
