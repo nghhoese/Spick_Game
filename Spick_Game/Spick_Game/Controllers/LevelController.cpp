@@ -39,235 +39,143 @@ void LevelController::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::
                 std::shared_ptr<spic::Sprite> tileSprite = std::make_shared<spic::Sprite>();
                 spic::Transform transform = *tileObject->getTransform();
                 switch (object + 1) {
-
-                // bright wood statue floor
-                case 19:
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "bright-wood-statue-floor");
-                    break;
-
-                // bright wood hitler floor
-                case 21:
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "bright-wood-hitler-floor");
-                    break;
-
                 // bright wood floor
                 case 23:
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "bright-wood-floor");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "bright-wood-floor", "");
                     break;
-
                 // dark wood floor
                 case 24:
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-wood-floor");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-wood-floor", "");
                     break;
-
                 // elevator
                 case 26:
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "elevator");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "elevator", "");
                     break;
-
                 // red wall
                 case 34:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "red-wall");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "red-wall", "wall");
                     break;
-
-                // red wall
-                case 36:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "red-nazi-wall");
-                    break;
-
                 // dark blue skull stone wall
                 case 68:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-blue-skull-stone-wall");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-blue-skull-stone-wall", "wall");
                     break;
-
                 // dark stone wall
                 case 70:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-stone-wall");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-stone-wall", "wall");
                     break;
-
-                // dark blue nazi stone wall
-                case 72:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-blue-nazi-stone-wall");
-                    break;
-
                 // red-grey-brown-wall
                 case 76:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "red-grey-brown-wall");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "red-grey-brown-wall", "wall");
                     break;
-
                 // dark blue nazi stone wall
                 case 80:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-blue-stone-wall");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-blue-stone-wall", "wall");
                     break;
-
-                // bright vent
-                case 105:
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "bright-vent");
-                    break;
-
                 // dark vent
                 case 106:
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "bright-vent");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-vent", "");
                     break;
-
                 // stone floor
                 case 109:
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone-floor");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone-floor", "");
                     break;
-
                 // left half red wall
                 case 115:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "half_1");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "half_1", "wall");
                     break;
-
                 // top red half wall
                 case 116:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "half_2");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "half_2", "wall");
                     break;
-
                 // right half red wall
                 case 117:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "half_3");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "half_3", "wall");
                     break;
-
                 // bottom half red wall
                 case 118:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "half_4");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "half_4", "wall");
                     break;
-
                 // top left corner red half wall
                 case 119:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "inside_1");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "inside_1", "wall");
                     break;
-
                 // bottom left corner red half wall
                 case 120:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "inside_2");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "inside_2", "wall");
                     break;
-
                 // top right red wall
                 case 121:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "inside_3");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "inside_3", "wall");
                     break;
-
                 // bottom right corner red half wall
                 case 122:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "inside_4");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "inside_4", "wall");
                     break;
-
                 // top left angled red half wall
                 case 123:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "outside_1");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "outside_1", "wall");
                     break;
-
                 // top right angled red half wall
                 case 124:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "outside_2");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "outside_2", "wall");
                     break;
-
                 // bottom left angled red half wall
                 case 125:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "outside_3");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "outside_3", "wall");
                     break;
-
                 // bottom right angled red half wall
                 case 126:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "outside_4");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "outside_4", "wall");
                     break;
-
                 // bottom right angled stone half wall
                 case 127:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_bottom-right-corner");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_bottom-right-corner", "wall");
                     break;
-
                 // top right angled stone half wall
                 case 128:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_top-right-corner");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_top-right-corner", "wall");
                     break; 
-
                 // top left angled stone half wall
                 case 129:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_top-left-corner");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_top-left-corner", "wall");
                     break; 
-
                 // bottom left angled stone half wall
                 case 130:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_bottom-left-corner");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_bottom-left-corner", "wall");
                     break;
-
                 // top half stone wall
                 case 131:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_top");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_top", "wall");
                     break;
-
                 // left half stone wall
                 case 132:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_left");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_left", "wall");
                     break;
-
                 // bottom half stone wall
                 case 133:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_bottom");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_bottom", "wall");
                     break;
-
                 // right half stone wall
                 case 134:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_right");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_right", "wall");
                     break;
-
                 // top left angled red stone wall
                 case 135:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_top-left");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_top-left", "wall");
                     break;
-
                 // top right angled red stone wall
                 case 136:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_top-right");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_top-right", "wall");
                     break;
-
                 // bottom left angled red stone wall
                 case 137:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_bottom-left");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_bottom-left", "wall");
                     break;
-
                 // bottom right angled red stone wall
                 case 138:
-                    tileObject->AddTag("wall");
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_bottom-right");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "stone_half_wall_bottom-right", "wall");
                     break;
-
                 }              
-
                 x++;
                 if (x == level_width) {
                     y++;
@@ -278,13 +186,15 @@ void LevelController::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::
     }
 }
 
-void LevelController::BuildLevelTile(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::GameObject> tileObject, std::shared_ptr<spic::Sprite> tileSprite, spic::Transform transform, int x, int y, const std::string& spriteName) {
+void LevelController::BuildLevelTile(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::GameObject> tileObject, std::shared_ptr<spic::Sprite> tileSprite, spic::Transform transform, int x, int y, const std::string& spriteName, const std::string& tag) {
 
     std::string basePath = "assets/images/foregrounds/" + spriteName;
-
+    if (tag != "") {
+        tileObject->AddTag(tag);
+    }
     scene->AddGameObject(tileObject);
     tileObject->AddComponent(tileSprite);
-        std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
+    std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
     boxCollider->Height(55);
     boxCollider->Width(55);
     tileObject->AddComponent(boxCollider);
@@ -294,13 +204,14 @@ void LevelController::BuildLevelTile(std::shared_ptr<spic::Scene> scene, std::sh
     else if (std::filesystem::exists(basePath + pngFileString)) {
         tileSprite->SetSprite(basePath + pngFileString);
     }
-
+    else {
+        tileSprite->SetSprite("assets/images/foregrounds/error.png");
+    }
     transform.position.x = (double)x * xTilesize;
     transform.position.y = (double)y * yTilesize;
     transform.scale = 1;
     tileObject->setTransform(&transform);
 }
-
 
 void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<std::pair<std::string, std::any>> object){
     std::shared_ptr<spic::Sprite> sprite = std::make_shared<spic::Sprite>();
@@ -316,18 +227,15 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
                     std::shared_ptr<spic::GameObject> playerObject = std::make_shared<spic::GameObject>("Player");
 
                     scene->AddGameObject(playerObject);
-                    spic::Transform transfrom = *playerObject->getTransform();
 
                     playerObject->AddComponent(sprite);
                     sprite->SetSprite("assets/player_pistol_silenced.png");
                     sprite->SetPlayerBool(true);
 
-                    transfrom.position.x = std::get<0>(position);
-                    transfrom.position.y = std::get<1>(position);
-                    transfrom.scale = 0.65;
+                    BuildLevelObjectPosition(playerObject, position);
+
                     std::shared_ptr<Player> player = std::make_shared<Player>();
                     playerObject->AddComponent(player);
-                    playerObject->setTransform(&transfrom);
 
                     std::shared_ptr<ChangeSceneBehaviour> gameOverScript = std::make_shared<ChangeSceneBehaviour>("GameOverScript", "GameOverMenu");
                     playerObject->AddComponent(gameOverScript);
@@ -352,13 +260,8 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
 
                     std::shared_ptr<spic::GameObject> endPointObject = std::make_shared<spic::GameObject>("Endpoint");
-
                     scene->AddGameObject(endPointObject);
-                    spic::Transform transfrom = *endPointObject->getTransform();
-                    transfrom.position.x = std::get<0>(position);
-                    transfrom.position.y = std::get<1>(position);
-                    endPointObject->setTransform(&transfrom);
-
+                    BuildLevelObjectPosition(endPointObject, position);
                     std::string counterString = std::to_string(currentLevel + 1);
                     std::string levelString = "level" + counterString;
                     std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("EndLevelScript", levelString);
@@ -372,120 +275,62 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
     if (get_value<std::string>("type", object) == "Enemy") {
 
         if (get_value<std::string>("name", object) == "GreenGuard") {
-
             for (std::pair<std::string, std::any> value : object) {
-
                 if (value.first._Equal("position")) {
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
-
-                    std::shared_ptr<spic::GameObject> GreenGuardObject = std::make_shared<spic::GameObject>("GreenGuard");
-                    GreenGuardObject->AddTag("green");
-                    GreenGuardObject->AddTag("guard");
-
-
-                    scene->AddGameObject(GreenGuardObject);
-                    spic::Transform transfrom = *GreenGuardObject->getTransform();
-
-                    transfrom.position.x = std::get<0>(position);
-                    transfrom.position.y = std::get<1>(position);
-                    transfrom.scale = 0.65;
-
-                    std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>();
-                    enemy->setHealthpoints(100);
-                    enemy->setSpeed(1.5);
-                    enemy->setDamagePerBullet(40);
-                    GreenGuardObject->AddComponent(enemy);
-                    enemy->setPath("assets/enemy_green.bmp");
-                    std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
-                    boxCollider->Height(58);
-                    boxCollider->Width(50);
-                    boxCollider->ShowBoxBool(true);
-
-                    GreenGuardObject->AddComponent(boxCollider);
-                    GreenGuardObject->AddComponent(sprite);
-                    sprite->SetSprite(enemy->getPath());
-                    
-                    GreenGuardObject->setTransform(&transfrom);
-                    enemy->OnStart();
-
+                    BuildLevelEnemy(scene, sprite, position, "enemy_green.bmp", "green", "guard", 100, 1.5, 40);
                 }
             } 
-
         }
-
         if (get_value<std::string>("name", object) == "RedGuard") {
-
             for (std::pair<std::string, std::any> value : object) {
-
                 if (value.first._Equal("position")) {
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
-
-                    std::shared_ptr<spic::GameObject> RedGuardObject = std::make_shared<spic::GameObject>("GreenGuard");
-                    RedGuardObject->AddTag("red");
-                    RedGuardObject->AddTag("guard");
-
-                    scene->AddGameObject(RedGuardObject);
-                    spic::Transform transfrom = *RedGuardObject->getTransform();
-
-                    transfrom.position.x = std::get<0>(position);
-                    transfrom.position.y = std::get<1>(position);
-                    transfrom.scale = 0.65;
-
-                    std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>();
-                    enemy->setHealthpoints(75);
-                    enemy->setSpeed(2.5);
-                    enemy->setDamagePerBullet(50);
-                    RedGuardObject->AddComponent(enemy);
-                    enemy->setPath("assets/enemy_red.bmp");
-
-                    std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
-                    boxCollider->Height(58);
-                    boxCollider->Width(50);
-                    boxCollider->ShowBoxBool(true);
-                    RedGuardObject->AddComponent(boxCollider);
-                    RedGuardObject->AddComponent(sprite);
-                    sprite->SetSprite(enemy->getPath());
-                    RedGuardObject->setTransform(&transfrom);
-                    enemy->OnStart();
+                    BuildLevelEnemy(scene, sprite, position, "enemy_red.bmp", "red", "guard", 75, 2.5, 50);
                 }
             }
-
-        }
-
+      }
         if (get_value<std::string>("name", object) == "BlueGuard") {
-
             for (std::pair<std::string, std::any> value : object) {
-
                 if (value.first._Equal("position")) {
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
-
-                    std::shared_ptr<spic::GameObject> BlueGuardObject = std::make_shared<spic::GameObject>("GreenGuard");
-                    BlueGuardObject->AddTag("blue");
-                    BlueGuardObject->AddTag("guard");
-
-                    scene->AddGameObject(BlueGuardObject);
-                    spic::Transform transfrom = *BlueGuardObject->getTransform();
-
-                    transfrom.position.x = std::get<0>(position);
-                    transfrom.position.y = std::get<1>(position);
-                    transfrom.scale = 0.65;
-
-                    std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>();
-                    enemy->setHealthpoints(150);
-                    enemy->setSpeed(1.5);
-                    enemy->setDamagePerBullet(50);
-                    BlueGuardObject->AddComponent(enemy);
-                    enemy->setPath("assets/enemy_blue.bmp");
-
-                    BlueGuardObject->AddComponent(sprite);
-                    sprite->SetSprite(enemy->getPath());
-                    BlueGuardObject->setTransform(&transfrom);
-                    enemy->OnStart();
-                }
-                
-            }
-            
+                    BuildLevelEnemy(scene, sprite, position, "enemy_blue.bmp", "blue", "guard", 150, 1.5, 50);
+                }             
+            }          
         }
     }
 
+}
+
+void LevelController::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, std::tuple<int, int> position, const std::string& spriteName, const std::string& colourTag, const std::string& typeTag, int healthPoints, double speed, int damage) {
+    std::shared_ptr<spic::GameObject> guardObject = std::make_shared<spic::GameObject>("Guard");
+    guardObject->AddTag(colourTag);
+    guardObject->AddTag(typeTag);
+    scene->AddGameObject(guardObject);
+
+    BuildLevelObjectPosition(guardObject, position);
+
+    std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>();
+    enemy->setHealthpoints(healthPoints);
+    enemy->setSpeed(speed);
+    enemy->setDamagePerBullet(damage);
+    guardObject->AddComponent(enemy);
+    enemy->setPath("assets/" + spriteName);
+
+    std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
+    boxCollider->Height(58);
+    boxCollider->Width(50);
+    boxCollider->ShowBoxBool(true);
+    guardObject->AddComponent(boxCollider);
+    guardObject->AddComponent(sprite);
+    sprite->SetSprite(enemy->getPath());
+    enemy->OnStart();
+}
+
+void LevelController::BuildLevelObjectPosition(std::shared_ptr<spic::GameObject> object, std::tuple<int, int> position) {
+    spic::Transform transfrom = *object->getTransform();
+    transfrom.position.x = std::get<0>(position);
+    transfrom.position.y = std::get<1>(position);
+    transfrom.scale = 0.65;
+    object->setTransform(&transfrom);
 }
