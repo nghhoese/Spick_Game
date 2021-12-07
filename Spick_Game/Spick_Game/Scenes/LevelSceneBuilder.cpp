@@ -1,8 +1,8 @@
 #include "LevelSceneBuilder.hpp"
 
-std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(spic::Engine* engine, int levelNumber) {
+std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(int levelNumber) {
    
-    std::shared_ptr<Level> level = std::make_shared<Level>(engine);
+    std::shared_ptr<LevelController> level = std::make_shared<LevelController>();
     level->currentLevel = levelNumber;
     std::string levelString = std::to_string(levelNumber);
     std::shared_ptr<spic::Scene> GameScene = std::make_shared<spic::Scene>("level" + levelString);
@@ -34,7 +34,7 @@ std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(spic::Engine* en
     GameScene->AddGameObject(fps);
     GameScene->AddGameObject(paused);
 
-    std::shared_ptr<HUD> Hud = std::make_shared<HUD>(engine);
+    std::shared_ptr<HUD> Hud = std::make_shared<HUD>();
     std::shared_ptr<spic::GameObject> HudObject = std::make_shared<spic::GameObject>();
     HudObject->AddTag("hud");
     HudObject->AddComponent(Hud);
@@ -43,12 +43,12 @@ std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(spic::Engine* en
     return GameScene;
 }
 
-void LevelSceneBuilder::BuildLevel(spic::Engine* engine, int levelNumber) {
+void LevelSceneBuilder::BuildLevel(int levelNumber) {
     std::shared_ptr<spic::GameObject> InputObject = std::make_shared<spic::GameObject>("Input");
     std::shared_ptr<InputScript> inputScript = std::make_shared<InputScript>();
     InputObject->AddComponent(inputScript);
 
-    std::shared_ptr<spic::Scene> levelScene = BuildLevelScene(engine, levelNumber);
+    std::shared_ptr<spic::Scene> levelScene = BuildLevelScene(levelNumber);
     levelScene->AddGameObject(InputObject);
-    engine->AddScene(levelScene);
+    EngineController::GetInstance()->AddScene(levelScene);
 }

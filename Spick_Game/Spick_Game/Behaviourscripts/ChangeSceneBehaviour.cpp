@@ -1,29 +1,23 @@
 #include "ChangeSceneBehaviour.hpp"
-#include "API_Headers/Scene.hpp"
-#include <API_Headers/Engine.hpp>
-#include "../Scenes/LevelSceneBuilder.hpp"
 
-
-ChangeSceneBehaviour::ChangeSceneBehaviour(std::string name, std::string scene, spic::Engine* engine)
-: _engine(engine),_scene(scene){
+ChangeSceneBehaviour::ChangeSceneBehaviour(std::string name, std::string scene) : _scene(scene){
 	Name(name);
 }
 
 void ChangeSceneBehaviour::OnClick()
 {
-	if (_engine->getGameOver()) {
-
+	if (EngineController::GetInstance()->GetGameOver()) {
 		// Reset levels
 		std::shared_ptr<LevelSceneBuilder> levelSceneBuilder = std::make_shared<LevelSceneBuilder>();
 
-		levelSceneBuilder->BuildLevel(_engine, 1);
-		levelSceneBuilder->BuildLevel(_engine, 2);
-		levelSceneBuilder->BuildLevel(_engine, 3);
+		levelSceneBuilder->BuildLevel(1);
+		levelSceneBuilder->BuildLevel(2);
+		levelSceneBuilder->BuildLevel(3);
 
-		_engine->setGameOver(false);
+		EngineController::GetInstance()->SetGameOver(false);
 	}
 
-	_engine->SetActiveScene(_scene);
+	EngineController::GetInstance()->SetActiveScene(_scene);
 
 }
 

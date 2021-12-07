@@ -1,6 +1,11 @@
 #include "Player.hpp"
 #include <API_Headers/BoxCollider.hpp>
 
+Player::Player()
+{
+
+}
+
 void Player::OnAwake()
 {
 }
@@ -78,7 +83,7 @@ void Player::OnUpdate()
 		std::cout << currentHealthPoints;
 		std::shared_ptr<spic::Component> script = GetGameObject()->GetComponentByName("GameOverScript");
 		if (script != nullptr) {
-			engine->setGameOver(true);
+			EngineController::GetInstance()->SetGameOver(true);
 			script->OnClick();
 		}
 	}
@@ -114,11 +119,6 @@ void Player::OnRender()
 
 void Player::OnTriggerEnter2D(const Collider& collider)
 {
-}
-
-Player::Player(spic::Engine* engine)
-{
-	this->engine = engine;
 }
 
 void Player::OnTriggerExit2D(const Collider& collider)

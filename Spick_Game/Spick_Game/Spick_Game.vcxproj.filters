@@ -1,32 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Behaviourscript\ChangeSceneBehaviour.cpp" />
-    <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="HUD.cpp" />
-    <ClCompile Include="Behaviourscript\InputScript.cpp" />
-    <ClCompile Include="Level.cpp" />
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Behaviourscripts\ChangeSceneBehaviour.cpp" />
+    <ClCompile Include="Behaviourscripts\Bullet.cpp" />
+    <ClCompile Include="Behaviourscripts\Enemy.cpp" />
+    <ClCompile Include="Behaviourscripts\HUD.cpp" />
+    <ClCompile Include="Behaviourscripts\InputScript.cpp" />
+    <ClCompile Include="Controllers\LevelController.cpp" />
+    <ClCompile Include="Behaviourscripts\Player.cpp" />
     <ClCompile Include="Scenes\CheatsMenuBuilder.cpp" />
     <ClCompile Include="Scenes\GameOverSceneBuilder.cpp" />
     <ClCompile Include="Scenes\MainMenuBuilder.cpp" />
     <ClCompile Include="Scenes\LevelSceneBuilder.cpp" />
     <ClCompile Include="Spick_Game.cpp" />
+    <ClCompile Include="Controllers\EngineController.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Behaviourscript\ChangeSceneBehaviour.hpp" />
-    <ClInclude Include="Bullet.hpp" />
-    <ClInclude Include="Enemy.hpp" />
-    <ClInclude Include="HUD.hpp" />
-    <ClInclude Include="Behaviourscript\InputScript.hpp" />
-    <ClInclude Include="Level.hpp" />
-    <ClInclude Include="Player.hpp" />
+    <ClInclude Include="Behaviourscripts\ChangeSceneBehaviour.hpp" />
+    <ClInclude Include="Behaviourscripts\Bullet.hpp" />
+    <ClInclude Include="Behaviourscripts\Enemy.hpp" />
+    <ClInclude Include="Behaviourscripts\HUD.hpp" />
+    <ClInclude Include="Behaviourscripts\InputScript.hpp" />
+    <ClInclude Include="Controllers\LevelController.hpp" />
+    <ClInclude Include="Behaviourscripts\Player.hpp" />
     <ClInclude Include="Scenes\CheatsMenuBuilder.hpp" />
     <ClInclude Include="Scenes\GameOverSceneBuilder.hpp" />
     <ClInclude Include="Scenes\MainMenuBuilder.hpp" />
     <ClInclude Include="Scenes\LevelSceneBuilder.hpp" />
     <ClInclude Include="Scenes\SceneBuilder.hpp" />
+    <ClInclude Include="Controllers\EngineController.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\button.jpg" />
@@ -74,7 +76,10 @@
     <Image Include="assets\images\foregrounds\elevator.png" />
     <Image Include="assets\enemy_hit.png" />
     <Image Include="assets\player_pistol_silenced_hit.png" />
+<<<<<<< HEAD
     <Image Include="assets\images\foregrounds\error.png" />
+=======
+>>>>>>> Game_Refactoring
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\Fonts\Capsmall.ttf" />

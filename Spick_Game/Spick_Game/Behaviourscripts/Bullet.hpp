@@ -1,20 +1,16 @@
 #pragma once
+
+#include <math.h>
 #include "API_Headers/BehaviourScript.hpp"
 #include "API_Headers/Point.hpp"
 #include "API_Headers/GameObject.hpp"
+#include "API_Headers/Time.hpp"
+#include "API_Headers/Scene.hpp"
 #include "Enemy.hpp"
 
 class Bullet : public spic::BehaviourScript {
 public:
-    spic::Point position;
-    double speed;
-    double amountToMoveX;
-    double amountToMoveY;
-    spic::Point direction;
-    int damage;
-
     Bullet(spic::Point pos, spic::Point direction, double speed, int damage);
-    Bullet();
     void Update();
     void OnAwake();
     void OnStart();
@@ -26,6 +22,12 @@ public:
     void OnTriggerExit2D(const Collider& collider);
     void OnTriggerStay2D(const Collider& collider);
 private:
-    bool hit = true;
-    bool broken = false;
+    bool hit;
+    bool broken;
+    spic::Point position;
+    double speed;
+    double amountToMoveX;
+    double amountToMoveY;
+    spic::Point direction;
+    int damage;
 };

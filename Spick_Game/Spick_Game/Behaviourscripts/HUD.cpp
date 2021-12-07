@@ -1,8 +1,8 @@
 #include "HUD.hpp"
 
-HUD::HUD(spic::Engine* engine)
+HUD::HUD()
 {
-	this->engine = engine;
+
 }
 
 void HUD::OnAwake()
@@ -38,7 +38,7 @@ void HUD::OnUpdate()
 	std::shared_ptr<spic::GameObject> fpsObject = GetGameObject()->getScene()->GetGameObjectsByTag("fps")[0];
 	std::shared_ptr<spic::Text> fpsText = std::dynamic_pointer_cast<spic::Text>(fpsObject);
 	if (InputComponent->loadFps) {
-		fpsText->SetText("FPS: " + std::to_string(engine->GetFPS()));
+		fpsText->SetText("FPS: " + std::to_string(EngineController::GetInstance()->GetFPS()));
 	}
 	if (!InputComponent->loadFps) {
 		fpsText->SetText("");

@@ -2,9 +2,10 @@
 #include <API_Headers/BehaviourScript.hpp>
 #include <API_Headers/Engine.hpp>
 #include <API_Headers/Text.hpp>
-#include "Behaviourscript/InputScript.hpp"
+#include "InputScript.hpp"
 #include <API_Headers/Scene.hpp>
 #include <API_Headers/GameObject.hpp>
+#include "../Controllers/EngineController.hpp"
 
 class HUD : public spic::BehaviourScript {
 private:
@@ -14,9 +15,8 @@ private:
     int currentCoins;
     int coins;
     std::shared_ptr<spic::GameObject> InputObject;
-    spic::Engine* engine;
 public:
-    HUD(spic::Engine* engine);
+    HUD();
     void OnAwake();
     void OnStart();
     void OnUpdate();

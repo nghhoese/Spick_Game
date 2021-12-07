@@ -13,8 +13,9 @@
 #include "Bullet.hpp"
 #include <iostream>
 #include <API_Headers/Engine.hpp>
-#include "Behaviourscript/InputScript.hpp"
+#include "InputScript.hpp"
 #include "HUD.hpp"
+#include "../Controllers/EngineController.hpp"
 
 class Player : public spic::BehaviourScript {
 private:
@@ -29,11 +30,9 @@ private:
     std::vector<std::shared_ptr<spic::GameObject>> bullets;
     std::shared_ptr<spic::Sprite> sprite;
     spic::Time* time;
-    spic::Engine* engine;
     std::shared_ptr<spic::GameObject> InputObject;
-
 public:
-    Player(spic::Engine* engine);
+    Player();
     int currentHealthPoints;
     double xPlayer;
     double yPlayer;

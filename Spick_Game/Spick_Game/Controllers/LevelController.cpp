@@ -1,13 +1,12 @@
-#include "Level.hpp"
+#include "../Controllers/LevelController.hpp"
 #include <API_Headers/BoxCollider.hpp>
 
-Level::Level(spic::Engine* engine)
+LevelController::LevelController()
 {
-    this->engine = engine;
 }
 
-void Level::BuildLevel(std::shared_ptr<spic::Scene> scene, std::filesystem::path filePath) {
-    auto level_layers = engine->GetLevel(filePath);
+void LevelController::BuildLevel(std::shared_ptr<spic::Scene> scene, std::filesystem::path filePath) {
+    auto level_layers = EngineController::GetInstance()->GetLevel(filePath);
 
     std::vector<std::pair<int, std::vector<std::vector<int>>>> tiles = level_layers.first;
     std::vector<std::vector<std::pair<std::string, std::any>>> objects = level_layers.second;
@@ -29,7 +28,7 @@ void Level::BuildLevel(std::shared_ptr<spic::Scene> scene, std::filesystem::path
 
 }
 
-void Level::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, std::vector<std::vector<int>>> tileset) {
+void LevelController::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, std::vector<std::vector<int>>> tileset) {
     // foreground
     if(tileset.first == 4) {
         int x = 0;
@@ -187,7 +186,12 @@ void Level::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, 
     }
 }
 
+<<<<<<< HEAD:Spick_Game/Spick_Game/Level.cpp
 void Level::BuildLevelTile(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::GameObject> tileObject, std::shared_ptr<spic::Sprite> tileSprite, spic::Transform transform, int x, int y, const std::string& spriteName, const std::string& tag) {
+=======
+void LevelController::BuildLevelTile(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::GameObject> tileObject, std::shared_ptr<spic::Sprite> tileSprite, spic::Transform transform, int x, int y, const std::string& spriteName) {
+
+>>>>>>> Game_Refactoring:Spick_Game/Spick_Game/Controllers/LevelController.cpp
     std::string basePath = "assets/images/foregrounds/" + spriteName;
     if (tag != "") {
         tileObject->AddTag(tag);
@@ -213,7 +217,12 @@ void Level::BuildLevelTile(std::shared_ptr<spic::Scene> scene, std::shared_ptr<s
     tileObject->setTransform(&transform);
 }
 
+<<<<<<< HEAD:Spick_Game/Spick_Game/Level.cpp
 void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<std::pair<std::string, std::any>> object){
+=======
+
+void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<std::pair<std::string, std::any>> object){
+>>>>>>> Game_Refactoring:Spick_Game/Spick_Game/Controllers/LevelController.cpp
     std::shared_ptr<spic::Sprite> sprite = std::make_shared<spic::Sprite>();
 
     if (get_value<std::string>("type", object) == "Waypoint") {
@@ -232,15 +241,22 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     sprite->SetSprite("assets/player_pistol_silenced.png");
                     sprite->SetPlayerBool(true);
 
+<<<<<<< HEAD:Spick_Game/Spick_Game/Level.cpp
                     BuildLevelObjectPosition(playerObject, position);
 
                     std::shared_ptr<Player> player = std::make_shared<Player>(engine);
+=======
+                    transfrom.position.x = std::get<0>(position);
+                    transfrom.position.y = std::get<1>(position);
+                    transfrom.scale = 0.65;
+                    std::shared_ptr<Player> player = std::make_shared<Player>();
+>>>>>>> Game_Refactoring:Spick_Game/Spick_Game/Controllers/LevelController.cpp
                     playerObject->AddComponent(player);
 
-                    std::shared_ptr<ChangeSceneBehaviour> gameOverScript = std::make_shared<ChangeSceneBehaviour>("GameOverScript", "GameOverMenu", engine);
+                    std::shared_ptr<ChangeSceneBehaviour> gameOverScript = std::make_shared<ChangeSceneBehaviour>("GameOverScript", "GameOverMenu");
                     playerObject->AddComponent(gameOverScript);
 
-                    std::shared_ptr<ChangeSceneBehaviour> cheatsMenuScript = std::make_shared<ChangeSceneBehaviour>("CheatsMenuScript", "CheatsMenu", engine);
+                    std::shared_ptr<ChangeSceneBehaviour> cheatsMenuScript = std::make_shared<ChangeSceneBehaviour>("CheatsMenuScript", "CheatsMenu");
                     playerObject->AddComponent(cheatsMenuScript);
 
                     std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
@@ -264,7 +280,7 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     BuildLevelObjectPosition(endPointObject, position);
                     std::string counterString = std::to_string(currentLevel + 1);
                     std::string levelString = "level" + counterString;
-                    std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("EndLevelScript", levelString, engine);
+                    std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("EndLevelScript", levelString);
                     endPointObject->AddComponent(scriptPlay);
                     currentLevel + 1;
                 }

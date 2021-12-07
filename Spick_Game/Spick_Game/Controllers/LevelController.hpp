@@ -6,11 +6,10 @@
 #include "API_Headers/Sprite.hpp"
 #include "API_Headers/Transform.hpp"
 #include "API_Headers/Engine.hpp"
-#include "Behaviourscript/ChangeSceneBehaviour.hpp"
-#include "Player.hpp"
-#include "Enemy.hpp"
+#include "../Behaviourscripts/ChangeSceneBehaviour.hpp"
+#include "../Behaviourscripts/Player.hpp"
 
-class Level {
+class LevelController {
 private:
 	std::string bmpFileString = ".bmp";
 	std::string pngFileString = ".png";
@@ -18,24 +17,23 @@ private:
 	int yTilesize;
 	int level_height;
 	int level_width;
-	spic::Engine* engine;
-
 public:
 	int currentLevel = 1;
 
-	Level(spic::Engine* engine);
-
+	LevelController();
 	void BuildLevel(std::shared_ptr<spic::Scene> scene, std::filesystem::path filePath);
-
 	void BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, std::vector<std::vector<int>>> tileset);
-
 	void BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<std::pair<std::string, std::any>> object);
+<<<<<<< HEAD:Spick_Game/Spick_Game/Level.hpp
 
 	void BuildLevelTile(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::GameObject> tileObject, std::shared_ptr<spic::Sprite> tileSprite, spic::Transform transform, int x, int y, const std::string& spriteName, const std::string& tag);
 
 	void BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, const std::tuple<int, int> position, const std::string& spriteName, const std::string& colourTag, const std::string& typeTag, int healthPoints, double speed, int damage);
 
 	void BuildLevelObjectPosition(std::shared_ptr<spic::GameObject> object, std::tuple<int, int> position);
+=======
+	void BuildLevelTile(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::GameObject> tileObject, std::shared_ptr<spic::Sprite> tileSprite, spic::Transform transform, int x, int y, const std::string& spriteName);
+>>>>>>> Game_Refactoring:Spick_Game/Spick_Game/Controllers/LevelController.hpp
 
 	template<typename T>
 	const T get_value(const std::string& valueName, const std::vector<std::pair<std::string, std::any>>& object) {

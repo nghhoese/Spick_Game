@@ -1,7 +1,4 @@
 #include "Bullet.hpp"
-#include <math.h>
-#include "API_Headers/Time.hpp"
-#include "API_Headers/Scene.hpp"
 #include <API_Headers/Collision.hpp>
 
 Bullet::Bullet(spic::Point pos, spic::Point direction, double speed, int damage)
@@ -10,11 +7,8 @@ Bullet::Bullet(spic::Point pos, spic::Point direction, double speed, int damage)
 	this->direction = direction;
 	this->speed = speed;
 	this->damage = damage;
-}
-
-Bullet::Bullet()
-{
-
+	this->hit = true;
+	this->broken = false;
 }
 
 void Bullet::Update()
@@ -32,7 +26,7 @@ void Bullet::Update()
 				enemtObj->setHealthpoints(enemtObj->getHealthpoints() - damage);
 				hit = false;
 				broken = true;
-				enemtObj->setPath("assets/enemy_hit.png");
+				enemtObj->setPath("../assets/enemy_hit.png");
 				
 			}
 			/*else
