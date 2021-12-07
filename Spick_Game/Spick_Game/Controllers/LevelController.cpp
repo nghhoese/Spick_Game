@@ -186,12 +186,8 @@ void LevelController::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::
     }
 }
 
-<<<<<<< HEAD:Spick_Game/Spick_Game/Level.cpp
-void Level::BuildLevelTile(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::GameObject> tileObject, std::shared_ptr<spic::Sprite> tileSprite, spic::Transform transform, int x, int y, const std::string& spriteName, const std::string& tag) {
-=======
-void LevelController::BuildLevelTile(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::GameObject> tileObject, std::shared_ptr<spic::Sprite> tileSprite, spic::Transform transform, int x, int y, const std::string& spriteName) {
+void LevelController::BuildLevelTile(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::GameObject> tileObject, std::shared_ptr<spic::Sprite> tileSprite, spic::Transform transform, int x, int y, const std::string& spriteName, const std::string& tag) {
 
->>>>>>> Game_Refactoring:Spick_Game/Spick_Game/Controllers/LevelController.cpp
     std::string basePath = "assets/images/foregrounds/" + spriteName;
     if (tag != "") {
         tileObject->AddTag(tag);
@@ -217,12 +213,7 @@ void LevelController::BuildLevelTile(std::shared_ptr<spic::Scene> scene, std::sh
     tileObject->setTransform(&transform);
 }
 
-<<<<<<< HEAD:Spick_Game/Spick_Game/Level.cpp
-void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<std::pair<std::string, std::any>> object){
-=======
-
 void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<std::pair<std::string, std::any>> object){
->>>>>>> Game_Refactoring:Spick_Game/Spick_Game/Controllers/LevelController.cpp
     std::shared_ptr<spic::Sprite> sprite = std::make_shared<spic::Sprite>();
 
     if (get_value<std::string>("type", object) == "Waypoint") {
@@ -241,16 +232,9 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
                     sprite->SetSprite("assets/player_pistol_silenced.png");
                     sprite->SetPlayerBool(true);
 
-<<<<<<< HEAD:Spick_Game/Spick_Game/Level.cpp
                     BuildLevelObjectPosition(playerObject, position);
 
-                    std::shared_ptr<Player> player = std::make_shared<Player>(engine);
-=======
-                    transfrom.position.x = std::get<0>(position);
-                    transfrom.position.y = std::get<1>(position);
-                    transfrom.scale = 0.65;
                     std::shared_ptr<Player> player = std::make_shared<Player>();
->>>>>>> Game_Refactoring:Spick_Game/Spick_Game/Controllers/LevelController.cpp
                     playerObject->AddComponent(player);
 
                     std::shared_ptr<ChangeSceneBehaviour> gameOverScript = std::make_shared<ChangeSceneBehaviour>("GameOverScript", "GameOverMenu");
@@ -318,7 +302,7 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
 
 }
 
-void Level::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, std::tuple<int, int> position, const std::string& spriteName, const std::string& colourTag, const std::string& typeTag, int healthPoints, double speed, int damage) {
+void LevelController::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, std::tuple<int, int> position, const std::string& spriteName, const std::string& colourTag, const std::string& typeTag, int healthPoints, double speed, int damage) {
     std::shared_ptr<spic::GameObject> guardObject = std::make_shared<spic::GameObject>("Guard");
     guardObject->AddTag(colourTag);
     guardObject->AddTag(typeTag);
@@ -343,7 +327,7 @@ void Level::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::shared_ptr<
     enemy->OnStart();
 }
 
-void Level::BuildLevelObjectPosition(std::shared_ptr<spic::GameObject> object, std::tuple<int, int> position) {
+void LevelController::BuildLevelObjectPosition(std::shared_ptr<spic::GameObject> object, std::tuple<int, int> position) {
     spic::Transform transfrom = *object->getTransform();
     transfrom.position.x = std::get<0>(position);
     transfrom.position.y = std::get<1>(position);
