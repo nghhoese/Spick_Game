@@ -1,5 +1,6 @@
 #define SDL_MAIN_HANDLED
 
+#include <crtdbg.h>
 #include <iostream>
 #include "API_Headers/Scene.hpp"
 #include "API_Headers/Engine.hpp"
@@ -16,8 +17,8 @@
 #include "Behaviourscripts/InputScript.hpp"
 #include "Scenes/CheatsMenuBuilder.hpp"
 
-int main() {
-    {
+int main(char* argv[]) {
+    try{
         EngineController::GetInstance()->CreateNewWindow("Tactical Stealth");
 
         std::shared_ptr<MainMenuBuilder> mainMenuBuilder = std::make_shared<MainMenuBuilder>();
@@ -43,5 +44,15 @@ int main() {
         EngineController::GetInstance()->SetActiveScene(mainMenu);
         EngineController::GetInstance()->StartGameLoop();
     }
+    catch (const std::exception& ex) {
+        std::cerr << argv[0] << ": " << ex.what() << '\n';
+        return EXIT_FAILURE;
+    }
+    catch (...) {
+        std::cerr << argv[0] << ": unknown error\n";
+        return EXIT_FAILURE;
+    }
+
     _CrtDumpMemoryLeaks();
+    return EXIT_SUCCESS;
 }
