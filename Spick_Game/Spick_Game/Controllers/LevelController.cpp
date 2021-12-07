@@ -250,6 +250,7 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
 
                     boxCollider->Width(55);
                     playerObject->AddComponent(boxCollider);
+                    player->FillBucket();
                 }
             }
         }

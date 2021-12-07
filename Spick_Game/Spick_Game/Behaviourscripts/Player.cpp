@@ -5,13 +5,20 @@ Player::Player()
 {
 	this->healthpoints = 100;
 	this->coins = 0;
-	this->ammo = 0;
+	this->ammo = 10;
 	this->bulletSpeed = 10;
 	this->bulletDamage = 30;
 	this->speed = 5;
+	this->coolDown = 100;
 	this->notClicked = true;
 	this->isDamageless = false;
+	this->magazine = 5;
+	int index = 0;
+
+	
 }
+
+
 
 void Player::OnAwake()
 {
@@ -105,7 +112,22 @@ void Player::OnUpdate()
 	std::shared_ptr<spic::GameObject> HudObject = GetGameObject()->getScene()->GetGameObjectsByTag("hud")[0];
 	auto HudComponent = HudObject->GetComponent<HUD>();
 	HudComponent->SetHealthPoints(this->healthpoints);
-	HudComponent->SetCoins(this->coins);	
+	HudComponent->SetCoins(this->coins);
+	HudComponent->Setmagazine(this->magazine);
+	if (magazine == 0) {
+		coolDown -= 1;
+		if (coolDown == 0) {
+			magazine = magazine + 5;
+			coolDown = 100;
+		}
+
+	}
+
+
+
+
+	
+	
 }
 
 void Player::OnRender()
@@ -138,26 +160,50 @@ void Player::OnTriggerStay2D(const Collider& collider)
 
 void Player::Shoot()
 {
-	auto InputComponent = InputObject->GetComponent<InputScript>();
-	std::shared_ptr<spic::GameObject> bulletObject = std::make_shared<spic::GameObject>("Bullet");
-	GetGameObject()->getScene()->AddGameObject(bulletObject);
-	spic::Transform transfrom = *bulletObject->getTransform();
+	if (magazine > 0) {
+		magazine = magazine - 1;
+		for (std::shared_ptr<Bullet> b : bullets) {
+			if (b->broken) {
+				b->broken = false;
+				auto InputComponent = InputObject->GetComponent<InputScript>();
+				spic::Transform transfrom = *b->GetGameObject()->getTransform();
+				transfrom.position.x = GetGameObject()->getTransform()->position.x + 20;
+				transfrom.position.y = GetGameObject()->getTransform()->position.y + 32;
+				b->direction = InputComponent->checkMousePosition();
+				b->position = transfrom.position;
+				b->GetGameObject()->setTransform(&transfrom);
+				b->CalculateAmountToMove();
+				return;
+			}
+		}
+	}
+	
+	
+}
+void Player::FillBucket()
+{
+	int index = 0;
+	while (index < 10) {
 
-	sprite = std::make_shared<spic::Sprite>();
-	bulletObject->AddComponent(sprite);
-	sprite->SetSprite("assets/bullet.bmp");
-	sprite->SetPlayerBool(true);
-	bulletObject->AddTag("PlayerBullet");
-	transfrom.position.x = GetGameObject()->getTransform()->position.x + 20;
-	transfrom.position.y = GetGameObject()->getTransform()->position.y + 32;
-	transfrom.scale = 0.75;
-
-	std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
-	boxCollider->Height(10);
-	boxCollider->Width(10);
-	bulletObject->AddComponent(boxCollider);
-	std::shared_ptr<Bullet> bullet = std::make_shared<Bullet>(transfrom.position, InputComponent->checkMousePosition(), 20, bulletDamage);
-	bulletObject->AddComponent(bullet);
-	bulletObject->setTransform(&transfrom);
-	bullet->CalculateAmountToMove();
+		std::shared_ptr<spic::GameObject> bulletObject = std::make_shared<spic::GameObject>("Bullet");
+		GetGameObject()->getScene()->AddGameObject(bulletObject);
+		spic::Transform transfrom = *bulletObject->getTransform();
+		sprite = std::make_shared<spic::Sprite>();
+		bulletObject->AddComponent(sprite);
+		sprite->SetSprite("assets/bullet.bmp");
+		sprite->SetPlayerBool(true);
+		bulletObject->AddTag("PlayerBullet");
+		transfrom.position.x = GetGameObject()->getTransform()->position.x + 20;
+		transfrom.position.y = GetGameObject()->getTransform()->position.y + 32;
+		transfrom.scale = 0.75;
+		std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
+		boxCollider->Height(10);
+		boxCollider->Width(10);
+		bulletObject->AddComponent(boxCollider);
+		std::shared_ptr<Bullet> bullet = std::make_shared<Bullet>(transfrom.position, transfrom.position, 20, bulletDamage);
+		bulletObject->AddComponent(bullet);
+		bulletObject->setTransform(&transfrom);
+		bullets.push_back(bullet);
+		index++;
+	}
 }

@@ -21,13 +21,18 @@ public:
     void CalculateAmountToMove();
     void OnTriggerExit2D(const Collider& collider);
     void OnTriggerStay2D(const Collider& collider);
+    bool inUse = false;
+    bool broken = true;
+    spic::Point position;
+    spic::Point direction;
 private:
     bool hit;
-    bool broken;
-    spic::Point position;
+    
+
     double speed;
     double amountToMoveX;
     double amountToMoveY;
-    spic::Point direction;
+
     int damage;
+
 };

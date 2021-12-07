@@ -15,6 +15,8 @@ private:
     int healthpoints;
     int currentCoins;
     int coins;
+    int magazine;
+    int currentMagazine;
     std::shared_ptr<spic::GameObject> InputObject;
 public:
     HUD();
@@ -30,6 +32,8 @@ public:
     int GetFps() { return this->fps; };
     void SetHealthPoints(int healthpoints) { this->healthpoints = healthpoints; };
     int GetHealthPoints() { return this->healthpoints; };
+    void Setmagazine(int magazine) { this->magazine = magazine; };
+    int Getmagazine() { return this->magazine; };
     void SetCoins(int coins) { this->coins = coins; };
     int GetCoins() { return this->coins; };
 };

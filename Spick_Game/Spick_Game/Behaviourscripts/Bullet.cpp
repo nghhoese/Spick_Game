@@ -8,7 +8,6 @@ Bullet::Bullet(spic::Point pos, spic::Point direction, double speed, int damage)
 	this->speed = speed;
 	this->damage = damage;
 	this->hit = true;
-	this->broken = false;
 }
 
 void Bullet::Update()
@@ -26,7 +25,7 @@ void Bullet::Update()
 				enemtObj->setHealthpoints(enemtObj->getHealthpoints() - damage);
 				hit = false;
 				broken = true;
-				enemtObj->setPath("../assets/enemy_hit.png");
+				enemtObj->setPath("assets/enemy_hit.png");
 				
 			}
 			/*else
@@ -58,7 +57,6 @@ void Bullet::Update()
 	}
 	else {
 		auto trans = *GetGameObject()->getTransform();
-		trans.scale = 0.01;
 		trans.position.x = -50;
 		trans.position.y = -10;
 		GetGameObject()->setTransform(&trans);
