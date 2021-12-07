@@ -15,7 +15,7 @@ std::shared_ptr<spic::Scene> GameOverBuilder::BuildScene()
     return scene;
 }
 
-void GameOverBuilder::BuildScript(spic::Engine* engine){
-	std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("MainMenuScript", "MainMenu", engine);
+void GameOverBuilder::BuildScript(){
+	std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("MainMenuScript", "MainMenu");
     buttonBackToMenu->AddComponent(scriptPlay);
 }
