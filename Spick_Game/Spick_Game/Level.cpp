@@ -74,7 +74,7 @@ void Level::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, 
                     break;
                 // dark vent
                 case 106:
-                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "bright-vent", "");
+                    BuildLevelTile(scene, tileObject, tileSprite, transform, x, y, "dark-vent", "");
                     break;
                 // stone floor
                 case 109:
@@ -204,12 +204,14 @@ void Level::BuildLevelTile(std::shared_ptr<spic::Scene> scene, std::shared_ptr<s
     else if (std::filesystem::exists(basePath + pngFileString)) {
         tileSprite->SetSprite(basePath + pngFileString);
     }
+    else {
+        tileSprite->SetSprite("assets/images/foregrounds/error.png");
+    }
     transform.position.x = (double)x * xTilesize;
     transform.position.y = (double)y * yTilesize;
     transform.scale = 1;
     tileObject->setTransform(&transform);
 }
-
 
 void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<std::pair<std::string, std::any>> object){
     std::shared_ptr<spic::Sprite> sprite = std::make_shared<spic::Sprite>();
@@ -225,18 +227,17 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     std::shared_ptr<spic::GameObject> playerObject = std::make_shared<spic::GameObject>("Player");
 
                     scene->AddGameObject(playerObject);
-                    spic::Transform transfrom = *playerObject->getTransform();
+
+                    BuildLevelObjectPosition(playerObject, position);
 
                     playerObject->AddComponent(sprite);
                     sprite->SetSprite("assets/player_pistol_silenced.png");
                     sprite->SetPlayerBool(true);
 
-                    transfrom.position.x = std::get<0>(position);
-                    transfrom.position.y = std::get<1>(position);
-                    transfrom.scale = 0.65;
+                    BuildLevelObjectPosition(playerObject, position);
+
                     std::shared_ptr<Player> player = std::make_shared<Player>(engine);
                     playerObject->AddComponent(player);
-                    playerObject->setTransform(&transfrom);
 
                     std::shared_ptr<ChangeSceneBehaviour> gameOverScript = std::make_shared<ChangeSceneBehaviour>("GameOverScript", "GameOverMenu", engine);
                     playerObject->AddComponent(gameOverScript);
@@ -261,13 +262,8 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
 
                     std::shared_ptr<spic::GameObject> endPointObject = std::make_shared<spic::GameObject>("Endpoint");
-
                     scene->AddGameObject(endPointObject);
-                    spic::Transform transfrom = *endPointObject->getTransform();
-                    transfrom.position.x = std::get<0>(position);
-                    transfrom.position.y = std::get<1>(position);
-                    endPointObject->setTransform(&transfrom);
-
+                    BuildLevelObjectPosition(endPointObject, position);
                     std::string counterString = std::to_string(currentLevel + 1);
                     std::string levelString = "level" + counterString;
                     std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("EndLevelScript", levelString, engine);
@@ -281,120 +277,62 @@ void Level::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<st
     if (get_value<std::string>("type", object) == "Enemy") {
 
         if (get_value<std::string>("name", object) == "GreenGuard") {
-
             for (std::pair<std::string, std::any> value : object) {
-
                 if (value.first._Equal("position")) {
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
-
-                    std::shared_ptr<spic::GameObject> GreenGuardObject = std::make_shared<spic::GameObject>("GreenGuard");
-                    GreenGuardObject->AddTag("green");
-                    GreenGuardObject->AddTag("guard");
-
-
-                    scene->AddGameObject(GreenGuardObject);
-                    spic::Transform transfrom = *GreenGuardObject->getTransform();
-
-                    transfrom.position.x = std::get<0>(position);
-                    transfrom.position.y = std::get<1>(position);
-                    transfrom.scale = 0.65;
-
-                    std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>();
-                    enemy->setHealthpoints(100);
-                    enemy->setSpeed(1.5);
-                    enemy->setDamagePerBullet(40);
-                    GreenGuardObject->AddComponent(enemy);
-                    enemy->setPath("assets/enemy_green.bmp");
-                    std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
-                    boxCollider->Height(58);
-                    boxCollider->Width(50);
-                    boxCollider->ShowBoxBool(true);
-
-                    GreenGuardObject->AddComponent(boxCollider);
-                    GreenGuardObject->AddComponent(sprite);
-                    sprite->SetSprite(enemy->getPath());
-                    
-                    GreenGuardObject->setTransform(&transfrom);
-                    enemy->OnStart();
-
+                    BuildLevelEnemy(scene, sprite, position, "enemy_green.bmp", "green", "guard", 100, 1.5, 40);
                 }
             } 
-
         }
-
         if (get_value<std::string>("name", object) == "RedGuard") {
-
             for (std::pair<std::string, std::any> value : object) {
-
                 if (value.first._Equal("position")) {
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
-
-                    std::shared_ptr<spic::GameObject> RedGuardObject = std::make_shared<spic::GameObject>("GreenGuard");
-                    RedGuardObject->AddTag("red");
-                    RedGuardObject->AddTag("guard");
-
-                    scene->AddGameObject(RedGuardObject);
-                    spic::Transform transfrom = *RedGuardObject->getTransform();
-
-                    transfrom.position.x = std::get<0>(position);
-                    transfrom.position.y = std::get<1>(position);
-                    transfrom.scale = 0.65;
-
-                    std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>();
-                    enemy->setHealthpoints(75);
-                    enemy->setSpeed(2.5);
-                    enemy->setDamagePerBullet(50);
-                    RedGuardObject->AddComponent(enemy);
-                    enemy->setPath("assets/enemy_red.bmp");
-
-                    std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
-                    boxCollider->Height(58);
-                    boxCollider->Width(50);
-                    boxCollider->ShowBoxBool(true);
-                    RedGuardObject->AddComponent(boxCollider);
-                    RedGuardObject->AddComponent(sprite);
-                    sprite->SetSprite(enemy->getPath());
-                    RedGuardObject->setTransform(&transfrom);
-                    enemy->OnStart();
+                    BuildLevelEnemy(scene, sprite, position, "enemy_red.bmp", "red", "guard", 75, 2.5, 50);
                 }
             }
-
-        }
-
+      }
         if (get_value<std::string>("name", object) == "BlueGuard") {
-
             for (std::pair<std::string, std::any> value : object) {
-
                 if (value.first._Equal("position")) {
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
-
-                    std::shared_ptr<spic::GameObject> BlueGuardObject = std::make_shared<spic::GameObject>("GreenGuard");
-                    BlueGuardObject->AddTag("blue");
-                    BlueGuardObject->AddTag("guard");
-
-                    scene->AddGameObject(BlueGuardObject);
-                    spic::Transform transfrom = *BlueGuardObject->getTransform();
-
-                    transfrom.position.x = std::get<0>(position);
-                    transfrom.position.y = std::get<1>(position);
-                    transfrom.scale = 0.65;
-
-                    std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>();
-                    enemy->setHealthpoints(150);
-                    enemy->setSpeed(1.5);
-                    enemy->setDamagePerBullet(50);
-                    BlueGuardObject->AddComponent(enemy);
-                    enemy->setPath("assets/enemy_blue.bmp");
-
-                    BlueGuardObject->AddComponent(sprite);
-                    sprite->SetSprite(enemy->getPath());
-                    BlueGuardObject->setTransform(&transfrom);
-                    enemy->OnStart();
-                }
-                
-            }
-            
+                    BuildLevelEnemy(scene, sprite, position, "enemy_blue.bmp", "blue", "guard", 150, 1.5, 50);
+                }             
+            }          
         }
     }
 
+}
+
+void Level::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, std::tuple<int, int> position, const std::string& spriteName, const std::string& colourTag, const std::string& typeTag, int healthPoints, double speed, int damage) {
+    std::shared_ptr<spic::GameObject> guardObject = std::make_shared<spic::GameObject>("Guard");
+    guardObject->AddTag(colourTag);
+    guardObject->AddTag(typeTag);
+    scene->AddGameObject(guardObject);
+
+    BuildLevelObjectPosition(guardObject, position);
+
+    std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>();
+    enemy->setHealthpoints(healthPoints);
+    enemy->setSpeed(speed);
+    enemy->setDamagePerBullet(damage);
+    guardObject->AddComponent(enemy);
+    enemy->setPath("assets/" + spriteName);
+
+    std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
+    boxCollider->Height(58);
+    boxCollider->Width(50);
+    boxCollider->ShowBoxBool(true);
+    guardObject->AddComponent(boxCollider);
+    guardObject->AddComponent(sprite);
+    sprite->SetSprite(enemy->getPath());
+    enemy->OnStart();
+}
+
+void Level::BuildLevelObjectPosition(std::shared_ptr<spic::GameObject> object, std::tuple<int, int> position) {
+    spic::Transform transfrom = *object->getTransform();
+    transfrom.position.x = std::get<0>(position);
+    transfrom.position.y = std::get<1>(position);
+    transfrom.scale = 0.65;
+    object->setTransform(&transfrom);
 }
