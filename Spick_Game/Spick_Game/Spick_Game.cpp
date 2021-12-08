@@ -17,6 +17,8 @@
 #include "Scenes/GameOverSceneBuilder.hpp"
 #include "Behaviourscript/InputScript.hpp"
 #include "Scenes/CheatsMenuBuilder.hpp"
+#include "Scenes/HelpSceneBuilder.hpp"
+#include "Scenes/CreditsSceneBuilder.hpp"
 
 namespace fs = std::filesystem;
 
@@ -31,6 +33,16 @@ int main() {
 
     engine->AddScene(mainMenu);
     mainMenuBuilder->BuildScript(engine);
+
+    std::shared_ptr<HelpSceneBuilder> helpSceneBuilder = std::make_shared<HelpSceneBuilder>();
+    std::shared_ptr<spic::Scene> helpScene = helpSceneBuilder->BuildScene();
+    engine->AddScene(helpScene);
+    helpSceneBuilder->BuildScript(engine);
+
+    std::shared_ptr<CreditsSceneBuilder> creditsSceneBuilder = std::make_shared<CreditsSceneBuilder>();
+    std::shared_ptr<spic::Scene> creditsScene = creditsSceneBuilder->BuildScene();
+    engine->AddScene(creditsScene);
+    creditsSceneBuilder->BuildScript(engine);
 
     std::shared_ptr<LevelSceneBuilder> levelSceneBuilder = std::make_shared<LevelSceneBuilder>();
 

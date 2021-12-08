@@ -13,6 +13,8 @@
     <ClCompile Include="Scenes\MainMenuBuilder.cpp" />
     <ClCompile Include="Scenes\LevelSceneBuilder.cpp" />
     <ClCompile Include="Spick_Game.cpp" />
+    <ClCompile Include="Scenes\HelpSceneBuilder.cpp" />
+    <ClCompile Include="Scenes\CreditsSceneBuilder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behaviourscript\ChangeSceneBehaviour.hpp" />
@@ -27,6 +29,8 @@
     <ClInclude Include="Scenes\MainMenuBuilder.hpp" />
     <ClInclude Include="Scenes\LevelSceneBuilder.hpp" />
     <ClInclude Include="Scenes\SceneBuilder.hpp" />
+    <ClInclude Include="Scenes\HelpSceneBuilder.hpp" />
+    <ClInclude Include="Scenes\CreditsSceneBuilder.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\button.jpg" />
@@ -79,6 +83,7 @@
     <Image Include="assets\images\foregrounds\red-grey-brown-wall.png" />
     <Image Include="assets\images\foregrounds\dark-vent.png" />
     <Image Include="assets\images\foregrounds\elevator.png" />
+    <Image Include="assets\back.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\Fonts\Capsmall.ttf" />
