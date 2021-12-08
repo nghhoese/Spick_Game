@@ -1,6 +1,6 @@
 #include "SteeringBehaviour.hpp"
 
-SteeringBehaviour::SteeringBehaviour(spic::Point object) : object(object)
+SteeringBehaviour::SteeringBehaviour(spic::Point objectPos, spic::Point playerPos, spic::Point vel) : _enemyPos(objectPos), _playerPos(playerPos), vel(vel)
 {
 	CreateFeeler();
 }
@@ -11,8 +11,8 @@ SteeringBehaviour::SteeringBehaviour()
 
 void SteeringBehaviour::CreateFeeler()
 {
-	_feeler.x = object.x;
-	_feeler.y = object.y;
+	_feeler.x = _enemyPos.x;
+	_feeler.y = _enemyPos.y;
 	_feeler.Add(32);
 }
 
@@ -24,41 +24,27 @@ spic::Point SteeringBehaviour::WallAvoidance()
 	return spic::Point();
 }
 
-spic::Point SteeringBehaviour::Persue(spic::Point evader)
+spic::Point SteeringBehaviour::Persue()
 {
-	double predatorMaxSpeed = 10;
-	double evaderSpeed = 5;
-	spic::Point toEvader;
-	toEvader.Sub(object, evader);
-
-	double relativeHeading = object.Dot(evader);
-
-	if ((toEvader.Dot(object) > 0) &&
-		(relativeHeading < -0.95)) //acos(0.95)=18 degs
-	{
-		return Seek(evader);
-	}
-
-	double LookAheadTime = toEvader.Mag() /
-		(predatorMaxSpeed + evaderSpeed);
-
-	evader.Add(evaderSpeed);
-	evader.Mult(LookAheadTime);
-
-	return Seek(evader);
+	auto target = _playerPos;
+	spic::Point prediction;
+	//TODO: this must be the direction (rotation?) of the player
+	//prediction.x = cos()
+	prediction.x = 5;
+	prediction.y = 5;
+	prediction.Mult(10);
+	target.Add(prediction);
+	return Seek(target);
 }
 
 spic::Point SteeringBehaviour::Seek(spic::Point target)
 {
-	double objectMaxSpeed = 10;
-	double speed = 5;
-
-	target.Sub(object);
-	target.Mult(objectMaxSpeed);
-	target.Normalize();
-	target.Sub(speed);
-
-	return target;
+	spic::Point force;
+	force.Sub(target, _enemyPos);
+	force.SetMag(10);
+	force.Sub(vel);
+	force.Limit(0.25);
+	return force;
 }
 
 

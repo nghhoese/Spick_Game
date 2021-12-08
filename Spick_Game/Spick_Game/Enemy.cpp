@@ -33,8 +33,7 @@ void Enemy::OnStart()
 
 void Enemy::OnUpdate()
 {
-    auto steeringBehaviour = GetGameObject()->getScene()->GetGameObjectsByName("Steeringbehaviour")[0];
-    auto steeringBehaviourComponent = steeringBehaviour->GetComponent<SteeringBehaviour>();
+   
 
 	if (this->healthpoints < 0) {
         isAlive = false;
@@ -53,75 +52,27 @@ void Enemy::OnUpdate()
     if (isAlive)
     {
         auto trans = *GetGameObject()->getTransform();
-
-        auto tag = GetGameObject()->GetTags()[0];
-
         auto player = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
-        auto target = player->getTransform()->position;
+        auto tag = GetGameObject()->GetTags()[0];
+       
+        auto steeringBehaviour = GetGameObject()->getScene()->GetGameObjectsByName("SteeringBehaviour")[0];
+        auto steeringBehaviourComponent = steeringBehaviour->GetComponent<SteeringBehaviour>();
+        SteeringBehaviour steer{ trans.position, player->getTransform()->position , vel };
         // move to target till destination is reached
         if (IfPlayerNearby()) // if player is in radius of enemy
         {
-            auto steering = steeringBehaviourComponent->Persue(target);
+            auto steering = persue();
             acc.Add(steering);
-
             vel.Add(acc);
             vel.Limit(10);
             trans.position.Add(vel);
+            double Delta_x = (trans.position.x - player->getTransform()->position.x);
+            double Delta_y = (trans.position.y - player->getTransform()->position.y);
+
+            double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
+            trans.rotation = Result + 90;
             acc.x = 0;
-            if (Collision::AABB(GetGameObject(), "wall"))
-            {
-                //isTurned = true;
-                vel.Mult(-1);
-                //speed *= -1;
-                double Result = (atan2(trans.position.y, trans.position.x) * 180.0000) / 3.14159265;
-                trans.rotation = Result + (rand() % 180 + 90);
-            }
             acc.y = 0;
-            /*else {
-                turnCount++;
-                if (turnCount == 64)
-                {
-                    isTurned = false;
-                    turnCount = 0;
-                }
-            }*/
-        }
-        else {
-            if (tag == "red")
-            {
-                //up and down
-                trans.position.y += speed;
-            }
-            else if (tag == "blue")
-            {
-                //left and right
-                trans.position.x += speed;
-            }
-            else
-            {
-                trans.position.x += speed;
-                trans.position.y += speed;
-            }
-
-            if (Collision::AABB(GetGameObject(), "wall") && !isTurned)
-            {
-                isTurned = true;
-                speed = speed * -1;
-                double Result = (atan2(trans.position.y, trans.position.x) * 180.0000) / 3.14159265;
-                trans.rotation = Result + (rand() % 180 + 90);
-
-            }
-            //else if (Collision::AABB(GetGameObject(), "player")) {
-            //    PlayerComponent->yPlayer -= (PlayerComponent->speed);
-            //}
-            else {
-                turnCount++;
-                if (turnCount == 64)
-                {
-                    isTurned = false;
-                    turnCount = 0;
-                }
-            }
         }
         
         GetGameObject()->setTransform(&trans);
@@ -182,13 +133,13 @@ const int& Enemy::getDamagePerBullet()
 
 spic::Point Enemy::persue()
 {
-    // get player position (target)
     auto player = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
     auto target = player->getTransform()->position;
     spic::Point prediction;
-    prediction.x = 5;
-    prediction.y = 5;
-    prediction.Mult(1);
+    //TODO: this must be the direction (rotation?) of the player
+    prediction.x = cos(player->getTransform()->rotation);
+    prediction.y = sin(player->getTransform()->rotation);
+    prediction.Mult(100);
     target.Add(prediction);
     return seek(target);
 }
@@ -197,9 +148,9 @@ spic::Point Enemy::seek(spic::Point target)
 {
     spic::Point force;
     force.Sub(target, GetGameObject()->getTransform()->position);
-    force.SetMag(5);
+    force.SetMag(10);
     force.Sub(vel);
-    force.Limit(10);
+    force.Limit(0.25);
     return force;
 }
 

@@ -5,6 +5,7 @@
 #include "API_Headers/Point.hpp"
 #include <math.h>
 #include <string>
+#include "API_Headers/Time.hpp"
 
 class Enemy : public spic::BehaviourScript {
 private:
@@ -17,6 +18,8 @@ private:
     bool IfPlayerNearby();
     int triggerSpace = 250;
     bool check = false;
+    bool isPersuing = false;
+    int persueCount = 0;
 public:
     bool isAlive = true;
     spic::Point acc; //versnelling
