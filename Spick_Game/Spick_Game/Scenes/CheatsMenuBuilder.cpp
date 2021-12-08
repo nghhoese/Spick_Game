@@ -35,13 +35,11 @@ std::shared_ptr<spic::Scene> CheatsMenuBuilder::BuildScene() {
     std::shared_ptr<spic::Text> InstakillButtonText = std::make_shared<spic::Text>("Y", "Capsmall", 40, textColor, 500, 350);
     scene->AddGameObject(InstakillButtonText);
 
-    return scene;
-}
-
-void CheatsMenuBuilder::BuildScript() {
     std::shared_ptr<LevelController> level = std::make_shared<LevelController>();
     std::string levelString = std::to_string(level->GetCurrentLevel());
 
     std::shared_ptr<ChangeSceneBehaviour> scriptBackToLevel = std::make_shared<ChangeSceneBehaviour>("StartGameScript", "level" + levelString);
     buttonBackToLevel->AddComponent(scriptBackToLevel);
+    
+    return scene;
 }

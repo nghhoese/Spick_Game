@@ -13,6 +13,5 @@ private:
 	std::shared_ptr<spic::Button> buttonMakeUndetectable;
 	std::shared_ptr<spic::Button> buttonBackToLevel;
 public:
-	void BuildScript();
 	std::shared_ptr<spic::Scene> BuildScene();
 };

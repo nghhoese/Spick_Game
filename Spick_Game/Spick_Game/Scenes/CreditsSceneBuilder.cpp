@@ -40,10 +40,8 @@ std::shared_ptr<spic::Scene> CreditsSceneBuilder::BuildScene()
     scene->AddGameObject(t4);
     scene->AddGameObject(t5);
     scene->AddGameObject(t6);*/
-    return scene;
-}
-
-void CreditsSceneBuilder::BuildScript(spic::Engine* engine) {
-    std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("BackToMenuScript", "MainMenu", engine);
+    
+    std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("BackToMenuScript", "MainMenu");
     buttonBack->AddComponent(scriptPlay);
+    return scene;
 }

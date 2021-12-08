@@ -41,17 +41,14 @@ int main(char* argv[]) {
         std::shared_ptr<CheatsMenuBuilder> cheatsMenuBuilder = std::make_shared<CheatsMenuBuilder>();
         std::shared_ptr<spic::Scene> cheatsMenuScene = cheatsMenuBuilder->BuildScene();
         EngineController::GetInstance()->AddScene(cheatsMenuScene);
-        cheatsMenuBuilder->BuildScript();
 
         std::shared_ptr<HelpSceneBuilder> helpSceneBuilder = std::make_shared<HelpSceneBuilder>();
         std::shared_ptr<spic::Scene> helpScene = helpSceneBuilder->BuildScene();
-        engine->AddScene(helpScene);
-        helpSceneBuilder->BuildScript(engine);
+        EngineController::GetInstance()->AddScene(helpScene);
 
         std::shared_ptr<CreditsSceneBuilder> creditsSceneBuilder = std::make_shared<CreditsSceneBuilder>();
         std::shared_ptr<spic::Scene> creditsScene = creditsSceneBuilder->BuildScene();
-        engine->AddScene(creditsScene);
-        creditsSceneBuilder->BuildScript(engine);
+        EngineController::GetInstance()->AddScene(creditsScene);
 
         EngineController::GetInstance()->SetActiveScene(mainMenu);
         EngineController::GetInstance()->StartGameLoop();

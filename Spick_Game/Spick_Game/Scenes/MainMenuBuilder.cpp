@@ -31,10 +31,8 @@ std::shared_ptr<spic::Scene> MainMenuBuilder::BuildScene() {
 void MainMenuBuilder::BuildScript() {
     std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("StartGameScript", "level1");
     buttonPlay->AddComponent(scriptPlay);
-    std::shared_ptr<ChangeSceneBehaviour> scriptHelp = std::make_shared<ChangeSceneBehaviour>("OpenHelpScript", "HelpScene", engine);
+    std::shared_ptr<ChangeSceneBehaviour> scriptHelp = std::make_shared<ChangeSceneBehaviour>("OpenHelpScript", "HelpScene");
     buttonHelp->AddComponent(scriptHelp);
-    std::shared_ptr<ChangeSceneBehaviour> scriptOptions = std::make_shared<ChangeSceneBehaviour>("OpenCreditsScript", "CreditsScene", engine);
-    buttonCredits->AddComponent(scriptOptions);
-    std::shared_ptr<ChangeSceneBehaviour> scriptOptions = std::make_shared<ChangeSceneBehaviour>("OpenOptionsScript", "level1");
-    buttonOptions->AddComponent(scriptOptions);
+    std::shared_ptr<ChangeSceneBehaviour> scriptCredits = std::make_shared<ChangeSceneBehaviour>("OpenCreditsScript", "CreditsScene");
+    buttonCredits->AddComponent(scriptCredits);
 }
