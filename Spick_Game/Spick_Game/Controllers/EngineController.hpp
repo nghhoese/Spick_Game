@@ -13,6 +13,7 @@ public:
 	void SetGameOver(bool value);
 	bool GetGameOver();
 	void SetActiveScene(std::string sceneName);
+	std::shared_ptr<spic::Scene> GetActiveScene();
 	void SetActiveScene(std::shared_ptr<spic::Scene> scene);
 	void AddScene(std::shared_ptr<spic::Scene> scene);
 	void CreateNewWindow(const std::string& windowName);
