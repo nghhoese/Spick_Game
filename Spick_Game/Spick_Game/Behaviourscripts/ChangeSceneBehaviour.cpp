@@ -6,7 +6,7 @@ ChangeSceneBehaviour::ChangeSceneBehaviour(const std::string& name, const std::s
 
 void ChangeSceneBehaviour::OnClick()
 {
-	if (EngineController::GetInstance()->GetCurrentLevel() != 1) {	
+	if (EngineController::GetInstance()->GetCurrentLevel() != 1 && !EngineController::GetInstance()->GetCheatsEnabled() && !EngineController::GetInstance()->GetGameOver()) {
 		std::string levelString = "level" + std::to_string(EngineController::GetInstance()->GetCurrentLevel());
 		_scene = levelString;
 
@@ -33,7 +33,7 @@ void ChangeSceneBehaviour::OnClick()
 		EngineController::GetInstance()->SetGameOver(false);
 	}
 
-	auto test = _scene;
+	EngineController::GetInstance()->SetCheatsEnabled(false);
 	EngineController::GetInstance()->SetActiveScene(_scene);
 }
 

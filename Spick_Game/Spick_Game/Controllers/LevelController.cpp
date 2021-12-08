@@ -1,7 +1,7 @@
 #include "../Controllers/LevelController.hpp"
 #include <API_Headers/BoxCollider.hpp>
 
-LevelController::LevelController() : bmpFileString(".bmp"), pngFileString(".png")
+LevelController::LevelController() : bmpFileString(".bmp"), pngFileString(".png"), xTilesize(64), yTilesize(64)
 {
 }
 
@@ -9,8 +9,6 @@ void LevelController::BuildLevel(std::shared_ptr<spic::Scene> scene, std::filesy
     auto level_layers = EngineController::GetInstance()->GetLevel(filePath);
     std::vector<std::pair<int, std::vector<std::vector<int>>>> tiles = level_layers.first;
     std::vector<std::vector<std::pair<std::string, std::any>>> objects = level_layers.second;
-    xTilesize = 64;
-    yTilesize = 64;
     level_height = (tiles.at(0).second.size());
     level_width = (tiles.at(0).second.at(0).size());
     for (std::pair<int, std::vector<std::vector<int>>> tileset : tiles) {

@@ -185,7 +185,9 @@ const void InputScript::checkKeys()
 	if (input->GetKey(EP)) {
 		std::shared_ptr<spic::Component> script = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0]->GetComponentByName("CheatsMenuScript");
 		if (script != nullptr) {
+			EngineController::GetInstance()->SetCheatsEnabled(true);
 			script->OnClick();
+
 		}
 	}
 	if (input->GetKey(Y)) {

@@ -74,3 +74,13 @@ int EngineController::GetCurrentLevel()
 {
 	return engine->getCurrentLevel();
 }
+
+bool EngineController::GetCheatsEnabled()
+{
+	return engine->getCheatsEnabled();
+}
+
+void EngineController::SetCheatsEnabled(bool cheatsBool)
+{
+	engine->setCheatsEnabled(cheatsBool);
+}
