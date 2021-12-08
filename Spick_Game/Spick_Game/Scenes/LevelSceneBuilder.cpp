@@ -3,7 +3,6 @@
 std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(int levelNumber) {
    
     std::shared_ptr<LevelController> level = std::make_shared<LevelController>();
-    //level->SetCurrentLevel(levelNumber);
     std::string levelString = std::to_string(levelNumber);
     std::shared_ptr<spic::Scene> GameScene = std::make_shared<spic::Scene>("level" + levelString);
 

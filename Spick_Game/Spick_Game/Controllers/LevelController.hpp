@@ -18,7 +18,6 @@ private:
 	int yTilesize;
 	int level_height;
 	int level_width;
-	int currentLevel;
 public:
 	LevelController();
 	void BuildLevel(std::shared_ptr<spic::Scene> scene, std::filesystem::path filePath);
@@ -28,8 +27,6 @@ public:
 	void BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, const std::tuple<int, int> position, const std::string& spriteName, const std::string& colourTag, const std::string& typeTag, int healthPoints, double speed, int damage);
 	void BuildLevelObjectPosition(std::shared_ptr<spic::GameObject> object, std::tuple<int, int> position);
 	void BuildLevelPlayer(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, std::tuple<int, int> position);
-	void SetCurrentLevel(int value) { this->currentLevel = value; };
-	int GetCurrentLevel() { return this->currentLevel; };
 
 	template<typename T>
 	const T get_value(const std::string& valueName, const std::vector<std::pair<std::string, std::any>>& object) {

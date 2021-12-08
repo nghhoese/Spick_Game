@@ -1,7 +1,7 @@
 #include "../Controllers/LevelController.hpp"
 #include <API_Headers/BoxCollider.hpp>
 
-LevelController::LevelController() : bmpFileString(".bmp"), pngFileString(".png"), currentLevel(1)
+LevelController::LevelController() : bmpFileString(".bmp"), pngFileString(".png")
 {
 }
 
@@ -19,6 +19,7 @@ void LevelController::BuildLevel(std::shared_ptr<spic::Scene> scene, std::filesy
     for (std::vector<std::pair<std::string, std::any>> object : objects) {
         BuildLevelObjects(scene, object);
     }
+    EngineController::GetInstance()->SetCurrentLevel(EngineController::GetInstance()->GetCurrentLevel() + 1);
 }
 
 void LevelController::BuildLevelLayers(std::shared_ptr<spic::Scene> scene, std::pair<int, std::vector<std::vector<int>>> tileset) {
@@ -178,11 +179,6 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
             for (std::pair<std::string, std::any> value : object) {
                 if (value.first._Equal("position")) {
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
-
-                    std::shared_ptr<spic::GameObject> startPointObject = std::make_shared<spic::GameObject>("Startpoint");
-                    scene->AddGameObject(startPointObject);
-                    BuildLevelObjectPosition(startPointObject, position);
-
                     if (EngineController::GetInstance()->GetCurrentLevel() == 1) {
                         BuildLevelPlayer(scene, sprite, position);
                     }
@@ -274,19 +270,11 @@ void LevelController::BuildLevelObjectPosition(std::shared_ptr<spic::GameObject>
 }
 
 void LevelController::BuildLevelPlayer(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, std::tuple<int, int> position) {
-
-    //if (EngineController::GetInstance()->GetCurrentLevel() != 1) {
-    //    if (EngineController::GetInstance()->GetSceneByName("level1")->GetGameObjectsByName("Player").size() > 0) {
-    //        std::shared_ptr<spic::GameObject> existingPlayerObject = EngineController::GetInstance()->GetSceneByName("level1")->GetGameObjectsByName("Player")[0];
-
-    //        scene->AddGameObject(p2);
-    //        BuildLevelObjectPosition(p2, position);
-    //    }
-    //}
-
     std::shared_ptr<spic::GameObject> playerObject = std::make_shared<spic::GameObject>("Player");
 
     scene->AddGameObject(playerObject);
+
+    auto test2 = playerObject->getScene();
 
     playerObject->AddComponent(sprite);
     sprite->SetSprite("assets/player_pistol_silenced.png");
@@ -310,7 +298,8 @@ void LevelController::BuildLevelPlayer(std::shared_ptr<spic::Scene> scene, std::
 
     boxCollider->Width(55);
     playerObject->AddComponent(boxCollider);
-    player->FillBucket();
 
-    
+    auto test = playerObject->getScene();
+
+    player->FillBucket();   
 }

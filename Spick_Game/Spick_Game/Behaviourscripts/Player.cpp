@@ -139,9 +139,7 @@ void Player::CheckEndPoint()
 	if ((xPlayer > endPointTopLeft.x && yPlayer > endPointTopLeft.y)) {
 		if (xPlayer < endPointBottomRight.x && yPlayer < endPointBottomRight.y) {
 			std::shared_ptr<spic::Component> script = endPointObject->GetComponentByName("EndLevelScript");
-			//std::shared_ptr<LevelController> levelController = std::make_shared<LevelController>();
 			if (script != nullptr) {
-				//levelController->SetCurrentLevel(levelController->GetCurrentLevel() + 1);
 				EngineController::GetInstance()->SetCurrentLevel(EngineController::GetInstance()->GetCurrentLevel() + 1);
 				script->OnClick();
 			}
@@ -174,10 +172,13 @@ void Player::CameraFixture()
 
 void Player::FillBucket()
 {
+	bullets.clear();
 	int index = 0;
 	while (index < 20) {
 
 		std::shared_ptr<spic::GameObject> bulletObject = std::make_shared<spic::GameObject>("Bullet");
+		auto test2 = GetGameObject();
+		auto test = GetGameObject()->getScene();
 		GetGameObject()->getScene()->AddGameObject(bulletObject);
 		spic::Transform transfrom = *bulletObject->getTransform();
 		sprite = std::make_shared<spic::Sprite>();

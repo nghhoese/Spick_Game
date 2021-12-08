@@ -32,6 +32,7 @@ int main(char* argv[]) {
         levelSceneBuilder->BuildLevel(1);
         levelSceneBuilder->BuildLevel(2);
         levelSceneBuilder->BuildLevel(3);
+        EngineController::GetInstance()->SetCurrentLevel(1);
 
         std::shared_ptr<GameOverBuilder> gameOverSceneBuilder = std::make_shared<GameOverBuilder>();
         std::shared_ptr<spic::Scene> gameOverScene = gameOverSceneBuilder->BuildScene();
