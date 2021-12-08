@@ -178,33 +178,14 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
             for (std::pair<std::string, std::any> value : object) {
                 if (value.first._Equal("position")) {
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
-                    std::shared_ptr<spic::GameObject> playerObject = std::make_shared<spic::GameObject>("Player");
 
-                    scene->AddGameObject(playerObject);
+                    std::shared_ptr<spic::GameObject> startPointObject = std::make_shared<spic::GameObject>("Startpoint");
+                    scene->AddGameObject(startPointObject);
+                    BuildLevelObjectPosition(startPointObject, position);
 
-                    playerObject->AddComponent(sprite);
-                    sprite->SetSprite("assets/player_pistol_silenced.png");
-                    sprite->SetPlayerBool(true);
-
-                    BuildLevelObjectPosition(playerObject, position);
-
-                    std::shared_ptr<Player> player = std::make_shared<Player>();
-                    playerObject->AddComponent(player);
-
-                    std::shared_ptr<ChangeSceneBehaviour> gameOverScript = std::make_shared<ChangeSceneBehaviour>("GameOverScript", "GameOverMenu");
-                    playerObject->AddComponent(gameOverScript);
-
-                    std::shared_ptr<ChangeSceneBehaviour> cheatsMenuScript = std::make_shared<ChangeSceneBehaviour>("CheatsMenuScript", "CheatsMenu");
-                    playerObject->AddComponent(cheatsMenuScript);
-
-                    std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
-                    boxCollider->Height(55);
-                    boxCollider->ShowBoxBool(true);
-                    boxCollider->SetPlayerBool(true);
-
-                    boxCollider->Width(55);
-                    playerObject->AddComponent(boxCollider);
-                    player->FillBucket();
+                    if (EngineController::GetInstance()->GetCurrentLevel() == 1) {
+                        BuildLevelPlayer(scene, sprite, position);
+                    }
                 }
             }
         }
@@ -216,15 +197,16 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
                     std::shared_ptr<spic::GameObject> endPointObject = std::make_shared<spic::GameObject>("Endpoint");
                     scene->AddGameObject(endPointObject);
                     BuildLevelObjectPosition(endPointObject, position);
-                    std::string counterString = std::to_string(currentLevel + 1);
+                    std::string counterString = std::to_string(EngineController::GetInstance()->GetCurrentLevel());
                     std::string levelString = "level" + counterString;
                     std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("EndLevelScript", levelString);
                     endPointObject->AddComponent(scriptPlay);
-                    currentLevel + 1;
 
-                    auto PlayerObject = scene->GetGameObjectsByName("Player")[0];
-                    auto PlayerComponent = PlayerObject->GetComponent<Player>();
-                    PlayerComponent->OnStart();
+                    if (EngineController::GetInstance()->GetCurrentLevel() == 1) {
+                        auto PlayerObject = scene->GetGameObjectsByName("Player")[0];
+                        auto PlayerComponent = PlayerObject->GetComponent<Player>();
+                        PlayerComponent->OnStart();
+                    }
                 }
             }
         }
@@ -289,4 +271,46 @@ void LevelController::BuildLevelObjectPosition(std::shared_ptr<spic::GameObject>
     transfrom.position.y = std::get<1>(position);
     transfrom.scale = 0.65;
     object->setTransform(&transfrom);
+}
+
+void LevelController::BuildLevelPlayer(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, std::tuple<int, int> position) {
+
+    //if (EngineController::GetInstance()->GetCurrentLevel() != 1) {
+    //    if (EngineController::GetInstance()->GetSceneByName("level1")->GetGameObjectsByName("Player").size() > 0) {
+    //        std::shared_ptr<spic::GameObject> existingPlayerObject = EngineController::GetInstance()->GetSceneByName("level1")->GetGameObjectsByName("Player")[0];
+
+    //        scene->AddGameObject(p2);
+    //        BuildLevelObjectPosition(p2, position);
+    //    }
+    //}
+
+    std::shared_ptr<spic::GameObject> playerObject = std::make_shared<spic::GameObject>("Player");
+
+    scene->AddGameObject(playerObject);
+
+    playerObject->AddComponent(sprite);
+    sprite->SetSprite("assets/player_pistol_silenced.png");
+    sprite->SetPlayerBool(true);
+
+    BuildLevelObjectPosition(playerObject, position);
+
+    std::shared_ptr<Player> player = std::make_shared<Player>();
+    playerObject->AddComponent(player);
+
+    std::shared_ptr<ChangeSceneBehaviour> gameOverScript = std::make_shared<ChangeSceneBehaviour>("GameOverScript", "GameOverMenu");
+    playerObject->AddComponent(gameOverScript);
+
+    std::shared_ptr<ChangeSceneBehaviour> cheatsMenuScript = std::make_shared<ChangeSceneBehaviour>("CheatsMenuScript", "CheatsMenu");
+    playerObject->AddComponent(cheatsMenuScript);
+
+    std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
+    boxCollider->Height(55);
+    boxCollider->ShowBoxBool(true);
+    boxCollider->SetPlayerBool(true);
+
+    boxCollider->Width(55);
+    playerObject->AddComponent(boxCollider);
+    player->FillBucket();
+
+    
 }

@@ -1,5 +1,6 @@
 #include "Player.hpp"
 #include <API_Headers/BoxCollider.hpp>
+//#include "../Controllers/LevelController.hpp"
 
 Player::Player() : healthpoints(100), coins(0), ammo(0), bulletSpeed(10), bulletDamage(30), speed(5), notClicked(true), isDamageless(false), magazine(20), coolDown(10)
 {
@@ -138,7 +139,10 @@ void Player::CheckEndPoint()
 	if ((xPlayer > endPointTopLeft.x && yPlayer > endPointTopLeft.y)) {
 		if (xPlayer < endPointBottomRight.x && yPlayer < endPointBottomRight.y) {
 			std::shared_ptr<spic::Component> script = endPointObject->GetComponentByName("EndLevelScript");
+			//std::shared_ptr<LevelController> levelController = std::make_shared<LevelController>();
 			if (script != nullptr) {
+				//levelController->SetCurrentLevel(levelController->GetCurrentLevel() + 1);
+				EngineController::GetInstance()->SetCurrentLevel(EngineController::GetInstance()->GetCurrentLevel() + 1);
 				script->OnClick();
 			}
 		}

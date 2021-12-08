@@ -64,3 +64,13 @@ std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vecto
 {
 	return engine->GetLevel(path);
 }
+
+void EngineController::SetCurrentLevel(int currentLevelNumber)
+{
+	engine->setCurrentLevel(currentLevelNumber);
+}
+
+int EngineController::GetCurrentLevel()
+{
+	return engine->getCurrentLevel();
+}

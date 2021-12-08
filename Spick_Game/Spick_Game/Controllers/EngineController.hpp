@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <API_Headers/Engine.hpp>
+#include <API_Headers/GameObject.hpp>
 
 class EngineController {
 private:
@@ -17,6 +18,8 @@ public:
 	void AddScene(std::shared_ptr<spic::Scene> scene);
 	void CreateNewWindow(const std::string& windowName);
 	void StartGameLoop();
+	void SetCurrentLevel(int currentLevelNumber);
+	int GetCurrentLevel();
 	std::shared_ptr<spic::Scene> GetSceneByName(const std::string& sceneName);
 	std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> GetLevel(const std::filesystem::path& path);
 };
