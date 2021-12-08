@@ -5,6 +5,7 @@
 #include <API_Headers/Button.hpp>
 #include <API_Headers/Text.hpp>
 #include "../Behaviourscript/ChangeSceneBehaviour.hpp"
+#include "../Behaviourscript/SteeringBehaviour.hpp"
 #include "../Level.hpp"
 #include "../HUD.hpp"
 

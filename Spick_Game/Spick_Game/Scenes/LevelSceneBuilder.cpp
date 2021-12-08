@@ -48,6 +48,10 @@ void LevelSceneBuilder::BuildLevel(spic::Engine* engine, int levelNumber) {
     std::shared_ptr<InputScript> inputScript = std::make_shared<InputScript>();
     InputObject->AddComponent(inputScript);
 
+    std::shared_ptr<spic::GameObject> SteeringBehaviourObject = std::make_shared<spic::GameObject>("SteeringBehaviour");
+    std::shared_ptr<SteeringBehaviour> steeringBehaviour = std::make_shared<SteeringBehaviour>();
+    SteeringBehaviourObject->AddComponent(inputScript);
+
     std::shared_ptr<spic::Scene> levelScene = BuildLevelScene(engine, levelNumber);
     levelScene->AddGameObject(InputObject);
     engine->AddScene(levelScene);

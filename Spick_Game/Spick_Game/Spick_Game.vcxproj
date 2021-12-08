@@ -156,6 +156,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Behaviourscript\ChangeSceneBehaviour.cpp" />
+    <ClCompile Include="Behaviourscript\SteeringBehaviour.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="HUD.cpp" />
@@ -170,6 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behaviourscript\ChangeSceneBehaviour.hpp" />
+    <ClInclude Include="Behaviourscript\SteeringBehaviour.hpp" />
     <ClInclude Include="Bullet.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="HUD.hpp" />

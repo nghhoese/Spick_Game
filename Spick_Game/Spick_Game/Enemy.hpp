@@ -1,6 +1,9 @@
 #pragma once
 
 #include "API_Headers/BehaviourScript.hpp"
+#include "BehaviourScript/SteeringBehaviour.hpp"
+#include "API_Headers/Point.hpp"
+#include <math.h>
 #include <string>
 
 class Enemy : public spic::BehaviourScript {
@@ -10,9 +13,14 @@ private:
     std::string path;
     bool isTurned = false;
     int turnCount = 0;
-    double speed = 1.5;
+    double speed = 5;
+    bool IfPlayerNearby();
+    int triggerSpace = 250;
+    bool check = false;
 public:
     bool isAlive = true;
+    spic::Point acc; //versnelling
+    spic::Point vel; //snelheid
     void OnAwake();
     void OnStart();
     void OnUpdate();
@@ -33,4 +41,8 @@ public:
 
     void setSpeed(const double& speed) { this->speed = speed; }
     const int& getSpeed() { return this->speed; }
+
+    spic::Point persue();
+
+    spic::Point seek(spic::Point target);
 };

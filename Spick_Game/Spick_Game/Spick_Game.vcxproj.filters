@@ -13,6 +13,7 @@
     <ClCompile Include="Scenes\MainMenuBuilder.cpp" />
     <ClCompile Include="Scenes\LevelSceneBuilder.cpp" />
     <ClCompile Include="Spick_Game.cpp" />
+    <ClCompile Include="Behaviourscript\SteeringBehaviour.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behaviourscript\ChangeSceneBehaviour.hpp" />
@@ -27,6 +28,7 @@
     <ClInclude Include="Scenes\MainMenuBuilder.hpp" />
     <ClInclude Include="Scenes\LevelSceneBuilder.hpp" />
     <ClInclude Include="Scenes\SceneBuilder.hpp" />
+    <ClInclude Include="Behaviourscript\SteeringBehaviour.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\button.jpg" />
