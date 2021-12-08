@@ -34,6 +34,10 @@ void EngineController::SetActiveScene(std::string sceneName)
 {
 	engine->SetActiveScene(sceneName);
 }
+std::shared_ptr<spic::Scene> EngineController::GetActiveScene()
+{
+	return engine->GetActiveScene();
+}
 
 void EngineController::SetActiveScene(std::shared_ptr<spic::Scene> scene)
 {
