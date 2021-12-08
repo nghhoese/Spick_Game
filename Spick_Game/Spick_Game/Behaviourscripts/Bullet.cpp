@@ -1,20 +1,8 @@
 #include "Bullet.hpp"
-#include <math.h>
-#include "API_Headers/Time.hpp"
-#include "API_Headers/Scene.hpp"
 #include <API_Headers/Collision.hpp>
 
-Bullet::Bullet(spic::Point pos, spic::Point direction, double speed, int damage)
+Bullet::Bullet(spic::Point pos, spic::Point direction, double speed, int damage) : position(pos), direction(direction), speed(speed), damage(damage), hit(false), broken(true)
 {
-	this->position = pos;
-	this->direction = direction;
-	this->speed = speed;
-	this->damage = damage;
-}
-
-Bullet::Bullet()
-{
-
 }
 
 void Bullet::Update()
@@ -35,25 +23,6 @@ void Bullet::Update()
 				enemtObj->setPath("assets/enemy_hit.png");
 				
 			}
-			/*else
-			{	
-				auto tag = enemtObj->GetGameObject()->GetTags();
-				for (auto t : tag) {
-					if (t == "red")
-					{
-						enemtObj->setPath("assets/enemy_red.bmp");
-					} else if(t == "blue") 
-					{
-						enemtObj->setPath("assets/enemy_blue.bmp");
-
-					}
-					else if (t == "green") 
-					{
-						enemtObj->setPath("assets/enemy_green.bmp");
-
-					}
-				}
-			}*/
 		}
 		if (Collision::AABB(GetGameObject(), "wall")) {
 			broken = true;
@@ -64,7 +33,6 @@ void Bullet::Update()
 	}
 	else {
 		auto trans = *GetGameObject()->getTransform();
-		trans.scale = 0.01;
 		trans.position.x = -50;
 		trans.position.y = -10;
 		GetGameObject()->setTransform(&trans);
@@ -81,7 +49,6 @@ void Bullet::OnStart()
 
 void Bullet::OnUpdate()
 {
-
 	Update();
 }
 

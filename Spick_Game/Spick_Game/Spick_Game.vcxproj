@@ -88,14 +88,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine;$(SolutionDir)External Libraries\SDL2\include;$(SolutionDir)External Libraries\SDL2_image\include;$(SolutionDir)External Libraries\box2d\include;$(SolutionDir)External Libraries\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine;$(SolutionDir)External Libraries\SDL2\include;$(SolutionDir)External Libraries\SDL2_image\include;$(SolutionDir)External Libraries\box2d\include;$(SolutionDir)External Libraries\SDL2_ttf\include;$(SolutionDir)External Libraries\SDL2_mixer\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Spic\Spick_Engine\Spick_Engine\Debug;$(SolutionDir)External Libraries\box2d\lib;$(SolutionDir)External Libraries\SDL2\lib\x86;$(SolutionDir)External Libraries\SDL2_image\lib\x86;$(SolutionDir)External Libraries\SDL2_ttf\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Spick_Engine.lib;SDL2.lib;SDL2_image.lib;box2d.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Spic\Spick_Engine\Spick_Engine\Debug;$(SolutionDir)External Libraries\box2d\lib;$(SolutionDir)External Libraries\SDL2\lib\x86;$(SolutionDir)External Libraries\SDL2_image\lib\x86;$(SolutionDir)External Libraries\SDL2_ttf\lib\x86;$(SolutionDir)External Libraries\SDL2_mixer\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Spick_Engine.lib;SDL2.lib;SDL2_image.lib;box2d.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -106,7 +106,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine;$(SolutionDir)External Libraries\SDL2\include;$(SolutionDir)External Libraries\SDL2_image\include;$(SolutionDir)External Libraries\box2d\include;$(SolutionDir)External Libraries\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine;$(SolutionDir)External Libraries\SDL2\include;$(SolutionDir)External Libraries\SDL2_image\include;$(SolutionDir)External Libraries\box2d\include;$(SolutionDir)External Libraries\SDL2_ttf\include;$(SolutionDir)External Libraries\SDL2_mixer\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -114,8 +114,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Spic\Spick_Engine\Spick_Engine\Debug;$(SolutionDir)External Libraries\box2d\lib;$(SolutionDir)External Libraries\SDL2\lib\x86;$(SolutionDir)External Libraries\SDL2_image\lib\x86;$(SolutionDir)External Libraries\SDL2_ttf\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Spick_Engine.lib;SDL2.lib;SDL2_image.lib;box2d.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Spic\Spick_Engine\Spick_Engine\Debug;$(SolutionDir)External Libraries\box2d\lib;$(SolutionDir)External Libraries\SDL2\lib\x86;$(SolutionDir)External Libraries\SDL2_image\lib\x86;$(SolutionDir)External Libraries\SDL2_ttf\lib\x86;$(SolutionDir)External Libraries\SDL2_mixer\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Spick_Engine.lib;SDL2.lib;SDL2_image.lib;box2d.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -124,14 +124,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine;$(SolutionDir)External Libraries\SDL2\include;$(SolutionDir)External Libraries\SDL2_image\include;$(SolutionDir)External Libraries\box2d\include;$(SolutionDir)External Libraries\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine;$(SolutionDir)External Libraries\SDL2\include;$(SolutionDir)External Libraries\SDL2_image\include;$(SolutionDir)External Libraries\box2d\include;$(SolutionDir)External Libraries\SDL2_ttf\include;$(SolutionDir)External Libraries\SDL2_mixer\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Spic\Spick_Engine\Spick_Engine\Debug;$(SolutionDir)External Libraries\box2d\lib;$(SolutionDir)External Libraries\SDL2\lib\x86;$(SolutionDir)External Libraries\SDL2_image\lib\x86;$(SolutionDir)External Libraries\SDL2_ttf\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Spick_Engine.lib;SDL2.lib;SDL2_image.lib;box2d.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Spic\Spick_Engine\Spick_Engine\Debug;$(SolutionDir)External Libraries\box2d\lib;$(SolutionDir)External Libraries\SDL2\lib\x86;$(SolutionDir)External Libraries\SDL2_image\lib\x86;$(SolutionDir)External Libraries\SDL2_ttf\lib\x86;$(SolutionDir)External Libraries\SDL2_mixer\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Spick_Engine.lib;SDL2.lib;SDL2_image.lib;box2d.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -142,7 +142,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine;$(SolutionDir)External Libraries\SDL2\include;$(SolutionDir)External Libraries\SDL2_image\include;$(SolutionDir)External Libraries\box2d\include;$(SolutionDir)External Libraries\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine;$(SolutionDir)External Libraries\SDL2\include;$(SolutionDir)External Libraries\SDL2_image\include;$(SolutionDir)External Libraries\box2d\include;$(SolutionDir)External Libraries\SDL2_ttf\include;$(SolutionDir)External Libraries\SDL2_mixer\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -150,18 +150,19 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Spic\Spick_Engine\Spick_Engine\Debug;$(SolutionDir)External Libraries\box2d\lib;$(SolutionDir)External Libraries\SDL2\lib\x86;$(SolutionDir)External Libraries\SDL2_image\lib\x86;$(SolutionDir)External Libraries\SDL2_ttf\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Spick_Engine.lib;SDL2.lib;SDL2_image.lib;box2d.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Spic\Spick_Engine\Spick_Engine\Debug;$(SolutionDir)External Libraries\box2d\lib;$(SolutionDir)External Libraries\SDL2\lib\x86;$(SolutionDir)External Libraries\SDL2_image\lib\x86;$(SolutionDir)External Libraries\SDL2_ttf\lib\x86;$(SolutionDir)External Libraries\SDL2_mixer\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Spick_Engine.lib;SDL2.lib;SDL2_image.lib;box2d.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Behaviourscript\ChangeSceneBehaviour.cpp" />
-    <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="HUD.cpp" />
-    <ClCompile Include="Behaviourscript\InputScript.cpp" />
-    <ClCompile Include="Level.cpp" />
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Behaviourscripts\ChangeSceneBehaviour.cpp" />
+    <ClCompile Include="Behaviourscripts\Bullet.cpp" />
+    <ClCompile Include="Behaviourscripts\Enemy.cpp" />
+    <ClCompile Include="Behaviourscripts\HUD.cpp" />
+    <ClCompile Include="Behaviourscripts\InputScript.cpp" />
+    <ClCompile Include="Controllers\EngineController.cpp" />
+    <ClCompile Include="Controllers\LevelController.cpp" />
+    <ClCompile Include="Behaviourscripts\Player.cpp" />
     <ClCompile Include="Scenes\CheatsMenuBuilder.cpp" />
     <ClCompile Include="Scenes\CreditsSceneBuilder.cpp" />
     <ClCompile Include="Scenes\GameOverSceneBuilder.cpp" />
@@ -171,13 +172,14 @@
     <ClCompile Include="Spick_Game.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Behaviourscript\ChangeSceneBehaviour.hpp" />
-    <ClInclude Include="Bullet.hpp" />
-    <ClInclude Include="Enemy.hpp" />
-    <ClInclude Include="HUD.hpp" />
-    <ClInclude Include="Behaviourscript\InputScript.hpp" />
-    <ClInclude Include="Level.hpp" />
-    <ClInclude Include="Player.hpp" />
+    <ClInclude Include="Behaviourscripts\ChangeSceneBehaviour.hpp" />
+    <ClInclude Include="Behaviourscripts\Bullet.hpp" />
+    <ClInclude Include="Behaviourscripts\Enemy.hpp" />
+    <ClInclude Include="Behaviourscripts\HUD.hpp" />
+    <ClInclude Include="Behaviourscripts\InputScript.hpp" />
+    <ClInclude Include="Controllers\EngineController.hpp" />
+    <ClInclude Include="Controllers\LevelController.hpp" />
+    <ClInclude Include="Behaviourscripts\Player.hpp" />
     <ClInclude Include="Scenes\CheatsMenuBuilder.hpp" />
     <ClInclude Include="Scenes\CreditsSceneBuilder.hpp" />
     <ClInclude Include="Scenes\GameOverSceneBuilder.hpp" />
@@ -192,21 +194,17 @@
     <Image Include="assets\button.jpg" />
     <Image Include="assets\enemy_blue.bmp" />
     <Image Include="assets\enemy_green.bmp" />
+    <Image Include="assets\enemy_hit.png" />
     <Image Include="assets\enemy_red.bmp" />
     <Image Include="assets\images\backgrounds\background.bmp" />
-    <Image Include="assets\images\foregrounds\bright-vent.png" />
     <Image Include="assets\images\foregrounds\bright-wood-floor.bmp" />
-    <Image Include="assets\images\foregrounds\bright-wood-hitler-floor.bmp" />
-    <Image Include="assets\images\foregrounds\bright-wood-statue-floor.bmp" />
-    <Image Include="assets\images\foregrounds\dark-blue-nazi-stone-wall.png" />
     <Image Include="assets\images\foregrounds\dark-blue-skull-stone-wall.png" />
     <Image Include="assets\images\foregrounds\dark-blue-stone-wall.png" />
     <Image Include="assets\images\foregrounds\dark-stone-wall.png" />
     <Image Include="assets\images\foregrounds\dark-vent.png" />
     <Image Include="assets\images\foregrounds\dark-wood-floor.bmp" />
-    <Image Include="assets\images\foregrounds\dark-wood-hitler-floor.bmp" />
-    <Image Include="assets\images\foregrounds\dark-wood-statue-floor.bmp" />
     <Image Include="assets\images\foregrounds\elevator.png" />
+    <Image Include="assets\images\foregrounds\error.png" />
     <Image Include="assets\images\foregrounds\half_1.png" />
     <Image Include="assets\images\foregrounds\half_2.png" />
     <Image Include="assets\images\foregrounds\half_3.png" />
@@ -220,7 +218,6 @@
     <Image Include="assets\images\foregrounds\outside_3.png" />
     <Image Include="assets\images\foregrounds\outside_4.png" />
     <Image Include="assets\images\foregrounds\red-grey-brown-wall.png" />
-    <Image Include="assets\images\foregrounds\red-nazi-wall.png" />
     <Image Include="assets\images\foregrounds\red-wall.png" />
     <Image Include="assets\images\foregrounds\stone-floor.png" />
     <Image Include="assets\images\foregrounds\stone_half_wall_bottom-left-corner.png" />
@@ -237,6 +234,7 @@
     <Image Include="assets\images\foregrounds\stone_half_wall_top.png" />
     <Image Include="assets\menu.png" />
     <Image Include="assets\player_pistol_silenced.png" />
+    <Image Include="assets\player_pistol_silenced_hit.png" />
     <Image Include="assets\player_sub-machinegun.bmp" />
   </ItemGroup>
   <ItemGroup>

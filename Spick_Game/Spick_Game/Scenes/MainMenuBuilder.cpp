@@ -1,5 +1,4 @@
 #include "MainMenuBuilder.hpp"
-#include "../Behaviourscript/ChangeSceneBehaviour.hpp"
 
 std::shared_ptr<spic::Scene> MainMenuBuilder::BuildScene() {
     std::shared_ptr<spic::Scene> scene = std::make_shared<spic::Scene>("MainMenu");
@@ -29,11 +28,13 @@ std::shared_ptr<spic::Scene> MainMenuBuilder::BuildScene() {
     return scene;
 }
 
-void MainMenuBuilder::BuildScript(spic::Engine* engine) {
-    std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("StartGameScript", "level1", engine);
+void MainMenuBuilder::BuildScript() {
+    std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("StartGameScript", "level1");
     buttonPlay->AddComponent(scriptPlay);
     std::shared_ptr<ChangeSceneBehaviour> scriptHelp = std::make_shared<ChangeSceneBehaviour>("OpenHelpScript", "HelpScene", engine);
     buttonHelp->AddComponent(scriptHelp);
     std::shared_ptr<ChangeSceneBehaviour> scriptOptions = std::make_shared<ChangeSceneBehaviour>("OpenCreditsScript", "CreditsScene", engine);
     buttonCredits->AddComponent(scriptOptions);
+    std::shared_ptr<ChangeSceneBehaviour> scriptOptions = std::make_shared<ChangeSceneBehaviour>("OpenOptionsScript", "level1");
+    buttonOptions->AddComponent(scriptOptions);
 }

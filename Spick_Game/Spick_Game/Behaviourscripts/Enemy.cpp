@@ -4,6 +4,10 @@
 #include <API_Headers/BoxCollider.hpp>
 #include <API_Headers/Collision.hpp>
 
+Enemy::Enemy() : speed(1.5), turnCount(0), isTurned(false), isAlive(true)
+{
+}
+
 void Enemy::OnAwake()
 {
 }
@@ -34,17 +38,13 @@ void Enemy::OnUpdate()
     if (isAlive)
     {
         auto trans = *GetGameObject()->getTransform();
-
         auto tag = GetGameObject()->GetTags()[0];
-        // move till destination is reached
         if (tag == "red")
         {
-            //up and down
             trans.position.y += speed;
         }
         else if (tag == "blue")
         {
-            //left and right
             trans.position.x += speed;
         }
         else
@@ -103,26 +103,6 @@ void Enemy::setPath(const std::string& path)
 const std::string& Enemy::getPath()
 {
 	return this->path;
-}
-
-void Enemy::setHealthpoints(const int& healthpoints)
-{
-	this->healthpoints = healthpoints;
-}
-
-const int& Enemy::getHealthpoints()
-{
-	return this->healthpoints;
-}
-
-void Enemy::setDamagePerBullet(const int& damagePerBullet)
-{
-	this->damagePerBullet = damagePerBullet;
-}
-
-const int& Enemy::getDamagePerBullet()
-{
-	return this->damagePerBullet;
 }
 
 void Enemy::OnClick()

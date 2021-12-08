@@ -1,22 +1,25 @@
 #pragma once
+
 #include <API_Headers/BehaviourScript.hpp>
 #include <API_Headers/Engine.hpp>
 #include <API_Headers/Text.hpp>
-#include "Behaviourscript/InputScript.hpp"
+#include "InputScript.hpp"
 #include <API_Headers/Scene.hpp>
 #include <API_Headers/GameObject.hpp>
+#include "../Controllers/EngineController.hpp"
 
 class HUD : public spic::BehaviourScript {
 private:
-    int fps = 0;
+    int fps;
     int currentHealthPoints;
     int healthpoints;
     int currentCoins;
     int coins;
+    int magazine;
+    int currentMagazine;
     std::shared_ptr<spic::GameObject> InputObject;
-    spic::Engine* engine;
 public:
-    HUD(spic::Engine* engine);
+    HUD();
     void OnAwake();
     void OnStart();
     void OnUpdate();
@@ -25,11 +28,12 @@ public:
     void OnTriggerEnter2D(const Collider& collider);
     void OnTriggerExit2D(const Collider& collider);
     void OnTriggerStay2D(const Collider& collider);
-
-    void SetFps(const int& fps);
-    const int& GetFps();
-    void SetHealthPoints(const int& healthpoints);
-    const int& GetHealthPoints();
-    void SetCoins(const int& coins);
-    const int& GetCoins();
+    void SetFps(int fps) { this->fps = fps; };
+    int GetFps() { return this->fps; };
+    void SetHealthPoints(int healthpoints) { this->healthpoints = healthpoints; };
+    int GetHealthPoints() { return this->healthpoints; };
+    void SetMagazine(int magazine) { this->magazine = magazine; };
+    int GetMagazine() { return this->magazine; };
+    void SetCoins(int coins) { this->coins = coins; };
+    int GetCoins() { return this->coins; };
 };
