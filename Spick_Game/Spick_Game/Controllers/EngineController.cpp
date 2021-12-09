@@ -34,10 +34,6 @@ void EngineController::SetActiveScene(std::string sceneName)
 {
 	engine->SetActiveScene(sceneName);
 }
-std::shared_ptr<spic::Scene> EngineController::GetActiveScene()
-{
-	return engine->GetActiveScene();
-}
 
 void EngineController::SetActiveScene(std::shared_ptr<spic::Scene> scene)
 {
@@ -49,9 +45,9 @@ void EngineController::AddScene(std::shared_ptr<spic::Scene> scene)
 	engine->AddScene(scene);
 }
 
-void EngineController::CreateNewWindow(const std::string& windowName, int width, int height)
+void EngineController::CreateNewWindow(const std::string& windowName)
 {
-	engine->CreateNewWindow(windowName, width, height);
+	engine->CreateNewWindow(windowName);
 }
 
 void EngineController::StartGameLoop()
@@ -97,9 +93,4 @@ bool EngineController::GetIsInLevelTransition()
 void EngineController::SetIsInLevelTransition(bool transitionBool)
 {
 	engine->setIsInLevelTransition(transitionBool);
-}
-	
-void EngineController::EndGameLoop()
-{
-	engine->EndGameLoop();
 }

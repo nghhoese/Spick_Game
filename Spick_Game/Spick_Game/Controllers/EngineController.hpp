@@ -14,10 +14,9 @@ public:
 	void SetGameOver(bool value);
 	bool GetGameOver();
 	void SetActiveScene(std::string sceneName);
-	std::shared_ptr<spic::Scene> GetActiveScene();
 	void SetActiveScene(std::shared_ptr<spic::Scene> scene);
 	void AddScene(std::shared_ptr<spic::Scene> scene);
-	void CreateNewWindow(const std::string& windowName, int width, int height);
+	void CreateNewWindow(const std::string& windowName);
 	void StartGameLoop();
 	void SetCurrentLevel(int currentLevelNumber);
 	int GetCurrentLevel();
@@ -25,7 +24,6 @@ public:
 	void SetCheatsEnabled(bool cheatsBool);
 	bool GetIsInLevelTransition();
 	void SetIsInLevelTransition(bool transitionBool);
-	void EndGameLoop();
 	std::shared_ptr<spic::Scene> GetSceneByName(const std::string& sceneName);
 	std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> GetLevel(const std::filesystem::path& path);
 };

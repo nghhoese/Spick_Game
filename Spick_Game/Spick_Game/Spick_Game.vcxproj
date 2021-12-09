@@ -164,7 +164,6 @@
     <ClCompile Include="Behaviourscripts\Enemy.cpp" />
     <ClCompile Include="Behaviourscripts\HUD.cpp" />
     <ClCompile Include="Behaviourscripts\InputScript.cpp" />
-    <ClCompile Include="Behaviourscripts\Quit.cpp" />
     <ClCompile Include="Controllers\EngineController.cpp" />
     <ClCompile Include="Controllers\LevelController.cpp" />
     <ClCompile Include="Behaviourscripts\Player.cpp" />
@@ -182,7 +181,6 @@
     <ClInclude Include="Behaviourscripts\Enemy.hpp" />
     <ClInclude Include="Behaviourscripts\HUD.hpp" />
     <ClInclude Include="Behaviourscripts\InputScript.hpp" />
-    <ClInclude Include="Behaviourscripts\Quit.hpp" />
     <ClInclude Include="Controllers\EngineController.hpp" />
     <ClInclude Include="Controllers\LevelController.hpp" />
     <ClInclude Include="Behaviourscripts\Player.hpp" />

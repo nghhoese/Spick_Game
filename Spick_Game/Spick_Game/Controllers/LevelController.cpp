@@ -1,6 +1,5 @@
 #include "../Controllers/LevelController.hpp"
 #include <API_Headers/BoxCollider.hpp>
-#include <API_Headers/AudioSource.hpp>
 
 LevelController::LevelController() : bmpFileString(".bmp"), pngFileString(".png"), xTilesize(64), yTilesize(64)
 {
@@ -178,11 +177,9 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
             for (std::pair<std::string, std::any> value : object) {
                 if (value.first._Equal("position")) {
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
-
                     if (EngineController::GetInstance()->GetCurrentLevel() == 1) {
                         BuildLevelPlayer(scene, sprite, position);
                     }
-
                 }
             }
         }
@@ -302,9 +299,5 @@ void LevelController::BuildLevelPlayer(std::shared_ptr<spic::Scene> scene, std::
 
     auto test = playerObject->getScene();
 
-    player->FillBucket();
-	std::shared_ptr<spic::AudioSource> liedje1 = std::make_shared<spic::AudioSource>();
-	playerObject->AddComponent(liedje1);
-	liedje1->SetAudioClip("assets/reload.wav");
-	liedje1->SetIsMusic(false);	
+    player->FillBucket();   
 }
