@@ -1,4 +1,5 @@
 #include "SteeringBehaviour.hpp"
+#include <API_Headers/Collision.hpp>
 
 SteeringBehaviour::SteeringBehaviour(spic::Point objectPos, spic::Point playerPos, spic::Point vel) : _enemyPos(objectPos), _playerPos(playerPos), vel(vel)
 {
@@ -64,7 +65,7 @@ void SteeringBehaviour::OnRender()
 {
 }
 
-void SteeringBehaviour::OnTriggerEnter2D(const Collider& collider)
+void SteeringBehaviour::OnTriggerEnter2D(const spic::Collider& collider)
 {
 }
 
@@ -72,10 +73,10 @@ void SteeringBehaviour::OnClick()
 {
 }
 
-void SteeringBehaviour::OnTriggerExit2D(const Collider& collider)
+void SteeringBehaviour::OnTriggerExit2D(const spic::Collider& collider)
 {
 }
 
-void SteeringBehaviour::OnTriggerStay2D(const Collider& collider)
+void SteeringBehaviour::OnTriggerStay2D(const spic::Collider& collider)
 {
 }
