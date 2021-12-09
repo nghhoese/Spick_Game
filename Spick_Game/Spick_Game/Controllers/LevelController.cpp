@@ -1,6 +1,8 @@
 #include "../Controllers/LevelController.hpp"
 #include <API_Headers/BoxCollider.hpp>
 #include <API_Headers/AudioSource.hpp>
+#include <API_Headers/Animator.hpp>
+
 
 LevelController::LevelController() : bmpFileString(".bmp"), pngFileString(".png"), currentLevel(1)
 {
@@ -209,6 +211,24 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
                     std::shared_ptr<spic::AudioSource> liedje1 = std::make_shared<spic::AudioSource>();
                     playerObject->AddComponent(liedje1);
                     liedje1->SetAudioClip("assets/reload.wav");
+
+                    std::shared_ptr<spic::Sprite> sprite2 = std::make_shared<spic::Sprite>();
+                    sprite2->SetSprite("assets/enemy_blue.bmp");
+                    sprite2->SetPlayerBool(true);
+                    std::shared_ptr<spic::Sprite> sprite1 = std::make_shared<spic::Sprite>();
+                    sprite1->SetSprite("assets/menu.png");
+                    sprite1->SetPlayerBool(true);
+                    std::shared_ptr<spic::Animator> animator = std::make_shared<spic::Animator>();
+                    std::vector<std::shared_ptr<spic::Sprite>> sprites;
+                    sprites.push_back(sprite2);
+                    sprites.push_back(sprite1);
+                    animator->SetSprites(sprites);
+                    playerObject->AddComponent(animator);
+                    animator->SetFps(100);
+                    animator->Play(true);
+                    sprite1->SetGameObject(playerObject.get());
+                    sprite2->SetGameObject(playerObject.get());
+
                     liedje1->SetIsMusic(false);
                 }
             }

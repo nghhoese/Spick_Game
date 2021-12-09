@@ -21,7 +21,9 @@ void ChangeSceneBehaviour::OnClick()
 	}
 	EngineController::GetInstance()->SetActiveScene(_scene);
 	if (!EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music").empty()) {
-		EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->Play(true);
+		if (!EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->GetPlaying()) {
+			EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->Play(true);
+		}
 
 	}
 
