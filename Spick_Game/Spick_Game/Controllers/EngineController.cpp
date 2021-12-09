@@ -49,9 +49,9 @@ void EngineController::AddScene(std::shared_ptr<spic::Scene> scene)
 	engine->AddScene(scene);
 }
 
-void EngineController::CreateNewWindow(const std::string& windowName)
+void EngineController::CreateNewWindow(const std::string& windowName, int width, int height)
 {
-	engine->CreateNewWindow(windowName);
+	engine->CreateNewWindow(windowName, width, height);
 }
 
 void EngineController::StartGameLoop()
@@ -67,4 +67,9 @@ std::shared_ptr<spic::Scene> EngineController::GetSceneByName(const std::string&
 std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> EngineController::GetLevel(const std::filesystem::path& path)
 {
 	return engine->GetLevel(path);
+}
+
+void EngineController::EndGameLoop()
+{
+	engine->EndGameLoop();
 }
