@@ -34,14 +34,12 @@ void HUD::OnUpdate()
 
 	std::shared_ptr<spic::GameObject> magazineObject = GetGameObject()->getScene()->GetGameObjectsByTag("Magazine")[0];
 	std::shared_ptr<spic::Text> magazineText = std::dynamic_pointer_cast<spic::Text>(magazineObject);
-	if (currentMagazine != magazine) {
-		if (magazine == 0) {
-			GetGameObject()->getScene()->GetGameObjectsByName("Player")[0]->GetComponent<spic::AudioSource>()->Play(true);
-			magazineText->SetText("Magazine: reloading...");
-		}
-		else {
-			magazineText->SetText("Magazine: " + std::to_string(this->magazine) + "/5");
-		}
+	if (magazine == 0) {
+		GetGameObject()->getScene()->GetGameObjectsByName("Player")[0]->GetComponent<spic::AudioSource>()->Play(true);
+		magazineText->SetText("Magazine: reloading...");
+	}
+	else {
+		magazineText->SetText("Magazine: " + std::to_string(this->magazine) + "/" + std::to_string(this->currentMagazine));
 	}
 	
 	std::shared_ptr<spic::GameObject> fpsObject = GetGameObject()->getScene()->GetGameObjectsByTag("fps")[0];

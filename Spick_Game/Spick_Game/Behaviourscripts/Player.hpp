@@ -25,6 +25,7 @@ private:
     int currentCoins;
     int ammo;
     int magazine;
+    int currentMagazine;
     int coolDown;
     int bulletSpeed;
     int bulletDamage;

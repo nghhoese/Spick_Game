@@ -17,6 +17,7 @@
     <ClCompile Include="Scenes\HelpSceneBuilder.cpp" />
     <ClCompile Include="Scenes\CreditsSceneBuilder.cpp" />
     <ClCompile Include="Behaviourscripts\Quit.cpp" />
+    <ClCompile Include="Behaviourscripts\SteeringBehaviour.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behaviourscripts\ChangeSceneBehaviour.hpp" />
@@ -35,6 +36,7 @@
     <ClInclude Include="Scenes\HelpSceneBuilder.hpp" />
     <ClInclude Include="Scenes\CreditsSceneBuilder.hpp" />
     <ClInclude Include="Behaviourscripts\Quit.hpp" />
+    <ClInclude Include="Behaviourscripts\SteeringBehaviour.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\bullet.bmp" />
@@ -87,6 +89,7 @@
     <Image Include="assets\player_pistol_silenced.png" />
     <Image Include="assets\player_pistol_silenced_hit.png" />
     <Image Include="assets\player_sub-machinegun.bmp" />
+    <Image Include="assets\back.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\Fonts\Capsmall.ttf" />
@@ -97,5 +100,9 @@
     <None Include="assets\levels\level2.json" />
     <None Include="assets\levels\level3.json" />
     <None Include="assets\levels\testlevel.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="assets\dimmadome.mp3" />
+    <Media Include="assets\bgmusic1.mp3" />
   </ItemGroup>
 </Project>

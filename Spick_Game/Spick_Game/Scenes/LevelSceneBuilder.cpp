@@ -10,8 +10,8 @@ std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(int levelNumber)
     level->BuildLevel(GameScene, path);
 
     std::unique_ptr<spic::Camera> camera = std::make_unique<spic::Camera>("mainCamera");
-    camera->setAspectWidth(1536);
-    camera->setAspectHeight(1536);
+    camera->setAspectWidth(1920);
+    camera->setAspectHeight(1080);
     camera->setX(0);
     camera->setY(0);
     camera->CreateCamera();
@@ -26,7 +26,7 @@ std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(int levelNumber)
     coins->AddTag("coins");
     std::shared_ptr<spic::Text> magazine = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, 325, 0);
     magazine->AddTag("Magazine");
-    std::shared_ptr<spic::Text> fps = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, 870, 0);
+    std::shared_ptr<spic::Text> fps = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, 1800, 0);
     fps->AddTag("fps");
     std::shared_ptr<spic::Text> paused = std::make_shared<spic::Text>("", "Capsmall", 140, textColor, 250, 175);
     paused->AddTag("paused");
@@ -50,7 +50,12 @@ void LevelSceneBuilder::BuildLevel(int levelNumber) {
     std::shared_ptr<InputScript> inputScript = std::make_shared<InputScript>();
     InputObject->AddComponent(inputScript);
 
+    std::shared_ptr<spic::GameObject> SteeringBehaviourObject = std::make_shared<spic::GameObject>("SteeringBehaviour");
+    std::shared_ptr<SteeringBehaviour> steeringBehaviour = std::make_shared<SteeringBehaviour>();
+    SteeringBehaviourObject->AddComponent(steeringBehaviour);
+
     std::shared_ptr<spic::Scene> levelScene = BuildLevelScene(levelNumber);
     levelScene->AddGameObject(InputObject);
+    levelScene->AddGameObject(SteeringBehaviourObject);
     EngineController::GetInstance()->AddScene(levelScene);
 }

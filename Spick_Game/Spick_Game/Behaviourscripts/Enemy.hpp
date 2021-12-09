@@ -1,17 +1,30 @@
 #pragma once
 
 #include "API_Headers/BehaviourScript.hpp"
+#include "../Behaviourscripts/SteeringBehaviour.hpp"
+#include "API_Headers/Point.hpp"
+#include <math.h>
 #include <string>
+#include "API_Headers/Time.hpp"
 
 class Enemy : public spic::BehaviourScript {
 private:
     std::string path;
     int healthpoints;
     int damagePerBullet;
-    int turnCount;
+    bool isTurned = false;
+    int turnCount = 0;
     double speed;
-    bool isTurned;
-    bool isAlive;
+    bool IfPlayerNearby();
+    int triggerSpace = 250;
+    bool check = false;
+    bool isPersuing = false;
+    int persueCount = 0;
+    double wandertheta = 0;
+    spic::Point target;
+    bool isAlive = true;
+    spic::Point acc; //versnelling
+    spic::Point vel; //snelheid
 public:
     Enemy();
     void OnAwake();
@@ -24,6 +37,14 @@ public:
     void OnTriggerStay2D(const spic::Collider& collider);
     void setPath(const std::string& path);
     const std::string& getPath();
+
+    spic::Point persue();
+
+    spic::Point seek(spic::Point target);
+
+    spic::Point wander();
+
+    spic::Point wallAvoidance();
     void setHealthpoints(int healthpoints) { this->healthpoints = healthpoints; };
     int getHealthpoints() { return this->healthpoints; };
     void setDamagePerBullet(int damagePerBullet) { this->damagePerBullet = damagePerBullet; };
