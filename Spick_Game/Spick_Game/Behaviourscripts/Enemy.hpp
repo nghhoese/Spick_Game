@@ -14,13 +14,13 @@ private:
     int damagePerBullet;
     bool isTurned = false;
     int turnCount = 0;
-    double speed = 5;
+    double speed;
     bool IfPlayerNearby();
     int triggerSpace = 250;
     bool check = false;
     bool isPersuing = false;
     int persueCount = 0;
-    double wandertheta;
+    double wandertheta = 0;
     spic::Point target;
     bool isAlive = true;
     spic::Point acc; //versnelling

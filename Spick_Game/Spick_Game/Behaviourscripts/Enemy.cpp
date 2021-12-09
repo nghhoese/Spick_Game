@@ -32,11 +32,15 @@ void Enemy::OnStart()
     double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
     trans.rotation = Result + (rand() % 180 + 90);
     GetGameObject()->setTransform(&trans);
+    vel.x = 0;
+    vel.y = 0;
+
+    acc.x = 0;
+    acc.y = 0;
 }
 
 void Enemy::OnUpdate()
 {
-   
 
 	if (this->healthpoints < 0) {
         isAlive = false;
@@ -71,19 +75,19 @@ void Enemy::OnUpdate()
 
             double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
             trans.rotation = Result + 90;
+           
         }
         else {
             steering = wander();
-            trans.rotation = atan2(vel.y, vel.x);
+            //trans.rotation = atan2(vel.y, vel.x);
         }
+
         acc.Add(steering);
         vel.Add(acc);
 
         vel.Limit(10);
         //do wall avoidance
         //vel.Add(wallAvoidance());
-        acc.x = 0;
-        acc.y = 0;
         trans.position.Add(vel);
         
         GetGameObject()->setTransform(&trans);
@@ -139,7 +143,7 @@ spic::Point Enemy::seek(spic::Point target)
 {
     spic::Point force;
     force.Sub(target, GetGameObject()->getTransform()->position);
-    force.SetMag(6);
+    force.SetMag(speed);
     force.Sub(vel);
     force.Limit(0.25);
     return force;
@@ -198,7 +202,7 @@ spic::Point Enemy::wallAvoidance()
             overShoot.Sub(feeler, wallPos);
             auto newWallPos = wallPos.Normalize();
             newWallPos.Mult(overShoot.Mag());
-            steeringForce = newWallPos;
+            steeringForce = seek(newWallPos);
         }
     }
     

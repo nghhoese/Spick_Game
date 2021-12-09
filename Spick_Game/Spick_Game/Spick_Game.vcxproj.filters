@@ -14,7 +14,6 @@
     <ClCompile Include="Scenes\MainMenuBuilder.cpp" />
     <ClCompile Include="Scenes\LevelSceneBuilder.cpp" />
     <ClCompile Include="Spick_Game.cpp" />
-    <ClCompile Include="Behaviourscript\SteeringBehaviour.cpp" />
     <ClCompile Include="Scenes\HelpSceneBuilder.cpp" />
     <ClCompile Include="Scenes\CreditsSceneBuilder.cpp" />
     <ClCompile Include="Behaviourscripts\Quit.cpp" />
@@ -34,7 +33,6 @@
     <ClInclude Include="Scenes\MainMenuBuilder.hpp" />
     <ClInclude Include="Scenes\LevelSceneBuilder.hpp" />
     <ClInclude Include="Scenes\SceneBuilder.hpp" />
-    <ClInclude Include="Behaviourscript\SteeringBehaviour.hpp" />
     <ClInclude Include="Scenes\HelpSceneBuilder.hpp" />
     <ClInclude Include="Scenes\CreditsSceneBuilder.hpp" />
     <ClInclude Include="Behaviourscripts\Quit.hpp" />
