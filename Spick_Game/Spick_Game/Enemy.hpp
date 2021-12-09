@@ -20,6 +20,8 @@ private:
     bool check = false;
     bool isPersuing = false;
     int persueCount = 0;
+    double wandertheta;
+    spic::Point target;
 public:
     bool isAlive = true;
     spic::Point acc; //versnelling
@@ -48,4 +50,8 @@ public:
     spic::Point persue();
 
     spic::Point seek(spic::Point target);
+
+    spic::Point wander();
+
+    spic::Point wallAvoidance();
 };
