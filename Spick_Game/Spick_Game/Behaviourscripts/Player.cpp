@@ -1,7 +1,7 @@
 #include "Player.hpp"
 #include <API_Headers/BoxCollider.hpp>
 
-Player::Player() : healthpoints(100), coins(0), ammo(0), bulletSpeed(10), bulletDamage(30), speed(5), notClicked(true), isDamageless(false), magazine(5), currentMagazine(magazine), coolDown(50)
+Player::Player() : healthpoints(100), coins(0), ammo(0), bulletSpeed(10), bulletDamage(30), speed(5), notClicked(true), isDamageless(false), magazine(50), currentMagazine(magazine), coolDown(50)
 {
 }
 
@@ -184,10 +184,10 @@ void Player::FillBucket()
 		bulletObject->AddTag("PlayerBullet");
 		transfrom.position.x = 0;
 		transfrom.position.y = 0;
-		transfrom.scale = 0.75;
+		transfrom.scale = 0.55;
 		std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
-		boxCollider->Height(10);
-		boxCollider->Width(10);
+		boxCollider->Height(7);
+		boxCollider->Width(7);
 		bulletObject->AddComponent(boxCollider);
 		std::shared_ptr<Bullet> bullet = std::make_shared<Bullet>(transfrom.position, transfrom.position, 20, bulletDamage);
 		bulletObject->AddComponent(bullet);
