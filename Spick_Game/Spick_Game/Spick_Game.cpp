@@ -22,7 +22,7 @@
 
 int main(char* argv[]) {
     try{
-        EngineController::GetInstance()->CreateNewWindow("Tactical Stealth");
+        EngineController::GetInstance()->CreateNewWindow("Tactical Stealth", 1920, 1080);
 
         std::shared_ptr<MainMenuBuilder> mainMenuBuilder = std::make_shared<MainMenuBuilder>();
         std::shared_ptr<spic::Scene> mainMenu = mainMenuBuilder->BuildScene();

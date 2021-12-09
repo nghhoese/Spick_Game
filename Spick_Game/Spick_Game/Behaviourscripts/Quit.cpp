@@ -7,6 +7,7 @@ QuitBehaviour::QuitBehaviour() {
 void QuitBehaviour::OnClick()
 {
 	EngineController::GetInstance()->GetSceneByName("MainMenu")->Quit();
+	EngineController::GetInstance()->EndGameLoop();
 }
 
 void QuitBehaviour::OnUpdate() {
