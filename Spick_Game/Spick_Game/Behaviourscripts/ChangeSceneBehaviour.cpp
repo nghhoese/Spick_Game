@@ -41,10 +41,10 @@ void ChangeSceneBehaviour::OnClick()
 			EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->Stop();
 		}		
 	}
+
 	EngineController::GetInstance()->SetIsInLevelTransition(false);
 	EngineController::GetInstance()->SetActiveScene(_scene);
-	auto test = EngineController::GetInstance()->GetSceneByName(_scene);
-	auto jeoma = test->GetGameObjectsByName("Player");
+
 	if (!EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music").empty()) {
 		EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->Play(true);
 
