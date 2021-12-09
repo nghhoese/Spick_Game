@@ -32,6 +32,8 @@ int main(char* argv[]) {
         levelSceneBuilder->BuildLevel(1);
         levelSceneBuilder->BuildLevel(2);
         levelSceneBuilder->BuildLevel(3);
+        EngineController::GetInstance()->SetCurrentLevel(1);
+
         std::shared_ptr<spic::GameObject> liedjevanMainMenu1 = std::make_shared<spic::GameObject>();
         EngineController::GetInstance()->GetSceneByName("level1")->AddGameObject(liedjevanMainMenu1);
         liedjevanMainMenu1->AddTag("music");

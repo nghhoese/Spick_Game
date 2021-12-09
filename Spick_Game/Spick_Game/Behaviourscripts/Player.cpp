@@ -88,15 +88,15 @@ void Player::OnRender()
 	}
 }
 
-void Player::OnTriggerEnter2D(const Collider& collider)
+void Player::OnTriggerEnter2D(const spic::Collider& collider)
 {
 }
 
-void Player::OnTriggerExit2D(const Collider& collider)
+void Player::OnTriggerExit2D(const spic::Collider& collider)
 {
 }
 
-void Player::OnTriggerStay2D(const Collider& collider)
+void Player::OnTriggerStay2D(const spic::Collider& collider)
 {
 }
 
@@ -139,6 +139,8 @@ void Player::CheckEndPoint()
 		if (xPlayer < endPointBottomRight.x && yPlayer < endPointBottomRight.y) {
 			std::shared_ptr<spic::Component> script = endPointObject->GetComponentByName("EndLevelScript");
 			if (script != nullptr) {
+				EngineController::GetInstance()->SetIsInLevelTransition(true);
+				EngineController::GetInstance()->SetCurrentLevel(EngineController::GetInstance()->GetCurrentLevel() + 1);
 				script->OnClick();
 			}
 		}
@@ -170,6 +172,7 @@ void Player::CameraFixture()
 
 void Player::FillBucket()
 {
+	bullets.clear();
 	int index = 0;
 	while (index < 20) {
 

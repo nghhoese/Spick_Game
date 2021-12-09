@@ -62,14 +62,14 @@ void HUD::OnClick()
 {
 }
 
-void HUD::OnTriggerEnter2D(const Collider& collider)
+void HUD::OnTriggerEnter2D(const spic::Collider& collider)
 {
 }
 
-void HUD::OnTriggerExit2D(const Collider& collider)
+void HUD::OnTriggerExit2D(const spic::Collider& collider)
 {
 }
 
-void HUD::OnTriggerStay2D(const Collider& collider)
+void HUD::OnTriggerStay2D(const spic::Collider& collider)
 {
 }

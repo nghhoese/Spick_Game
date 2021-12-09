@@ -5,6 +5,7 @@ std::shared_ptr<spic::Scene> CreditsSceneBuilder::BuildScene()
     std::shared_ptr<spic::Scene> scene = std::make_shared<spic::Scene>("CreditsScene");
 
     buttonBack = std::make_shared<spic::Button>("back", 10, 640, 146, 80, "BackToMenuScript");
+    buttonBack->SetName("BackToMenuButton");
     scene->AddGameObject(buttonBack);
 
     spic::Color textColor = spic::Color(1.0, 1.0, 1.0, 1.0);

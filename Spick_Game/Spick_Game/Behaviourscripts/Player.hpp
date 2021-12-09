@@ -48,10 +48,10 @@ public:
     void OnStart();
     void OnUpdate();
     void OnRender();
-    void OnTriggerEnter2D(const Collider& collider);
+    void OnTriggerEnter2D(const spic::Collider& collider);
     void OnClick();
-    void OnTriggerExit2D(const Collider& collider);
-    void OnTriggerStay2D(const Collider& collider);
+    void OnTriggerExit2D(const spic::Collider& collider);
+    void OnTriggerStay2D(const spic::Collider& collider);
     void Shoot();
     void CheckGameOver();
     void CheckEndPoint();

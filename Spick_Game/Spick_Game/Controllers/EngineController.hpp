@@ -19,6 +19,12 @@ public:
 	void CreateNewWindow(const std::string& windowName, int width, int height);
 	void StartGameLoop();
 	void EndGameLoop();
+	void SetCurrentLevel(int currentLevelNumber);
+	int GetCurrentLevel();
+	bool GetCheatsEnabled();
+	void SetCheatsEnabled(bool cheatsBool);
+	bool GetIsInLevelTransition();
+	void SetIsInLevelTransition(bool transitionBool);
 	std::shared_ptr<spic::Scene> GetSceneByName(const std::string& sceneName);
 	std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> GetLevel(const std::filesystem::path& path);
 };

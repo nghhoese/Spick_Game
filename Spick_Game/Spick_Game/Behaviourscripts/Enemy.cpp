@@ -78,15 +78,15 @@ void Enemy::OnRender()
 {
 }
 
-void Enemy::OnTriggerEnter2D(const Collider& collider)
+void Enemy::OnTriggerEnter2D(const spic::Collider& collider)
 {
 }
 
-void Enemy::OnTriggerExit2D(const Collider& collider)
+void Enemy::OnTriggerExit2D(const spic::Collider& collider)
 {
 }
 
-void Enemy::OnTriggerStay2D(const Collider& collider)
+void Enemy::OnTriggerStay2D(const spic::Collider& collider)
 {
 }
 

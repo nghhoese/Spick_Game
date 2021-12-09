@@ -25,11 +25,11 @@ public:
     void OnStart();
     void OnUpdate();
     void OnRender();
-    void OnTriggerEnter2D(const Collider& collider);
+    void OnTriggerEnter2D(const spic::Collider& collider);
     void OnClick();
     void CalculateAmountToMove();
-    void OnTriggerExit2D(const Collider& collider);
-    void OnTriggerStay2D(const Collider& collider);
+    void OnTriggerExit2D(const spic::Collider& collider);
+    void OnTriggerStay2D(const spic::Collider& collider);
     void SetBroken(bool value) { this->broken = value; };
     bool GetBroken() { return this->broken; };
     void SetDirection(spic::Point direction) { this->direction = direction; };

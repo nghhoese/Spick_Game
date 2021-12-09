@@ -73,3 +73,33 @@ void EngineController::EndGameLoop()
 {
 	engine->EndGameLoop();
 }
+
+void EngineController::SetCurrentLevel(int currentLevelNumber)
+{
+	engine->setCurrentLevel(currentLevelNumber);
+}
+
+int EngineController::GetCurrentLevel()
+{
+	return engine->getCurrentLevel();
+}
+
+bool EngineController::GetCheatsEnabled()
+{
+	return engine->getCheatsEnabled();
+}
+
+void EngineController::SetCheatsEnabled(bool cheatsBool)
+{
+	engine->setCheatsEnabled(cheatsBool);
+}
+
+bool EngineController::GetIsInLevelTransition()
+{
+	return engine->getIsInLevelTransition();
+}
+
+void EngineController::SetIsInLevelTransition(bool transitionBool)
+{
+	engine->setIsInLevelTransition(transitionBool);
+}
