@@ -84,3 +84,13 @@ void EngineController::SetCheatsEnabled(bool cheatsBool)
 {
 	engine->setCheatsEnabled(cheatsBool);
 }
+
+bool EngineController::GetIsInLevelTransition()
+{
+	return engine->getIsInLevelTransition();
+}
+
+void EngineController::SetIsInLevelTransition(bool transitionBool)
+{
+	engine->setIsInLevelTransition(transitionBool);
+}

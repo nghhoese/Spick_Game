@@ -140,6 +140,7 @@ void Player::CheckEndPoint()
 		if (xPlayer < endPointBottomRight.x && yPlayer < endPointBottomRight.y) {
 			std::shared_ptr<spic::Component> script = endPointObject->GetComponentByName("EndLevelScript");
 			if (script != nullptr) {
+				EngineController::GetInstance()->SetIsInLevelTransition(true);
 				EngineController::GetInstance()->SetCurrentLevel(EngineController::GetInstance()->GetCurrentLevel() + 1);
 				script->OnClick();
 			}

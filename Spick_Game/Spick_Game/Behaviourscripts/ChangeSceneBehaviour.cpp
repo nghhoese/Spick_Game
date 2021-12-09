@@ -6,26 +6,28 @@ ChangeSceneBehaviour::ChangeSceneBehaviour(const std::string& name, const std::s
 
 void ChangeSceneBehaviour::OnClick()
 {
-	if (EngineController::GetInstance()->GetCurrentLevel() != 1 && !EngineController::GetInstance()->GetCheatsEnabled() && !EngineController::GetInstance()->GetGameOver()) {
-		std::string levelString = "level" + std::to_string(EngineController::GetInstance()->GetCurrentLevel());
-		_scene = levelString;
+	if (EngineController::GetInstance()->GetIsInLevelTransition()) {
+		if (EngineController::GetInstance()->GetCurrentLevel() != 1) {
+			std::string levelString = "level" + std::to_string(EngineController::GetInstance()->GetCurrentLevel());
+			_scene = levelString;
 
-		std::string previousLevelString = "level" + std::to_string(EngineController::GetInstance()->GetCurrentLevel() - 1);
+			std::string previousLevelString = "level" + std::to_string(EngineController::GetInstance()->GetCurrentLevel() - 1);
 
-		std::shared_ptr<spic::GameObject> existingPlayerObject = EngineController::GetInstance()->GetSceneByName(previousLevelString)->GetGameObjectsByName("Player")[0];
+			std::shared_ptr<spic::GameObject> existingPlayerObject = EngineController::GetInstance()->GetSceneByName(previousLevelString)->GetGameObjectsByName("Player")[0];
 
-		auto level2 = EngineController::GetInstance()->GetSceneByName(levelString);
+			auto level2 = EngineController::GetInstance()->GetSceneByName(levelString);
 
-		level2->AddGameObject(existingPlayerObject);
+			level2->AddGameObject(existingPlayerObject);
 
-		auto PlayerComponent = existingPlayerObject->GetComponent<Player>();
-		PlayerComponent->FillBucket();
-	    PlayerComponent->OnStart();
-
+			auto PlayerComponent = existingPlayerObject->GetComponent<Player>();
+			PlayerComponent->FillBucket();
+			PlayerComponent->OnStart();
+		}
 	}
 
 	if (EngineController::GetInstance()->GetGameOver()) {
 		std::shared_ptr<LevelSceneBuilder> levelSceneBuilder = std::make_shared<LevelSceneBuilder>();
+		EngineController::GetInstance()->SetCurrentLevel(1);
 		levelSceneBuilder->BuildLevel(1);
 		levelSceneBuilder->BuildLevel(2);
 		levelSceneBuilder->BuildLevel(3);
@@ -33,6 +35,7 @@ void ChangeSceneBehaviour::OnClick()
 		EngineController::GetInstance()->SetGameOver(false);
 	}
 
+	EngineController::GetInstance()->SetIsInLevelTransition(false);
 	EngineController::GetInstance()->SetCheatsEnabled(false);
 	EngineController::GetInstance()->SetActiveScene(_scene);
 }
