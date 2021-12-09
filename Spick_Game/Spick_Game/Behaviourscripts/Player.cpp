@@ -1,7 +1,7 @@
 #include "Player.hpp"
 #include <API_Headers/BoxCollider.hpp>
 
-Player::Player() : healthpoints(100), coins(0), ammo(0), bulletSpeed(10), bulletDamage(30), speed(5), notClicked(true), isDamageless(false), magazine(20), coolDown(10)
+Player::Player() : healthpoints(100), coins(0), ammo(0), bulletSpeed(10), bulletDamage(30), speed(5), notClicked(true), isDamageless(false), magazine(5), currentMagazine(magazine), coolDown(50)
 {
 }
 
@@ -63,11 +63,12 @@ void Player::OnUpdate()
 	HudComponent->SetHealthPoints(this->healthpoints);
 	HudComponent->SetCoins(this->coins);
 	HudComponent->SetMagazine(this->magazine);
+	HudComponent->SetCurrentMagazine(this->currentMagazine);
 	if (magazine == 0) {
 		coolDown -= 1;
 		if (coolDown == 0) {
-			magazine = magazine + 80;
-			coolDown = 100;
+			magazine = magazine + currentMagazine;
+			coolDown = 50;
 		}
 	}	
 }

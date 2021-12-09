@@ -24,8 +24,8 @@ C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Collider.hpp(11): mes
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20): message : see declaration of 'spic::BoxCollider'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(71,52): warning C4251: 'spic::BoxCollider::rectangleFacade': class 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>' needs to have dll-interface to be used by clients of class 'spic::BoxCollider'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(71): message : see declaration of 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>'
-C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(152,58): warning C4244: '=': conversion from 'const double' to 'int', possible loss of data
 C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(153,58): warning C4244: '=': conversion from 'const double' to 'int', possible loss of data
-C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(154,68): warning C4244: '=': conversion from 'const double' to 'int', possible loss of data
-C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(155,69): warning C4244: '=': conversion from 'const double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(154,58): warning C4244: '=': conversion from 'const double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(155,68): warning C4244: '=': conversion from 'const double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(156,69): warning C4244: '=': conversion from 'const double' to 'int', possible loss of data
   Spick_Game.vcxproj -> C:\Spic\Spick_Game\Spick_Game\Debug\Spick_Game.exe
