@@ -187,11 +187,10 @@ const void InputScript::checkKeys()
 		std::shared_ptr<spic::Component> script = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0]->GetComponentByName("CheatsMenuScript");
 
 		if (script != nullptr) {
-			EngineController::GetInstance()->SetCheatsEnabled(true);
 			std::string levelString = std::to_string(EngineController::GetInstance()->GetCurrentLevel());
 			script->OnClick();
-			auto test = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("BackToGameButton")[0]->GetComponent<ChangeSceneBehaviour>();
-			test->sceneChange("level" + levelString);
+			auto backToGameButton = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("BackToGameButton")[0]->GetComponent<ChangeSceneBehaviour>();
+			backToGameButton->sceneChange("level" + levelString);
 		}
 	}
 	if (input->GetKey(Y)) {

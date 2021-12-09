@@ -36,23 +36,15 @@ void ChangeSceneBehaviour::OnClick()
 		EngineController::GetInstance()->SetGameOver(false);
 	}
 
-	//if (EngineController::GetInstance()->GetCheatsEnabled()) {
-	//	std::string levelString2 = "level" + std::to_string(EngineController::GetInstance()->GetCurrentLevel());
-	//	_scene = levelString2;
-	//	auto currentLevel2 = EngineController::GetInstance()->GetSceneByName("CheatsMenu");
-
-	//	std::shared_ptr<spic::Component> script2 = currentLevel2->GetGameObjectsByName("StartGameScript")[0]->GetComponentByName("StartGameScript");
-	//	script2 = std::make_shared<ChangeSceneBehaviour>("StartGameScript", "level" + levelString2);
-	//}
-
 	if (!EngineController::GetInstance()->GetSceneByName(_scene)->GetGameObjectsByTag("music").empty()) {
 		if (!EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music").empty()) {
 			EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->Stop();
 		}		
 	}
 	EngineController::GetInstance()->SetIsInLevelTransition(false);
-	EngineController::GetInstance()->SetCheatsEnabled(false);
 	EngineController::GetInstance()->SetActiveScene(_scene);
+	auto test = EngineController::GetInstance()->GetSceneByName(_scene);
+	auto jeoma = test->GetGameObjectsByName("Player");
 	if (!EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music").empty()) {
 		EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->Play(true);
 

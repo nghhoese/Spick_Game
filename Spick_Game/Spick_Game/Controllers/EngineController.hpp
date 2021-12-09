@@ -21,8 +21,6 @@ public:
 	void EndGameLoop();
 	void SetCurrentLevel(int currentLevelNumber);
 	int GetCurrentLevel();
-	bool GetCheatsEnabled();
-	void SetCheatsEnabled(bool cheatsBool);
 	bool GetIsInLevelTransition();
 	void SetIsInLevelTransition(bool transitionBool);
 	std::shared_ptr<spic::Scene> GetSceneByName(const std::string& sceneName);
