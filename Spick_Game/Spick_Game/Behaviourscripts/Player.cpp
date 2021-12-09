@@ -38,8 +38,8 @@ void Player::OnUpdate()
 	InputComponent->checkKeys();
 	transfrom.position.x = xPlayer;
 	transfrom.position.y = yPlayer;
-	GetGameObject()->getScene()->GetActiveCamera()->setX(xPlayer - 768);
-	GetGameObject()->getScene()->GetActiveCamera()->setY(yPlayer - 768);
+	GetGameObject()->getScene()->GetActiveCamera()->setX(xPlayer - (GetGameObject()->getScene()->GetActiveCamera()->getAspectWidth() / 2));
+	GetGameObject()->getScene()->GetActiveCamera()->setY(yPlayer - (GetGameObject()->getScene()->GetActiveCamera()->getAspectHeight() / 2));
 	GetGameObject()->getScene()->GetActiveCamera()->UpdateCamera();
 	this->CameraFixture();
 
