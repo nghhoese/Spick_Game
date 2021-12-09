@@ -19,20 +19,22 @@ std::shared_ptr<spic::Scene> MainMenuBuilder::BuildScene() {
 
     buttonPlay = std::make_shared<spic::Button>("", 314, 165, 134, 72, "StartGameScript");
     scene->AddGameObject(buttonPlay);
+    std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("StartGameScript", "level1");
+    buttonPlay->AddComponent(scriptPlay);
 
     buttonHelp = std::make_shared<spic::Button>("", 295, 245, 180, 72, "OpenHelpScript");
     scene->AddGameObject(buttonHelp);
+    std::shared_ptr<ChangeSceneBehaviour> scriptHelp = std::make_shared<ChangeSceneBehaviour>("OpenHelpScript", "HelpScene");
+    buttonHelp->AddComponent(scriptHelp);
 
     buttonCredits = std::make_shared<spic::Button>("", 295, 397, 180, 72, "OpenCreditsScript");
     scene->AddGameObject(buttonCredits);
-    return scene;
-}
-
-void MainMenuBuilder::BuildScript() {
-    std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("StartGameScript", "level1");
-    buttonPlay->AddComponent(scriptPlay);
-    std::shared_ptr<ChangeSceneBehaviour> scriptHelp = std::make_shared<ChangeSceneBehaviour>("OpenHelpScript", "HelpScene");
-    buttonHelp->AddComponent(scriptHelp);
     std::shared_ptr<ChangeSceneBehaviour> scriptCredits = std::make_shared<ChangeSceneBehaviour>("OpenCreditsScript", "CreditsScene");
     buttonCredits->AddComponent(scriptCredits);
+
+    buttonQuit = std::make_shared<spic::Button>("", 316, 492, 122, 81, "QuitScript");
+    scene->AddGameObject(buttonQuit);
+    std::shared_ptr<QuitBehaviour> quitScript = std::make_shared<QuitBehaviour>();
+    buttonQuit->AddComponent(quitScript);
+    return scene;
 }
