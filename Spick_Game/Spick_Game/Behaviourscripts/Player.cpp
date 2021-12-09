@@ -102,7 +102,11 @@ void Player::OnTriggerStay2D(const Collider& collider)
 
 void Player::Shoot()
 {
+	auto AnimatorObject = GetGameObject()->getScene()->GetGameObjectsByName("Animator")[0];
+	auto AnimatorComponent = AnimatorObject->GetComponent<spic::Animator>();
+
 	if (magazine > 0) {
+		AnimatorComponent->Play(true);
 		magazine = magazine - 1;
 		for (std::shared_ptr<Bullet> b : bullets) {
 			if (b->GetBroken()) {
@@ -115,6 +119,7 @@ void Player::Shoot()
 				b->SetPosition(transfrom.position);
 				b->GetGameObject()->setTransform(&transfrom);
 				b->CalculateAmountToMove();
+				//AnimatorComponent->Stop();
 				return;
 			}
 		}

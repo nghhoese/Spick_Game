@@ -7,6 +7,12 @@ std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(int levelNumber)
     std::string levelString = std::to_string(levelNumber);
     std::shared_ptr<spic::Scene> GameScene = std::make_shared<spic::Scene>("level" + levelString);
 
+    std::shared_ptr<spic::GameObject> AnimatorObject = std::make_shared<spic::GameObject>("Animator");
+    std::shared_ptr<spic::Animator> animator = std::make_shared<spic::Animator>();
+    animator->SetAmountOfSprites(2);
+    AnimatorObject->AddComponent(animator);
+    GameScene->AddGameObject(AnimatorObject);
+
     std::string path = "assets/levels/level" + levelString + ".json";
     level->BuildLevel(GameScene, path);
 

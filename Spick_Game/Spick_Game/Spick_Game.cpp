@@ -32,13 +32,16 @@ int main(char* argv[]) {
         levelSceneBuilder->BuildLevel(1);
         levelSceneBuilder->BuildLevel(2);
         levelSceneBuilder->BuildLevel(3);
+
         std::shared_ptr<spic::GameObject> liedjevanMainMenu1 = std::make_shared<spic::GameObject>();
         EngineController::GetInstance()->GetSceneByName("level1")->AddGameObject(liedjevanMainMenu1);
         liedjevanMainMenu1->AddTag("music");
+
         std::shared_ptr<spic::AudioSource> liedje1 = std::make_shared<spic::AudioSource>();
         liedjevanMainMenu1->AddComponent(liedje1);
         liedje1->SetAudioClip("assets/bgmusic1.mp3");
         liedje1->SetIsMusic(true);
+
         std::shared_ptr<GameOverBuilder> gameOverSceneBuilder = std::make_shared<GameOverBuilder>();
         std::shared_ptr<spic::Scene> gameOverScene = gameOverSceneBuilder->BuildScene();
         EngineController::GetInstance()->AddScene(gameOverScene);

@@ -186,6 +186,12 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
                     sprite->SetSprite("assets/player_spritesheet.png");
                     sprite->SetPlayerBool(true);
 
+                    auto AnimatorObject = scene->GetGameObjectsByName("Animator")[0];
+                    auto AnimatorComponent = AnimatorObject->GetComponent<spic::Animator>();
+                    std::vector<std::shared_ptr<Sprite>> sprites;
+                    sprites.push_back(sprite);
+                    AnimatorComponent->SetSprites(sprites);
+
                     BuildLevelObjectPosition(playerObject, position);
 
                     std::shared_ptr<Player> player = std::make_shared<Player>();

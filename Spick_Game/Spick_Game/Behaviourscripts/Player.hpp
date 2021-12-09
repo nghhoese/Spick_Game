@@ -16,6 +16,7 @@
 #include "InputScript.hpp"
 #include "HUD.hpp"
 #include "../Controllers/EngineController.hpp"
+#include <API_Headers/Animator.hpp>
 
 class Player : public spic::BehaviourScript {
 private:
