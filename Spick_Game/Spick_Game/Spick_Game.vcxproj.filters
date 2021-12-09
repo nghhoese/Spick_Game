@@ -89,6 +89,7 @@
     <Image Include="assets\player_pistol_silenced.png" />
     <Image Include="assets\player_pistol_silenced_hit.png" />
     <Image Include="assets\player_sub-machinegun.bmp" />
+    <Image Include="assets\back.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\Fonts\Capsmall.ttf" />
@@ -99,5 +100,9 @@
     <None Include="assets\levels\level2.json" />
     <None Include="assets\levels\level3.json" />
     <None Include="assets\levels\testlevel.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="assets\dimmadome.mp3" />
+    <Media Include="assets\bgmusic1.mp3" />
   </ItemGroup>
 </Project>

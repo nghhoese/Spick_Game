@@ -29,8 +29,8 @@ InputScript::InputScript() : input(std::make_unique<spic::Importation>()), time(
 
 const void InputScript::checkMouseButtons()
 {
-	const spic::GameObject* playerObject = GetPlayer();
-	auto PlayerComponent = playerObject->GetComponent<Player>();
+	const spic::GameObject playerObject = *GetPlayer();
+	auto PlayerComponent = playerObject.GetComponent<Player>();
 	if (input->GetMouseButton(LEFT)) {
 		if (PlayerComponent->GetNotClicked())
 		{
@@ -67,8 +67,8 @@ const void InputScript::CheckPause() {
 
 const void InputScript::checkKeys()
 {
-	const spic::GameObject* playerObject = GetPlayer();
-	auto PlayerComponent = playerObject->GetComponent<Player>();
+	const spic::GameObject playerObject = *GetPlayer();
+	auto PlayerComponent = playerObject.GetComponent<Player>();
 	auto objk1 = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
 
 	if (input->GetKey(W)) {

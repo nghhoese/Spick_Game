@@ -197,6 +197,7 @@
     <ClInclude Include="Scenes\SceneBuilder.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\back.jpg" />
     <Image Include="assets\back.png" />
     <Image Include="assets\bullet.bmp" />
     <Image Include="assets\button.jpg" />
@@ -254,6 +255,10 @@
   <ItemGroup>
     <Font Include="Fonts\Fonts\Capsmall.ttf" />
     <Font Include="Fonts\Fonts\TopSecret.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="assets\bgmusic1.mp3" />
+    <Media Include="assets\dimmadome.mp3" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

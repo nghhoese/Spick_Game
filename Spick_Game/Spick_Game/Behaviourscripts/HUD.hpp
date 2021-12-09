@@ -34,6 +34,8 @@ public:
     int GetHealthPoints() { return this->healthpoints; };
     void SetMagazine(int magazine) { this->magazine = magazine; };
     int GetMagazine() { return this->magazine; };
+    void SetCurrentMagazine(int magazine) { this->currentMagazine = magazine; };
+    int GetCurrentMagazine() { return this->currentMagazine; };
     void SetCoins(int coins) { this->coins = coins; };
     int GetCoins() { return this->coins; };
 };
