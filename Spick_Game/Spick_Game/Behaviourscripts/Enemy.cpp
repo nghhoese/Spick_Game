@@ -58,9 +58,9 @@ void Enemy::OnUpdate()
         auto player = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
         auto tag = GetGameObject()->GetTags()[0];
        
-        auto steeringBehaviour = GetGameObject()->getScene()->GetGameObjectsByName("SteeringBehaviour")[0];
+       /* auto steeringBehaviour = GetGameObject()->getScene()->GetGameObjectsByName("SteeringBehaviour")[0];
         auto steeringBehaviourComponent = steeringBehaviour->GetComponent<SteeringBehaviour>();
-        SteeringBehaviour steer{ trans.position, player->getTransform()->position , vel };
+        SteeringBehaviour steer{ trans.position, player->getTransform()->position , vel };*/
         // move to target till destination is reached
         spic::Point steering;
         if (IfPlayerNearby()) // if player is in radius of enemy
@@ -120,26 +120,6 @@ void Enemy::setPath(const std::string& path)
 const std::string& Enemy::getPath()
 {
 	return this->path;
-}
-
-void Enemy::setHealthpoints(const int& healthpoints)
-{
-	this->healthpoints = healthpoints;
-}
-
-const int& Enemy::getHealthpoints()
-{
-	return this->healthpoints;
-}
-
-void Enemy::setDamagePerBullet(const int& damagePerBullet)
-{
-	this->damagePerBullet = damagePerBullet;
-}
-
-const int& Enemy::getDamagePerBullet()
-{
-	return this->damagePerBullet;
 }
 
 spic::Point Enemy::persue()

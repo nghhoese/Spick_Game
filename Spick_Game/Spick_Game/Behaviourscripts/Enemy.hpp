@@ -1,7 +1,7 @@
 #pragma once
 
 #include "API_Headers/BehaviourScript.hpp"
-#include "BehaviourScript/SteeringBehaviour.hpp"
+#include "../Behaviourscripts/SteeringBehaviour.hpp"
 #include "API_Headers/Point.hpp"
 #include <math.h>
 #include <string>
@@ -12,7 +12,6 @@ private:
     std::string path;
     int healthpoints;
     int damagePerBullet;
-    std::string path;
     bool isTurned = false;
     int turnCount = 0;
     double speed = 5;

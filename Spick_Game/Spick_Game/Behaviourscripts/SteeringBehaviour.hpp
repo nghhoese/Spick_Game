@@ -3,7 +3,7 @@
 #include "API_Headers/Point.hpp"
 #include "API_Headers/GameObject.hpp"
 #include "API_Headers/Scene.hpp"
-#include "../Enemy.hpp"
+#include "../Behaviourscripts/Enemy.hpp"
 
 class SteeringBehaviour : public spic::BehaviourScript {
 private:
