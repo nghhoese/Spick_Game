@@ -1,4 +1,5 @@
 #include "ChangeSceneBehaviour.hpp"
+#include <API_Headers/AudioSource.hpp>
 
 ChangeSceneBehaviour::ChangeSceneBehaviour(const std::string& name, const std::string& scene) : _scene(scene){
 	Name(name);
@@ -37,7 +38,20 @@ void ChangeSceneBehaviour::OnClick()
 
 	EngineController::GetInstance()->SetIsInLevelTransition(false);
 	EngineController::GetInstance()->SetCheatsEnabled(false);
+
+	if (!EngineController::GetInstance()->GetSceneByName(_scene)->GetGameObjectsByTag("music").empty()) {
+		if (!EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music").empty()) {
+			EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->Stop();
+		}		
+	}
+	
 	EngineController::GetInstance()->SetActiveScene(_scene);
+	if (!EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music").empty()) {
+		EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->Play(true);
+
+	}
+
+
 }
 
 void ChangeSceneBehaviour::OnUpdate() {

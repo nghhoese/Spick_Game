@@ -1,4 +1,5 @@
 #include "HUD.hpp"
+#include <API_Headers/AudioSource.hpp>
 
 HUD::HUD() : fps(0)
 {
@@ -35,6 +36,7 @@ void HUD::OnUpdate()
 	std::shared_ptr<spic::Text> magazineText = std::dynamic_pointer_cast<spic::Text>(magazineObject);
 	if (currentMagazine != magazine) {
 		if (magazine == 0) {
+			GetGameObject()->getScene()->GetGameObjectsByName("Player")[0]->GetComponent<spic::AudioSource>()->Play(true);
 			magazineText->SetText("Magazine: reloading...");
 		}
 		else {
