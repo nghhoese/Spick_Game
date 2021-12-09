@@ -4,19 +4,19 @@ std::shared_ptr<spic::Scene> CreditsSceneBuilder::BuildScene()
 {
     std::shared_ptr<spic::Scene> scene = std::make_shared<spic::Scene>("CreditsScene");
 
-    buttonBack = std::make_shared<spic::Button>("back", 10, 640, 146, 80, "BackToMenuScript");
+    buttonBack = std::make_shared<spic::Button>("back", 1600, 870, 219, 120, "BackToMenuScript");
     scene->AddGameObject(buttonBack);
 
     spic::Color textColor = spic::Color(1.0, 1.0, 1.0, 1.0);
 
-    std::shared_ptr<spic::Text> title = std::make_shared<spic::Text>("Credits", "Capsmall", 80, textColor, 60, 5);
-    std::shared_ptr<spic::Text> head1 = std::make_shared<spic::Text>("THANK YOU FOR PLAYING", "Capsmall", 50, textColor, 10, 150);
-    std::shared_ptr<spic::Text> head2 = std::make_shared<spic::Text>("THE TEAM:", "Capsmall", 40, textColor, 10, 300);
-    std::shared_ptr<spic::Text> n1 = std::make_shared<spic::Text>("JOERY VAN EGMOND", "Segment16CBold", 20, textColor, 10, 350);
-    std::shared_ptr<spic::Text> n2 = std::make_shared<spic::Text>("JEROEN VAN DER POEL", "Segment16CBold", 20, textColor, 10, 370);
-    std::shared_ptr<spic::Text> n3 = std::make_shared<spic::Text>("BAS VAN PELT", "Segment16CBold", 20, textColor, 10, 390);
-    std::shared_ptr<spic::Text> n4 = std::make_shared<spic::Text>("NICK 'DE KAPITEIN' VAN HOESEL ", "Segment16CBold", 20, textColor, 10, 410);
-    std::shared_ptr<spic::Text> n5 = std::make_shared<spic::Text>("RENS ASPERS", "Segment16CBold", 20, textColor, 10, 430);
+    std::shared_ptr<spic::Text> title = std::make_shared<spic::Text>("Credits", "Capsmall", 100, textColor, 60, 5);
+    std::shared_ptr<spic::Text> head1 = std::make_shared<spic::Text>("THANK YOU FOR PLAYING", "Capsmall", 80, textColor, 38, 150);
+    std::shared_ptr<spic::Text> head2 = std::make_shared<spic::Text>("THE TEAM:", "Capsmall", 60, textColor, 38, 300);
+    std::shared_ptr<spic::Text> n1 = std::make_shared<spic::Text>("JOERY VAN EGMOND", "Segment16CBold", 38, textColor, 38, 390);
+    std::shared_ptr<spic::Text> n2 = std::make_shared<spic::Text>("JEROEN VAN DER POEL", "Segment16CBold", 38, textColor, 38, 430);
+    std::shared_ptr<spic::Text> n3 = std::make_shared<spic::Text>("BAS VAN PELT", "Segment16CBold", 38, textColor, 38, 470);
+    std::shared_ptr<spic::Text> n4 = std::make_shared<spic::Text>("NICK 'DE KAPITEIN' VAN HOESEL ", "Segment16CBold", 38, textColor, 38, 510);
+    std::shared_ptr<spic::Text> n5 = std::make_shared<spic::Text>("RENS ASPERS", "Segment16CBold", 38, textColor, 38, 550);
 
     /*std::shared_ptr<spic::Text> t1 = std::make_shared<spic::Text>("WITH SPECIAL THANKS TO:", "Capsmall", 40, textColor, 10, 460);
     std::shared_ptr<spic::Text> t2 = std::make_shared<spic::Text>("STACK OVERFLOW | FOR TEATCHING US C++", "Segment16CBold", 20, textColor, 10, 510);
