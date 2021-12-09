@@ -1,6 +1,6 @@
 #include "CheatsMenuBuilder.hpp"
 
-std::shared_ptr<spic::Scene> CheatsMenuBuilder::BuildScene(spic::Engine* engine) {
+std::shared_ptr<spic::Scene> CheatsMenuBuilder::BuildScene() {
     std::shared_ptr<spic::Scene> scene = std::make_shared<spic::Scene>("CheatsMenu");
 
     buttonBackToLevel = std::make_shared<spic::Button>("button", 10,400, 75, 150, "StartGameScript");
@@ -35,12 +35,11 @@ std::shared_ptr<spic::Scene> CheatsMenuBuilder::BuildScene(spic::Engine* engine)
     std::shared_ptr<spic::Text> InstakillButtonText = std::make_shared<spic::Text>("Y", "Capsmall", 40, textColor, 500, 350);
     scene->AddGameObject(InstakillButtonText);
 
-    return scene;
-    
-}
+    std::shared_ptr<LevelController> level = std::make_shared<LevelController>();
+    std::string levelString = std::to_string(level->GetCurrentLevel());
 
-void CheatsMenuBuilder::BuildScript(spic::Engine* engine) {
-    // Ophalen in welk level de player momenteel zit
-    std::shared_ptr<ChangeSceneBehaviour> scriptBackToLevel = std::make_shared<ChangeSceneBehaviour>("StartGameScript", "level1", engine);
+    std::shared_ptr<ChangeSceneBehaviour> scriptBackToLevel = std::make_shared<ChangeSceneBehaviour>("StartGameScript", "level" + levelString);
     buttonBackToLevel->AddComponent(scriptBackToLevel);
+    
+    return scene;
 }

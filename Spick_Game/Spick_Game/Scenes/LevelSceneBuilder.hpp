@@ -6,14 +6,13 @@
 #include <API_Headers/Text.hpp>
 #include "../Behaviourscript/ChangeSceneBehaviour.hpp"
 #include "../Behaviourscript/SteeringBehaviour.hpp"
-#include "../Level.hpp"
-#include "../HUD.hpp"
+#include "../Controllers/LevelController.hpp"
+#include "../Behaviourscripts/HUD.hpp"
 
 class LevelSceneBuilder : public SceneBuilder {
 private:
 
 public:
-	std::shared_ptr<spic::Scene> BuildLevelScene(spic::Engine* engine, int levelNumber);
-
-	void BuildLevel(spic::Engine* engine, int levelNumber);
+	std::shared_ptr<spic::Scene> BuildLevelScene(int levelNumber);
+	void BuildLevel(int levelNumber);
 };
