@@ -1,5 +1,6 @@
 #include "../Controllers/LevelController.hpp"
 #include <API_Headers/BoxCollider.hpp>
+#include <API_Headers/AudioSource.hpp>
 
 LevelController::LevelController() : bmpFileString(".bmp"), pngFileString(".png"), currentLevel(1)
 {
@@ -205,6 +206,10 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
                     boxCollider->Width(55);
                     playerObject->AddComponent(boxCollider);
                     player->FillBucket();
+                    std::shared_ptr<spic::AudioSource> liedje1 = std::make_shared<spic::AudioSource>();
+                    playerObject->AddComponent(liedje1);
+                    liedje1->SetAudioClip("assets/reload.wav");
+                    liedje1->SetIsMusic(false);
                 }
             }
         }
