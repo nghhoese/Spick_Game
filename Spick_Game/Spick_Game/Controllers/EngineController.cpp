@@ -69,6 +69,11 @@ std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vecto
 	return engine->GetLevel(path);
 }
 
+std::vector<std::shared_ptr<spic::Scene>> EngineController::GetScenes()
+{
+	return engine->GetScenes();
+}
+
 void EngineController::EndGameLoop()
 {
 	engine->EndGameLoop();

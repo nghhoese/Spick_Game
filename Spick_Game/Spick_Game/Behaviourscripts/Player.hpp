@@ -20,9 +20,6 @@
 class Player : public spic::BehaviourScript {
 private:
     int healthpoints;
-    int currentHealthPoints;
-    int coins;
-    int currentCoins;
     int ammo;
     int magazine;
     int currentMagazine;
@@ -63,12 +60,14 @@ public:
     double GetYPlayer() { return this->yPlayer; };
     void SetHealthpoints(int value) { this->healthpoints = value; };
     int GetHealtpoints() { return this->healthpoints; };
-    void Setcoins(int value) { this->coins = value; };
-    int GetCoins() { return this->coins; };
     void SetSpeed(double value) { this->speed = value; };
     double GetSpeed() { return this->speed; };
     void SetNotClicked(bool value) { this->notClicked = value; };
     bool GetNotClicked() { return this->notClicked; };
     void SetIsDamageless(bool value) { this->isDamageless = value; };
     bool GetIsDamageLess() { return this->isDamageless; };
+    void SetMagazine(int value) { this->magazine = value; };
+    int GetMagazine() { return this->magazine; };
+    void SetStart();
+    void SetEnd();
 };

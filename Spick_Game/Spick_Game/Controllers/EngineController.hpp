@@ -25,4 +25,5 @@ public:
 	void SetIsInLevelTransition(bool transitionBool);
 	std::shared_ptr<spic::Scene> GetSceneByName(const std::string& sceneName);
 	std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> GetLevel(const std::filesystem::path& path);
+	std::vector<std::shared_ptr<spic::Scene>> GetScenes();
 };

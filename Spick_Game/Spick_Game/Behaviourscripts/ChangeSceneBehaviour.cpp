@@ -20,7 +20,7 @@ void ChangeSceneBehaviour::OnClick()
 
 			currentLevel->AddGameObject(existingPlayerObject);
 
-			auto PlayerComponent = existingPlayerObject->GetComponent<Player>();
+			auto PlayerComponent = EngineController::GetInstance()->GetSceneByName(levelString)->GetGameObjectsByName("Player")[0]->GetComponent<Player>();
 			PlayerComponent->FillBucket();
 			PlayerComponent->OnStart();
 		}
@@ -29,8 +29,14 @@ void ChangeSceneBehaviour::OnClick()
 	if (EngineController::GetInstance()->GetGameOver()) {
 		std::shared_ptr<LevelSceneBuilder> levelSceneBuilder = std::make_shared<LevelSceneBuilder>();
 		EngineController::GetInstance()->SetCurrentLevel(1);
+		auto level1 = EngineController::GetInstance()->GetSceneByName("level1");
+		level1->SetName("level1-done");
 		levelSceneBuilder->BuildLevel(1);
+		auto level2 = EngineController::GetInstance()->GetSceneByName("level2");
+		level2->SetName("level2-done");
 		levelSceneBuilder->BuildLevel(2);
+		auto level3 = EngineController::GetInstance()->GetSceneByName("level3");
+		level3->SetName("level3-done");
 		levelSceneBuilder->BuildLevel(3);
 		EngineController::GetInstance()->SetCurrentLevel(1);
 		EngineController::GetInstance()->SetGameOver(false);

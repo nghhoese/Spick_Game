@@ -178,6 +178,9 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
             for (std::pair<std::string, std::any> value : object) {
                 if (value.first._Equal("position")) {
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
+                    std::shared_ptr<spic::GameObject> startPointObject = std::make_shared<spic::GameObject>("Startpoint");
+                    scene->AddGameObject(startPointObject);
+                    BuildLevelObjectPosition(startPointObject, position);
                     if (EngineController::GetInstance()->GetCurrentLevel() == 1) {
                         BuildLevelPlayer(scene, sprite, position);
                     }
@@ -272,8 +275,6 @@ void LevelController::BuildLevelPlayer(std::shared_ptr<spic::Scene> scene, std::
     std::shared_ptr<spic::GameObject> playerObject = std::make_shared<spic::GameObject>("Player");
 
     scene->AddGameObject(playerObject);
-
-    auto test2 = playerObject->getScene();
 
     playerObject->AddComponent(sprite);
     sprite->SetSprite("assets/player_pistol_silenced.png");
