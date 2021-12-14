@@ -3,7 +3,6 @@
 std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(int levelNumber) {
    
     std::shared_ptr<LevelController> level = std::make_shared<LevelController>();
-    level->SetCurrentLevel(levelNumber);
     std::string levelString = std::to_string(levelNumber);
     std::shared_ptr<spic::Scene> GameScene = std::make_shared<spic::Scene>("level" + levelString);
 
@@ -23,9 +22,7 @@ std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(int levelNumber)
     spic::Color textColor = spic::Color(1.0, 1.0, 1.0, 1.0);
     std::shared_ptr<spic::Text> hp = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, 0, 0);
     hp->AddTag("hp");
-    std::shared_ptr<spic::Text> coins = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, 175, 0);
-    coins->AddTag("coins");
-    std::shared_ptr<spic::Text> magazine = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, 325, 0);
+    std::shared_ptr<spic::Text> magazine = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, 175, 0);
     magazine->AddTag("Magazine");
     std::shared_ptr<spic::Text> fps = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, 1800, 0);
     fps->AddTag("fps");
@@ -39,7 +36,6 @@ std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(int levelNumber)
     BackToMenu->SetActive(false);
     GameScene->AddGameObject(hp);
     GameScene->AddGameObject(magazine);
-    GameScene->AddGameObject(coins);
     GameScene->AddGameObject(fps);
     GameScene->AddGameObject(paused);
     GameScene->AddGameObject(BackToMenu);

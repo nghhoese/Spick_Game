@@ -1,4 +1,5 @@
 #include "InputScript.hpp"
+#include "ChangeSceneBehaviour.hpp"
 #include <API_Headers/Collision.hpp>
 
 spic::KeyCode W = spic::KeyCode::W;
@@ -51,18 +52,26 @@ const void InputScript::CheckPause() {
 		if (!GetPausing()) {
 			SetPausing(true);
 			if (time->TimeScale() > 0.0) {
-				time->TimeScale(0.0);
-				SetPaused(true);
+				PauseGame();
 			}
 			else if (time->TimeScale() == 0) {
-				time->TimeScale(1.0);
-				SetPaused(false);
+				UnPauseGame();
 			}
 		}
 	}
 	else {
 		SetPausing(false);
 	}
+}
+
+void InputScript::PauseGame() {
+	time->TimeScale(0.0);
+	SetPaused(true);
+}
+
+void InputScript::UnPauseGame() {
+	time->TimeScale(1.0);
+	SetPaused(false);
 }
 
 const void InputScript::checkKeys()
@@ -184,8 +193,12 @@ const void InputScript::checkKeys()
 	}
 	if (input->GetKey(EP)) {
 		std::shared_ptr<spic::Component> script = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0]->GetComponentByName("CheatsMenuScript");
+
 		if (script != nullptr) {
+			std::string levelString = std::to_string(EngineController::GetInstance()->GetCurrentLevel());
 			script->OnClick();
+			auto backToGameButton = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("BackToGameButton")[0]->GetComponent<ChangeSceneBehaviour>();
+			backToGameButton->sceneChange("level" + levelString);
 		}
 	}
 	if (input->GetKey(Y)) {
@@ -258,7 +271,7 @@ void InputScript::OnRender()
 {
 }
 
-void InputScript::OnTriggerEnter2D(const Collider& collider)
+void InputScript::OnTriggerEnter2D(const spic::Collider& collider)
 {
 }
 
@@ -266,10 +279,10 @@ void InputScript::OnClick()
 {
 }
 
-void InputScript::OnTriggerExit2D(const Collider& collider)
+void InputScript::OnTriggerExit2D(const spic::Collider& collider)
 {
 }
 
-void InputScript::OnTriggerStay2D(const Collider& collider)
+void InputScript::OnTriggerStay2D(const spic::Collider& collider)
 {
 }

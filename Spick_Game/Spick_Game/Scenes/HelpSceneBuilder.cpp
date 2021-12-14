@@ -5,6 +5,7 @@ std::shared_ptr<spic::Scene> HelpSceneBuilder::BuildScene()
     std::shared_ptr<spic::Scene> scene = std::make_shared<spic::Scene>("HelpScene");
 
     buttonBack= std::make_shared<spic::Button>("back", 1600, 870, 219, 120, "BackToMenuScript");
+	buttonBack->SetName("BackToMenuScript");
     scene->AddGameObject(buttonBack);
 
     spic::Color textColor = spic::Color(1.0, 1.0, 1.0, 1.0);

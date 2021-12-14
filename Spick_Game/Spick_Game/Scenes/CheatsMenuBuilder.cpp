@@ -3,7 +3,8 @@
 std::shared_ptr<spic::Scene> CheatsMenuBuilder::BuildScene() {
     std::shared_ptr<spic::Scene> scene = std::make_shared<spic::Scene>("CheatsMenu");
 
-    buttonBackToLevel = std::make_shared<spic::Button>("button", 10,400, 75, 150, "StartGameScript");
+    buttonBackToLevel = std::make_shared<spic::Button>("button", 10,400, 75, 150, "BackToGameScript");
+    buttonBackToLevel->SetName("BackToGameButton");
     scene->AddGameObject(buttonBackToLevel);
 
     spic::Color textColor = spic::Color(1.0, 1.0, 1.0, 1.0);
@@ -36,9 +37,9 @@ std::shared_ptr<spic::Scene> CheatsMenuBuilder::BuildScene() {
     scene->AddGameObject(InstakillButtonText);
 
     std::shared_ptr<LevelController> level = std::make_shared<LevelController>();
-    std::string levelString = std::to_string(level->GetCurrentLevel());
+    std::string levelString = std::to_string(EngineController::GetInstance()->GetCurrentLevel());
 
-    std::shared_ptr<ChangeSceneBehaviour> scriptBackToLevel = std::make_shared<ChangeSceneBehaviour>("StartGameScript", "level" + levelString);
+    std::shared_ptr<ChangeSceneBehaviour> scriptBackToLevel = std::make_shared<ChangeSceneBehaviour>("BackToGameScript", "level" + levelString);
     buttonBackToLevel->AddComponent(scriptBackToLevel);
     
     return scene;

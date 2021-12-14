@@ -25,13 +25,6 @@ void HUD::OnUpdate()
 	}
 	currentHealthPoints = this->healthpoints;
 
-	std::shared_ptr<spic::GameObject> coinsObject = GetGameObject()->getScene()->GetGameObjectsByTag("coins")[0];
-	std::shared_ptr<spic::Text> CoinsText = std::dynamic_pointer_cast<spic::Text>(coinsObject);
-	if (currentCoins != coins) {
-		CoinsText->SetText("Coins: " + std::to_string(this->coins));
-	}
-	currentCoins = this->coins;
-
 	std::shared_ptr<spic::GameObject> magazineObject = GetGameObject()->getScene()->GetGameObjectsByTag("Magazine")[0];
 	std::shared_ptr<spic::Text> magazineText = std::dynamic_pointer_cast<spic::Text>(magazineObject);
 	if (magazine == 0) {
@@ -60,14 +53,14 @@ void HUD::OnClick()
 {
 }
 
-void HUD::OnTriggerEnter2D(const Collider& collider)
+void HUD::OnTriggerEnter2D(const spic::Collider& collider)
 {
 }
 
-void HUD::OnTriggerExit2D(const Collider& collider)
+void HUD::OnTriggerExit2D(const spic::Collider& collider)
 {
 }
 
-void HUD::OnTriggerStay2D(const Collider& collider)
+void HUD::OnTriggerStay2D(const spic::Collider& collider)
 {
 }

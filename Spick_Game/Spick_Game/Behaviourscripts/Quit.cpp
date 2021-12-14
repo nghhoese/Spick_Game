@@ -25,14 +25,14 @@ void QuitBehaviour::OnRender()
 {
 }
 
-void QuitBehaviour::OnTriggerEnter2D(const Collider& collider)
+void QuitBehaviour::OnTriggerEnter2D(const spic::Collider& collider)
 {
 }
 
-void QuitBehaviour::OnTriggerExit2D(const Collider& collider)
+void QuitBehaviour::OnTriggerExit2D(const spic::Collider& collider)
 {
 }
 
-void QuitBehaviour::OnTriggerStay2D(const Collider& collider)
+void QuitBehaviour::OnTriggerStay2D(const spic::Collider& collider)
 {
 }
