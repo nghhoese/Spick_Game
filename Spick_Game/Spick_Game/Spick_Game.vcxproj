@@ -169,13 +169,14 @@
     <ClCompile Include="Controllers\EngineController.cpp" />
     <ClCompile Include="Controllers\LevelController.cpp" />
     <ClCompile Include="Behaviourscripts\Player.cpp" />
+    <ClCompile Include="Controllers\MusicController.cpp" />
     <ClCompile Include="Scenes\CheatsMenuBuilder.cpp" />
     <ClCompile Include="Scenes\CreditsSceneBuilder.cpp" />
     <ClCompile Include="Scenes\GameOverSceneBuilder.cpp" />
     <ClCompile Include="Scenes\HelpSceneBuilder.cpp" />
     <ClCompile Include="Scenes\MainMenuBuilder.cpp" />
     <ClCompile Include="Scenes\LevelSceneBuilder.cpp" />
-    <ClCompile Include="Spick_Game.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behaviourscripts\ChangeSceneBehaviour.hpp" />
@@ -188,6 +189,7 @@
     <ClInclude Include="Controllers\EngineController.hpp" />
     <ClInclude Include="Controllers\LevelController.hpp" />
     <ClInclude Include="Behaviourscripts\Player.hpp" />
+    <ClInclude Include="Controllers\MusicController.hpp" />
     <ClInclude Include="Scenes\CheatsMenuBuilder.hpp" />
     <ClInclude Include="Scenes\CreditsSceneBuilder.hpp" />
     <ClInclude Include="Scenes\GameOverSceneBuilder.hpp" />
