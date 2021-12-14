@@ -71,13 +71,16 @@ void Player::OnRender()
 	auto InputComponent = InputObject->GetComponent<InputScript>();
 	InputComponent->CheckPause();
 
-	std::shared_ptr<spic::GameObject> pausedObject = GetGameObject()->getScene()->GetGameObjectsByTag("paused")[0];
-	std::shared_ptr<spic::Text> pausedText = std::dynamic_pointer_cast<spic::Text>(pausedObject);
+	std::shared_ptr<spic::GameObject> pausedTextObject = GetGameObject()->getScene()->GetGameObjectsByTag("paused")[0];
+	std::shared_ptr<spic::GameObject> pausedButtonObject = GetGameObject()->getScene()->GetGameObjectsByTag("paused")[1];
+
 	if (InputComponent->GetPaused()) {
-		pausedText->SetText("PAUSED");
+		pausedTextObject->SetActive(true);
+		pausedButtonObject->SetActive(true);
 	}
 	if (!InputComponent->GetPaused()) {
-		pausedText->SetText("");
+		pausedTextObject->SetActive(false);
+		pausedButtonObject->SetActive(false);
 	}
 }
 

@@ -56,18 +56,26 @@ const void InputScript::CheckPause() {
 		if (!GetPausing()) {
 			SetPausing(true);
 			if (time->TimeScale() > 0.0) {
-				time->TimeScale(0.0);
-				SetPaused(true);
+				PauseGame();
 			}
 			else if (time->TimeScale() == 0) {
-				time->TimeScale(1.0);
-				SetPaused(false);
+				UnPauseGame();
 			}
 		}
 	}
 	else {
 		SetPausing(false);
 	}
+}
+
+void InputScript::PauseGame() {
+	time->TimeScale(0.0);
+	SetPaused(true);
+}
+
+void InputScript::UnPauseGame() {
+	time->TimeScale(1.0);
+	SetPaused(false);
 }
 
 const void InputScript::checkKeys()
