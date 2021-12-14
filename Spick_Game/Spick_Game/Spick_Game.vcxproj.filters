@@ -19,6 +19,7 @@
     <ClCompile Include="Behaviourscripts\Quit.cpp" />
     <ClCompile Include="Behaviourscripts\SteeringBehaviour.cpp" />
     <ClCompile Include="Controllers\MusicController.cpp" />
+    <ClCompile Include="Behaviourscripts\ReturnToMainMenuBehaviour.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behaviourscripts\ChangeSceneBehaviour.hpp" />
@@ -39,6 +40,7 @@
     <ClInclude Include="Behaviourscripts\Quit.hpp" />
     <ClInclude Include="Behaviourscripts\SteeringBehaviour.hpp" />
     <ClInclude Include="Controllers\MusicController.hpp" />
+    <ClInclude Include="Behaviourscripts\ReturnToMainMenuBehaviour.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\bullet.bmp" />
