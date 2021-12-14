@@ -58,39 +58,42 @@ void Enemy::OnUpdate()
 
     if (isAlive)
     {
-        auto trans = *GetGameObject()->getTransform();
-        auto player = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
-        auto tag = GetGameObject()->GetTags()[0];
+        if (GetGameObject()->getScene()->GetGameObjectsByName("Player").size() > 0) {
+
+            auto trans = *GetGameObject()->getTransform();
+            auto player = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
+            auto tag = GetGameObject()->GetTags()[0];
        
-       /* auto steeringBehaviour = GetGameObject()->getScene()->GetGameObjectsByName("SteeringBehaviour")[0];
-        auto steeringBehaviourComponent = steeringBehaviour->GetComponent<SteeringBehaviour>();
-        SteeringBehaviour steer{ trans.position, player->getTransform()->position , vel };*/
-        // move to target till destination is reached
-        spic::Point steering;
-        if (IfPlayerNearby()) // if player is in radius of enemy
-        {
-            steering = persue();
-            double Delta_x = (trans.position.x - player->getTransform()->position.x);
-            double Delta_y = (trans.position.y - player->getTransform()->position.y);
+           /* auto steeringBehaviour = GetGameObject()->getScene()->GetGameObjectsByName("SteeringBehaviour")[0];
+            auto steeringBehaviourComponent = steeringBehaviour->GetComponent<SteeringBehaviour>();
+            SteeringBehaviour steer{ trans.position, player->getTransform()->position , vel };*/
+            // move to target till destination is reached
+            spic::Point steering;
+            if (IfPlayerNearby()) // if player is in radius of enemy
+            {
+                steering = persue();
+                double Delta_x = (trans.position.x - player->getTransform()->position.x);
+                double Delta_y = (trans.position.y - player->getTransform()->position.y);
 
-            double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
-            trans.rotation = Result + 90;
+                double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
+                trans.rotation = Result + 90;
            
-        }
-        else {
-            steering = wander();
-            //trans.rotation = atan2(vel.y, vel.x);
-        }
+            }
+            else {
+                steering = wander();
+                //trans.rotation = atan2(vel.y, vel.x);
+            }
 
-        acc.Add(steering);
-        vel.Add(acc);
+            acc.Add(steering);
+            vel.Add(acc);
 
-        vel.Limit(10);
-        //do wall avoidance
-        //vel.Add(wallAvoidance());
-        trans.position.Add(vel);
+            vel.Limit(10);
+            //do wall avoidance
+            //vel.Add(wallAvoidance());
+            trans.position.Add(vel);
         
-        GetGameObject()->setTransform(&trans);
+            GetGameObject()->setTransform(&trans);
+        }
     }
 }
 
@@ -99,15 +102,15 @@ void Enemy::OnRender()
 {
 }
 
-void Enemy::OnTriggerEnter2D(const Collider& collider)
+void Enemy::OnTriggerEnter2D(const spic::Collider& collider)
 {
 }
 
-void Enemy::OnTriggerExit2D(const Collider& collider)
+void Enemy::OnTriggerExit2D(const spic::Collider& collider)
 {
 }
 
-void Enemy::OnTriggerStay2D(const Collider& collider)
+void Enemy::OnTriggerStay2D(const spic::Collider& collider)
 {
 }
 

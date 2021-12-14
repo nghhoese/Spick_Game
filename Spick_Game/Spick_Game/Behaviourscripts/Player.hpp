@@ -20,9 +20,6 @@
 class Player : public spic::BehaviourScript {
 private:
     int healthpoints;
-    int currentHealthPoints;
-    int coins;
-    int currentCoins;
     int ammo;
     int magazine;
     int currentMagazine;
@@ -49,10 +46,10 @@ public:
     void OnStart();
     void OnUpdate();
     void OnRender();
-    void OnTriggerEnter2D(const Collider& collider);
+    void OnTriggerEnter2D(const spic::Collider& collider);
     void OnClick();
-    void OnTriggerExit2D(const Collider& collider);
-    void OnTriggerStay2D(const Collider& collider);
+    void OnTriggerExit2D(const spic::Collider& collider);
+    void OnTriggerStay2D(const spic::Collider& collider);
     void Shoot();
     void CheckGameOver();
     void CheckEndPoint();
@@ -63,12 +60,14 @@ public:
     double GetYPlayer() { return this->yPlayer; };
     void SetHealthpoints(int value) { this->healthpoints = value; };
     int GetHealtpoints() { return this->healthpoints; };
-    void Setcoins(int value) { this->coins = value; };
-    int GetCoins() { return this->coins; };
     void SetSpeed(double value) { this->speed = value; };
     double GetSpeed() { return this->speed; };
     void SetNotClicked(bool value) { this->notClicked = value; };
     bool GetNotClicked() { return this->notClicked; };
     void SetIsDamageless(bool value) { this->isDamageless = value; };
     bool GetIsDamageLess() { return this->isDamageless; };
+    void SetMagazine(int value) { this->magazine = value; };
+    int GetMagazine() { return this->magazine; };
+    void SetStart();
+    void SetEnd();
 };

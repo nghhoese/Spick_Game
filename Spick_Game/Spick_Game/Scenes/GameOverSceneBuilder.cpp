@@ -5,6 +5,7 @@ std::shared_ptr<spic::Scene> GameOverBuilder::BuildScene()
     std::shared_ptr<spic::Scene> scene = std::make_shared<spic::Scene>("GameOverMenu");
 
     buttonBackToMenu = std::make_shared<spic::Button>("button", 314, 165, 72, 134, "MainMenuScript");
+    buttonBackToMenu->SetName("BackToMenuScript");
     scene->AddGameObject(buttonBackToMenu);
 
     spic::Color textColor = spic::Color(1.0, 1.0, 1.0, 1.0);

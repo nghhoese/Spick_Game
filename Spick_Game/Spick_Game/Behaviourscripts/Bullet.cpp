@@ -56,7 +56,7 @@ void Bullet::OnRender()
 {
 }
 
-void Bullet::OnTriggerEnter2D(const Collider& collider)
+void Bullet::OnTriggerEnter2D(const spic::Collider& collider)
 {
 }
 
@@ -71,10 +71,10 @@ void Bullet::CalculateAmountToMove()
 	amountToMoveY = (((position.y - GetGameObject()->getScene()->GetActiveCamera()->getY()) - direction.y) * -1) / distance;
 }
 
-void Bullet::OnTriggerExit2D(const Collider& collider)
+void Bullet::OnTriggerExit2D(const spic::Collider& collider)
 {
 }
 
-void Bullet::OnTriggerStay2D(const Collider& collider)
+void Bullet::OnTriggerStay2D(const spic::Collider& collider)
 {
 }
