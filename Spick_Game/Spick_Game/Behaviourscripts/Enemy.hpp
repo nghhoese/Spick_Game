@@ -16,15 +16,19 @@ private:
     int turnCount = 0;
     double speed;
     bool IfPlayerNearby();
+    bool InShootingRange();
+    bool isShooting = false;;
     int triggerSpace = 250;
+    int shootingSpace = 100;
+    spic::Point sight;
     bool check = false;
     bool isPersuing = false;
     int persueCount = 0;
     double wandertheta = 0;
-    spic::Point target;
     bool isAlive = true;
     spic::Point acc; //versnelling
     spic::Point vel; //snelheid
+    double CalculateRotation(spic::Point pos1, spic::Point pos2);
 public:
     Enemy();
     void OnAwake();
@@ -44,7 +48,7 @@ public:
 
     spic::Point wander();
 
-    spic::Point wallAvoidance();
+    bool wallAvoidance();
     void setHealthpoints(int healthpoints) { this->healthpoints = healthpoints; };
     int getHealthpoints() { return this->healthpoints; };
     void setDamagePerBullet(int damagePerBullet) { this->damagePerBullet = damagePerBullet; };
