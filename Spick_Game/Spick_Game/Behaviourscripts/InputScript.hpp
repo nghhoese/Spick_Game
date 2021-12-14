@@ -22,6 +22,7 @@ private:
 	bool cheatsClicked;
 	bool paused;
 	bool loadFps;
+	bool hitbox;
 public:
 	InputScript();
 	const void checkMouseButtons();
@@ -53,6 +54,8 @@ public:
 	bool GetPaused() { return this->paused; };
 	void SetLoadFps(bool value) { this->loadFps = value; };
 	bool GetLoadFps() { return this->loadFps; };
+	void SetHitbox(bool value) { this->hitbox = value; };
+	bool GetHitbox() { return this->hitbox; };
 	void PauseGame();
 	void UnPauseGame();
 };
