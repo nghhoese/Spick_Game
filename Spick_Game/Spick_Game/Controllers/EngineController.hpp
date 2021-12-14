@@ -27,6 +27,8 @@ public:
 	int GetCurrentLevel();
 	bool GetIsInLevelTransition();
 	void SetIsInLevelTransition(bool transitionBool);
+	bool GetCheatsEnabled();
+	void SetCheatsEnabled(bool cheatsBool);
 	void BuildLevels();
 	void BuildGameOverScene();
 	void BuildCheatScene();

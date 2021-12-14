@@ -100,6 +100,16 @@ void EngineController::SetIsInLevelTransition(bool transitionBool)
 	engine->setIsInLevelTransition(transitionBool);
 }
 
+bool EngineController::GetCheatsEnabled()
+{
+	return engine->getCheatsEnabled();
+}
+
+void EngineController::SetCheatsEnabled(bool cheatsBool)
+{
+	engine->setCheatsEnabled(cheatsBool);
+}
+
 void EngineController::BuildLevels()
 {
 	std::shared_ptr<LevelSceneBuilder> levelSceneBuilder = std::make_shared<LevelSceneBuilder>();

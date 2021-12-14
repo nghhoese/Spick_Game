@@ -19,6 +19,10 @@ spic::KeyCode DA = spic::KeyCode::DOWN_ARROW;
 spic::KeyCode L = spic::KeyCode::L;
 spic::KeyCode U = spic::KeyCode::U;
 spic::KeyCode Y = spic::KeyCode::Y;
+spic::KeyCode C = spic::KeyCode::C;
+spic::KeyCode T = spic::KeyCode::T;
+spic::KeyCode Q = spic::KeyCode::Q;
+spic::KeyCode O = spic::KeyCode::O;
 
 spic::MouseButton LEFT = spic::MouseButton::LEFT;
 spic::MouseButton MIDDLE = spic::MouseButton::MIDDLE;
@@ -227,10 +231,22 @@ const void InputScript::checkKeys()
 			SetClicked(false);
 		}
 	}
+	if (input->GetKey(C)) {
+		if (GetCheatsClicked()) {
+			if (EngineController::GetInstance()->GetCheatsEnabled()) {
+				EngineController::GetInstance()->SetCheatsEnabled(false);
+			}
+			else {
+				EngineController::GetInstance()->SetCheatsEnabled(true);
+			}
+			SetCheatsClicked(false);
+		}
+	}
 	else {
 		SetSpeedUp(false);
 		SetSpeedDown(false);
 		SetClicked(true);
+		SetCheatsClicked(true);
 	}
 }
 
