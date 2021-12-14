@@ -266,13 +266,13 @@ spic::Point Enemy::wallAvoidance(spic::Point target)
         {
             //target.y *= -1; //onder
             target.y += (-1000);
-            target.x += 500;
+            target.x += -500;
 
         } else if(wallPos.y <= enemyPos.y)
         {
             //target.y *= -1;//boven
             target.y += 1000;
-            target.x += 500;
+            target.x += (-500);
         }
         
         if (wallPos.x >= enemyPos.x) //*
@@ -285,21 +285,9 @@ spic::Point Enemy::wallAvoidance(spic::Point target)
         {
             //target.x *= -1; //links
             target.x += 1000;
-            target.y += 500;
+            target.y += (-500);
+
         }
-
-        //if (enemyPos.y > wallPos.y)
-        //{
-        //    target.y *= -1; //doet het goed
-        //    //target.y += 1000;
-
-        //}
-
-        //if (enemyPos.y < wallPos.)
-        //{
-        //    target.y *= -1; //boven
-        //    //target.y += 1000;
-        //}
     }
 
     return target;
