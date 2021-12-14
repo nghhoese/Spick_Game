@@ -97,49 +97,46 @@ void Enemy::OnUpdate()
         spic::Point steering;
         steering.x = 0;
         steering.y = 0;
-        
-        if (IfPlayerNearby()) // if player is in radius of enemy
-        {
-            //TODO: checkWallAvoindance
-                //TODO: if in shooting range
-            double Delta_x = (trans.position.x - player->getTransform()->position.x);
-            double Delta_y = (trans.position.y - player->getTransform()->position.y);
-
-            double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
-            trans.rotation = Result + 90;
-            if (!InShootingRange())
+       
+            if (IfPlayerNearby()) // if player is in radius of enemy
             {
-                steering = persue();
+                //TODO: checkWallAvoindance
+                    //TODO: if in shooting range
+
+                double Delta_x = (trans.position.x - player->getTransform()->position.x);
+                double Delta_y = (trans.position.y - player->getTransform()->position.y);
+
+                double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
+                trans.rotation = Result + 90;
+
+                if (!InShootingRange())
+                {
+                    steering = persue();
+                    acc.Add(steering);
+                    vel.Add(acc);
+                    vel.Limit(10);
+
+                    trans.position.Add(vel);
+                }
+            }
+            else {
+                
+                double Delta_x = (trans.position.x - sight.x);
+                double Delta_y = (trans.position.y - sight.y);
+
+                double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
+                trans.rotation = Result + 90;
+                steering = wander();
                 acc.Add(steering);
                 vel.Add(acc);
 
                 vel.Limit(10);
-                trans.position.Add(vel);
+                if (wallAvoidance())
+                {
+                    trans.position.Add(vel);
+                }
+
             }
-        }
-        else {
-            steering = wander();
-            double Delta_x = (trans.position.x - sight.x);
-            double Delta_y = (trans.position.y - sight.y);
-
-            double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
-            trans.rotation = Result + 90;
-            acc.Add(steering);
-            vel.Add(acc);
-
-            vel.Limit(10);
-            //trans.position.Add(vel);
-        }
-       
-
-        //do wall avoidance
-        //if (wallAvoidance())
-        //{
-        //    
-        //}
-        //else {
-        //    //calculate new direction
-        //}
         
         GetGameObject()->setTransform(&trans);
     }
@@ -204,14 +201,13 @@ spic::Point Enemy::seek(spic::Point target)
 spic::Point Enemy::wander() {
     double wanderR = 32;
     double wanderD = 120;
-    int change = 4;
+    int change = 100;
     wandertheta += rand() % change + (change * -1);
 
     spic::Point pos = vel;
     pos.Normalize();
     pos.Mult(wanderD);
     pos.Add(GetGameObject()->getTransform()->position);
-    sight = pos;
     double h = atan2(vel.y, vel.x);
 
     spic::Point offset;
@@ -222,42 +218,24 @@ spic::Point Enemy::wander() {
     target.x = pos.x;
     target.y = pos.y;
     target.Add(offset);
+    sight = pos;
     return seek(target);
 }
 
 bool Enemy::wallAvoidance()
 {
-    double wanderR = 32;
     auto enemy = GetGameObject();
     auto enemyPos = enemy->getTransform()->position;
     
-    // Create feeler
-    spic::Point feeler;
-    feeler.x = (enemyPos.x - 64);
-    feeler.y = (enemyPos.y - 64);
+    spic::Point map;
+    map.x = 1418;
+    map.y = 1418;
 
-    // if feeler of enemy intersects with wall
-    auto wall = Collision::AABB(enemy, "wall");
-    spic::Point closestPoint;
-    spic::Point overShoot;
-    spic::Point steeringForce = vel;
-    if (wall)
-    {
-        auto wallPos = Collision::AABB(enemy, "wall")->GetGameObject()->getTransform()->position;
-
-        if (feeler.x <= wallPos.x &&
-            feeler.x + 128 <= wallPos.x &&
-            feeler.y <= wallPos.y &&
-            feeler.y + 128 <= wallPos.y) {
-            //calculate new direction
-           /* overShoot.Sub(feeler, wallPos);
-            auto newWallPos = wallPos.Normalize();
-            newWallPos.Mult(overShoot.Mag());
-            steeringForce = seek(newWallPos);*/
-            //steeringForce.Mult(-1);
-            
-            return false;
-        }
+    if (enemyPos.x >= map.x ||
+        enemyPos.x <= 64 ||
+        enemyPos.y >= map.y ||
+        enemyPos.y <= 64) {
+        return false;
     }
     
     return true;
