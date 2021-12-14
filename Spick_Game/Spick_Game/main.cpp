@@ -2,23 +2,7 @@
 
 #include <crtdbg.h>
 #include <iostream>
-#include "API_Headers/Scene.hpp"
-#include "API_Headers/Engine.hpp"
-#include "API_Headers/Camera.hpp"
-#include "API_Headers/Sprite.hpp"
-#include "API_Headers/AudioSource.hpp"
-#include "API_Headers/Transform.hpp"
-#include "Controllers/LevelController.hpp"
-#include "API_Headers/Rectangle.hpp"
-#include "API_Headers/Text.hpp"
-#include "Behaviourscripts/HUD.hpp"
-#include "Scenes/MainMenuBuilder.hpp"
-#include "Scenes/LevelSceneBuilder.hpp"
-#include "Scenes/GameOverSceneBuilder.hpp"
-#include "Behaviourscripts/InputScript.hpp"
-#include "Scenes/CheatsMenuBuilder.hpp"
-#include "Scenes/HelpSceneBuilder.hpp"
-#include "Scenes/CreditsSceneBuilder.hpp"
+#include "Controllers/EngineController.hpp"
 #include "Controllers/MusicController.hpp"
 
 int main(char* argv[]) {
