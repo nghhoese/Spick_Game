@@ -19,7 +19,7 @@ private:
     bool InShootingRange();
     bool isShooting = false;;
     int triggerSpace = 250;
-    int shootingSpace = 100;
+    int shootingSpace = 150;
     spic::Point sight;
     bool check = false;
     bool isPersuing = false;
@@ -48,7 +48,7 @@ public:
 
     spic::Point wander();
 
-    bool wallAvoidance();
+    spic::Point wallAvoidance(spic::Point target);
     void setHealthpoints(int healthpoints) { this->healthpoints = healthpoints; };
     int getHealthpoints() { return this->healthpoints; };
     void setDamagePerBullet(int damagePerBullet) { this->damagePerBullet = damagePerBullet; };
