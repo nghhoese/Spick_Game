@@ -182,6 +182,7 @@ spic::Point Enemy::persue()
     prediction.x = cos(player->getTransform()->rotation);
     prediction.y = sin(player->getTransform()->rotation);
     target.Add(prediction);
+    target = wallAvoidance(target);
     return seek(target);
 }
 
