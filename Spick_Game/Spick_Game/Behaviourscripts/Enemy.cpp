@@ -182,8 +182,13 @@ spic::Point Enemy::persue()
     prediction.x = cos(player->getTransform()->rotation);
     prediction.y = sin(player->getTransform()->rotation);
     target.Add(prediction);
-    target = wallAvoidance(target);
-    return seek(target);
+    auto targetWithWallAvoidance = wallAvoidance(target);
+    if (targetWithWallAvoidance.x == target.x && targetWithWallAvoidance.y == target.y)
+    {
+        return seek(target);
+    }
+
+    return seek(targetWithWallAvoidance);
 }
 
 spic::Point Enemy::seek(spic::Point target)
@@ -200,7 +205,7 @@ spic::Point Enemy::wander() {
     auto enemyPos = GetGameObject()->getTransform()->position;
     double wanderR = 32;
     double wanderD = 120;
-    int change = 100;
+    int change = 10;
     wandertheta += rand() % change + (change * -1);
     spic::Point map;
     map.x = 1418;
