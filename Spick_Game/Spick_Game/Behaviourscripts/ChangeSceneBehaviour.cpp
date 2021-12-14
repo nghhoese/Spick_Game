@@ -1,12 +1,16 @@
 #include "ChangeSceneBehaviour.hpp"
 #include <API_Headers/AudioSource.hpp>
-
+#include <chrono>
+#include <thread>
+using namespace std::this_thread;
+using namespace std::chrono_literals;
 ChangeSceneBehaviour::ChangeSceneBehaviour(const std::string& name, const std::string& scene) : _scene(scene){
 	Name(name);
 }
 
 void ChangeSceneBehaviour::OnClick()
 {
+	std::cout << "Change scene";
 	if (EngineController::GetInstance()->GetGameOver()) {
 		std::shared_ptr<LevelSceneBuilder> levelSceneBuilder = std::make_shared<LevelSceneBuilder>();
 		levelSceneBuilder->BuildLevel(1);
@@ -24,7 +28,11 @@ void ChangeSceneBehaviour::OnClick()
 		EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->Play(true);
 
 	}
-
+	auto a = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("Input"); 
+	if (a.size() == 1) {
+		a[0]->GetComponent<InputScript>()->UnPauseGame();
+	}
+	sleep_for(100ms);
 
 }
 

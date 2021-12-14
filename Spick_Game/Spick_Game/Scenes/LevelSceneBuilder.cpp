@@ -29,13 +29,20 @@ std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(int levelNumber)
     magazine->AddTag("Magazine");
     std::shared_ptr<spic::Text> fps = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, 1800, 0);
     fps->AddTag("fps");
-    std::shared_ptr<spic::Text> paused = std::make_shared<spic::Text>("", "Capsmall", 140, textColor, 250, 175);
+    std::shared_ptr<spic::Text> paused = std::make_shared<spic::Text>("PAUSED", "Capsmall", 140, textColor, 700, 175);
     paused->AddTag("paused");
+    paused->SetActive(false);
+    std::shared_ptr<spic::Button> BackToMenu = std::make_shared<spic::Button>("mainmenubutton", 1500, 870, 367, 105, "BackToMenuScript");
+    std::shared_ptr<ChangeSceneBehaviour> BackToMenuScript = std::make_shared<ChangeSceneBehaviour>("BackToMenuScript", "MainMenu");
+    BackToMenu->AddComponent(BackToMenuScript);
+    BackToMenu->AddTag("paused");
+    BackToMenu->SetActive(false);
     GameScene->AddGameObject(hp);
     GameScene->AddGameObject(magazine);
     GameScene->AddGameObject(coins);
     GameScene->AddGameObject(fps);
     GameScene->AddGameObject(paused);
+    GameScene->AddGameObject(BackToMenu);
 
     std::shared_ptr<HUD> Hud = std::make_shared<HUD>();
     std::shared_ptr<spic::GameObject> HudObject = std::make_shared<spic::GameObject>();

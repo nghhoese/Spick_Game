@@ -50,4 +50,6 @@ public:
 	bool GetPaused() { return this->paused; };
 	void SetLoadFps(bool value) { this->loadFps = value; };
 	bool GetLoadFps() { return this->loadFps; };
+	void PauseGame();
+	void UnPauseGame();
 };
