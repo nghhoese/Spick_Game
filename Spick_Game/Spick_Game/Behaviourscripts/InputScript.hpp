@@ -23,6 +23,8 @@ private:
 	bool paused;
 	bool loadFps;
 	bool hitbox;
+	void SetObjectsHitBox(spic::GameObject playerObject);
+	void ResetCheats(spic::GameObject playerObject);
 public:
 	InputScript();
 	const void checkMouseButtons();

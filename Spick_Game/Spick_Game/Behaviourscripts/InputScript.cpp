@@ -226,6 +226,7 @@ const void InputScript::checkKeys()
 		if (GetClicked()) {
 			if (EngineController::GetInstance()->GetCheatsEnabled()) {
 				EngineController::GetInstance()->SetCheatsEnabled(false);
+				ResetCheats(playerObject);
 			}
 			else {
 				EngineController::GetInstance()->SetCheatsEnabled(true);
@@ -306,23 +307,7 @@ const void InputScript::checkKeys()
 	else if (input->GetKey(O)) {
 		if (GetClicked()) {
 			if (EngineController::GetInstance()->GetCheatsEnabled()) {
-				auto PlayerBoxColliderComponent = playerObject.GetComponent<BoxCollider>();
-				auto guards = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("Guard");
-				if (this->GetHitbox()) {
-					PlayerBoxColliderComponent->ShowBoxBool(true);
-					for (std::shared_ptr<spic::GameObject> g : guards) {
-
-						g->GetComponent<BoxCollider>()->ShowBoxBool(true);
-					}
-					this->SetHitbox(false);
-				}
-				else {
-					PlayerBoxColliderComponent->ShowBoxBool(false);
-					for (std::shared_ptr<spic::GameObject> g : guards) {
-						g->GetComponent<BoxCollider>()->ShowBoxBool(false);
-					}
-					this->SetHitbox(true);
-				}
+				SetObjectsHitBox(playerObject);
 			}
 			SetClicked(false);
 		}
@@ -378,4 +363,33 @@ void InputScript::OnTriggerExit2D(const spic::Collider& collider)
 
 void InputScript::OnTriggerStay2D(const spic::Collider& collider)
 {
+}
+
+void InputScript::SetObjectsHitBox(spic::GameObject playerObject) {
+	auto PlayerBoxColliderComponent = playerObject.GetComponent<BoxCollider>();
+	auto guards = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("Guard");
+	if (this->GetHitbox()) {
+		PlayerBoxColliderComponent->ShowBoxBool(true);
+		for (std::shared_ptr<spic::GameObject> g : guards) {
+
+			g->GetComponent<BoxCollider>()->ShowBoxBool(true);
+		}
+		this->SetHitbox(false);
+	}
+	else {
+		PlayerBoxColliderComponent->ShowBoxBool(false);
+		for (std::shared_ptr<spic::GameObject> g : guards) {
+			g->GetComponent<BoxCollider>()->ShowBoxBool(false);
+		}
+		this->SetHitbox(true);
+	}
+}
+
+void InputScript::ResetCheats(spic::GameObject playerObject) {
+	auto PlayerComponent = playerObject.GetComponent<Player>();
+	PlayerComponent->SetSpeed(5);
+	PlayerComponent->SetIsDamageless(false);
+	PlayerComponent->SetHasCollision(true);
+	this->SetHitbox(false);
+	this->SetObjectsHitBox(playerObject);
 }
