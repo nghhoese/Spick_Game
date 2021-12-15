@@ -1,5 +1,6 @@
 #include "Bullet.hpp"
 #include <API_Headers/Collision.hpp>
+#include <API_Headers/Animator.hpp>
 
 Bullet::Bullet(spic::Point pos, spic::Point direction, double speed, int damage) : position(pos), direction(direction), speed(speed), damage(damage), hit(false), broken(true)
 {
@@ -20,7 +21,9 @@ void Bullet::Update()
 				enemtObj->setHealthpoints(enemtObj->getHealthpoints() - damage);
 				hit = false;
 				broken = true;
-				enemtObj->setPath("assets/enemy_hit.png");
+				std::shared_ptr<spic::Animator> animatie = std::dynamic_pointer_cast<spic::Animator>(enemtObj->GetGameObject()->GetComponentByName("hitAnimation"));
+				animatie->Play(false);
+				/*enemtObj->setPath("assets/enemy_hit.png");*/
 				
 			}
 		}

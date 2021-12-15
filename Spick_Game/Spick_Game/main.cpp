@@ -30,6 +30,6 @@ int main(char* argv[]) {
         return EXIT_FAILURE;
     }
 
-    _CrtDumpMemoryLeaks();
+   /* _CrtDumpMemoryLeaks();*/
     return EXIT_SUCCESS;
 }

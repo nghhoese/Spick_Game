@@ -1,7 +1,7 @@
 #include "Player.hpp"
 #include <API_Headers/BoxCollider.hpp>
 
-Player::Player() : healthpoints(100), ammo(0), bulletSpeed(10), bulletDamage(30), speed(5), notClicked(true), isDamageless(false), magazine(5), currentMagazine(magazine), coolDown(50)
+Player::Player() : healthpoints(100), ammo(0), bulletSpeed(10), bulletDamage(30), speed(5), notClicked(true), isDamageless(false), magazine(50), currentMagazine(magazine), coolDown(50)
 {
 
 }

@@ -1,6 +1,7 @@
 #include "../Controllers/LevelController.hpp"
 #include <API_Headers/BoxCollider.hpp>
 #include <API_Headers/AudioSource.hpp>
+#include <API_Headers/Animator.hpp>
 
 LevelController::LevelController() : bmpFileString(".bmp"), pngFileString(".png"), xTilesize(64), yTilesize(64)
 {
@@ -240,9 +241,23 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
 
 void LevelController::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, std::tuple<int, int> position, const std::string& spriteName, const std::string& colourTag, const std::string& typeTag, int healthPoints, double speed, int damage) {
     std::shared_ptr<spic::GameObject> guardObject = std::make_shared<spic::GameObject>("Guard");
+    std::shared_ptr<spic::Animator> animatie = std::make_shared<spic::Animator>();
+    animatie->Name("hitAnimation");
+    std::shared_ptr<spic::Sprite> sprite1 = std::make_shared<spic::Sprite>();
+    sprite1->SetSprite("assets/" + spriteName);
+    std::shared_ptr<spic::Sprite> sprite2 = std::make_shared<spic::Sprite>();
+    sprite2->SetSprite("assets/enemy_hit.png");
+    animatie->SetFps(5);
+    std::vector<std::shared_ptr<spic::Sprite>> sprites = {};
+    sprites.push_back(sprite1);
+    sprites.push_back(sprite2);
     guardObject->AddTag(colourTag);
     guardObject->AddTag(typeTag);
+    sprite1->SetGameObject(guardObject.get());
+    sprite2->SetGameObject(guardObject.get());
+    animatie->SetSprites(sprites);
     scene->AddGameObject(guardObject);
+    guardObject->AddComponent(animatie);
 
     BuildLevelObjectPosition(guardObject, position);
 
