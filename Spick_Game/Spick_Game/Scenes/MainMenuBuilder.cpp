@@ -11,34 +11,34 @@ std::shared_ptr<spic::Scene> MainMenuBuilder::BuildScene() {
     scene->AddGameObject(background);
     spic::Transform transfrom = *background->getTransform();
     background->AddComponent(sprite);
-    sprite->SetSprite("assets/menu.png");
+    sprite->SetSprite("assets/title.jpg");
 
-    transfrom.position.x = 400;
+    transfrom.position.x = 600;
     transfrom.position.y = 40;
     transfrom.scale = 1.5;
 
     background->setTransform(&transfrom);
 
 
-    buttonPlay = std::make_shared<spic::Button>("", 840, 288, 270, 108, "StartGameScript");
+    buttonPlay = std::make_shared<spic::Button>("playbutton", 840, 288, 270, 108, "StartGameScript");
     buttonPlay->SetName("StartGameButton");
     scene->AddGameObject(buttonPlay);
     std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("StartGameScript", "level1");
     buttonPlay->AddComponent(scriptPlay);
 
-    buttonHelp = std::make_shared<spic::Button>("", 840, 413, 270, 108, "OpenHelpScript");
+    buttonHelp = std::make_shared<spic::Button>("helpbutton", 840, 413, 270, 108, "OpenHelpScript");
     buttonHelp->SetName("HelpButton");
     scene->AddGameObject(buttonHelp);
     std::shared_ptr<ChangeSceneBehaviour> scriptHelp = std::make_shared<ChangeSceneBehaviour>("OpenHelpScript", "HelpScene");
     buttonHelp->AddComponent(scriptHelp);
 
-    buttonCredits = std::make_shared<spic::Button>("", 840, 538, 270, 108, "OpenCreditsScript");
+    buttonCredits = std::make_shared<spic::Button>("creditsbutton", 840, 538, 270, 108, "OpenCreditsScript");
     buttonCredits->SetName("CreditsButton");
     scene->AddGameObject(buttonCredits);
     std::shared_ptr<ChangeSceneBehaviour> scriptCredits = std::make_shared<ChangeSceneBehaviour>("OpenCreditsScript", "CreditsScene");
     buttonCredits->AddComponent(scriptCredits);
 
-    buttonQuit = std::make_shared<spic::Button>("", 840, 663, 270, 108, "QuitScript");
+    buttonQuit = std::make_shared<spic::Button>("quitbutton", 840, 663, 270, 108, "QuitScript");
     buttonQuit->SetName("QuitButton");
     scene->AddGameObject(buttonQuit);
     std::shared_ptr<QuitBehaviour> quitScript = std::make_shared<QuitBehaviour>();
