@@ -201,41 +201,6 @@ const void InputScript::checkKeys()
 		}
 		
 	}
-	else if (input->GetKey(EP)) {
-		std::shared_ptr<spic::Component> script = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0]->GetComponentByName("CheatsMenuScript");
-
-		if (script != nullptr) {
-			std::string levelString = std::to_string(EngineController::GetInstance()->GetCurrentLevel());
-			script->OnClick();
-			auto backToGameButton = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("BackToGameButton")[0]->GetComponent<ChangeSceneBehaviour>();
-			backToGameButton->sceneChange("level" + levelString);
-		}
-	}
-	else if (input->GetKey(Y)) {
-		PlayerComponent->SetHealthpoints(0);
-		SetLoadFps(false);
-		EngineController::GetInstance()->SetCheatsEnabled(false);
-		EngineController::GetInstance()->SetGameOver(true);
-	}
-	else if (input->GetKey(UA)) {
-		PlayerComponent->SetSpeed(PlayerComponent->GetSpeed() + 1);
-	}
-	else if (input->GetKey(DA)) {
-		if (PlayerComponent->GetSpeed() > 0) {
-			PlayerComponent->SetSpeed(PlayerComponent->GetSpeed() - 1);
-		}
-	}
-	else if (input->GetKey(L)) {
-		if (GetClicked()) {
-			if (PlayerComponent->GetIsDamageLess()) {
-				PlayerComponent->SetIsDamageless(false);
-			}
-			else {
-				PlayerComponent->SetIsDamageless(true);
-			}
-			SetClicked(false);
-		}
-	}
 	else if (input->GetKey(F)) {
 		if (GetClicked()) {
 			if (GetLoadFps()) {
@@ -246,7 +211,16 @@ const void InputScript::checkKeys()
 			}
 			SetClicked(false);
 		}
-		
+	}
+	else if (input->GetKey(EP)) {
+		std::shared_ptr<spic::Component> script = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0]->GetComponentByName("CheatsMenuScript");
+
+		if (script != nullptr) {
+			std::string levelString = std::to_string(EngineController::GetInstance()->GetCurrentLevel());
+			script->OnClick();
+			auto backToGameButton = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("BackToGameButton")[0]->GetComponent<ChangeSceneBehaviour>();
+			backToGameButton->sceneChange("level" + levelString);
+		}
 	}
 	else if (input->GetKey(C)) {
 		if (GetClicked()) {
@@ -259,48 +233,96 @@ const void InputScript::checkKeys()
 			SetClicked(false);
 		}
 	}
+	else if (input->GetKey(Y)) {
+		if (GetClicked()) {
+			if (EngineController::GetInstance()->GetCheatsEnabled()) {
+				PlayerComponent->SetHealthpoints(0);
+				SetLoadFps(false);
+				EngineController::GetInstance()->SetCheatsEnabled(false);
+				EngineController::GetInstance()->SetGameOver(true);
+				SetClicked(false);
+			}
+		}
+	}
+	else if (input->GetKey(UA)) {
+		if (GetClicked()) {
+			if (EngineController::GetInstance()->GetCheatsEnabled()) {
+				PlayerComponent->SetSpeed(PlayerComponent->GetSpeed() + 1);
+			}
+			SetClicked(false);
+		}
+	}
+	else if (input->GetKey(DA)) {
+		if (GetClicked()) {
+			if (EngineController::GetInstance()->GetCheatsEnabled()) {
+				if (PlayerComponent->GetSpeed() > 0) {
+					PlayerComponent->SetSpeed(PlayerComponent->GetSpeed() - 1);
+				}
+			}
+			SetClicked(false);
+		}
+	}
+	else if (input->GetKey(L)) {
+		if (GetClicked()) {
+			if (EngineController::GetInstance()->GetCheatsEnabled()) {
+				if (PlayerComponent->GetIsDamageLess()) {
+					PlayerComponent->SetIsDamageless(false);
+				}
+				else {
+					PlayerComponent->SetIsDamageless(true);
+				}
+			}
+			SetClicked(false);
+		}
+	}
 	else if (input->GetKey(T)) {
 		if (GetClicked()) {
-			auto endPointObject = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("Endpoint")[0];
-			std::shared_ptr<spic::Component> script = endPointObject->GetComponentByName("EndLevelScript");
-			if (script != nullptr) {
-				EngineController::GetInstance()->SetIsInLevelTransition(true);
-				EngineController::GetInstance()->SetCurrentLevel(EngineController::GetInstance()->GetCurrentLevel() + 1);
-				script->OnClick();
+			if (EngineController::GetInstance()->GetCheatsEnabled()) {
+				auto endPointObject = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("Endpoint")[0];
+				std::shared_ptr<spic::Component> script = endPointObject->GetComponentByName("EndLevelScript");
+				if (script != nullptr) {
+					EngineController::GetInstance()->SetIsInLevelTransition(true);
+					EngineController::GetInstance()->SetCurrentLevel(EngineController::GetInstance()->GetCurrentLevel() + 1);
+					script->OnClick();
+				}
 			}
 			SetClicked(false);
 		}
 	}
 	else if (input->GetKey(Q)) {
 		if (GetClicked()) {
-			auto PlayerBoxColliderComponent = playerObject.GetComponent<BoxCollider>();
-			if (PlayerComponent->GetHasCollision()) {
-				PlayerComponent->SetHasCollision(false);
-			}
-			else {
-				PlayerComponent->SetHasCollision(true);
+			if (EngineController::GetInstance()->GetCheatsEnabled()) {
+				auto PlayerBoxColliderComponent = playerObject.GetComponent<BoxCollider>();
+				if (PlayerComponent->GetHasCollision()) {
+					PlayerComponent->SetHasCollision(false);
+				}
+				else {
+					PlayerComponent->SetHasCollision(true);
+				}
 			}
 			SetClicked(false);
 		}
 	}
 	else if (input->GetKey(O)) {
 		if (GetClicked()) {
-			auto PlayerBoxColliderComponent = playerObject.GetComponent<BoxCollider>();
-			auto guards = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("Guard");
-			if (this->GetHitbox()) {
-				PlayerBoxColliderComponent->ShowBoxBool(true);
-				for (std::shared_ptr<spic::GameObject> g : guards) {
+			if (EngineController::GetInstance()->GetCheatsEnabled()) {
+				auto PlayerBoxColliderComponent = playerObject.GetComponent<BoxCollider>();
+				auto guards = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("Guard");
+				if (this->GetHitbox()) {
+					PlayerBoxColliderComponent->ShowBoxBool(true);
+					for (std::shared_ptr<spic::GameObject> g : guards) {
 
-					g->GetComponent<BoxCollider>()->ShowBoxBool(true);
+						g->GetComponent<BoxCollider>()->ShowBoxBool(true);
+					}
+					this->SetHitbox(false);
 				}
-				this->SetHitbox(false);
-			}
-			else {
-				PlayerBoxColliderComponent->ShowBoxBool(false);
-				for (std::shared_ptr<spic::GameObject> g : guards) {
-					g->GetComponent<BoxCollider>()->ShowBoxBool(false);
+				else {
+					PlayerBoxColliderComponent->ShowBoxBool(false);
+					for (std::shared_ptr<spic::GameObject> g : guards) {
+						g->GetComponent<BoxCollider>()->ShowBoxBool(false);
+					}
+					this->SetHitbox(true);
 				}
-				this->SetHitbox(true);
 			}
 			SetClicked(false);
 		}
