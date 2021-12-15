@@ -1,8 +1,4 @@
 #include "Enemy.hpp"
-#include "API_Headers/Scene.hpp"
-#include <API_Headers/Sprite.hpp>
-#include <API_Headers/BoxCollider.hpp>
-#include <API_Headers/Collision.hpp>
 
 
 bool Enemy::IfPlayerNearby()
@@ -42,7 +38,7 @@ bool Enemy::InShootingRange()
         enemyPos.y - shootingSpace <= playerPos.y);
 }
 
-Enemy::Enemy() : speed(1.5), turnCount(0), isTurned(false), isAlive(true), notInitialized(true), ammo(0), magazine(5), bulletDamage(30), coolDown(50), currentMagazine(magazine), bulletSpeed(10)
+Enemy::Enemy() : speed(1.5), turnCount(0), isTurned(false), isAlive(true), notInitialized(true), ammo(0), magazine(1), bulletDamage(30), coolDown(50), currentMagazine(magazine), bulletSpeed(10)
 {
 }
 
@@ -79,6 +75,16 @@ void Enemy::OnUpdate()
 
     if (isAlive)
     {
+       	if (Collision::AABB(GetGameObject(), "PlayerBullet")) {
+        auto bullet = Collision::AABB(GetGameObject(), "PlayerBullet")->GetGameObject()->GetComponent<spic::BehaviourScript>();
+        std::shared_ptr<Bullet> bulletObj = std::dynamic_pointer_cast<Bullet>(bullet);
+       
+           setHealthpoints(getHealthpoints() - bulletObj->GetDamage());
+            bulletObj->SetBroken(true);
+            setPath("assets/enemy_hit.png");
+
+        
+    }
         if (GetGameObject()->getScene()->GetGameObjectsByName("Player").size() > 0) {
             if (notInitialized)
             {
@@ -114,7 +120,7 @@ void Enemy::OnUpdate()
                 }
                 else {
                     //shoot at player
-                    //Shoot();
+                    Shoot();
                 }
             }
             else {
@@ -133,6 +139,13 @@ void Enemy::OnUpdate()
             }
         
             GetGameObject()->setTransform(&trans);
+        }
+    }
+    if (magazine == 0) {
+        coolDown -= 1;
+        if (coolDown == 0) {
+            magazine = magazine + currentMagazine;
+            coolDown = 50;
         }
     }
 }
@@ -173,52 +186,52 @@ void Enemy::OnClick()
 {
 }
 
-//void Enemy::Shoot()
-//{
-//    if (magazine > 0) {
-//        magazine = magazine - 1;
-//        for (std::shared_ptr<Bullet> b : bullets) {
-//            if (b->GetBroken()) {
-//                b->SetBroken(false);
-//                //auto InputComponent = InputObject->GetComponent<InputScript>();
-//                spic::Transform transfrom = *b->GetGameObject()->getTransform();
-//                transfrom.position.x = GetGameObject()->getTransform()->position.x + 20;
-//                transfrom.position.y = GetGameObject()->getTransform()->position.y + 32;
-//                b->SetDirection(player->getTransform()->position);
-//                b->SetPosition(transfrom.position);
-//                b->GetGameObject()->setTransform(&transfrom);
-//                b->CalculateAmountToMove();
-//                return;
-//            }
-//        }
-//    }
-//}
+void Enemy::Shoot()
+{
+    if (magazine > 0) {
+        magazine = magazine - 1;
+        for (std::shared_ptr<Bullet> b : bullets) {
+            if (b->GetBroken()) {
+                b->SetBroken(false);
+                //auto InputComponent = InputObject->GetComponent<InputScript>();
+                spic::Transform transfrom = *b->GetGameObject()->getTransform();
+                transfrom.position.x = GetGameObject()->getTransform()->position.x + 32;
+                transfrom.position.y = GetGameObject()->getTransform()->position.y + 20;
+                b->SetDirection(player->getTransform()->position.x + 32, player->getTransform()->position.y + 32);
+                b->SetPosition(transfrom.position);
+                b->GetGameObject()->setTransform(&transfrom);
+                b->CalculateAmountToMove();
+                return;
+            }
+        }
+    }
+}
 
-//void Enemy::FillBucket()
-//{
-//    bullets.clear();
-//    int index = 0;
-//    while (index < 20) {
-//
-//        std::shared_ptr<spic::GameObject> bulletObject = std::make_shared<spic::GameObject>("Bullet");
-//        GetGameObject()->getScene()->AddGameObject(bulletObject);
-//        spic::Transform transfrom = *bulletObject->getTransform();
-//        sprite = std::make_shared<spic::Sprite>();
-//        bulletObject->AddComponent(sprite);
-//        sprite->SetSprite("assets/bullet.bmp");
-//        sprite->SetPlayerBool(true);
-//        bulletObject->AddTag("EnemyBullet");
-//        transfrom.position.x = 0;
-//        transfrom.position.y = 0;
-//        transfrom.scale = 0.55;
-//        std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
-//        boxCollider->Height(7);
-//        boxCollider->Width(7);
-//        bulletObject->AddComponent(boxCollider);
-//        std::shared_ptr<Bullet> bullet = std::make_shared<Bullet>(transfrom.position, transfrom.position, 20, bulletDamage);
-//        bulletObject->AddComponent(bullet);
-//        bulletObject->setTransform(&transfrom);
-//        bullets.push_back(bullet);
-//        index++;
-//    }
-//}
+void Enemy::FillBucket()
+{
+    bullets.clear();
+    int index = 0;
+    while (index < 20) {
+
+        std::shared_ptr<spic::GameObject> bulletObject = std::make_shared<spic::GameObject>("Bullet");
+        GetGameObject()->getScene()->AddGameObject(bulletObject);
+        spic::Transform transfrom = *bulletObject->getTransform();
+        sprite = std::make_shared<spic::Sprite>();
+        bulletObject->AddComponent(sprite);
+        sprite->SetSprite("assets/bullet.bmp");
+        sprite->SetPlayerBool(true);
+        bulletObject->AddTag("EnemyBullet");
+        transfrom.position.x = 0;
+        transfrom.position.y = 0;
+        transfrom.scale = 0.55;
+        std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
+        boxCollider->Height(7);
+        boxCollider->Width(7);
+        bulletObject->AddComponent(boxCollider);
+        std::shared_ptr<Bullet> bullet = std::make_shared<Bullet>(transfrom.position, transfrom.position, 20, bulletDamage);
+        bulletObject->AddComponent(bullet);
+        bulletObject->setTransform(&transfrom);
+        bullets.push_back(bullet);
+        index++;
+    }
+}

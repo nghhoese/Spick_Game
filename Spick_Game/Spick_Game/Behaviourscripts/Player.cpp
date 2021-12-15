@@ -22,6 +22,18 @@ void Player::OnClick()
 
 void Player::OnUpdate()
 {
+
+		if (Collision::AABB(GetGameObject(), "EnemyBullet")) {
+			auto bullet = Collision::AABB(GetGameObject(), "EnemyBullet")->GetGameObject()->GetComponent<spic::BehaviourScript>();
+			std::shared_ptr<Bullet> bulletObj = std::dynamic_pointer_cast<Bullet>(bullet);
+			if (!isDamageless) {
+			healthpoints = healthpoints - bulletObj->GetDamage();
+			}
+			bulletObj->SetBroken(true);
+
+
+		
+	}
 	spic::Transform transfrom = *GetGameObject()->getTransform();
 	spic::Point point;
 
@@ -107,7 +119,7 @@ void Player::Shoot()
 				spic::Transform transfrom = *b->GetGameObject()->getTransform();
 				transfrom.position.x = GetGameObject()->getTransform()->position.x + 20;
 				transfrom.position.y = GetGameObject()->getTransform()->position.y + 32;
-				b->SetDirection(InputComponent->checkMousePosition());
+				b->SetDirection(InputComponent->checkMousePosition().x, InputComponent->checkMousePosition().y);
 				b->SetPosition(transfrom.position);
 				b->GetGameObject()->setTransform(&transfrom);
 				b->CalculateAmountToMove();
@@ -119,7 +131,7 @@ void Player::Shoot()
 
 void Player::CheckGameOver()
 {
-	if (healthpoints == 0) {
+	if (healthpoints <= 0) {
 		std::shared_ptr<spic::Component> script = GetGameObject()->GetComponentByName("GameOverScript");
 		if (script != nullptr) {
 			EngineController::GetInstance()->SetGameOver(true);
@@ -184,6 +196,7 @@ void Player::FillBucket()
 		boxCollider->Width(7);
 		bulletObject->AddComponent(boxCollider);
 		std::shared_ptr<Bullet> bullet = std::make_shared<Bullet>(transfrom.position, transfrom.position, 20, bulletDamage);
+		bullet->SetPlayer(true);
 		bulletObject->AddComponent(bullet);
 		bulletObject->setTransform(&transfrom);
 		bullets.push_back(bullet);

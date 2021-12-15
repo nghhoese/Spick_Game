@@ -13,17 +13,6 @@ void Bullet::Update()
 		trans.position.x += amountToMoveX * speed;
 		trans.position.y += amountToMoveY * speed;
 		GetGameObject()->setTransform(&trans);
-		if (Collision::AABB(GetGameObject(), "guard")) {
-			auto enemy = Collision::AABB(GetGameObject(), "guard")->GetGameObject()->GetComponent<spic::BehaviourScript>();
-			std::shared_ptr<Enemy> enemtObj = std::dynamic_pointer_cast<Enemy>(enemy);
-			if (hit) {
-				enemtObj->setHealthpoints(enemtObj->getHealthpoints() - damage);
-				hit = false;
-				broken = true;
-				enemtObj->setPath("assets/enemy_hit.png");
-				
-			}
-		}
 		if (Collision::AABB(GetGameObject(), "wall")) {
 			broken = true;
 		}
@@ -66,9 +55,17 @@ void Bullet::OnClick()
 
 void Bullet::CalculateAmountToMove()
 {
-	float distance = (float)sqrt(pow(position.x - GetGameObject()->getScene()->GetActiveCamera()->getX() - direction.x, 2) + pow(position.y - GetGameObject()->getScene()->GetActiveCamera()->getY() - direction.y, 2));
-	amountToMoveX = (((position.x - GetGameObject()->getScene()->GetActiveCamera()->getX()) - direction.x) * -1) / distance;
-	amountToMoveY = (((position.y - GetGameObject()->getScene()->GetActiveCamera()->getY()) - direction.y) * -1) / distance;
+	if (isPlayer) {
+		float distance = (float)sqrt(pow(position.x - GetGameObject()->getScene()->GetActiveCamera()->getX() - direction.x, 2) + pow(position.y - GetGameObject()->getScene()->GetActiveCamera()->getY() - direction.y, 2));
+		amountToMoveX = (((position.x - GetGameObject()->getScene()->GetActiveCamera()->getX()) - direction.x) * -1) / distance;
+		amountToMoveY = (((position.y - GetGameObject()->getScene()->GetActiveCamera()->getY()) - direction.y) * -1) / distance;
+	}
+	else {
+		float distance = (float)sqrt(pow(position.x  - direction.x, 2) + pow(position.y - direction.y, 2));
+		amountToMoveX = (((position.x ) - direction.x) * -1) / distance;
+		amountToMoveY = (((position.y) - direction.y) * -1) / distance;
+	}
+
 }
 
 void Bullet::OnTriggerExit2D(const spic::Collider& collider)
