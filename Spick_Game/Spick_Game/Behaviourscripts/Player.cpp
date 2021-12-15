@@ -180,7 +180,7 @@ void Player::FillBucket()
 	int index = 0;
 	while (index < 20) {
 
-		std::shared_ptr<spic::GameObject> bulletObject = std::make_shared<spic::GameObject>("Bullet");
+		std::shared_ptr<spic::GameObject> bulletObject = std::make_shared<spic::GameObject>("PlayerBullet");
 		GetGameObject()->getScene()->AddGameObject(bulletObject);
 		spic::Transform transfrom = *bulletObject->getTransform();
 		sprite = std::make_shared<spic::Sprite>();

@@ -212,7 +212,7 @@ void Enemy::FillBucket()
     int index = 0;
     while (index < 5) {
 
-        std::shared_ptr<spic::GameObject> bulletObject = std::make_shared<spic::GameObject>("Bullet");
+        std::shared_ptr<spic::GameObject> bulletObject = std::make_shared<spic::GameObject>("EnemyBullet");
         GetGameObject()->getScene()->AddGameObject(bulletObject);
         spic::Transform transfrom = *bulletObject->getTransform();
         sprite = std::make_shared<spic::Sprite>();

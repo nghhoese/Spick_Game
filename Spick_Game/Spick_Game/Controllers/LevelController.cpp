@@ -147,7 +147,7 @@ void LevelController::BuildLevelTile(std::shared_ptr<spic::Scene> scene, std::sh
 {
     std::string basePath = "assets/images/foregrounds/" + spriteName;
     if (tag != "") {
-        tileObject->AddTag(tag);
+        tileObject->SetName(tag);
     }
     scene->AddGameObject(tileObject);
     tileObject->AddComponent(tileSprite);
@@ -247,9 +247,7 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
 }
 
 void LevelController::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, std::tuple<int, int> position, const std::string& spriteName, const std::string& colourTag, const std::string& typeTag, int healthPoints, double speed, int damage,int magazine) {
-    std::shared_ptr<spic::GameObject> guardObject = std::make_shared<spic::GameObject>("Guard");
-    guardObject->AddTag(colourTag);
-    guardObject->AddTag(typeTag);
+    std::shared_ptr<spic::GameObject> guardObject = std::make_shared<spic::GameObject>("guard");
     scene->AddGameObject(guardObject);
 
     BuildLevelObjectPosition(guardObject, position);
@@ -275,8 +273,6 @@ void LevelController::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::s
 void LevelController::BuildBoss(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, const std::tuple<int, int> position) {
     std::shared_ptr<spic::GameObject> boss = std::make_shared<spic::GameObject>("Boss");
     scene->AddGameObject(boss);
-    boss->AddTag("BOSS");
-    boss->AddTag("guard");
     spic::Transform transfrom = *boss->getTransform();
     transfrom.position.x = std::get<0>(position);
     transfrom.position.y = std::get<1>(position);
