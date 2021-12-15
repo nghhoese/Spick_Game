@@ -16,13 +16,15 @@ std::shared_ptr<spic::Scene> HelpSceneBuilder::BuildScene()
     std::shared_ptr<spic::Text> m2 = std::make_shared<spic::Text>("PERFORMING DANGEROUS RESEARCH HERE. TRY TO MOVE UNDETECTED THROUGH THE FACILITY, ", "Segment16CBold", 38, textColor, 38, 230);
     std::shared_ptr<spic::Text> m3 = std::make_shared<spic::Text>("USE THE DARKNESS AS COVER AND USE VIOLENCE AS A LAST RESORT.", "Segment16CBold", 38, textColor, 38, 270);
     std::shared_ptr<spic::Text> head2 = std::make_shared<spic::Text>("Controls", "Capsmall", 60, textColor, 32, 340);
-    std::shared_ptr<spic::Text> c1 = std::make_shared<spic::Text>("MOVEMENT    | WASD-KEYS", "Segment16CBold", 38, textColor, 38, 420);
-    std::shared_ptr<spic::Text> c2 = std::make_shared<spic::Text>("SHOOT       | LEFTCLICK", "Segment16CBold", 38, textColor, 38, 460);
-    std::shared_ptr<spic::Text> c3 = std::make_shared<spic::Text>("PAUSE       | ESCAPE-KEY", "Segment16CBold", 38, textColor, 38, 500);
-    std::shared_ptr<spic::Text> c4 = std::make_shared<spic::Text>("CHEATS      | EQUALS-KEY", "Segment16CBold", 38, textColor, 38, 540);
-    std::shared_ptr<spic::Text> c5 = std::make_shared<spic::Text>("SPEEDUP     | PAGEUP-KEY", "Segment16CBold", 38, textColor, 38, 580);
-    std::shared_ptr<spic::Text> c6 = std::make_shared<spic::Text>("SLOWDOWN    | PAGEDOWN-KEY", "Segment16CBold", 38, textColor, 38, 620);
-    std::shared_ptr<spic::Text> c7 = std::make_shared<spic::Text>("SHOW FPS    | F-KEY", "Segment16CBold", 38, textColor, 38, 660);
+    std::shared_ptr<spic::Text> c1 = std::make_shared<spic::Text>("MOVEMENT             | WASD-KEYS", "Segment16CBold", 38, textColor, 38, 420);
+    std::shared_ptr<spic::Text> c2 = std::make_shared<spic::Text>("SHOOT                | LEFT-MOUSE-CLICK", "Segment16CBold", 38, textColor, 38, 460);
+    std::shared_ptr<spic::Text> c3 = std::make_shared<spic::Text>("PAUSE                | ESCAPE-KEY", "Segment16CBold", 38, textColor, 38, 500);
+    std::shared_ptr<spic::Text> c4 = std::make_shared<spic::Text>("CHEATS               | EQUALS-KEY", "Segment16CBold", 38, textColor, 38, 540);
+    std::shared_ptr<spic::Text> c5 = std::make_shared<spic::Text>("SPEEDUP              | PAGEUP-KEY", "Segment16CBold", 38, textColor, 38, 580);
+    std::shared_ptr<spic::Text> c6 = std::make_shared<spic::Text>("SLOWDOWN             | PAGEDOWN-KEY", "Segment16CBold", 38, textColor, 38, 620);
+    std::shared_ptr<spic::Text> c7 = std::make_shared<spic::Text>("RESET GAMEPLAY SPEED | HOME-KEY", "Segment16CBold", 38, textColor, 38, 660);
+    std::shared_ptr<spic::Text> c8 = std::make_shared<spic::Text>("SHOW FPS             | F-KEY", "Segment16CBold", 38, textColor, 38, 700);
+    std::shared_ptr<spic::Text> c9 = std::make_shared<spic::Text>("ENABLE CHEATS        | C-KEY", "Segment16CBold", 38, textColor, 38, 740);
 
     scene->AddGameObject(title);
     scene->AddGameObject(head1);
@@ -37,6 +39,8 @@ std::shared_ptr<spic::Scene> HelpSceneBuilder::BuildScene()
     scene->AddGameObject(c5);
     scene->AddGameObject(c6);
     scene->AddGameObject(c7); 
+    scene->AddGameObject(c8);
+    scene->AddGameObject(c9);
 
     std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("BackToMenuScript", "MainMenu");
     buttonBack->AddComponent(scriptPlay);
