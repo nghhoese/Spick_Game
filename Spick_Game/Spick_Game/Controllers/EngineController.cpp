@@ -1,4 +1,5 @@
 #include "EngineController.hpp"
+#include "../Scenes/CreditsSceneBuilder.hpp"
 
 static EngineController* instance;
 
@@ -69,7 +70,77 @@ std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vecto
 	return engine->GetLevel(path);
 }
 
+std::vector<std::shared_ptr<spic::Scene>> EngineController::GetScenes()
+{
+	return engine->GetScenes();
+}
+
 void EngineController::EndGameLoop()
 {
 	engine->EndGameLoop();
+}
+
+void EngineController::SetCurrentLevel(int currentLevelNumber)
+{
+	engine->setCurrentLevel(currentLevelNumber);
+}
+
+int EngineController::GetCurrentLevel()
+{
+	return engine->getCurrentLevel();
+}
+
+bool EngineController::GetIsInLevelTransition()
+{
+	return engine->getIsInLevelTransition();
+}
+
+void EngineController::SetIsInLevelTransition(bool transitionBool)
+{
+	engine->setIsInLevelTransition(transitionBool);
+}
+
+void EngineController::BuildLevels()
+{
+	std::shared_ptr<LevelSceneBuilder> levelSceneBuilder = std::make_shared<LevelSceneBuilder>();
+	levelSceneBuilder->BuildLevel(1);
+	levelSceneBuilder->BuildLevel(2);
+	levelSceneBuilder->BuildLevel(3);
+	SetCurrentLevel(1);
+}
+
+void EngineController::BuildGameOverScene()
+{
+	std::shared_ptr<GameOverBuilder> gameOverSceneBuilder = std::make_shared<GameOverBuilder>();
+	std::shared_ptr<spic::Scene> gameOverScene = gameOverSceneBuilder->BuildScene();
+	AddScene(gameOverScene);
+	gameOverSceneBuilder->BuildScript();
+}
+
+void EngineController::BuildCheatScene()
+{
+	std::shared_ptr<CheatsMenuBuilder> cheatsMenuBuilder = std::make_shared<CheatsMenuBuilder>();
+	std::shared_ptr<spic::Scene> cheatsMenuScene = cheatsMenuBuilder->BuildScene();
+	AddScene(cheatsMenuScene);
+}
+
+void EngineController::BuildHelpScene()
+{
+	std::shared_ptr<HelpSceneBuilder> helpSceneBuilder = std::make_shared<HelpSceneBuilder>();
+	std::shared_ptr<spic::Scene> helpScene = helpSceneBuilder->BuildScene();
+	AddScene(helpScene);
+}
+
+void EngineController::BuildCreditScene()
+{
+	std::shared_ptr<CreditsSceneBuilder> creditsSceneBuilder = std::make_shared<CreditsSceneBuilder>();
+	std::shared_ptr<spic::Scene> creditsScene = creditsSceneBuilder->BuildScene();
+	EngineController::GetInstance()->AddScene(creditsScene);
+}
+
+std::shared_ptr<spic::Scene> EngineController::BuildMainMenu()
+{
+	std::shared_ptr<MainMenuBuilder> mainMenuBuilder = std::make_shared<MainMenuBuilder>();
+	std::shared_ptr<spic::Scene> mainMenu = mainMenuBuilder->BuildScene();
+	return mainMenu;
 }

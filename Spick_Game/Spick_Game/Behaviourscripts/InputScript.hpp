@@ -32,10 +32,10 @@ public:
     void OnStart();
     void OnUpdate();
     void OnRender();
-    void OnTriggerEnter2D(const Collider& collider);
+    void OnTriggerEnter2D(const spic::Collider& collider);
     void OnClick();
-    void OnTriggerExit2D(const Collider& collider);
-    void OnTriggerStay2D(const Collider& collider);
+    void OnTriggerExit2D(const spic::Collider& collider);
+    void OnTriggerStay2D(const spic::Collider& collider);
 	void SetDeltaTime(float value) { this->deltaTime = value; }
 	float GetDeltaTime() { return this->deltaTime; };
 	void SetSpeedUp(bool value) { this->speedup = value; };
@@ -50,4 +50,6 @@ public:
 	bool GetPaused() { return this->paused; };
 	void SetLoadFps(bool value) { this->loadFps = value; };
 	bool GetLoadFps() { return this->loadFps; };
+	void PauseGame();
+	void UnPauseGame();
 };

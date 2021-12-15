@@ -1,8 +1,9 @@
 #include "Player.hpp"
 #include <API_Headers/BoxCollider.hpp>
 
-Player::Player() : healthpoints(100), coins(0), ammo(0), bulletSpeed(10), bulletDamage(30), speed(5), notClicked(true), isDamageless(false), magazine(50), currentMagazine(magazine), coolDown(50)
+Player::Player() : healthpoints(100), ammo(0), bulletSpeed(10), bulletDamage(30), speed(5), notClicked(true), isDamageless(false), magazine(5), currentMagazine(magazine), coolDown(50)
 {
+
 }
 
 void Player::OnAwake()
@@ -11,14 +12,8 @@ void Player::OnAwake()
 
 void Player::OnStart()
 {
-	if (GetGameObject()->getScene()->GetGameObjectsByName("Endpoint")[0] != nullptr) {
-		endPointObject = GetGameObject()->getScene()->GetGameObjectsByName("Endpoint")[0];
-		auto endPointPosition = endPointObject->getTransform();
-		endPointTopLeft.x = endPointPosition->position.x;
-		endPointTopLeft.y = endPointPosition->position.y;
-		endPointBottomRight.x = endPointPosition->position.x + 64;
-		endPointBottomRight.y = endPointPosition->position.y + 64;
-	}
+	SetStart();
+	SetEnd();	
 }
 
 void Player::OnClick()
@@ -28,8 +23,6 @@ void Player::OnClick()
 void Player::OnUpdate()
 {
 	spic::Transform transfrom = *GetGameObject()->getTransform();
-	xPlayer = transfrom.position.x;
-	yPlayer = transfrom.position.y;
 	spic::Point point;
 
 	InputObject = GetGameObject()->getScene()->GetGameObjectsByName("Input")[0];
@@ -61,7 +54,6 @@ void Player::OnUpdate()
 	std::shared_ptr<spic::GameObject> HudObject = GetGameObject()->getScene()->GetGameObjectsByTag("hud")[0];
 	auto HudComponent = HudObject->GetComponent<HUD>();
 	HudComponent->SetHealthPoints(this->healthpoints);
-	HudComponent->SetCoins(this->coins);
 	HudComponent->SetMagazine(this->magazine);
 	HudComponent->SetCurrentMagazine(this->currentMagazine);
 	if (magazine == 0) {
@@ -79,25 +71,28 @@ void Player::OnRender()
 	auto InputComponent = InputObject->GetComponent<InputScript>();
 	InputComponent->CheckPause();
 
-	std::shared_ptr<spic::GameObject> pausedObject = GetGameObject()->getScene()->GetGameObjectsByTag("paused")[0];
-	std::shared_ptr<spic::Text> pausedText = std::dynamic_pointer_cast<spic::Text>(pausedObject);
+	std::shared_ptr<spic::GameObject> pausedTextObject = GetGameObject()->getScene()->GetGameObjectsByTag("paused")[0];
+	std::shared_ptr<spic::GameObject> pausedButtonObject = GetGameObject()->getScene()->GetGameObjectsByTag("paused")[1];
+
 	if (InputComponent->GetPaused()) {
-		pausedText->SetText("PAUSED");
+		pausedTextObject->SetActive(true);
+		pausedButtonObject->SetActive(true);
 	}
 	if (!InputComponent->GetPaused()) {
-		pausedText->SetText("");
+		pausedTextObject->SetActive(false);
+		pausedButtonObject->SetActive(false);
 	}
 }
 
-void Player::OnTriggerEnter2D(const Collider& collider)
+void Player::OnTriggerEnter2D(const spic::Collider& collider)
 {
 }
 
-void Player::OnTriggerExit2D(const Collider& collider)
+void Player::OnTriggerExit2D(const spic::Collider& collider)
 {
 }
 
-void Player::OnTriggerStay2D(const Collider& collider)
+void Player::OnTriggerStay2D(const spic::Collider& collider)
 {
 }
 
@@ -125,7 +120,6 @@ void Player::Shoot()
 void Player::CheckGameOver()
 {
 	if (healthpoints == 0) {
-		std::cout << currentHealthPoints;
 		std::shared_ptr<spic::Component> script = GetGameObject()->GetComponentByName("GameOverScript");
 		if (script != nullptr) {
 			EngineController::GetInstance()->SetGameOver(true);
@@ -140,6 +134,8 @@ void Player::CheckEndPoint()
 		if (xPlayer < endPointBottomRight.x && yPlayer < endPointBottomRight.y) {
 			std::shared_ptr<spic::Component> script = endPointObject->GetComponentByName("EndLevelScript");
 			if (script != nullptr) {
+				EngineController::GetInstance()->SetIsInLevelTransition(true);
+				EngineController::GetInstance()->SetCurrentLevel(EngineController::GetInstance()->GetCurrentLevel() + 1);
 				script->OnClick();
 			}
 		}
@@ -171,6 +167,7 @@ void Player::CameraFixture()
 
 void Player::FillBucket()
 {
+	bullets.clear();
 	int index = 0;
 	while (index < 20) {
 
@@ -194,5 +191,25 @@ void Player::FillBucket()
 		bulletObject->setTransform(&transfrom);
 		bullets.push_back(bullet);
 		index++;
+	}
+}
+
+void Player::SetStart() {
+	if (GetGameObject()->getScene()->GetGameObjectsByName("Startpoint")[0] != nullptr) {
+		auto startPointObject = GetGameObject()->getScene()->GetGameObjectsByName("Startpoint")[0];
+		auto startPointPosition = startPointObject->getTransform();
+		xPlayer = startPointPosition->position.x;
+		yPlayer = startPointPosition->position.y;
+	}
+}
+
+void Player::SetEnd() {
+	if (GetGameObject()->getScene()->GetGameObjectsByName("Endpoint")[0] != nullptr) {
+		endPointObject = GetGameObject()->getScene()->GetGameObjectsByName("Endpoint")[0];
+		auto endPointPosition = endPointObject->getTransform();
+		endPointTopLeft.x = endPointPosition->position.x;
+		endPointTopLeft.y = endPointPosition->position.y;
+		endPointBottomRight.x = endPointPosition->position.x + 64;
+		endPointBottomRight.y = endPointPosition->position.y + 64;
 	}
 }

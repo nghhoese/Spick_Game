@@ -7,7 +7,6 @@
 
 bool Enemy::IfPlayerNearby()
 {
-    // check if rotation is in direction of player or not
     auto enemyPos = GetGameObject()->getTransform()->position;
     auto playerPos = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0]->getTransform()->position;
 
@@ -80,29 +79,20 @@ void Enemy::OnUpdate()
 		GetGameObject()->GetComponent<spic::Sprite>()->OnRender();
 	}
 
-    //IF something do persue
-    
-
-
     if (isAlive)
     {
-        auto trans = *GetGameObject()->getTransform();
-        auto player = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
-        auto tag = GetGameObject()->GetTags()[0];
-       
-       /* auto steeringBehaviour = GetGameObject()->getScene()->GetGameObjectsByName("SteeringBehaviour")[0];
-        auto steeringBehaviourComponent = steeringBehaviour->GetComponent<SteeringBehaviour>();
-        SteeringBehaviour steer{ trans.position, player->getTransform()->position , vel };*/
-        // move to target till destination is reached
-        spic::Point steering;
-        steering.x = 0;
-        steering.y = 0;
-       
-            if (IfPlayerNearby()) // if player is in radius of enemy
-            {
-                //TODO: checkWallAvoindance
-                    //TODO: if in shooting range
+        if (GetGameObject()->getScene()->GetGameObjectsByName("Player").size() > 0) {
 
+            auto trans = *GetGameObject()->getTransform();
+            auto player = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
+            auto tag = GetGameObject()->GetTags()[0];
+    
+            spic::Point steering;
+            steering.x = 0;
+            steering.y = 0;
+       
+            if (IfPlayerNearby())
+            {
                 double Delta_x = (trans.position.x - player->getTransform()->position.x);
                 double Delta_y = (trans.position.y - player->getTransform()->position.y);
 
@@ -131,14 +121,12 @@ void Enemy::OnUpdate()
                 vel.Add(acc);
 
                 vel.Limit(10);
-                /*if (wallAvoidance())
-                {
-                }*/
                 trans.position.Add(vel);
                 
             }
         
-        GetGameObject()->setTransform(&trans);
+            GetGameObject()->setTransform(&trans);
+        }
     }
 }
 
@@ -147,15 +135,15 @@ void Enemy::OnRender()
 {
 }
 
-void Enemy::OnTriggerEnter2D(const Collider& collider)
+void Enemy::OnTriggerEnter2D(const spic::Collider& collider)
 {
 }
 
-void Enemy::OnTriggerExit2D(const Collider& collider)
+void Enemy::OnTriggerExit2D(const spic::Collider& collider)
 {
 }
 
-void Enemy::OnTriggerStay2D(const Collider& collider)
+void Enemy::OnTriggerStay2D(const spic::Collider& collider)
 {
 }
 
@@ -228,27 +216,6 @@ spic::Point Enemy::wander() {
     target.Add(offset);
 
     target = wallAvoidance(target);
-    //if (enemyPos.x >= map.x)
-    //{
-    //    target.x *= -1; //doet het goed
-    //}
-
-    //if (enemyPos.x <= 64)
-    //{
-    //    target.x *= -1; // kinks
-    //    target.x += 1000;
-    //}
-
-    //if (enemyPos.y >= map.y)
-    //{
-    //    target.y *= -1; //doet het goed
-    //}
-
-    //if (enemyPos.y <= 64)
-    //{
-    //    target.y *= -1; //boven
-    //    target.y += 1000;
-    //}
 
     sight = pos;
     return seek(target);
@@ -270,26 +237,22 @@ spic::Point Enemy::wallAvoidance(spic::Point target)
         auto wallPos = wall->GetGameObject()->getTransform()->position;
         if (wallPos.y >= enemyPos.y)
         {
-            //target.y *= -1; //onder
             target.y += (-1000);
             target.x += -500;
 
         } else if(wallPos.y <= enemyPos.y)
         {
-            //target.y *= -1;//boven
             target.y += 1000;
             target.x += (-500);
         }
         
-        if (wallPos.x >= enemyPos.x) //*
+        if (wallPos.x >= enemyPos.x)
         {
-            //target.x *= -1; // rechts
             target.x += (-1000);
             target.y += 500;
 
         } else if (wallPos.x <= enemyPos.x)
         {
-            //target.x *= -1; //links
             target.x += 1000;
             target.y += (-500);
 
@@ -297,50 +260,6 @@ spic::Point Enemy::wallAvoidance(spic::Point target)
     }
 
     return target;
-    //if (enemyPos.x >= map.x)
-    //{
-    //    target.x *= -1; //doet het goed
-    //}
-
-    //if (enemyPos.x <= 64)
-    //{
-    //    target.x *= -1; // kinks
-    //    target.x += 1000;
-    //}
-
-    //if (enemyPos.y >= map.y)
-    //{
-    //    target.y *= -1; //doet het goed
-    //}
-
-    //if (enemyPos.y <= 64)
-    //{
-    //    target.y *= -1; //boven
-    //    target.y += 1000;
-    //}
-
-
-    /*if (enemyPos.x >= map.x || enemyPos.x <= 64)
-    {
-        vel.x = vel.x * -1;
-        wallIntersect = false;
-    }
-    else if (enemyPos.y <= 64 || enemyPos.y >= map.y) {
-        vel.y = vel.y * -1;
-        wallIntersect = false;
-    }*/
-
-
-
-    /*if (enemyPos.x >= map.x ||
-        enemyPos.x <= 64 ||
-        enemyPos.y >= map.y ||
-        enemyPos.y <= 64) {
-        return false;
-    }
-    return true;*/
-    //return wallIntersect;
-    //return wallIntersect;
 }
 
 void Enemy::OnClick()
