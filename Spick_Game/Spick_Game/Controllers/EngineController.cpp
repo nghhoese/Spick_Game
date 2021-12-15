@@ -4,6 +4,7 @@ static EngineController* instance;
 
 EngineController::EngineController() : engine(std::make_unique<spic::Engine>()), time(std::make_unique<spic::Time>())
 {
+	this->GetDesktopResolution();
 }
 
 EngineController* EngineController::GetInstance()
@@ -147,9 +148,16 @@ void EngineController::BuildCreditScene()
 	EngineController::GetInstance()->AddScene(creditsScene);
 }
 
+void EngineController::BuildCompletedScene()
+{
+	std::shared_ptr<CompletedSceneBuilder> completedSceneBuilder = std::make_shared<CompletedSceneBuilder>();
+	std::shared_ptr<spic::Scene> completedScene = completedSceneBuilder->BuildScene();
+	EngineController::GetInstance()->AddScene(completedScene);
+}
+
 void EngineController::StartGame()
 {
-	CreateNewWindow("Tactical Stealth", 1920, 1080);
+	CreateNewWindow("Tactical Stealth", GetScreenWidth(), GetScreenHeight());
 	std::shared_ptr<spic::Scene> mainMenu = BuildMainMenu();
 
 	AddScene(mainMenu);
@@ -160,6 +168,7 @@ void EngineController::StartGame()
 	BuildCheatScene();
 	BuildHelpScene();
 	BuildCreditScene();
+	BuildCompletedScene();
 	SetActiveScene(mainMenu);
 	StartGameLoop();
 }
@@ -167,6 +176,15 @@ void EngineController::StartGame()
 float EngineController::GetTime()
 {
 	return time->CalculateDeltaTime();
+}
+
+void EngineController::GetDesktopResolution()
+{
+	RECT desktop;
+	const HWND hDesktop = GetDesktopWindow();
+	GetWindowRect(hDesktop, &desktop);
+	this->screenWidth = desktop.right;
+	this->screenHeight = desktop.bottom;
 }
 
 std::shared_ptr<spic::Scene> EngineController::BuildMainMenu()

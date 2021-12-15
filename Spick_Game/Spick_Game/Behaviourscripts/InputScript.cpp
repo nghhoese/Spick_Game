@@ -279,12 +279,22 @@ const void InputScript::checkKeys()
 	else if (input->GetKey(T)) {
 		if (GetClicked()) {
 			if (EngineController::GetInstance()->GetCheatsEnabled()) {
-				auto endPointObject = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("Endpoint")[0];
-				std::shared_ptr<spic::Component> script = endPointObject->GetComponentByName("EndLevelScript");
-				if (script != nullptr) {
-					EngineController::GetInstance()->SetIsInLevelTransition(true);
-					EngineController::GetInstance()->SetCurrentLevel(EngineController::GetInstance()->GetCurrentLevel() + 1);
-					script->OnClick();
+				if (EngineController::GetInstance()->GetCurrentLevel() == 3) {
+					std::shared_ptr<spic::Component> script = objk1->GetComponentByName("CompletedSceneScript");
+					if (script != nullptr) {
+						EngineController::GetInstance()->SetCurrentLevel(1);
+						EngineController::GetInstance()->SetGameOver(true);
+						script->OnClick();
+					}
+				}
+				if (EngineController::GetInstance()->GetActiveScene()->GetName() != "CompletedScene") {			
+					auto endPointObject = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("Endpoint")[0];
+					std::shared_ptr<spic::Component> script = endPointObject->GetComponentByName("EndLevelScript");
+					if (script != nullptr) {
+						EngineController::GetInstance()->SetIsInLevelTransition(true);
+						EngineController::GetInstance()->SetCurrentLevel(EngineController::GetInstance()->GetCurrentLevel() + 1);
+						script->OnClick();
+					}
 				}
 			}
 			SetClicked(false);

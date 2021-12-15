@@ -28,6 +28,7 @@ public:
 	void BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, const std::tuple<int, int> position, const std::string& spriteName, const std::string& colourTag, const std::string& typeTag, int healthPoints, double speed, int damage,int magazine);
 	void BuildLevelObjectPosition(std::shared_ptr<spic::GameObject> object, std::tuple<int, int> position);
 	void BuildLevelPlayer(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, std::tuple<int, int> position);
+	void BuildBoss(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, const std::tuple<int, int> position);
 
 	template<typename T>
 	const T get_value(const std::string& valueName, const std::vector<std::pair<std::string, std::any>>& object) {
