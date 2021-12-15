@@ -3,7 +3,7 @@
 
 static EngineController* instance;
 
-EngineController::EngineController() : engine(std::make_unique<spic::Engine>())
+EngineController::EngineController() : engine(std::make_unique<spic::Engine>()), time(std::make_unique<spic::Time>())
 {
 }
 
@@ -136,6 +136,11 @@ void EngineController::BuildCreditScene()
 	std::shared_ptr<CreditsSceneBuilder> creditsSceneBuilder = std::make_shared<CreditsSceneBuilder>();
 	std::shared_ptr<spic::Scene> creditsScene = creditsSceneBuilder->BuildScene();
 	EngineController::GetInstance()->AddScene(creditsScene);
+}
+
+float EngineController::GetTime()
+{
+	return time->CalculateDeltaTime();
 }
 
 std::shared_ptr<spic::Scene> EngineController::BuildMainMenu()
