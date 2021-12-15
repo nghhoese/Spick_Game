@@ -1,4 +1,4 @@
-﻿  HelpSceneBuilder.cpp
+﻿  Boss.cpp
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(11,55): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::BehaviourScript'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(15): message : see declaration of 'spic::Component'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(11): message : see declaration of 'spic::BehaviourScript'
@@ -10,6 +10,11 @@ C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Camera.hpp(39,21): wa
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Camera.hpp(40,15): warning C4251: 'spic::Camera::backgroundColor': class 'spic::Color' needs to have dll-interface to be used by clients of class 'spic::Camera'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Color.hpp(11): message : see declaration of 'spic::Color'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20,50): warning C4275: non dll-interface class 'spic::Collider' used as base for dll-interface class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Collider.hpp(11): message : see declaration of 'spic::Collider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20): message : see declaration of 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(71,52): warning C4251: 'spic::BoxCollider::rectangleFacade': class 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>' needs to have dll-interface to be used by clients of class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(71): message : see declaration of 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17,46): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::Sprite'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(15): message : see declaration of 'spic::Component'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17): message : see declaration of 'spic::Sprite'
@@ -26,9 +31,5 @@ C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AudioSource.hpp(121,2
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AudioSource.hpp(147,48): warning C4251: 'spic::AudioSource::soundFacade': class 'std::unique_ptr<spic::SoundFacade,std::default_delete<spic::SoundFacade>>' needs to have dll-interface to be used by clients of class 'spic::AudioSource'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AudioSource.hpp(147): message : see declaration of 'std::unique_ptr<spic::SoundFacade,std::default_delete<spic::SoundFacade>>'
-C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20,50): warning C4275: non dll-interface class 'spic::Collider' used as base for dll-interface class 'spic::BoxCollider'
-C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Collider.hpp(11): message : see declaration of 'spic::Collider'
-C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20): message : see declaration of 'spic::BoxCollider'
-C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(71,52): warning C4251: 'spic::BoxCollider::rectangleFacade': class 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>' needs to have dll-interface to be used by clients of class 'spic::BoxCollider'
-C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(71): message : see declaration of 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>'
+     Creating library C:\Spic\Spick_Game\Spick_Game\Debug\Spick_Game.lib and object C:\Spic\Spick_Game\Spick_Game\Debug\Spick_Game.exp
   Spick_Game.vcxproj -> C:\Spic\Spick_Game\Spick_Game\Debug\Spick_Game.exe

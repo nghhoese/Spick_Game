@@ -1,6 +1,5 @@
 #include "../Controllers/LevelController.hpp"
 #include <API_Headers/BoxCollider.hpp>
-#include <API_Headers/AudioSource.hpp>
 
 LevelController::LevelController() : bmpFileString(".bmp"), pngFileString(".png"), xTilesize(64), yTilesize(64)
 {
@@ -284,7 +283,7 @@ void LevelController::BuildBoss(std::shared_ptr<spic::Scene> scene, std::shared_
     transfrom.scale = 1.2;
     boss->setTransform(&transfrom);
 
-    std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>();
+    std::shared_ptr<Boss> enemy = std::make_shared<Boss>();
     enemy->setHealthpoints(100);
     enemy->setSpeed(0);
     enemy->setDamagePerBullet(50);
