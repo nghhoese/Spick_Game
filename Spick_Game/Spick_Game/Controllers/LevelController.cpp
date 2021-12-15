@@ -328,6 +328,9 @@ void LevelController::BuildLevelPlayer(std::shared_ptr<spic::Scene> scene, std::
     std::shared_ptr<ChangeSceneBehaviour> cheatsMenuScript = std::make_shared<ChangeSceneBehaviour>("CheatsMenuScript", "CheatsMenu");
     playerObject->AddComponent(cheatsMenuScript);
 
+    std::shared_ptr<ChangeSceneBehaviour> completedSceneScript = std::make_shared<ChangeSceneBehaviour>("CompletedSceneScript", "CompletedScene");
+    playerObject->AddComponent(completedSceneScript);
+
     std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
     boxCollider->Height(50);
     boxCollider->Width(50);

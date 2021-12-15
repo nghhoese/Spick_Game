@@ -147,6 +147,13 @@ void EngineController::BuildCreditScene()
 	EngineController::GetInstance()->AddScene(creditsScene);
 }
 
+void EngineController::BuildCompletedScene()
+{
+	std::shared_ptr<CompletedSceneBuilder> completedSceneBuilder = std::make_shared<CompletedSceneBuilder>();
+	std::shared_ptr<spic::Scene> completedScene = completedSceneBuilder->BuildScene();
+	EngineController::GetInstance()->AddScene(completedScene);
+}
+
 void EngineController::StartGame()
 {
 	CreateNewWindow("Tactical Stealth", 1920, 1080);
@@ -160,6 +167,7 @@ void EngineController::StartGame()
 	BuildCheatScene();
 	BuildHelpScene();
 	BuildCreditScene();
+	BuildCompletedScene();
 	SetActiveScene(mainMenu);
 	StartGameLoop();
 }

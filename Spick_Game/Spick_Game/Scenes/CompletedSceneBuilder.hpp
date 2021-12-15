@@ -6,7 +6,7 @@
 #include <API_Headers/Text.hpp>
 #include "../Behaviourscripts/ChangeSceneBehaviour.hpp"
 
-class CompleteSceneBuilder : public SceneBuilder {
+class CompletedSceneBuilder : public SceneBuilder {
 private:
 	std::shared_ptr<spic::Button> buttonBackToMenu;
 public:

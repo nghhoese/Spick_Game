@@ -7,6 +7,7 @@
 #include "../Scenes/CheatsMenuBuilder.hpp"
 #include "../Scenes/HelpSceneBuilder.hpp"
 #include "../Scenes/CreditsSceneBuilder.hpp"
+#include "../Scenes/CompletedSceneBuilder.hpp"
 #include "MusicController.hpp"
 
 class EngineController {
@@ -37,6 +38,7 @@ public:
 	void BuildCheatScene();
 	void BuildHelpScene();
 	void BuildCreditScene();
+	void BuildCompletedScene();
 	void StartGame();
 	float GetTime();
 	std::shared_ptr<spic::Scene> BuildMainMenu();

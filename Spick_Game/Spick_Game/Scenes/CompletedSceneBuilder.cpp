@@ -1,6 +1,6 @@
 #include "CompletedSceneBuilder.hpp"
 
-std::shared_ptr<spic::Scene> CompleteSceneBuilder::BuildScene()
+std::shared_ptr<spic::Scene> CompletedSceneBuilder::BuildScene()
 {
     std::shared_ptr<spic::Scene> scene = std::make_shared<spic::Scene>("CompletedScene");
 
@@ -18,4 +18,5 @@ std::shared_ptr<spic::Scene> CompleteSceneBuilder::BuildScene()
     buttonBackToMenu->AddComponent(scriptPlay);
     return scene;
 }
+
 

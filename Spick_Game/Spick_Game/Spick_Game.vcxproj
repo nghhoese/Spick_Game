@@ -159,6 +159,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Behaviourscripts\Boss.cpp" />
     <ClCompile Include="Behaviourscripts\ChangeSceneBehaviour.cpp" />
     <ClCompile Include="Behaviourscripts\ReturnToMainMenuBehaviour.cpp" />
     <ClCompile Include="Behaviourscripts\Bullet.cpp" />
@@ -181,6 +182,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Behaviourscripts\Boss.hpp" />
     <ClInclude Include="Behaviourscripts\ChangeSceneBehaviour.hpp" />
     <ClInclude Include="Behaviourscripts\ReturnToMainMenuBehaviour.hpp" />
     <ClInclude Include="Behaviourscripts\Bullet.hpp" />
