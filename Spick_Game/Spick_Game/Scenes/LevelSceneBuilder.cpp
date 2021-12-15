@@ -11,8 +11,8 @@ std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(int levelNumber)
     level->BuildLevel(GameScene, path);
 
     std::unique_ptr<spic::Camera> camera = std::make_unique<spic::Camera>("mainCamera");
-    camera->setAspectWidth(1920);
-    camera->setAspectHeight(1080);
+    camera->setAspectWidth(EngineController::GetInstance()->GetScreenWidth());
+    camera->setAspectHeight(EngineController::GetInstance()->GetScreenHeight());
     camera->setX(0);
     camera->setY(0);
     camera->CreateCamera();
@@ -21,18 +21,18 @@ std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(int levelNumber)
     GameScene->SetActiveCamera("mainCamera");
 
     spic::Color textColor = spic::Color(1.0, 1.0, 1.0, 1.0);
-    std::shared_ptr<spic::Text> hp = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, 0, 0);
+    std::shared_ptr<spic::Text> hp = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, (camera->getAspectWidth() - camera->getAspectWidth()), 0);
     hp->AddTag("hp");
-    std::shared_ptr<spic::Text> magazine = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, 175, 0);
+    std::shared_ptr<spic::Text> magazine = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, ((camera->getAspectWidth() - camera->getAspectWidth()) + 175), 0);
     magazine->AddTag("Magazine");
-    std::shared_ptr<spic::Text> cheats = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, 1000, 0);
+    std::shared_ptr<spic::Text> cheats = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, (camera->getAspectWidth() - 1000), 0);
     cheats->AddTag("cheats");
-    std::shared_ptr<spic::Text> fps = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, 1800, 0);
+    std::shared_ptr<spic::Text> fps = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, (camera->getAspectWidth() - 125), 0);
     fps->AddTag("fps");
-    std::shared_ptr<spic::Text> paused = std::make_shared<spic::Text>("PAUSED", "Capsmall", 140, textColor, 700, 175);
+    std::shared_ptr<spic::Text> paused = std::make_shared<spic::Text>("PAUSED", "Capsmall", 140, textColor, (camera->getAspectWidth() / 2.9), 175);
     paused->AddTag("paused");
     paused->SetActive(false);
-    std::shared_ptr<spic::Button> BackToMenu = std::make_shared<spic::Button>("mainmenubutton", 1500, 870, 367, 105, "BackToMenuScript");
+    std::shared_ptr<spic::Button> BackToMenu = std::make_shared<spic::Button>("mainmenubutton", (camera->getAspectWidth() - 500), (camera->getAspectHeight() - 200), 367, 105, "BackToMenuScript");
     std::shared_ptr<ReturnToMainMenuBehaviour> BackToMenuScript = std::make_shared<ReturnToMainMenuBehaviour>("BackToMenuScript");
     BackToMenu->AddComponent(BackToMenuScript);
     BackToMenu->AddTag("paused");

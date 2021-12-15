@@ -8,11 +8,14 @@
 #include "../Scenes/HelpSceneBuilder.hpp"
 #include "../Scenes/CreditsSceneBuilder.hpp"
 #include "MusicController.hpp"
+#include "wtypes.h"
 
 class EngineController {
 private:
 	std::unique_ptr<spic::Engine> engine;
 	std::unique_ptr<spic::Time> time;
+	int screenWidth;
+	int screenHeight;
 	EngineController();
 public:
 	static EngineController* GetInstance();
@@ -39,8 +42,13 @@ public:
 	void BuildCreditScene();
 	void StartGame();
 	float GetTime();
+	void GetDesktopResolution();
 	std::shared_ptr<spic::Scene> BuildMainMenu();
 	std::shared_ptr<spic::Scene> GetSceneByName(const std::string& sceneName);
 	std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> GetLevel(const std::filesystem::path& path);
 	std::vector<std::shared_ptr<spic::Scene>> GetScenes();
+	int GetScreenWidth() { return this->screenWidth; };
+	void SetScreenWidth(int screenWidth) { this->screenWidth = screenWidth; };
+	int GetScreenHeight() { return this->screenHeight; };
+	void SetScreenHeight(int screenHeight) { this->screenHeight = screenHeight; };
 };

@@ -201,7 +201,6 @@
     <ClInclude Include="Scenes\SceneBuilder.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\Users\rensa\Downloads\Boss.png" />
     <Image Include="assets\back.jpg" />
     <Image Include="assets\back.png" />
     <Image Include="assets\Boss.png" />
