@@ -211,7 +211,7 @@ void Enemy::FillBucket()
 {
     bullets.clear();
     int index = 0;
-    while (index < 20) {
+    while (index < 5) {
 
         std::shared_ptr<spic::GameObject> bulletObject = std::make_shared<spic::GameObject>("Bullet");
         GetGameObject()->getScene()->AddGameObject(bulletObject);
