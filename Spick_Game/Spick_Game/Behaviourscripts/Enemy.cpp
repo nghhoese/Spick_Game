@@ -10,12 +10,39 @@ bool Enemy::IfPlayerNearby()
     auto enemyPos = GetGameObject()->getTransform()->position;
     auto playerPos = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0]->getTransform()->position;
 
-    return (enemyPos.x + triggerSpace >= playerPos.x &&
+    auto enemyDirection = GetGameObject()->getTransform()->rotation;
+    
+    double Delta_x = (enemyPos.x - playerPos.x);
+    double Delta_y = (enemyPos.y - playerPos.y);
+
+    double enemyToPlayerDir = ((atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265) + 90;
+
+    auto radians = 45;
+
+    if (enemyDirection - radians <= enemyToPlayerDir &&
+        enemyDirection + radians >= enemyToPlayerDir)
+    {
+        return (enemyPos.x + triggerSpace >= playerPos.x &&
         enemyPos.x - triggerSpace <= playerPos.x &&
         enemyPos.y + triggerSpace >= playerPos.y &&
         enemyPos.y - triggerSpace <= playerPos.y);
+    }
+    return false;
+    
 }
-Enemy::Enemy() : speed(1.5), turnCount(0), isTurned(false), isAlive(true)
+
+bool Enemy::InShootingRange()
+{
+    auto enemyPos = GetGameObject()->getTransform()->position;
+    auto playerPos = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0]->getTransform()->position;
+
+    return (enemyPos.x + shootingSpace >= playerPos.x &&
+        enemyPos.x - shootingSpace <= playerPos.x &&
+        enemyPos.y + shootingSpace >= playerPos.y &&
+        enemyPos.y - shootingSpace <= playerPos.y);
+}
+
+Enemy::Enemy() : speed(1.5), turnCount(0), isTurned(false), isAlive(true), notInitialized(true)
 {
 }
 
@@ -34,14 +61,12 @@ void Enemy::OnStart()
     GetGameObject()->setTransform(&trans);
     vel.x = 0;
     vel.y = 0;
-
     acc.x = 0;
     acc.y = 0;
 }
 
 void Enemy::OnUpdate()
 {
-
 	if (this->healthpoints < 0) {
         isAlive = false;
 		auto trans = *GetGameObject()->getTransform();
@@ -52,45 +77,60 @@ void Enemy::OnUpdate()
 		GetGameObject()->GetComponent<spic::Sprite>()->OnRender();
 	}
 
-    //IF something do persue
-    
-
-
     if (isAlive)
     {
         if (GetGameObject()->getScene()->GetGameObjectsByName("Player").size() > 0) {
-
+            if (notInitialized)
+            {
+                notInitialized = false;
+                auto tempEnem = *GetGameObject();
+                auto tempPlay = *GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
+                AI = std::make_unique<AIController>(*GetGameObject(), vel, *GetGameObject()->getScene()->GetGameObjectsByName("Player")[0], speed);
+            }
+           
             auto trans = *GetGameObject()->getTransform();
             auto player = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
             auto tag = GetGameObject()->GetTags()[0];
-       
-           /* auto steeringBehaviour = GetGameObject()->getScene()->GetGameObjectsByName("SteeringBehaviour")[0];
-            auto steeringBehaviourComponent = steeringBehaviour->GetComponent<SteeringBehaviour>();
-            SteeringBehaviour steer{ trans.position, player->getTransform()->position , vel };*/
-            // move to target till destination is reached
+            AI->Update(*GetGameObject(), vel, *player);
             spic::Point steering;
-            if (IfPlayerNearby()) // if player is in radius of enemy
+            steering.x = 0;
+            steering.y = 0;
+       
+            if (IfPlayerNearby())
             {
-                steering = persue();
                 double Delta_x = (trans.position.x - player->getTransform()->position.x);
                 double Delta_y = (trans.position.y - player->getTransform()->position.y);
 
                 double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
                 trans.rotation = Result + 90;
-           
+
+                if (!InShootingRange())
+                {
+                    steering = AI->Persue();
+                    acc.Add(steering);
+                    vel.Add(acc);
+                    vel.Limit(10);
+
+                    trans.position.Add(vel);
+                }
+                else {
+                    //shoot at player
+                }
             }
             else {
-                steering = wander();
-                //trans.rotation = atan2(vel.y, vel.x);
+                steering = AI->Wander();
+                double Delta_x = (trans.position.x - AI->GetSight().x);
+                double Delta_y = (trans.position.y - AI->GetSight().y);
+
+                double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
+                trans.rotation = Result + 90;
+
+                acc.Add(steering);
+                vel.Add(acc);
+
+                vel.Limit(10);
+                trans.position.Add(vel);
             }
-
-            acc.Add(steering);
-            vel.Add(acc);
-
-            vel.Limit(10);
-            //do wall avoidance
-            //vel.Add(wallAvoidance());
-            trans.position.Add(vel);
         
             GetGameObject()->setTransform(&trans);
         }
@@ -127,89 +167,6 @@ void Enemy::setPath(const std::string& path)
 const std::string& Enemy::getPath()
 {
 	return this->path;
-}
-
-spic::Point Enemy::persue()
-{
-    auto player = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
-    auto target = player->getTransform()->position;
-    spic::Point prediction;
-    //TODO: this must be the direction (rotation?) of the player
-    prediction.x = cos(player->getTransform()->rotation);
-    prediction.y = sin(player->getTransform()->rotation);
-    prediction.Mult(100);
-    target.Add(prediction);
-    return seek(target);
-}
-
-spic::Point Enemy::seek(spic::Point target)
-{
-    spic::Point force;
-    force.Sub(target, GetGameObject()->getTransform()->position);
-    force.SetMag(speed);
-    force.Sub(vel);
-    force.Limit(0.25);
-    return force;
-}
-
-spic::Point Enemy::wander() {
-    double wanderR = 32;
-    double wanderD = 120;
-    int change = 4;
-    wandertheta += rand() % change + (change * -1);
-
-    spic::Point pos = vel;
-    pos.Normalize();
-    pos.Mult(wanderD);
-    pos.Add(GetGameObject()->getTransform()->position);
-
-    double h = atan2(vel.y, vel.x);
-
-    spic::Point offset;
-    offset.x = wanderR * cos(wandertheta + h);
-    offset.y = wanderR * sin(wandertheta + h);
-
-    spic::Point target;
-    target.x = pos.x;
-    target.y = pos.y;
-    target.Add(offset);
-    return seek(target);
-}
-
-spic::Point Enemy::wallAvoidance()
-{
-    double wanderR = 32;
-    auto enemy = GetGameObject();
-    auto enemyPos = enemy->getTransform()->position;
-    
-    // Create feeler
-    spic::Point feeler;
-    feeler.x = enemyPos.x;
-    feeler.y = enemyPos.y;
-    feeler.Add(64);
-
-    // if feeler of enemy intersects with wall
-    auto wall = Collision::AABB(enemy, "wall");
-    spic::Point closestPoint;
-    spic::Point overShoot;
-    spic::Point steeringForce = vel;
-    if (wall)
-    {
-        auto wallPos = Collision::AABB(enemy, "wall")->GetGameObject()->getTransform()->position;
-
-        if (feeler.x >= wallPos.x &&
-            feeler.x - 128 <= wallPos.x &&
-            feeler.y >= wallPos.y &&
-            feeler.y - 128 <= wallPos.y) {
-            //calculate new direction
-            overShoot.Sub(feeler, wallPos);
-            auto newWallPos = wallPos.Normalize();
-            newWallPos.Mult(overShoot.Mag());
-            steeringForce = seek(newWallPos);
-        }
-    }
-    
-    return steeringForce;
 }
 
 void Enemy::OnClick()

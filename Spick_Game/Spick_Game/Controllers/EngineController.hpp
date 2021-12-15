@@ -6,10 +6,13 @@
 #include "../Scenes/GameOverSceneBuilder.hpp"
 #include "../Scenes/CheatsMenuBuilder.hpp"
 #include "../Scenes/HelpSceneBuilder.hpp"
+#include "../Scenes/CreditsSceneBuilder.hpp"
+#include "MusicController.hpp"
 
 class EngineController {
 private:
 	std::unique_ptr<spic::Engine> engine;
+	std::unique_ptr<spic::Time> time;
 	EngineController();
 public:
 	static EngineController* GetInstance();
@@ -34,6 +37,8 @@ public:
 	void BuildCheatScene();
 	void BuildHelpScene();
 	void BuildCreditScene();
+	void StartGame();
+	float GetTime();
 	std::shared_ptr<spic::Scene> BuildMainMenu();
 	std::shared_ptr<spic::Scene> GetSceneByName(const std::string& sceneName);
 	std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> GetLevel(const std::filesystem::path& path);

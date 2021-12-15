@@ -1,7 +1,7 @@
 #include "HUD.hpp"
 #include <API_Headers/AudioSource.hpp>
 
-HUD::HUD() : fps(0)
+HUD::HUD() : fps(0), accumelatedDeltaTime(0), sec(1000)
 {
 }
 
@@ -38,7 +38,14 @@ void HUD::OnUpdate()
 	std::shared_ptr<spic::GameObject> fpsObject = GetGameObject()->getScene()->GetGameObjectsByTag("fps")[0];
 	std::shared_ptr<spic::Text> fpsText = std::dynamic_pointer_cast<spic::Text>(fpsObject);
 	if (InputComponent->GetLoadFps()) {
-		fpsText->SetText("FPS: " + std::to_string(EngineController::GetInstance()->GetFPS()));
+		accumelatedDeltaTime += EngineController::GetInstance()->GetTime();
+		if (accumelatedDeltaTime >= (sec * 4)) {
+			accumelatedDeltaTime = sec;
+		}
+		if (accumelatedDeltaTime >= sec) {
+			fpsText->SetText("FPS: " + std::to_string(EngineController::GetInstance()->GetFPS()));
+			accumelatedDeltaTime -= sec;
+		}
 	}
 	if (!InputComponent->GetLoadFps()) {
 		fpsText->SetText("");

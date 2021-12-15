@@ -1,11 +1,11 @@
 #pragma once
 
 #include "API_Headers/BehaviourScript.hpp"
-#include "../Behaviourscripts/SteeringBehaviour.hpp"
 #include "API_Headers/Point.hpp"
 #include <math.h>
 #include <string>
 #include "API_Headers/Time.hpp"
+#include "../Controllers/AIController.hpp"
 
 class Enemy : public spic::BehaviourScript {
 private:
@@ -16,15 +16,21 @@ private:
     int turnCount = 0;
     double speed;
     bool IfPlayerNearby();
+    bool InShootingRange();
+    bool isShooting = false;;
     int triggerSpace = 250;
+    int shootingSpace = 150;
+    spic::Point sight;
     bool check = false;
     bool isPersuing = false;
     int persueCount = 0;
     double wandertheta = 0;
-    spic::Point target;
     bool isAlive = true;
     spic::Point acc; //versnelling
     spic::Point vel; //snelheid
+    double CalculateRotation(spic::Point pos1, spic::Point pos2);
+    std::unique_ptr<AIController> AI;
+    bool notInitialized;
 public:
     Enemy();
     void OnAwake();
@@ -44,7 +50,7 @@ public:
 
     spic::Point wander();
 
-    spic::Point wallAvoidance();
+    spic::Point wallAvoidance(spic::Point target);
     void setHealthpoints(int healthpoints) { this->healthpoints = healthpoints; };
     int getHealthpoints() { return this->healthpoints; };
     void setDamagePerBullet(int damagePerBullet) { this->damagePerBullet = damagePerBullet; };

@@ -17,6 +17,8 @@ private:
     int coins;
     int magazine;
     int currentMagazine;
+    float accumelatedDeltaTime;
+    float sec;
     std::shared_ptr<spic::GameObject> InputObject;
 public:
     HUD();

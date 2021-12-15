@@ -17,9 +17,9 @@
     <ClCompile Include="Scenes\HelpSceneBuilder.cpp" />
     <ClCompile Include="Scenes\CreditsSceneBuilder.cpp" />
     <ClCompile Include="Behaviourscripts\Quit.cpp" />
-    <ClCompile Include="Behaviourscripts\SteeringBehaviour.cpp" />
     <ClCompile Include="Controllers\MusicController.cpp" />
     <ClCompile Include="Behaviourscripts\ReturnToMainMenuBehaviour.cpp" />
+    <ClCompile Include="Controllers\AIController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behaviourscripts\ChangeSceneBehaviour.hpp" />
@@ -38,9 +38,9 @@
     <ClInclude Include="Scenes\HelpSceneBuilder.hpp" />
     <ClInclude Include="Scenes\CreditsSceneBuilder.hpp" />
     <ClInclude Include="Behaviourscripts\Quit.hpp" />
-    <ClInclude Include="Behaviourscripts\SteeringBehaviour.hpp" />
     <ClInclude Include="Controllers\MusicController.hpp" />
     <ClInclude Include="Behaviourscripts\ReturnToMainMenuBehaviour.hpp" />
+    <ClInclude Include="Controllers\AIController.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\bullet.bmp" />
@@ -94,6 +94,8 @@
     <Image Include="assets\player_pistol_silenced_hit.png" />
     <Image Include="assets\player_sub-machinegun.bmp" />
     <Image Include="assets\back.jpg" />
+    <Image Include="assets\Boss.png" />
+    <Image Include="assets\mainmenubutton.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\Fonts\Capsmall.ttf" />

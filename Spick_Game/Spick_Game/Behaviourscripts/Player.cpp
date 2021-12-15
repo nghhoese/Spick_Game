@@ -130,16 +130,13 @@ void Player::CheckGameOver()
 
 void Player::CheckEndPoint()
 {
-	if ((xPlayer > endPointTopLeft.x && yPlayer > endPointTopLeft.y)) {
-		if (xPlayer < endPointBottomRight.x && yPlayer < endPointBottomRight.y) {
-			std::shared_ptr<spic::Component> script = endPointObject->GetComponentByName("EndLevelScript");
-			if (script != nullptr) {
-				EngineController::GetInstance()->SetIsInLevelTransition(true);
-				EngineController::GetInstance()->SetCurrentLevel(EngineController::GetInstance()->GetCurrentLevel() + 1);
-				script->OnClick();
-			}
+	if ((xPlayer >= endPointTopLeft.x && yPlayer >= endPointTopLeft.y) && (xPlayer <= endPointBottomRight.x && yPlayer <= endPointBottomRight.y)) {
+		std::shared_ptr<spic::Component> script = endPointObject->GetComponentByName("EndLevelScript");
+		if (script != nullptr) {
+			EngineController::GetInstance()->SetIsInLevelTransition(true);
+			EngineController::GetInstance()->SetCurrentLevel(EngineController::GetInstance()->GetCurrentLevel() + 1);
+			script->OnClick();
 		}
-
 	}
 }
 
