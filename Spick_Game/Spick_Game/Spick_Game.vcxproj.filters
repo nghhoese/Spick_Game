@@ -20,6 +20,7 @@
     <ClCompile Include="Controllers\MusicController.cpp" />
     <ClCompile Include="Behaviourscripts\ReturnToMainMenuBehaviour.cpp" />
     <ClCompile Include="Controllers\AIController.cpp" />
+    <ClCompile Include="Scenes\CompletedSceneBuilder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behaviourscripts\ChangeSceneBehaviour.hpp" />
@@ -41,6 +42,7 @@
     <ClInclude Include="Controllers\MusicController.hpp" />
     <ClInclude Include="Behaviourscripts\ReturnToMainMenuBehaviour.hpp" />
     <ClInclude Include="Controllers\AIController.hpp" />
+    <ClInclude Include="Scenes\CompletedSceneBuilder.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\bullet.bmp" />

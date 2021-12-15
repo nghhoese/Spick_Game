@@ -235,6 +235,15 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
                 }             
             }          
         }
+        if (get_value<std::string>("name", object) == "Boss") {
+            for (std::pair<std::string, std::any> value : object) {
+                if (value.first._Equal("position")) {
+                    std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
+                    BuildBoss(scene, sprite, position);
+                    //BuildLevelEnemy(scene, sprite, position, "boss.png", "blue", "guard", 150, 1.5, 50);
+                }
+            }
+        }
     }
 }
 
@@ -259,6 +268,35 @@ void LevelController::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::s
     guardObject->AddComponent(boxCollider);
     guardObject->AddComponent(sprite);
     sprite->SetSprite(enemy->getPath());
+    enemy->OnStart();
+}
+
+void LevelController::BuildBoss(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, const std::tuple<int, int> position) {
+    std::shared_ptr<spic::GameObject> boss = std::make_shared<spic::GameObject>("Boss");
+    scene->AddGameObject(boss);
+    boss->AddTag("BOSS");
+    boss->AddTag("guard");
+    spic::Transform transfrom = *boss->getTransform();
+    transfrom.position.x = std::get<0>(position);
+    transfrom.position.y = std::get<1>(position);
+    transfrom.scale = 1.2;
+    boss->setTransform(&transfrom);
+
+    std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>();
+    enemy->setHealthpoints(100);
+    enemy->setSpeed(0);
+    enemy->setDamagePerBullet(50);
+    boss->AddComponent(enemy);
+    enemy->setPath("assets/boss.png");
+
+    std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
+    boxCollider->Height(200);
+    boxCollider->Width(200);
+    boxCollider->ShowBoxBool(true);
+    boss->AddComponent(boxCollider);
+    boss->AddComponent(sprite);
+    sprite->SetSprite(enemy->getPath());
+    
     enemy->OnStart();
 }
 

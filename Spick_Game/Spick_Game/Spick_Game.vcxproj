@@ -172,6 +172,7 @@
     <ClCompile Include="Behaviourscripts\Player.cpp" />
     <ClCompile Include="Controllers\MusicController.cpp" />
     <ClCompile Include="Scenes\CheatsMenuBuilder.cpp" />
+    <ClCompile Include="Scenes\CompletedSceneBuilder.cpp" />
     <ClCompile Include="Scenes\CreditsSceneBuilder.cpp" />
     <ClCompile Include="Scenes\GameOverSceneBuilder.cpp" />
     <ClCompile Include="Scenes\HelpSceneBuilder.cpp" />
@@ -193,6 +194,7 @@
     <ClInclude Include="Behaviourscripts\Player.hpp" />
     <ClInclude Include="Controllers\MusicController.hpp" />
     <ClInclude Include="Scenes\CheatsMenuBuilder.hpp" />
+    <ClInclude Include="Scenes\CompletedSceneBuilder.hpp" />
     <ClInclude Include="Scenes\CreditsSceneBuilder.hpp" />
     <ClInclude Include="Scenes\GameOverSceneBuilder.hpp" />
     <ClInclude Include="Scenes\HelpSceneBuilder.hpp" />
