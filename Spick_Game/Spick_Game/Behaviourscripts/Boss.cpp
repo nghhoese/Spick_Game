@@ -91,7 +91,7 @@ void Boss::OnUpdate()
 
             auto trans = *GetGameObject()->getTransform();
             auto player = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
-            auto tag = GetGameObject()->GetTags()[0];
+            
             AI->Update(*GetGameObject(), vel, *player);
             spic::Point steering;
             steering.x = 0;

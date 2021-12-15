@@ -62,7 +62,7 @@ void ChangeSceneBehaviour::OnClick()
 	if (a.size() == 1) {
 		a[0]->GetComponent<InputScript>()->UnPauseGame();
 	}
-	sleep_for(100ms);
+	sleep_for(1000ms);
 
 }
 
