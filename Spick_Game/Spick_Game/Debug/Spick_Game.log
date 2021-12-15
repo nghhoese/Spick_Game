@@ -36,20 +36,20 @@ C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.
           [
               _Ty=double
           ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2021): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,const char(&)[11],double,int,int,int,const char(&)[16]>(_Ty &,const char (&)[11],double &&,int &&,int &&,int &&,const char (&)[16]) noexcept(false)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2021): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,const char(&)[11],double,int,double,double,const char(&)[16]>(_Ty &,const char (&)[11],double &&,int &&,double &&,double &&,const char (&)[16]) noexcept(false)' being compiled
           with
           [
               _Ty=spic::Button
           ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2747): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<const char(&)[11],double,int,int,int,const char(&)[16]>(const char (&)[11],double &&,int &&,int &&,int &&,const char (&)[16])' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2747): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<const char(&)[11],double,int,double,double,const char(&)[16]>(const char (&)[11],double &&,int &&,double &&,double &&,const char (&)[16])' being compiled
           with
           [
               _Ty=spic::Button
           ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2748): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<const char(&)[11],double,int,int,int,const char(&)[16]>(const char (&)[11],double &&,int &&,int &&,int &&,const char (&)[16])' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2748): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<const char(&)[11],double,int,double,double,const char(&)[16]>(const char (&)[11],double &&,int &&,double &&,double &&,const char (&)[16])' being compiled
           with
           [
               _Ty=spic::Button
           ]
-C:\Spic\Spick_Game\Spick_Game\Spick_Game\Scenes\MainMenuBuilder.cpp(23): message : see reference to function template instantiation 'std::shared_ptr<spic::Button> std::make_shared<spic::Button,const char(&)[11],double,int,int,int,const char(&)[16]>(const char (&)[11],double &&,int &&,int &&,int &&,const char (&)[16])' being compiled
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Scenes\MainMenuBuilder.cpp(23): message : see reference to function template instantiation 'std::shared_ptr<spic::Button> std::make_shared<spic::Button,const char(&)[11],double,int,double,double,const char(&)[16]>(const char (&)[11],double &&,int &&,double &&,double &&,const char (&)[16])' being compiled
   Spick_Game.vcxproj -> C:\Spic\Spick_Game\Spick_Game\Debug\Spick_Game.exe
