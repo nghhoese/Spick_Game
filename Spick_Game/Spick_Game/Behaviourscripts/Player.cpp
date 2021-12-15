@@ -63,7 +63,7 @@ void Player::OnUpdate()
 
 	this->CheckGameOver();
 
-	std::shared_ptr<spic::GameObject> HudObject = GetGameObject()->getScene()->GetGameObjectsByTag("hud")[0];
+	std::shared_ptr<spic::GameObject> HudObject = GetGameObject()->getScene()->GetGameObjectsByName("hud")[0];
 	auto HudComponent = HudObject->GetComponent<HUD>();
 	HudComponent->SetHealthPoints(this->healthpoints);
 	HudComponent->SetMagazine(this->magazine);
@@ -83,8 +83,8 @@ void Player::OnRender()
 	auto InputComponent = InputObject->GetComponent<InputScript>();
 	InputComponent->CheckPause();
 
-	std::shared_ptr<spic::GameObject> pausedTextObject = GetGameObject()->getScene()->GetGameObjectsByTag("paused")[0];
-	std::shared_ptr<spic::GameObject> pausedButtonObject = GetGameObject()->getScene()->GetGameObjectsByTag("paused")[1];
+	std::shared_ptr<spic::GameObject> pausedTextObject = GetGameObject()->getScene()->GetGameObjectsByName("paused")[0];
+	std::shared_ptr<spic::GameObject> pausedButtonObject = GetGameObject()->getScene()->GetGameObjectsByName("paused")[1];
 
 	if (InputComponent->GetPaused()) {
 		pausedTextObject->SetActive(true);

@@ -95,7 +95,6 @@ void Enemy::OnUpdate()
            
             auto trans = *GetGameObject()->getTransform();
             
-            auto tag = GetGameObject()->GetTags()[0];
             AI->Update(*GetGameObject(), vel, *player);
             spic::Point steering;
             steering.x = 0;
