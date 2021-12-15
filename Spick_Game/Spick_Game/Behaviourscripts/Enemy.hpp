@@ -6,6 +6,8 @@
 #include <string>
 #include "API_Headers/Time.hpp"
 #include "../Controllers/AIController.hpp"
+#include "Bullet.hpp"
+#include <iostream>
 
 class Enemy : public spic::BehaviourScript {
 private:
@@ -31,6 +33,16 @@ private:
     double CalculateRotation(spic::Point pos1, spic::Point pos2);
     std::unique_ptr<AIController> AI;
     bool notInitialized;
+    void Shoot();
+    int ammo;
+    int magazine;
+    int currentMagazine;
+    int coolDown;
+    int bulletSpeed;
+    int bulletDamage;
+    //std::vector<std::shared_ptr<Bullet>> bullets;
+    std::shared_ptr<spic::GameObject> player;
+    //std::shared_ptr<spic::Sprite> sprite;
 public:
     Enemy();
     void OnAwake();
@@ -43,7 +55,7 @@ public:
     void OnTriggerStay2D(const spic::Collider& collider);
     void setPath(const std::string& path);
     const std::string& getPath();
-
+    void FillBucket();
     spic::Point persue();
 
     spic::Point seek(spic::Point target);

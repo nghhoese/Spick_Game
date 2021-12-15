@@ -261,6 +261,7 @@ void LevelController::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::s
     guardObject->AddComponent(sprite);
     sprite->SetSprite(enemy->getPath());
     enemy->OnStart();
+    //enemy->FillBucket();
 }
 
 void LevelController::BuildLevelObjectPosition(std::shared_ptr<spic::GameObject> object, std::tuple<int, int> position) {
