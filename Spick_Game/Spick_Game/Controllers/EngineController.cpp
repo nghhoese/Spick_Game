@@ -1,5 +1,4 @@
 #include "EngineController.hpp"
-#include "../Scenes/CreditsSceneBuilder.hpp"
 
 static EngineController* instance;
 
@@ -100,6 +99,16 @@ void EngineController::SetIsInLevelTransition(bool transitionBool)
 	engine->setIsInLevelTransition(transitionBool);
 }
 
+bool EngineController::GetCheatsEnabled()
+{
+	return engine->getCheatsEnabled();
+}
+
+void EngineController::SetCheatsEnabled(bool cheatsBool)
+{
+	engine->setCheatsEnabled(cheatsBool);
+}
+
 void EngineController::BuildLevels()
 {
 	std::shared_ptr<LevelSceneBuilder> levelSceneBuilder = std::make_shared<LevelSceneBuilder>();
@@ -136,6 +145,23 @@ void EngineController::BuildCreditScene()
 	std::shared_ptr<CreditsSceneBuilder> creditsSceneBuilder = std::make_shared<CreditsSceneBuilder>();
 	std::shared_ptr<spic::Scene> creditsScene = creditsSceneBuilder->BuildScene();
 	EngineController::GetInstance()->AddScene(creditsScene);
+}
+
+void EngineController::StartGame()
+{
+	CreateNewWindow("Tactical Stealth", 1920, 1080);
+	std::shared_ptr<spic::Scene> mainMenu = BuildMainMenu();
+
+	AddScene(mainMenu);
+	BuildLevels();
+	MusicController::GetInstance()->SetLevelMusic();
+	MusicController::GetInstance()->SetMainMenuMusic(mainMenu);
+	BuildGameOverScene();
+	BuildCheatScene();
+	BuildHelpScene();
+	BuildCreditScene();
+	SetActiveScene(mainMenu);
+	StartGameLoop();
 }
 
 float EngineController::GetTime()

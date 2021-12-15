@@ -19,8 +19,12 @@ private:
 	bool speeddown;
 	bool pausing;
 	bool clicked;
+	bool cheatsClicked;
 	bool paused;
 	bool loadFps;
+	bool hitbox;
+	void SetObjectsHitBox(spic::GameObject playerObject);
+	void ResetCheats(spic::GameObject playerObject);
 public:
 	InputScript();
 	const void checkMouseButtons();
@@ -46,10 +50,14 @@ public:
 	bool GetPausing() { return this->pausing; };
 	void SetClicked(bool value) { this->clicked = value; };
 	bool GetClicked() { return this->clicked; };
+	void SetCheatsClicked(bool value) { this->cheatsClicked = value; };
+	bool GetCheatsClicked() { return this->cheatsClicked; };
 	void SetPaused(bool value) { this->paused = value; };
 	bool GetPaused() { return this->paused; };
 	void SetLoadFps(bool value) { this->loadFps = value; };
 	bool GetLoadFps() { return this->loadFps; };
+	void SetHitbox(bool value) { this->hitbox = value; };
+	bool GetHitbox() { return this->hitbox; };
 	void PauseGame();
 	void UnPauseGame();
 };

@@ -6,6 +6,8 @@
 #include "../Scenes/GameOverSceneBuilder.hpp"
 #include "../Scenes/CheatsMenuBuilder.hpp"
 #include "../Scenes/HelpSceneBuilder.hpp"
+#include "../Scenes/CreditsSceneBuilder.hpp"
+#include "MusicController.hpp"
 
 class EngineController {
 private:
@@ -28,11 +30,14 @@ public:
 	int GetCurrentLevel();
 	bool GetIsInLevelTransition();
 	void SetIsInLevelTransition(bool transitionBool);
+	bool GetCheatsEnabled();
+	void SetCheatsEnabled(bool cheatsBool);
 	void BuildLevels();
 	void BuildGameOverScene();
 	void BuildCheatScene();
 	void BuildHelpScene();
 	void BuildCreditScene();
+	void StartGame();
 	float GetTime();
 	std::shared_ptr<spic::Scene> BuildMainMenu();
 	std::shared_ptr<spic::Scene> GetSceneByName(const std::string& sceneName);

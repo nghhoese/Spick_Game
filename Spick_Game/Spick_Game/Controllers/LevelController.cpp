@@ -256,7 +256,6 @@ void LevelController::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::s
     std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
     boxCollider->Height(58);
     boxCollider->Width(50);
-    boxCollider->ShowBoxBool(true);
     guardObject->AddComponent(boxCollider);
     guardObject->AddComponent(sprite);
     sprite->SetSprite(enemy->getPath());
@@ -295,7 +294,6 @@ void LevelController::BuildLevelPlayer(std::shared_ptr<spic::Scene> scene, std::
     std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
     boxCollider->Height(50);
     boxCollider->Width(50);
-    boxCollider->ShowBoxBool(true);
     boxCollider->SetPlayerBool(true);
     playerObject->AddComponent(boxCollider);
 
