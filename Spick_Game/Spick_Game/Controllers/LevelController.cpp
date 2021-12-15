@@ -156,7 +156,6 @@ void LevelController::BuildLevelTile(std::shared_ptr<spic::Scene> scene, std::sh
     std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
     boxCollider->Height(64);
     boxCollider->Width(64);
-    boxCollider->ShowBoxBool(true);
     tileObject->AddComponent(boxCollider);
     if (std::filesystem::exists(basePath + bmpFileString)) {
         tileSprite->SetSprite(basePath + bmpFileString);
