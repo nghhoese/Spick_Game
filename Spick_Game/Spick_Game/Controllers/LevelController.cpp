@@ -215,7 +215,7 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
             for (std::pair<std::string, std::any> value : object) {
                 if (value.first._Equal("position")) {
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
-                    BuildLevelEnemy(scene, sprite, position, "enemy_green.bmp", "green", "guard", 100, 1.5, 40);
+                    BuildLevelEnemy(scene, sprite, position, "enemy_green.bmp", "green", "guard", 100, 1.5, 30,1);
                 }
             } 
         }
@@ -223,7 +223,7 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
             for (std::pair<std::string, std::any> value : object) {
                 if (value.first._Equal("position")) {
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
-                    BuildLevelEnemy(scene, sprite, position, "enemy_red.bmp", "red", "guard", 75, 2.5, 50);
+                    BuildLevelEnemy(scene, sprite, position, "enemy_red.bmp", "red", "guard", 75, 2.5, 49,1);
                 }
             }
       }
@@ -231,7 +231,7 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
             for (std::pair<std::string, std::any> value : object) {
                 if (value.first._Equal("position")) {
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
-                    BuildLevelEnemy(scene, sprite, position, "enemy_blue.bmp", "blue", "guard", 150, 1.5, 50);
+                    BuildLevelEnemy(scene, sprite, position, "enemy_blue.bmp", "blue", "guard", 150, 1.5, 50,1);
                 }             
             }          
         }
@@ -247,7 +247,7 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
     }
 }
 
-void LevelController::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, std::tuple<int, int> position, const std::string& spriteName, const std::string& colourTag, const std::string& typeTag, int healthPoints, double speed, int damage) {
+void LevelController::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, std::tuple<int, int> position, const std::string& spriteName, const std::string& colourTag, const std::string& typeTag, int healthPoints, double speed, int damage,int magazine) {
     std::shared_ptr<spic::GameObject> guardObject = std::make_shared<spic::GameObject>("Guard");
     guardObject->AddTag(colourTag);
     guardObject->AddTag(typeTag);
@@ -258,6 +258,7 @@ void LevelController::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::s
     std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>();
     enemy->setHealthpoints(healthPoints);
     enemy->setSpeed(speed);
+    enemy->SetMagazine(magazine);
     enemy->setDamagePerBullet(damage);
     guardObject->AddComponent(enemy);
     enemy->setPath("assets/" + spriteName);
@@ -269,6 +270,7 @@ void LevelController::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::s
     guardObject->AddComponent(sprite);
     sprite->SetSprite(enemy->getPath());
     enemy->OnStart();
+    enemy->FillBucket();
 }
 
 void LevelController::BuildBoss(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, const std::tuple<int, int> position) {
