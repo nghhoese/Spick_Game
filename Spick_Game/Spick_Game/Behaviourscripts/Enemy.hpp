@@ -1,11 +1,11 @@
 #pragma once
 
 #include "API_Headers/BehaviourScript.hpp"
-#include "../Behaviourscripts/SteeringBehaviour.hpp"
 #include "API_Headers/Point.hpp"
 #include <math.h>
 #include <string>
 #include "API_Headers/Time.hpp"
+#include "../Controllers/AIController.hpp"
 
 class Enemy : public spic::BehaviourScript {
 private:
@@ -29,6 +29,8 @@ private:
     spic::Point acc; //versnelling
     spic::Point vel; //snelheid
     double CalculateRotation(spic::Point pos1, spic::Point pos2);
+    std::unique_ptr<AIController> AI;
+    bool notInitialized;
 public:
     Enemy();
     void OnAwake();

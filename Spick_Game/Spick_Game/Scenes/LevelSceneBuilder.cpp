@@ -25,6 +25,8 @@ std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(int levelNumber)
     hp->AddTag("hp");
     std::shared_ptr<spic::Text> magazine = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, 175, 0);
     magazine->AddTag("Magazine");
+    std::shared_ptr<spic::Text> cheats = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, 1000, 0);
+    cheats->AddTag("cheats");
     std::shared_ptr<spic::Text> fps = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, 1800, 0);
     fps->AddTag("fps");
     std::shared_ptr<spic::Text> paused = std::make_shared<spic::Text>("PAUSED", "Capsmall", 140, textColor, 700, 175);
@@ -37,6 +39,7 @@ std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(int levelNumber)
     BackToMenu->SetActive(false);
     GameScene->AddGameObject(hp);
     GameScene->AddGameObject(magazine);
+    GameScene->AddGameObject(cheats);
     GameScene->AddGameObject(fps);
     GameScene->AddGameObject(paused);
     GameScene->AddGameObject(BackToMenu);
@@ -55,12 +58,7 @@ void LevelSceneBuilder::BuildLevel(int levelNumber) {
     std::shared_ptr<InputScript> inputScript = std::make_shared<InputScript>();
     InputObject->AddComponent(inputScript);
 
-    std::shared_ptr<spic::GameObject> SteeringBehaviourObject = std::make_shared<spic::GameObject>("SteeringBehaviour");
-    std::shared_ptr<SteeringBehaviour> steeringBehaviour = std::make_shared<SteeringBehaviour>();
-    SteeringBehaviourObject->AddComponent(steeringBehaviour);
-
     std::shared_ptr<spic::Scene> levelScene = BuildLevelScene(levelNumber);
     levelScene->AddGameObject(InputObject);
-    levelScene->AddGameObject(SteeringBehaviourObject);
     EngineController::GetInstance()->AddScene(levelScene);
 }

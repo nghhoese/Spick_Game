@@ -13,7 +13,7 @@ void Player::OnAwake()
 void Player::OnStart()
 {
 	SetStart();
-	SetEnd();	
+	SetEnd();
 }
 
 void Player::OnClick()
@@ -62,7 +62,7 @@ void Player::OnUpdate()
 			magazine = magazine + currentMagazine;
 			coolDown = 50;
 		}
-	}	
+	}
 }
 
 void Player::OnRender()

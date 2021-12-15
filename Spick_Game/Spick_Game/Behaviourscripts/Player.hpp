@@ -31,6 +31,7 @@ private:
     double speed;
     bool notClicked;
     bool isDamageless;
+    bool hasCollision;
     spic::Point endPointTopLeft;
     spic::Point endPointBottomRight;
     spic::Point aimAngle;
@@ -66,6 +67,8 @@ public:
     bool GetNotClicked() { return this->notClicked; };
     void SetIsDamageless(bool value) { this->isDamageless = value; };
     bool GetIsDamageLess() { return this->isDamageless; };
+    void SetHasCollision(bool value) { this->hasCollision = value; };
+    bool GetHasCollision() { return this->hasCollision; };
     void SetMagazine(int value) { this->magazine = value; };
     int GetMagazine() { return this->magazine; };
     void SetStart();
