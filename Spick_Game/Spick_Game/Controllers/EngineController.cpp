@@ -1,4 +1,6 @@
 #include "EngineController.hpp"
+#include <windows.h>
+
 
 static EngineController* instance;
 
@@ -149,7 +151,10 @@ void EngineController::BuildCreditScene()
 
 void EngineController::StartGame()
 {
-	CreateNewWindow("Tactical Stealth", 1920, 1080);
+	int x = GetSystemMetrics(SM_CXSCREEN);
+	int y = GetSystemMetrics(SM_CYSCREEN);
+
+	CreateNewWindow("Tactical Stealth", x, y);
 	std::shared_ptr<spic::Scene> mainMenu = BuildMainMenu();
 
 	AddScene(mainMenu);

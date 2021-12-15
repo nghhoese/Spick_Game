@@ -1,4 +1,4 @@
-﻿  Bullet.cpp
+﻿  MainMenuBuilder.cpp
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(11,55): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::BehaviourScript'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(15): message : see declaration of 'spic::Component'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(11): message : see declaration of 'spic::BehaviourScript'
@@ -19,11 +19,11 @@ C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(163,15): w
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Color.hpp(11): message : see declaration of 'spic::Color'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(175,44): warning C4251: 'spic::Sprite::imageFacade': class 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(175): message : see declaration of 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>'
-C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Animator.hpp(14,48): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::Animator'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AudioSource.hpp(20,51): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::AudioSource'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(15): message : see declaration of 'spic::Component'
-C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Animator.hpp(14): message : see declaration of 'spic::Animator'
-C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Animator.hpp(69,50): warning C4251: 'spic::Animator::sprites': class 'std::vector<std::shared_ptr<spic::Sprite>,std::allocator<std::shared_ptr<spic::Sprite>>>' needs to have dll-interface to be used by clients of class 'spic::Animator'
-C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Animator.hpp(32): message : see declaration of 'std::vector<std::shared_ptr<spic::Sprite>,std::allocator<std::shared_ptr<spic::Sprite>>>'
-C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Animator.hpp(70,48): warning C4251: 'spic::Animator::imageFacade': class 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>' needs to have dll-interface to be used by clients of class 'spic::Animator'
-C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(175): message : see declaration of 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AudioSource.hpp(20): message : see declaration of 'spic::AudioSource'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AudioSource.hpp(121,25): warning C4251: 'spic::AudioSource::audioClip': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::AudioSource'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AudioSource.hpp(147,48): warning C4251: 'spic::AudioSource::soundFacade': class 'std::unique_ptr<spic::SoundFacade,std::default_delete<spic::SoundFacade>>' needs to have dll-interface to be used by clients of class 'spic::AudioSource'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AudioSource.hpp(147): message : see declaration of 'std::unique_ptr<spic::SoundFacade,std::default_delete<spic::SoundFacade>>'
   Spick_Game.vcxproj -> C:\Spic\Spick_Game\Spick_Game\Debug\Spick_Game.exe
