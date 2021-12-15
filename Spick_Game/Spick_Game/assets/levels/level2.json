@@ -88,24 +88,13 @@
                 }, 
                 {
                  "height":64,
-                 "id":12,
-                 "name":"GreenGuard",
-                 "rotation":0,
-                 "type":"Enemy",
-                 "visible":true,
-                 "width":64,
-                 "x":1344,
-                 "y":640
-                }, 
-                {
-                 "height":64,
                  "id":13,
                  "name":"RedGuard",
                  "rotation":0,
                  "type":"Enemy",
                  "visible":true,
                  "width":64,
-                 "x":832,
+                 "x":1088,
                  "y":128
                 }, 
                 {
@@ -140,17 +129,6 @@
                  "width":64,
                  "x":512,
                  "y":448
-                }, 
-                {
-                 "height":64,
-                 "id":18,
-                 "name":"RedGuard",
-                 "rotation":0,
-                 "type":"Enemy",
-                 "visible":true,
-                 "width":64,
-                 "x":256,
-                 "y":576
                 }],
          "opacity":1,
          "type":"objectgroup",
