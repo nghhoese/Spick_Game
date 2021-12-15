@@ -100,6 +100,11 @@
     <Image Include="assets\back.jpg" />
     <Image Include="assets\Boss.png" />
     <Image Include="assets\mainmenubutton.jpg" />
+    <Image Include="assets\quitbutton.jpg" />
+    <Image Include="assets\playbutton.jpg" />
+    <Image Include="assets\helpbutton.jpg" />
+    <Image Include="assets\creditsbutton.jpg" />
+    <Image Include="assets\title.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\Fonts\Capsmall.ttf" />
