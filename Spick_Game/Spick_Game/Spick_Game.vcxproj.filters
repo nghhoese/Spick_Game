@@ -94,6 +94,8 @@
     <Image Include="assets\player_pistol_silenced_hit.png" />
     <Image Include="assets\player_sub-machinegun.bmp" />
     <Image Include="assets\back.jpg" />
+    <Image Include="assets\Boss.png" />
+    <Image Include="assets\mainmenubutton.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\Fonts\Capsmall.ttf" />

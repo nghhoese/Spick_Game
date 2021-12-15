@@ -201,8 +201,10 @@
     <ClInclude Include="Scenes\SceneBuilder.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\..\Users\rensa\Downloads\Boss.png" />
     <Image Include="assets\back.jpg" />
     <Image Include="assets\back.png" />
+    <Image Include="assets\Boss.png" />
     <Image Include="assets\bullet.bmp" />
     <Image Include="assets\button.jpg" />
     <Image Include="assets\enemy_blue.bmp" />
@@ -245,6 +247,7 @@
     <Image Include="assets\images\foregrounds\stone_half_wall_top-right-corner.png" />
     <Image Include="assets\images\foregrounds\stone_half_wall_top-right.png" />
     <Image Include="assets\images\foregrounds\stone_half_wall_top.png" />
+    <Image Include="assets\mainmenubutton.jpg" />
     <Image Include="assets\menu.png" />
     <Image Include="assets\player_pistol_silenced.png" />
     <Image Include="assets\player_pistol_silenced_hit.png" />
