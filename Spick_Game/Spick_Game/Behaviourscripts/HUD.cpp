@@ -54,10 +54,14 @@ void HUD::OnUpdate()
 	std::shared_ptr<spic::GameObject> cheatsObject = GetGameObject()->getScene()->GetGameObjectsByTag("cheats")[0];
 	std::shared_ptr<spic::Text> cheatsText = std::dynamic_pointer_cast<spic::Text>(cheatsObject);
 	if (EngineController::GetInstance()->GetCheatsEnabled()) {
-		cheatsText->SetText("Cheats Enabled");
+		if (cheatsText->GetText() != "Cheats Enabled") {
+			cheatsText->SetText("Cheats Enabled");
+		}
 	}
 	if (!EngineController::GetInstance()->GetCheatsEnabled()) {
-		cheatsText->SetText("");
+		if (cheatsText->GetText() != "") {
+			cheatsText->SetText("");
+		}
 	}
 }
 
