@@ -6,6 +6,8 @@
 #include "../Scenes/GameOverSceneBuilder.hpp"
 #include "../Scenes/CheatsMenuBuilder.hpp"
 #include "../Scenes/HelpSceneBuilder.hpp"
+#include "../Scenes/CreditsSceneBuilder.hpp"
+#include "MusicController.hpp"
 
 class EngineController {
 private:
@@ -33,6 +35,7 @@ public:
 	void BuildCheatScene();
 	void BuildHelpScene();
 	void BuildCreditScene();
+	void StartGame();
 	float GetTime();
 	std::shared_ptr<spic::Scene> BuildMainMenu();
 	std::shared_ptr<spic::Scene> GetSceneByName(const std::string& sceneName);
