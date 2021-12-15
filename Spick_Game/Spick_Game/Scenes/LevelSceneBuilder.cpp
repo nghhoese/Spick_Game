@@ -25,7 +25,7 @@ std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(int levelNumber)
     hp->AddTag("hp");
     std::shared_ptr<spic::Text> magazine = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, ((camera->getAspectWidth() - camera->getAspectWidth()) + 175), 0);
     magazine->AddTag("Magazine");
-    std::shared_ptr<spic::Text> cheats = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, (camera->getAspectWidth() - 1000), 0);
+    std::shared_ptr<spic::Text> cheats = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, (camera->getAspectWidth() - 600), 0);
     cheats->AddTag("cheats");
     std::shared_ptr<spic::Text> fps = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, (camera->getAspectWidth() - 125), 0);
     fps->AddTag("fps");

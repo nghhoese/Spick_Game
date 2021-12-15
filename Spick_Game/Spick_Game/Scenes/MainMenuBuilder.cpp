@@ -3,6 +3,9 @@
 std::shared_ptr<spic::Scene> MainMenuBuilder::BuildScene() {
     std::shared_ptr<spic::Scene> scene = std::make_shared<spic::Scene>("MainMenu");
 
+    int screenWidth = EngineController::GetInstance()->GetScreenWidth();
+    int screenHeight = EngineController::GetInstance()->GetScreenHeight();
+
     std::shared_ptr<spic::GameObject> background = std::make_shared<spic::GameObject>("Background");
     std::shared_ptr<spic::Sprite> sprite = std::make_shared<spic::Sprite>();
     scene->AddGameObject(background);
