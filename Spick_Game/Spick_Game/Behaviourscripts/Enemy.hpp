@@ -51,6 +51,7 @@ private:
     std::vector<std::shared_ptr<Bullet>> bullets;
     std::shared_ptr<spic::GameObject> player;
     std::shared_ptr<spic::Sprite> sprite;
+    bool hit;
 public:
     Enemy();
     void OnAwake();

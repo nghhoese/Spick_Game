@@ -95,7 +95,7 @@ void Boss::OnUpdate()
             spic::Point steering;
             steering.x = 0;
             steering.y = 0;
-
+            
             if (IfPlayerNearby())
             {
                 double Delta_x = (trans.position.x - player->getTransform()->position.x);
@@ -103,14 +103,13 @@ void Boss::OnUpdate()
 
                 double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
                 trans.rotation = Result + 90;
-
+                
                 if (!InShootingRange())
                 {
                     steering = AI->Persue();
                     acc.Add(steering);
                     vel.Add(acc);
                     vel.Limit(10);
-
                     trans.position.Add(vel);
                 }
                 else {

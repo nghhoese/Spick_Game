@@ -38,7 +38,7 @@ bool Enemy::InShootingRange()
         enemyPos.y - shootingSpace <= playerPos.y);
 }
 
-Enemy::Enemy() : speed(1.5), turnCount(0), isTurned(false), isAlive(true), notInitialized(true), ammo(0), magazine(1), bulletDamage(30), coolDown(50), currentMagazine(magazine), bulletSpeed(10)
+Enemy::Enemy() : hit(false), speed(1.5), turnCount(0), isTurned(false), isAlive(true), notInitialized(true), ammo(0), magazine(1), bulletDamage(30), coolDown(50), currentMagazine(magazine), bulletSpeed(10)
 {
 }
 
@@ -71,20 +71,20 @@ void Enemy::OnUpdate()
 		trans.position.y = -10;
 		GetGameObject()->setTransform(&trans);
 		GetGameObject()->GetComponent<spic::Sprite>()->OnRender();
+        hit = false;
 	}
 
     if (isAlive)
     {
        	if (Collision::AABB(GetGameObject(), "PlayerBullet")) {
-        auto bullet = Collision::AABB(GetGameObject(), "PlayerBullet")->GetGameObject()->GetComponent<spic::BehaviourScript>();
-        std::shared_ptr<Bullet> bulletObj = std::dynamic_pointer_cast<Bullet>(bullet);
+            auto bullet = Collision::AABB(GetGameObject(), "PlayerBullet")->GetGameObject()->GetComponent<spic::BehaviourScript>();
+            std::shared_ptr<Bullet> bulletObj = std::dynamic_pointer_cast<Bullet>(bullet);
        
-           setHealthpoints(getHealthpoints() - bulletObj->GetDamage());
+            setHealthpoints(getHealthpoints() - bulletObj->GetDamage());
             bulletObj->SetBroken(true);
             setPath("assets/enemy_hit.png");
-
-        
-    }
+            hit = true;
+        }
         if (GetGameObject()->getScene()->GetGameObjectsByName("Player").size() > 0) {
             if (notInitialized)
             {
@@ -100,44 +100,54 @@ void Enemy::OnUpdate()
             spic::Point steering;
             steering.x = 0;
             steering.y = 0;
-       
-            if (IfPlayerNearby())
+            
+            if (hit)
             {
-                double Delta_x = (trans.position.x - player->getTransform()->position.x);
-                double Delta_y = (trans.position.y - player->getTransform()->position.y);
-
-                double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
-                trans.rotation = Result + 90;
-
-                if (!InShootingRange())
-                {
-                    steering = AI->Persue();
-                    acc.Add(steering);
-                    vel.Add(acc);
-                    vel.Limit(10);
-
-                    trans.position.Add(vel);
-                }
-                else {
-                    //shoot at player
-                    Shoot();
-                }
-            }
-            else {
-                steering = AI->Wander();
-                double Delta_x = (trans.position.x - AI->GetSight().x);
-                double Delta_y = (trans.position.y - AI->GetSight().y);
-
-                double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
-                trans.rotation = Result + 90;
-
+                steering = AI->Persue();
                 acc.Add(steering);
                 vel.Add(acc);
-
                 vel.Limit(10);
                 trans.position.Add(vel);
             }
-        
+            else {
+                if (IfPlayerNearby())
+                {
+                    double Delta_x = (trans.position.x - player->getTransform()->position.x);
+                    double Delta_y = (trans.position.y - player->getTransform()->position.y);
+
+                    double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
+                    trans.rotation = Result + 90;
+
+                    if (!InShootingRange())
+                    {
+                        steering = AI->Persue();
+                        acc.Add(steering);
+                        vel.Add(acc);
+                        vel.Limit(10);
+
+                        trans.position.Add(vel);
+                    }
+                    else {
+                        //shoot at player
+                        Shoot();
+                    }
+                }
+                else {
+                    steering = AI->Wander();
+                    double Delta_x = (trans.position.x - AI->GetSight().x);
+                    double Delta_y = (trans.position.y - AI->GetSight().y);
+
+                    double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
+                    trans.rotation = Result + 90;
+
+                    acc.Add(steering);
+                    vel.Add(acc);
+
+                    vel.Limit(10);
+                    trans.position.Add(vel);
+                }
+            }
+
             GetGameObject()->setTransform(&trans);
         }
     }
