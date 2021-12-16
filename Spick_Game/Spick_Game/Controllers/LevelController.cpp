@@ -273,28 +273,30 @@ void LevelController::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::s
 void LevelController::BuildBoss(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, const std::tuple<int, int> position) {
     std::shared_ptr<spic::GameObject> boss = std::make_shared<spic::GameObject>("Boss");
     scene->AddGameObject(boss);
+
     spic::Transform transfrom = *boss->getTransform();
     transfrom.position.x = std::get<0>(position);
     transfrom.position.y = std::get<1>(position);
-    transfrom.scale = 1.2;
+    transfrom.scale = 1;
     boss->setTransform(&transfrom);
 
-    std::shared_ptr<Boss> enemy = std::make_shared<Boss>();
-    enemy->setHealthpoints(100);
-    enemy->setSpeed(0);
-    enemy->setDamagePerBullet(50);
-    boss->AddComponent(enemy);
-    enemy->setPath("assets/boss.png");
+    std::shared_ptr<Boss> bossScript = std::make_shared<Boss>();
+    bossScript->setHealthpoints(100);
+    bossScript->setSpeed(0);
+    bossScript->setDamagePerBullet(40);
+    boss->AddComponent(bossScript);
+    bossScript->setPath("assets/boss2.png");
 
     std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
-    boxCollider->Height(200);
-    boxCollider->Width(200);
+    boxCollider->Height(143);
+    boxCollider->Width(143);
     boxCollider->ShowBoxBool(true);
     boss->AddComponent(boxCollider);
     boss->AddComponent(sprite);
-    sprite->SetSprite(enemy->getPath());
+    sprite->SetSprite(bossScript->getPath());
     
-    enemy->OnStart();
+    bossScript->OnStart();
+    bossScript->FillBucket();
 }
 
 void LevelController::BuildLevelObjectPosition(std::shared_ptr<spic::GameObject> object, std::tuple<int, int> position) {
