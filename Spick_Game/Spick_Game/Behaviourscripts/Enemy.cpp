@@ -38,7 +38,7 @@ bool Enemy::InShootingRange()
         enemyPos.y - shootingSpace <= playerPos.y);
 }
 
-Enemy::Enemy() : speed(1.5), turnCount(0), isTurned(false), isAlive(true), notInitialized(true), ammo(0), magazine(1), bulletDamage(30), coolDown(50), currentMagazine(magazine), bulletSpeed(10), triggerSpace(250), shootingSpace(150), persueCount(0), wandertheta(0)
+Enemy::Enemy() : hit(false), speed(1.5), turnCount(0), isTurned(false), isAlive(true), notInitialized(true), ammo(0), magazine(1), bulletDamage(30), coolDown(50), currentMagazine(magazine), bulletSpeed(10), triggerSpace(300), shootingSpace(175), persueCount(0), wandertheta(0)
 {
 }
 
@@ -65,6 +65,7 @@ void Enemy::OnUpdate()
 {
 	if (this->healthpoints < 0) {
         isAlive = false;
+        hit = false;
 		auto trans = *GetGameObject()->getTransform();
 		trans.scale = 0.01;
 		trans.position.x = -50;
@@ -82,7 +83,7 @@ void Enemy::OnUpdate()
            setHealthpoints(getHealthpoints() - bulletObj->GetDamage());
             bulletObj->SetBroken(true);
             setPath("assets/enemy_hit.png");
-
+            hit = true;
         
     }
         if (GetGameObject()->getScene()->GetGameObjectsByName("Player").size() > 0) {
@@ -100,7 +101,28 @@ void Enemy::OnUpdate()
             steering.x = 0;
             steering.y = 0;
        
-            if (IfPlayerNearby())
+            if (hit)
+            {
+                double Delta_x = (trans.position.x - player->getTransform()->position.x);
+                double Delta_y = (trans.position.y - player->getTransform()->position.y);
+
+                double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
+                trans.rotation = Result + 90;
+
+                if (!InShootingRange())
+                {
+                    steering = AI->Persue();
+                    acc.Add(steering);
+                    vel.Add(acc);
+                    vel.Limit(10);
+
+                    trans.position.Add(vel);
+                }
+                else {
+                    //shoot at player
+                    Shoot();
+                }
+            }else if (IfPlayerNearby())
             {
                 double Delta_x = (trans.position.x - player->getTransform()->position.x);
                 double Delta_y = (trans.position.y - player->getTransform()->position.y);
