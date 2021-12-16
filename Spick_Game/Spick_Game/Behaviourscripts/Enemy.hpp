@@ -54,6 +54,9 @@ private:
     void CalculateRotation(spic::Point object, spic::Point target);
     void Attack();
     void Shoot();
+    void BulletHandling();
+    void DoEnemyThings();
+    void HandleHealth();
 
 public:
     Enemy();
