@@ -38,7 +38,7 @@ bool Enemy::InShootingRange()
         enemyPos.y - shootingSpace <= playerPos.y);
 }
 
-Enemy::Enemy() : speed(1.5), turnCount(0), isTurned(false), isAlive(true), notInitialized(true), ammo(0), magazine(1), bulletDamage(30), coolDown(50), currentMagazine(magazine), bulletSpeed(10)
+Enemy::Enemy() : speed(1.5), turnCount(0), isTurned(false), isAlive(true), notInitialized(true), ammo(0), magazine(1), bulletDamage(30), coolDown(50), currentMagazine(magazine), bulletSpeed(10), triggerSpace(250), shootingSpace(150), persueCount(0), wandertheta(0)
 {
 }
 

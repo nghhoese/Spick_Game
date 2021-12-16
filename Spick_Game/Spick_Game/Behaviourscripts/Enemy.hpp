@@ -24,21 +24,21 @@ private:
     int healthpoints;
     int damagePerBullet;
     bool isTurned = false;
-    int turnCount = 0;
+    int turnCount;
     double speed;
     bool IfPlayerNearby();
     bool InShootingRange();
-    bool isShooting = false;;
-    int triggerSpace = 250;
-    int shootingSpace = 150;
+    bool isShooting = false;
+    int triggerSpace;
+    int shootingSpace;
     spic::Point sight;
     bool check = false;
     bool isPersuing = false;
-    int persueCount = 0;
-    double wandertheta = 0;
+    int persueCount;
+    double wandertheta;
     bool isAlive = true;
-    spic::Point acc; //versnelling
-    spic::Point vel; //snelheid
+    spic::Point acc; 
+    spic::Point vel; 
     std::unique_ptr<AIController> AI;
     bool notInitialized;
     void Shoot();
