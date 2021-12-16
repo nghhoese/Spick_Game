@@ -21,11 +21,12 @@ std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(int levelNumber)
     GameScene->SetActiveCamera("mainCamera");
 
     spic::Color textColor = spic::Color(1.0, 1.0, 1.0, 1.0);
+    spic::Color cheatsColor = spic::Color(0.0, 1.0, 0.0, 1.0);
     std::shared_ptr<spic::Text> hp = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, (camera->getAspectWidth() - camera->getAspectWidth()), 0);
     hp->SetName("hp");
     std::shared_ptr<spic::Text> magazine = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, ((camera->getAspectWidth() - camera->getAspectWidth()) + 175), 0);
     magazine->SetName("Magazine");
-    std::shared_ptr<spic::Text> cheats = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, (camera->getAspectWidth() - 600), 0);
+    std::shared_ptr<spic::Text> cheats = std::make_shared<spic::Text>("", "Capsmall", 30, cheatsColor, (camera->getAspectWidth() - 600), 0);
     cheats->SetName("cheats");
     std::shared_ptr<spic::Text> fps = std::make_shared<spic::Text>("", "Capsmall", 30, textColor, (camera->getAspectWidth() - 125), 0);
     fps->SetName("fps");

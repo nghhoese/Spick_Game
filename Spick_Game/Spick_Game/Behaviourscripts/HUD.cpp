@@ -1,4 +1,4 @@
-#include "HUD.hpp"
+﻿#include "HUD.hpp"
 #include <API_Headers/AudioSource.hpp>
 
 HUD::HUD() : fps(0), accumelatedDeltaTime(0), sec(1000)
@@ -20,6 +20,12 @@ void HUD::OnUpdate()
 
 	std::shared_ptr<spic::GameObject> healthObject = GetGameObject()->getScene()->GetGameObjectsByName("hp")[0];
 	std::shared_ptr<spic::Text> healthText = std::dynamic_pointer_cast<spic::Text>(healthObject);
+	if (this->isDamageless) {
+		healthText->SetColor(spic::Color(0.0, 1.0, 0.0, 1.0));
+	}
+	else {
+		healthText->SetColor(spic::Color(1.0, 1.0, 1.0, 1.0));
+	}
 	if (currentHealthPoints != healthpoints) {
 		healthText->SetText("Health: " + std::to_string(this->healthpoints));
 	}
