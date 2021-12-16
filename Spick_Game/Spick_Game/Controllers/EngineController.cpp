@@ -157,7 +157,7 @@ void EngineController::BuildCompletedScene()
 
 void EngineController::StartGame()
 {
-	CreateNewWindow("Tactical Stealth", GetScreenWidth(), GetScreenHeight());
+	CreateNewWindow("Tactical Stealth", 1000, 500);
 	std::shared_ptr<spic::Scene> mainMenu = BuildMainMenu();
 
 	AddScene(mainMenu);

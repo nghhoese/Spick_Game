@@ -64,9 +64,9 @@ spic::Point AIController::WallAvoidance(spic::Point target)
     auto temp = persuer.get();
     auto wall = Collision::AABB(persuer.get(), "wall");
 
-    if (wall)
+    if (!wall.empty())
     {
-        auto wallPos = wall->GetGameObject()->getTransform()->position;
+        auto wallPos = wall[0]->GetGameObject()->getTransform()->position;
         if (wallPos.y >= persuer->getTransform()->position.y)
         {
             target.y += (-1000);
