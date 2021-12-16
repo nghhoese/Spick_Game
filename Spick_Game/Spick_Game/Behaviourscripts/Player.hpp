@@ -32,16 +32,11 @@ private:
     bool notClicked;
     bool isDamageless;
     bool hasCollision;
-    spic::Point endPointTopLeft;
-    spic::Point endPointBottomRight;
     spic::Point aimAngle;
     spic::Point aimPos;
-  
-
     std::vector<std::shared_ptr<Bullet>> bullets;
     std::shared_ptr<spic::Sprite> sprite;
     std::shared_ptr<spic::GameObject> InputObject;
-    std::shared_ptr<spic::GameObject> endPointObject;
 public:
     Player();
     void FillBucket();
