@@ -5,41 +5,36 @@
 #include <API_Headers/Collision.hpp>
 #include "../Scenes/LevelSceneBuilder.hpp"
 
-
-bool Boss::IfPlayerNearby()
-{
-    return true;
-}
-
-bool Boss::InShootingRange()
-{
-    return true;
-}
-
-Boss::Boss() : speed(0), turnCount(0), isTurned(false), isAlive(true), notInitialized(true), magazine(20), bulletDamage(10), coolDown(90), currentMagazine(magazine), bulletSpeed(20), burstSpeed(3), healthpoints(1000), maxhealthpoints(healthpoints)
+Boss::Boss() : burstCooldown(0), bulletCounter(0), isAlive(true), notInitialized(true), magazine(20), bulletDamage(10), coolDown(90), currentMagazine(magazine), bulletSpeed(20), burstSpeed(3), healthpoints(1000), maxhealthpoints(1000)
 {
 }
 
-void Boss::OnAwake()
+void Boss::CalculateRotation(spic::Point object, spic::Point target) 
 {
-}
-
-void Boss::OnStart()
-{
-    auto trans = *GetGameObject()->getTransform();
-    double Delta_x = (trans.position.x);
-    double Delta_y = (trans.position.y);
-
+    double Delta_x = (object.x - target.x);
+    double Delta_y = (object.y - target.y);
     double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
-    trans.rotation = Result + (rand() % 180 + 90);
+    trans.rotation = Result + 90;
     GetGameObject()->setTransform(&trans);
-    vel.x = 0;
-    vel.y = 0;
-    acc.x = 0;
-    acc.y = 0;
 }
 
-void Boss::OnUpdate()
+void Boss::DoBossThings() 
+{
+    if (isAlive)
+    {
+        if (GetGameObject()->getScene()->GetGameObjectsByName("Player").size() > 0) {
+            if (notInitialized)
+            {
+                notInitialized = false;
+                player = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
+            }
+            CalculateRotation(trans.position, player->getTransform()->position);
+            Shoot();
+        }
+    }
+}
+
+void Boss::BulletHandling()
 {
     if (this->healthpoints <= 0) {
         EngineController::GetInstance()->SetActiveScene("CompletedScene");
@@ -55,33 +50,24 @@ void Boss::OnUpdate()
         int percentage = 100 + ((this->healthpoints - this->maxhealthpoints) * 100) / maxhealthpoints;
         bossHpText->SetText("BOSS: " + std::to_string(percentage) + "%");
     }
+}
 
-    if (isAlive)
-    {
-        if (GetGameObject()->getScene()->GetGameObjectsByName("Player").size() > 0) {
-            if (notInitialized)
-            {
-                notInitialized = false;
-                player = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
-                AI = std::make_unique<AIController>(*GetGameObject(), vel, *player, speed);
-            }
+void Boss::OnAwake()
+{
+}
 
-            auto trans = *GetGameObject()->getTransform();
-            auto player = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
-            
-            AI->Update(*GetGameObject(), vel, *player);
+void Boss::OnStart()
+{
+    trans = *GetGameObject()->getTransform();
+    double Result = (atan2(trans.position.y, trans.position.x) * 180.0000) / 3.14159265;
+    trans.rotation = Result + (rand() % 180 + 90);
+    GetGameObject()->setTransform(&trans);
+}
 
-            double Delta_x = (trans.position.x - player->getTransform()->position.x);
-            double Delta_y = (trans.position.y - player->getTransform()->position.y);
-
-            double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
-            trans.rotation = Result + 90;    
-
-            GetGameObject()->setTransform(&trans);
-            
-            Shoot();
-        }
-    }
+void Boss::OnUpdate()
+{
+    BulletHandling();
+    DoBossThings();
 }
 
 

@@ -20,41 +20,33 @@
 
 class Boss : public spic::BehaviourScript {
 private:
-    std::string path;
-    int healthpoints;
-    int damagePerBullet;
-    bool isTurned = false;
-    int turnCount;
-    double speed;
-    bool IfPlayerNearby();
-    bool InShootingRange();
-    bool isShooting = false;
-    int triggerSpace;
-    int shootingSpace;
-    spic::Point sight;
-    bool check = false;
-    bool isPersuing = false;
-    int persueCount;
-    double wandertheta;
+
     bool isAlive = true;
-    spic::Point acc;
-    spic::Point vel;
-    std::unique_ptr<AIController> AI;
     bool notInitialized;
-    void Shoot();
-    int ammo;
+
     int magazine;
     int currentMagazine;
     int coolDown;
     int burstSpeed;
-    int burstCooldown = 0;
+    int burstCooldown;
     int bulletSpeed;
     int bulletDamage;
-    int bulletCounter = 0;
+    int bulletCounter;
     int maxhealthpoints;
+    int healthpoints;
+    int damagePerBullet;
+
+    std::string path;
     std::vector<std::shared_ptr<Bullet>> bullets;
     std::shared_ptr<spic::GameObject> player;
     std::shared_ptr<spic::Sprite> sprite;
+    spic::Transform trans;
+    std::unique_ptr<AIController> AI;
+
+    void Shoot();
+    void CalculateRotation(spic::Point object, spic::Point target);
+    void BulletHandling();
+    void DoBossThings();
 public:
     Boss();
     void OnAwake();
@@ -73,6 +65,4 @@ public:
     int getHealthpoints() { return this->healthpoints; };
     void setDamagePerBullet(int damagePerBullet) { this->damagePerBullet = damagePerBullet; };
     int getDamagePerBullet() { return this->damagePerBullet; };
-    void setSpeed(double speed) { this->speed = speed; }
-    double getSpeed() { return this->speed; }
 };
