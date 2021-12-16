@@ -23,6 +23,7 @@ void Player::OnClick()
 void Player::OnUpdate()
 {
 
+
 		if (!Collision::AABB(GetGameObject(), "EnemyBullet").empty()) {
 			auto bullet = Collision::AABB(GetGameObject(), "EnemyBullet")[0]->GetGameObject()->GetComponent<spic::BehaviourScript>();
 			std::shared_ptr<Bullet> bulletObj = std::dynamic_pointer_cast<Bullet>(bullet);
@@ -43,6 +44,17 @@ void Player::OnUpdate()
 	InputComponent->checkKeys();
 	transfrom.position.x = xPlayer;
 	transfrom.position.y = yPlayer;
+	UpPoint.x = xPlayer  + 25;
+	UpPoint.y = yPlayer;
+
+	DownPoint.x = xPlayer + 25;
+	DownPoint.y = yPlayer + 50;
+
+	LeftPoint.x = xPlayer;
+	LeftPoint.y = yPlayer + 25;
+
+	RightPoint.x = xPlayer + 50;
+	RightPoint.y = yPlayer + 25;
 	GetGameObject()->getScene()->GetActiveCamera()->setX(xPlayer - (GetGameObject()->getScene()->GetActiveCamera()->getAspectWidth() / 2));
 	GetGameObject()->getScene()->GetActiveCamera()->setY(yPlayer - (GetGameObject()->getScene()->GetActiveCamera()->getAspectHeight() / 2));
 	GetGameObject()->getScene()->GetActiveCamera()->UpdateCamera();
@@ -94,6 +106,8 @@ void Player::OnRender()
 		pausedTextObject->SetActive(false);
 		pausedButtonObject->SetActive(false);
 	}
+
+
 }
 
 void Player::OnTriggerEnter2D(const spic::Collider& collider)

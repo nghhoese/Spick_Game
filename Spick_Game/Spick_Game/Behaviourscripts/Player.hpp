@@ -36,6 +36,8 @@ private:
     spic::Point endPointBottomRight;
     spic::Point aimAngle;
     spic::Point aimPos;
+  
+
     std::vector<std::shared_ptr<Bullet>> bullets;
     std::shared_ptr<spic::Sprite> sprite;
     std::shared_ptr<spic::GameObject> InputObject;
@@ -73,4 +75,8 @@ public:
     int GetMagazine() { return this->magazine; };
     void SetStart();
     void SetEnd();
+    spic::Point UpPoint;
+    spic::Point DownPoint;
+    spic::Point LeftPoint;
+    spic::Point RightPoint;
 };
