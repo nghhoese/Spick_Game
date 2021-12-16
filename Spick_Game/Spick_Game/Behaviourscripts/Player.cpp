@@ -23,16 +23,13 @@ void Player::OnClick()
 void Player::OnUpdate()
 {
 
-		if (!Collision::AABB(GetGameObject(), "EnemyBullet").empty()) {
-			auto bullet = Collision::AABB(GetGameObject(), "EnemyBullet")[0]->GetGameObject()->GetComponent<spic::BehaviourScript>();
-			std::shared_ptr<Bullet> bulletObj = std::dynamic_pointer_cast<Bullet>(bullet);
-			if (!isDamageless) {
+	if (!Collision::AABB(GetGameObject(), "EnemyBullet").empty()) {
+		auto bullet = Collision::AABB(GetGameObject(), "EnemyBullet")[0]->GetGameObject()->GetComponent<spic::BehaviourScript>();
+		std::shared_ptr<Bullet> bulletObj = std::dynamic_pointer_cast<Bullet>(bullet);
+		if (!isDamageless) {
 			healthpoints = healthpoints - bulletObj->GetDamage();
-			}
-			bulletObj->SetBroken(true);
-
-
-		
+		}
+		bulletObj->SetBroken(true);		
 	}
 	spic::Transform transfrom = *GetGameObject()->getTransform();
 	spic::Point point;
@@ -54,7 +51,7 @@ void Player::OnUpdate()
 	double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
 	transfrom.rotation = Result + 90;
 
-	if (endPointObject != nullptr) {
+	if (GetGameObject()->getScene()->GetGameObjectsByName("Endpoint").size() != 0) {
 		CheckEndPoint();
 	}
 
@@ -205,7 +202,7 @@ void Player::FillBucket()
 }
 
 void Player::SetStart() {
-	if (GetGameObject()->getScene()->GetGameObjectsByName("Startpoint")[0] != nullptr) {
+	if (GetGameObject()->getScene()->GetGameObjectsByName("Startpoint").size() != 0) {
 		auto startPointObject = GetGameObject()->getScene()->GetGameObjectsByName("Startpoint")[0];
 		auto startPointPosition = startPointObject->getTransform();
 		xPlayer = startPointPosition->position.x;
@@ -214,7 +211,8 @@ void Player::SetStart() {
 }
 
 void Player::SetEnd() {
-	if (GetGameObject()->getScene()->GetGameObjectsByName("Endpoint")[0] != nullptr) {
+
+	if (GetGameObject()->getScene()->GetGameObjectsByName("Endpoint").size() != 0) {
 		endPointObject = GetGameObject()->getScene()->GetGameObjectsByName("Endpoint")[0];
 		auto endPointPosition = endPointObject->getTransform();
 		endPointTopLeft.x = endPointPosition->position.x;
@@ -222,4 +220,5 @@ void Player::SetEnd() {
 		endPointBottomRight.x = endPointPosition->position.x + 64;
 		endPointBottomRight.y = endPointPosition->position.y + 64;
 	}
+
 }

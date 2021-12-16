@@ -129,6 +129,28 @@
                  "width":64,
                  "x":640,
                  "y":1408
+                }, 
+                {
+                 "height":64,
+                 "id":24,
+                 "name":"BlueGuard",
+                 "rotation":0,
+                 "type":"Enemy",
+                 "visible":true,
+                 "width":64,
+                 "x":1024,
+                 "y":1088
+                }, 
+                {
+                 "height":64,
+                 "id":25,
+                 "name":"RedGuard",
+                 "rotation":0,
+                 "type":"Enemy",
+                 "visible":true,
+                 "width":64,
+                 "x":1344,
+                 "y":640
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -137,7 +159,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":24,
+ "nextobjectid":26,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
