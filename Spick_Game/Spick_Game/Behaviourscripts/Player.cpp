@@ -13,7 +13,6 @@ void Player::OnAwake()
 void Player::OnStart()
 {
 	SetStart();
-	SetEnd();
 }
 
 void Player::OnClick()
@@ -61,10 +60,6 @@ void Player::OnUpdate()
 	double Delta_y = (transfrom.position.y - GetGameObject()->getScene()->GetActiveCamera()->getY()) - point.y;
 	double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
 	transfrom.rotation = Result + 90;
-
-	if (GetGameObject()->getScene()->GetGameObjectsByName("Endpoint").size() != 0) {
-		CheckEndPoint();
-	}
 
 	GetGameObject()->setTransform(&transfrom);
 	InputComponent->checkMouseButtons();
@@ -151,18 +146,6 @@ void Player::CheckGameOver()
 	}
 }
 
-void Player::CheckEndPoint()
-{
-	if ((xPlayer >= endPointTopLeft.x && yPlayer >= endPointTopLeft.y) && (xPlayer <= endPointBottomRight.x && yPlayer <= endPointBottomRight.y)) {
-		std::shared_ptr<spic::Component> script = endPointObject->GetComponentByName("EndLevelScript");
-		if (script != nullptr) {
-			EngineController::GetInstance()->SetIsInLevelTransition(true);
-			EngineController::GetInstance()->SetCurrentLevel(EngineController::GetInstance()->GetCurrentLevel() + 1);
-			script->OnClick();
-		}
-	}
-}
-
 void Player::CameraFixture()
 {
 	int x, y, w, h;
@@ -222,17 +205,4 @@ void Player::SetStart() {
 		xPlayer = startPointPosition->position.x;
 		yPlayer = startPointPosition->position.y;
 	}
-}
-
-void Player::SetEnd() {
-
-	if (GetGameObject()->getScene()->GetGameObjectsByName("Endpoint").size() != 0) {
-		endPointObject = GetGameObject()->getScene()->GetGameObjectsByName("Endpoint")[0];
-		auto endPointPosition = endPointObject->getTransform();
-		endPointTopLeft.x = endPointPosition->position.x;
-		endPointTopLeft.y = endPointPosition->position.y;
-		endPointBottomRight.x = endPointPosition->position.x + 64;
-		endPointBottomRight.y = endPointPosition->position.y + 64;
-	}
-
 }

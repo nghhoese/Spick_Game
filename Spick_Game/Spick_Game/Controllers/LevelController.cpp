@@ -199,8 +199,13 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
                     std::shared_ptr<spic::GameObject> endPointObject = std::make_shared<spic::GameObject>("Endpoint");
                     scene->AddGameObject(endPointObject);
                     BuildLevelObjectPosition(endPointObject, position);
-                    std::string counterString = std::to_string(EngineController::GetInstance()->GetCurrentLevel());
-                    std::string levelString = "level" + counterString;
+                    std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
+                    boxCollider->Height(64);
+                    boxCollider->Width(64);
+                    endPointObject->AddComponent(boxCollider);
+
+                    std::string levelCountString = std::to_string(EngineController::GetInstance()->GetCurrentLevel());
+                    std::string levelString = "level" + levelCountString;
                     std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("EndLevelScript", levelString);
                     endPointObject->AddComponent(scriptPlay);
                 }

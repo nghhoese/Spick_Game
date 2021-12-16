@@ -60,4 +60,5 @@ public:
 	bool GetHitbox() { return this->hitbox; };
 	void PauseGame();
 	void UnPauseGame();
+	void EndLevel();
 };

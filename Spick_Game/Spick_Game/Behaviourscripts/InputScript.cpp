@@ -126,6 +126,9 @@ const void InputScript::checkKeys()
 				else if (!Collision::AABB(objk1.get(), "guard").empty() ) {
 					PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() + (PlayerComponent->GetSpeed()));
 				}
+				else if (!Collision::AABB(objk1.get(), "Endpoint").empty()) {
+					EndLevel();
+				}
 				else {
 					PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() - (PlayerComponent->GetSpeed()));
 				}
@@ -171,6 +174,9 @@ const void InputScript::checkKeys()
 				}
 				else if (!Collision::AABB(objk1.get(), "guard").empty()) {
 					PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() + (PlayerComponent->GetSpeed()));
+				}
+				else if (!Collision::AABB(objk1.get(), "Endpoint").empty()) {
+					EndLevel();
 				}
 				else {
 					PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() - (PlayerComponent->GetSpeed()));
@@ -218,6 +224,9 @@ const void InputScript::checkKeys()
 				else if (!Collision::AABB(objk1.get(), "guard").empty()) {
 					PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() - (PlayerComponent->GetSpeed()));
 				}
+				else if (!Collision::AABB(objk1.get(), "Endpoint").empty()) {
+					EndLevel();
+				}
 				else {
 					PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() + (PlayerComponent->GetSpeed()));
 				}
@@ -261,6 +270,9 @@ const void InputScript::checkKeys()
 				}
 				else if (!Collision::AABB(objk1.get(), "guard").empty()) {
 					PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() - (PlayerComponent->GetSpeed()));
+				}
+				else if (!Collision::AABB(objk1.get(), "Endpoint").empty()) {
+					EndLevel();
 				}
 				else {
 					PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() + (PlayerComponent->GetSpeed()));
@@ -384,13 +396,7 @@ const void InputScript::checkKeys()
 					}
 				}
 				if (EngineController::GetInstance()->GetActiveScene()->GetName() != "CompletedScene") {			
-					auto endPointObject = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("Endpoint")[0];
-					std::shared_ptr<spic::Component> script = endPointObject->GetComponentByName("EndLevelScript");
-					if (script != nullptr) {
-						EngineController::GetInstance()->SetIsInLevelTransition(true);
-						EngineController::GetInstance()->SetCurrentLevel(EngineController::GetInstance()->GetCurrentLevel() + 1);
-						script->OnClick();
-					}
+					EndLevel();
 				}
 			}
 			SetClicked(false);
@@ -498,4 +504,14 @@ void InputScript::ResetCheats(spic::GameObject playerObject) {
 	PlayerComponent->SetHasCollision(true);
 	this->SetHitbox(false);
 	this->SetObjectsHitBox(playerObject);
+}
+
+void InputScript::EndLevel() {
+	auto endPointObject = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("Endpoint")[0];
+	std::shared_ptr<spic::Component> script = endPointObject->GetComponentByName("EndLevelScript");
+	if (script != nullptr) {
+		EngineController::GetInstance()->SetIsInLevelTransition(true);
+		EngineController::GetInstance()->SetCurrentLevel(EngineController::GetInstance()->GetCurrentLevel() + 1);
+		script->OnClick();
+	}
 }
