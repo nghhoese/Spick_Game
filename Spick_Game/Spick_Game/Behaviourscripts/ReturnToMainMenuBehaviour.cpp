@@ -24,19 +24,62 @@ void ReturnToMainMenuBehaviour::OnClick()
 	levelSceneBuilder->BuildLevel(3);
 	EngineController::GetInstance()->SetCurrentLevel(1);
 
-	if (!EngineController::GetInstance()->GetSceneByName(_scene)->GetGameObjectsByTag("music").empty()) {
-		if (!EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music").empty()) {
-			EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->Stop();
+	if (_scene == "MainMenu" || _scene == "level1") {
+		if (!EngineController::GetInstance()->GetSceneByName(_scene)->GetGameObjectsByTag("music").empty()) {
+
+			if (!EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music").empty()) {
+				if (!EngineController::GetInstance()->GetSceneByName(_scene)->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->GetPlaying()) {
+					EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->Stop();
+
+				}
+			}
+
+		}
+		else {
+			if (_scene == "MainMenu") {
+				MusicController::GetInstance()->SetMainMenuMusic(EngineController::GetInstance()->GetSceneByName("MainMenu"));
+
+			}
+			else {
+				MusicController::GetInstance()->SetLevelMusic();
+
+			}
+			if (!EngineController::GetInstance()->GetSceneByName(_scene)->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->GetPlaying()) {
+				EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->Stop();
+
+			}
 		}
 	}
+
+
+
 
 	EngineController::GetInstance()->SetIsInLevelTransition(false);
 	EngineController::GetInstance()->SetActiveScene(_scene);
 
-	if (!EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music").empty()) {
-		EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->Play(true);
+	if (_scene == "MainMenu" || _scene == "level1") {
+		if (!EngineController::GetInstance()->GetSceneByName(_scene)->GetGameObjectsByTag("music").empty()) {
+			if (!EngineController::GetInstance()->GetSceneByName(_scene)->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->GetPlaying()) {
+				EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->Play(true);
+			}
 
+		}
+		else {
+
+			if (!EngineController::GetInstance()->GetSceneByName(_scene)->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->GetPlaying()) {
+				if (_scene == "MainMenu") {
+					MusicController::GetInstance()->SetMainMenuMusic(EngineController::GetInstance()->GetSceneByName("MainMenu"));
+				}
+				else {
+					MusicController::GetInstance()->SetLevelMusic();
+
+				}
+
+			}
+
+		}
 	}
+
 	auto a = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("Input");
 	if (a.size() == 1) {
 		a[0]->GetComponent<InputScript>()->UnPauseGame();
