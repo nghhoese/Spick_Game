@@ -20,38 +20,41 @@
 
 class Enemy : public spic::BehaviourScript {
 private:
-    std::string path;
-    int healthpoints;
-    int damagePerBullet;
-    bool isTurned = false;
-    int turnCount;
     double speed;
-    bool IfPlayerNearby();
-    bool InShootingRange();
-    bool isShooting = false;
-    int triggerSpace;
-    int shootingSpace;
+
     spic::Point sight;
-    bool check = false;
-    bool isPersuing = false;
-    int persueCount;
-    double wandertheta;
-    bool isAlive = true;
     spic::Point acc; 
     spic::Point vel; 
-    std::unique_ptr<AIController> AI;
-    bool notInitialized;
-    void Shoot();
+    spic::Transform trans;
+
+    int healthpoints;
+    int damagePerBullet;
+    int triggerSpace;
+    int shootingSpace;
     int ammo;
     int magazine;
     int currentMagazine;
     int coolDown;
     int bulletSpeed;
     int bulletDamage;
+
     std::vector<std::shared_ptr<Bullet>> bullets;
     std::shared_ptr<spic::GameObject> player;
     std::shared_ptr<spic::Sprite> sprite;
+    std::unique_ptr<AIController> AI;
+    std::string path;
+
+    bool isAlive;
+    bool notInitialized;
     bool hit;
+    bool IfPlayerNearby();
+    bool InShootingRange();
+
+    void UpdateAIBehaviour(spic::Point steering);
+    void CalculateRotation(spic::Point object, spic::Point target);
+    void Attack();
+    void Shoot();
+
 public:
     Enemy();
     void OnAwake();
