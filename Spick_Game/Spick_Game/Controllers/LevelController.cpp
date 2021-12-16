@@ -17,6 +17,11 @@ void LevelController::BuildLevel(std::shared_ptr<spic::Scene> scene, std::filesy
     for (std::vector<std::pair<std::string, std::any>> object : objects) {
         BuildLevelObjects(scene, object);
     }
+    if (EngineController::GetInstance()->GetCurrentLevel() == 1) {
+        auto PlayerObject = scene->GetGameObjectsByName("Player")[0];
+        auto PlayerComponent = PlayerObject->GetComponent<Player>();
+        PlayerComponent->OnStart();
+    }
     EngineController::GetInstance()->SetCurrentLevel(EngineController::GetInstance()->GetCurrentLevel() + 1);
 }
 
@@ -198,12 +203,6 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
                     std::string levelString = "level" + counterString;
                     std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("EndLevelScript", levelString);
                     endPointObject->AddComponent(scriptPlay);
-
-                    if (EngineController::GetInstance()->GetCurrentLevel() == 1) {
-                        auto PlayerObject = scene->GetGameObjectsByName("Player")[0];
-                        auto PlayerComponent = PlayerObject->GetComponent<Player>();
-                        PlayerComponent->OnStart();
-                    }
                 }
             }
         }
@@ -273,28 +272,34 @@ void LevelController::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::s
 void LevelController::BuildBoss(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, const std::tuple<int, int> position) {
     std::shared_ptr<spic::GameObject> boss = std::make_shared<spic::GameObject>("Boss");
     scene->AddGameObject(boss);
+
     spic::Transform transfrom = *boss->getTransform();
     transfrom.position.x = std::get<0>(position);
     transfrom.position.y = std::get<1>(position);
-    transfrom.scale = 1.2;
+    transfrom.scale = 1;
     boss->setTransform(&transfrom);
 
-    std::shared_ptr<Boss> enemy = std::make_shared<Boss>();
-    enemy->setHealthpoints(100);
-    enemy->setSpeed(0);
-    enemy->setDamagePerBullet(50);
-    boss->AddComponent(enemy);
-    enemy->setPath("assets/boss.png");
+    std::shared_ptr<Boss> bossScript = std::make_shared<Boss>();
+    boss->AddComponent(bossScript);
+    bossScript->setPath("assets/boss.png");
 
     std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
-    boxCollider->Height(200);
-    boxCollider->Width(200);
+    boxCollider->Height(143);
+    boxCollider->Width(143);
     boxCollider->ShowBoxBool(true);
     boss->AddComponent(boxCollider);
     boss->AddComponent(sprite);
-    sprite->SetSprite(enemy->getPath());
+    sprite->SetSprite(bossScript->getPath());
     
-    enemy->OnStart();
+    bossScript->OnStart();
+    bossScript->FillBucket();
+
+    spic::Color textColor = spic::Color(1.0, 0.0, 0.0, 1.0);
+    int screenwidth = EngineController::GetInstance()->GetScreenWidth();
+    int screenheight = EngineController::GetInstance()->GetScreenHeight();
+    std::shared_ptr<spic::Text> bossHP = std::make_shared<spic::Text>("BOSS: 100%", "Capsmall", 60, textColor, screenwidth/3, (screenheight - screenheight) + 80);
+    bossHP->SetName("bosshp");
+    scene->AddGameObject(bossHP);
 }
 
 void LevelController::BuildLevelObjectPosition(std::shared_ptr<spic::GameObject> object, std::tuple<int, int> position) {

@@ -52,17 +52,6 @@
                  "width":64,
                  "x":512,
                  "y":512
-                }, 
-                {
-                 "height":64,
-                 "id":32,
-                 "name":"EndPoint",
-                 "rotation":0,
-                 "type":"Waypoint",
-                 "visible":true,
-                 "width":64,
-                 "x":1152,
-                 "y":1152
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -71,7 +60,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":33,
+ "nextobjectid":34,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",

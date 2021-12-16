@@ -1,20 +1,18 @@
 #include "Enemy.hpp"
 
+Enemy::Enemy() : hit(false), speed(1.5), isAlive(true), notInitialized(true), magazine(1), bulletDamage(30), coolDown(50), currentMagazine(magazine), bulletSpeed(10), triggerSpace(300), shootingSpace(175)
+{
+}
 
 bool Enemy::IfPlayerNearby()
 {
     auto enemyPos = GetGameObject()->getTransform()->position;
     auto playerPos = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0]->getTransform()->position;
-
     auto enemyDirection = GetGameObject()->getTransform()->rotation;
-    
     double Delta_x = (enemyPos.x - playerPos.x);
     double Delta_y = (enemyPos.y - playerPos.y);
-
     double enemyToPlayerDir = ((atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265) + 90;
-
     auto radians = 45;
-
     if (enemyDirection - radians <= enemyToPlayerDir &&
         enemyDirection + radians >= enemyToPlayerDir)
     {
@@ -24,7 +22,6 @@ bool Enemy::IfPlayerNearby()
         enemyPos.y - triggerSpace <= playerPos.y);
     }
     return false;
-    
 }
 
 bool Enemy::InShootingRange()
@@ -38,8 +35,89 @@ bool Enemy::InShootingRange()
         enemyPos.y - shootingSpace <= playerPos.y);
 }
 
-Enemy::Enemy() : speed(1.5), turnCount(0), isTurned(false), isAlive(true), notInitialized(true), ammo(0), magazine(1), bulletDamage(30), coolDown(50), currentMagazine(magazine), bulletSpeed(10), triggerSpace(250), shootingSpace(150), persueCount(0), wandertheta(0)
+void Enemy::UpdateAIBehaviour(spic::Point steering)
 {
+    acc.Add(steering);
+    vel.Add(acc);
+    vel.Limit(10);
+    trans.position.Add(vel);
+    GetGameObject()->setTransform(&trans);
+}
+
+void Enemy::CalculateRotation(spic::Point object, spic::Point target)
+{
+    double Delta_x = (object.x - target.x);
+    double Delta_y = (object.y - target.y);
+    double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
+    trans.rotation = Result + 90;
+    GetGameObject()->setTransform(&trans);
+}
+
+void Enemy::Attack() 
+{
+    CalculateRotation(trans.position, player->getTransform()->position);
+
+    if (!InShootingRange())
+    {
+        UpdateAIBehaviour(AI->Persue());
+    }
+    else {
+        Shoot();
+    }
+}
+
+void Enemy::BulletHandling() 
+{
+    if (!Collision::AABB(GetGameObject(), "PlayerBullet").empty()) {
+        auto bullet = Collision::AABB(GetGameObject(), "PlayerBullet")[0]->GetGameObject()->GetComponent<spic::BehaviourScript>();
+        std::shared_ptr<Bullet> bulletObj = std::dynamic_pointer_cast<Bullet>(bullet);
+
+        setHealthpoints(getHealthpoints() - bulletObj->GetDamage());
+        bulletObj->SetBroken(true);
+        setPath("assets/enemy_hit.png");
+        hit = true;
+    }
+}
+
+void Enemy::DoEnemyThings()
+{
+    if (isAlive)
+    {
+        BulletHandling();
+
+        if (GetGameObject()->getScene()->GetGameObjectsByName("Player").size() > 0) {
+            if (notInitialized)
+            {
+                notInitialized = false;
+                player = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
+                AI = std::make_unique<AIController>(*GetGameObject(), vel, *player, speed);
+            }
+
+            AI->Update(*GetGameObject(), vel, *player);
+
+            if (IfPlayerNearby() || hit)
+            {
+                Attack();
+            }
+            else {
+                UpdateAIBehaviour(AI->Wander());
+                CalculateRotation(trans.position, AI->GetSight());
+            }
+        }
+    }
+}
+
+void Enemy::HandleHealth() 
+{
+    if (this->healthpoints < 0) {
+        isAlive = false;
+        hit = false;
+        trans.scale = 0.01;
+        trans.position.x = -50;
+        trans.position.y = -10;
+        GetGameObject()->setTransform(&trans);
+        GetGameObject()->GetComponent<spic::Sprite>()->OnRender();
+    }
 }
 
 void Enemy::OnAwake()
@@ -48,105 +126,18 @@ void Enemy::OnAwake()
 
 void Enemy::OnStart()
 {
-    auto trans = *GetGameObject()->getTransform();
-    double Delta_x = (trans.position.x);
-    double Delta_y = (trans.position.y);
-
-    double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
+    trans = *GetGameObject()->getTransform();
+    double Result = (atan2(trans.position.y, trans.position.x) * 180.0000) / 3.14159265;
     trans.rotation = Result + (rand() % 180 + 90);
     GetGameObject()->setTransform(&trans);
-    vel.x = 0;
-    vel.y = 0;
-    acc.x = 0;
-    acc.y = 0;
+    acc.Set(0);
+    vel.Set(0);
 }
 
 void Enemy::OnUpdate()
 {
-	if (this->healthpoints < 0) {
-        isAlive = false;
-		auto trans = *GetGameObject()->getTransform();
-		trans.scale = 0.01;
-		trans.position.x = -50;
-		trans.position.y = -10;
-		GetGameObject()->setTransform(&trans);
-		GetGameObject()->GetComponent<spic::Sprite>()->OnRender();
-	}
-
-    if (isAlive)
-    {
-       	if (!Collision::AABB(GetGameObject(), "PlayerBullet").empty()) {
-        auto bullet = Collision::AABB(GetGameObject(), "PlayerBullet")[0]->GetGameObject()->GetComponent<spic::BehaviourScript>();
-        std::shared_ptr<Bullet> bulletObj = std::dynamic_pointer_cast<Bullet>(bullet);
-       
-           setHealthpoints(getHealthpoints() - bulletObj->GetDamage());
-            bulletObj->SetBroken(true);
-            setPath("assets/enemy_hit.png");
-
-        
-    }
-        if (GetGameObject()->getScene()->GetGameObjectsByName("Player").size() > 0) {
-            if (notInitialized)
-            {
-                notInitialized = false;
-                player = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
-                AI = std::make_unique<AIController>(*GetGameObject(), vel, *player, speed);
-            }
-           
-            auto trans = *GetGameObject()->getTransform();
-            
-            AI->Update(*GetGameObject(), vel, *player);
-            spic::Point steering;
-            steering.x = 0;
-            steering.y = 0;
-       
-            if (IfPlayerNearby())
-            {
-                double Delta_x = (trans.position.x - player->getTransform()->position.x);
-                double Delta_y = (trans.position.y - player->getTransform()->position.y);
-
-                double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
-                trans.rotation = Result + 90;
-
-                if (!InShootingRange())
-                {
-                    steering = AI->Persue();
-                    acc.Add(steering);
-                    vel.Add(acc);
-                    vel.Limit(10);
-
-                    trans.position.Add(vel);
-                }
-                else {
-                    //shoot at player
-                    Shoot();
-                }
-            }
-            else {
-                steering = AI->Wander();
-                double Delta_x = (trans.position.x - AI->GetSight().x);
-                double Delta_y = (trans.position.y - AI->GetSight().y);
-
-                double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
-                trans.rotation = Result + 90;
-
-                acc.Add(steering);
-                vel.Add(acc);
-
-                vel.Limit(10);
-                trans.position.Add(vel);
-            }
-        
-            GetGameObject()->setTransform(&trans);
-        }
-    }
-    if (magazine == 0) {
-        coolDown -= 1;
-        if (coolDown == 0) {
-            magazine = magazine + currentMagazine;
-            coolDown = 50;
-        }
-    }
+    HandleHealth();
+    DoEnemyThings();
 }
 
 
@@ -187,12 +178,17 @@ void Enemy::OnClick()
 
 void Enemy::Shoot()
 {
-    if (magazine > 0) {
+    if (magazine == 0) {
+        coolDown -= 1;
+        if (coolDown == 0) {
+            magazine = magazine + currentMagazine;
+            coolDown = 50;
+        }
+    } else if (magazine > 0) {
         magazine = magazine - 1;
         for (std::shared_ptr<Bullet> b : bullets) {
             if (b->GetBroken()) {
                 b->SetBroken(false);
-                //auto InputComponent = InputObject->GetComponent<InputScript>();
                 spic::Transform transfrom = *b->GetGameObject()->getTransform();
                 transfrom.position.x = GetGameObject()->getTransform()->position.x + 32;
                 transfrom.position.y = GetGameObject()->getTransform()->position.y + 20;
@@ -211,7 +207,6 @@ void Enemy::FillBucket()
     bullets.clear();
     int index = 0;
     while (index < 5) {
-
         std::shared_ptr<spic::GameObject> bulletObject = std::make_shared<spic::GameObject>("EnemyBullet");
         GetGameObject()->getScene()->AddGameObject(bulletObject);
         spic::Transform transfrom = *bulletObject->getTransform();
@@ -219,9 +214,7 @@ void Enemy::FillBucket()
         bulletObject->AddComponent(sprite);
         sprite->SetSprite("assets/bullet.bmp");
         sprite->SetPlayerBool(true);
-        bulletObject->AddTag("EnemyBullet");
-        transfrom.position.x = 0;
-        transfrom.position.y = 0;
+        transfrom.position.Set(0);
         transfrom.scale = 0.55;
         std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
         boxCollider->Height(7);
