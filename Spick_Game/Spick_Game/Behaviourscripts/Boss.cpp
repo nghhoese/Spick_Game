@@ -3,6 +3,7 @@
 #include <API_Headers/Sprite.hpp>
 #include <API_Headers/BoxCollider.hpp>
 #include <API_Headers/Collision.hpp>
+#include "../Scenes/LevelSceneBuilder.hpp"
 
 
 bool Boss::IfPlayerNearby()
@@ -67,7 +68,7 @@ void Boss::OnStart()
 
 void Boss::OnUpdate()
 {
-    if (this->healthpoints < 0) {
+    if (this->healthpoints <= 0) {
         isAlive = false;
         auto trans = *GetGameObject()->getTransform();
         trans.scale = 0.01;
@@ -90,7 +91,7 @@ void Boss::OnUpdate()
 
             auto trans = *GetGameObject()->getTransform();
             auto player = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
-            auto tag = GetGameObject()->GetTags()[0];
+            
             AI->Update(*GetGameObject(), vel, *player);
             spic::Point steering;
             steering.x = 0;

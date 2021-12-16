@@ -76,9 +76,9 @@ void Enemy::OnUpdate()
 
     if (isAlive)
     {
-       	if (Collision::AABB(GetGameObject(), "PlayerBullet")) {
-            auto bullet = Collision::AABB(GetGameObject(), "PlayerBullet")->GetGameObject()->GetComponent<spic::BehaviourScript>();
-            std::shared_ptr<Bullet> bulletObj = std::dynamic_pointer_cast<Bullet>(bullet);
+       	if (!Collision::AABB(GetGameObject(), "PlayerBullet").empty()) {
+        auto bullet = Collision::AABB(GetGameObject(), "PlayerBullet")[0]->GetGameObject()->GetComponent<spic::BehaviourScript>();
+        std::shared_ptr<Bullet> bulletObj = std::dynamic_pointer_cast<Bullet>(bullet);
        
             setHealthpoints(getHealthpoints() - bulletObj->GetDamage());
             bulletObj->SetBroken(true);
@@ -95,7 +95,6 @@ void Enemy::OnUpdate()
            
             auto trans = *GetGameObject()->getTransform();
             
-            auto tag = GetGameObject()->GetTags()[0];
             AI->Update(*GetGameObject(), vel, *player);
             spic::Point steering;
             steering.x = 0;
@@ -221,9 +220,9 @@ void Enemy::FillBucket()
 {
     bullets.clear();
     int index = 0;
-    while (index < 20) {
+    while (index < 5) {
 
-        std::shared_ptr<spic::GameObject> bulletObject = std::make_shared<spic::GameObject>("Bullet");
+        std::shared_ptr<spic::GameObject> bulletObject = std::make_shared<spic::GameObject>("EnemyBullet");
         GetGameObject()->getScene()->AddGameObject(bulletObject);
         spic::Transform transfrom = *bulletObject->getTransform();
         sprite = std::make_shared<spic::Sprite>();

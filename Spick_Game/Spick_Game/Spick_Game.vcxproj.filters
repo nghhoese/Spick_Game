@@ -20,6 +20,8 @@
     <ClCompile Include="Controllers\MusicController.cpp" />
     <ClCompile Include="Behaviourscripts\ReturnToMainMenuBehaviour.cpp" />
     <ClCompile Include="Controllers\AIController.cpp" />
+    <ClCompile Include="Scenes\CompletedSceneBuilder.cpp" />
+    <ClCompile Include="Behaviourscripts\Boss.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behaviourscripts\ChangeSceneBehaviour.hpp" />
@@ -41,6 +43,8 @@
     <ClInclude Include="Controllers\MusicController.hpp" />
     <ClInclude Include="Behaviourscripts\ReturnToMainMenuBehaviour.hpp" />
     <ClInclude Include="Controllers\AIController.hpp" />
+    <ClInclude Include="Scenes\CompletedSceneBuilder.hpp" />
+    <ClInclude Include="Behaviourscripts\Boss.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\bullet.bmp" />
@@ -96,6 +100,11 @@
     <Image Include="assets\back.jpg" />
     <Image Include="assets\Boss.png" />
     <Image Include="assets\mainmenubutton.jpg" />
+    <Image Include="assets\quitbutton.jpg" />
+    <Image Include="assets\playbutton.jpg" />
+    <Image Include="assets\helpbutton.jpg" />
+    <Image Include="assets\creditsbutton.jpg" />
+    <Image Include="assets\title.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\Fonts\Capsmall.ttf" />

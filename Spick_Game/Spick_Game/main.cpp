@@ -1,5 +1,3 @@
-#define SDL_MAIN_HANDLED
-
 #include <crtdbg.h>
 #include <iostream>
 #include "Controllers/EngineController.hpp"

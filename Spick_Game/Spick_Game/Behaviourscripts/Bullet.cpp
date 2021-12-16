@@ -13,7 +13,7 @@ void Bullet::Update()
 		trans.position.x += amountToMoveX * speed;
 		trans.position.y += amountToMoveY * speed;
 		GetGameObject()->setTransform(&trans);
-		if (Collision::AABB(GetGameObject(), "wall")) {
+		if (!Collision::AABB(GetGameObject(), "wall").empty()) {
 			broken = true;
 		}
 		else {

@@ -23,16 +23,13 @@ void Player::OnClick()
 void Player::OnUpdate()
 {
 
-		if (Collision::AABB(GetGameObject(), "EnemyBullet")) {
-			auto bullet = Collision::AABB(GetGameObject(), "EnemyBullet")->GetGameObject()->GetComponent<spic::BehaviourScript>();
-			std::shared_ptr<Bullet> bulletObj = std::dynamic_pointer_cast<Bullet>(bullet);
-			if (!isDamageless) {
+	if (!Collision::AABB(GetGameObject(), "EnemyBullet").empty()) {
+		auto bullet = Collision::AABB(GetGameObject(), "EnemyBullet")[0]->GetGameObject()->GetComponent<spic::BehaviourScript>();
+		std::shared_ptr<Bullet> bulletObj = std::dynamic_pointer_cast<Bullet>(bullet);
+		if (!isDamageless) {
 			healthpoints = healthpoints - bulletObj->GetDamage();
-			}
-			bulletObj->SetBroken(true);
-
-
-		
+		}
+		bulletObj->SetBroken(true);		
 	}
 	spic::Transform transfrom = *GetGameObject()->getTransform();
 	spic::Point point;
@@ -54,7 +51,7 @@ void Player::OnUpdate()
 	double Result = (atan2(Delta_y, Delta_x) * 180.0000) / 3.14159265;
 	transfrom.rotation = Result + 90;
 
-	if (endPointObject != nullptr) {
+	if (GetGameObject()->getScene()->GetGameObjectsByName("Endpoint").size() != 0) {
 		CheckEndPoint();
 	}
 
@@ -63,7 +60,7 @@ void Player::OnUpdate()
 
 	this->CheckGameOver();
 
-	std::shared_ptr<spic::GameObject> HudObject = GetGameObject()->getScene()->GetGameObjectsByTag("hud")[0];
+	std::shared_ptr<spic::GameObject> HudObject = GetGameObject()->getScene()->GetGameObjectsByName("hud")[0];
 	auto HudComponent = HudObject->GetComponent<HUD>();
 	HudComponent->SetHealthPoints(this->healthpoints);
 	HudComponent->SetMagazine(this->magazine);
@@ -83,8 +80,8 @@ void Player::OnRender()
 	auto InputComponent = InputObject->GetComponent<InputScript>();
 	InputComponent->CheckPause();
 
-	std::shared_ptr<spic::GameObject> pausedTextObject = GetGameObject()->getScene()->GetGameObjectsByTag("paused")[0];
-	std::shared_ptr<spic::GameObject> pausedButtonObject = GetGameObject()->getScene()->GetGameObjectsByTag("paused")[1];
+	std::shared_ptr<spic::GameObject> pausedTextObject = GetGameObject()->getScene()->GetGameObjectsByName("paused")[0];
+	std::shared_ptr<spic::GameObject> pausedButtonObject = GetGameObject()->getScene()->GetGameObjectsByName("paused")[1];
 
 	if (InputComponent->GetPaused()) {
 		pausedTextObject->SetActive(true);
@@ -180,7 +177,7 @@ void Player::FillBucket()
 	int index = 0;
 	while (index < 20) {
 
-		std::shared_ptr<spic::GameObject> bulletObject = std::make_shared<spic::GameObject>("Bullet");
+		std::shared_ptr<spic::GameObject> bulletObject = std::make_shared<spic::GameObject>("PlayerBullet");
 		GetGameObject()->getScene()->AddGameObject(bulletObject);
 		spic::Transform transfrom = *bulletObject->getTransform();
 		sprite = std::make_shared<spic::Sprite>();
@@ -205,7 +202,7 @@ void Player::FillBucket()
 }
 
 void Player::SetStart() {
-	if (GetGameObject()->getScene()->GetGameObjectsByName("Startpoint")[0] != nullptr) {
+	if (GetGameObject()->getScene()->GetGameObjectsByName("Startpoint").size() != 0) {
 		auto startPointObject = GetGameObject()->getScene()->GetGameObjectsByName("Startpoint")[0];
 		auto startPointPosition = startPointObject->getTransform();
 		xPlayer = startPointPosition->position.x;
@@ -214,7 +211,8 @@ void Player::SetStart() {
 }
 
 void Player::SetEnd() {
-	if (GetGameObject()->getScene()->GetGameObjectsByName("Endpoint")[0] != nullptr) {
+
+	if (GetGameObject()->getScene()->GetGameObjectsByName("Endpoint").size() != 0) {
 		endPointObject = GetGameObject()->getScene()->GetGameObjectsByName("Endpoint")[0];
 		auto endPointPosition = endPointObject->getTransform();
 		endPointTopLeft.x = endPointPosition->position.x;
@@ -222,4 +220,5 @@ void Player::SetEnd() {
 		endPointBottomRight.x = endPointPosition->position.x + 64;
 		endPointBottomRight.y = endPointPosition->position.y + 64;
 	}
+
 }

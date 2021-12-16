@@ -10,6 +10,8 @@
 #include "../Behaviourscripts/ChangeSceneBehaviour.hpp"
 #include "../Behaviourscripts/Player.hpp"
 #include "../Behaviourscripts/Enemy.hpp"
+#include <API_Headers/AudioSource.hpp>
+#include "../Behaviourscripts/Boss.hpp"
 
 class LevelController {
 private:

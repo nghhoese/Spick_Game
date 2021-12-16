@@ -1,6 +1,5 @@
 #include "../Controllers/LevelController.hpp"
 #include <API_Headers/BoxCollider.hpp>
-#include <API_Headers/AudioSource.hpp>
 
 LevelController::LevelController() : bmpFileString(".bmp"), pngFileString(".png"), xTilesize(64), yTilesize(64)
 {
@@ -17,6 +16,11 @@ void LevelController::BuildLevel(std::shared_ptr<spic::Scene> scene, std::filesy
     }
     for (std::vector<std::pair<std::string, std::any>> object : objects) {
         BuildLevelObjects(scene, object);
+    }
+    if (EngineController::GetInstance()->GetCurrentLevel() == 1) {
+        auto PlayerObject = scene->GetGameObjectsByName("Player")[0];
+        auto PlayerComponent = PlayerObject->GetComponent<Player>();
+        PlayerComponent->OnStart();
     }
     EngineController::GetInstance()->SetCurrentLevel(EngineController::GetInstance()->GetCurrentLevel() + 1);
 }
@@ -148,7 +152,7 @@ void LevelController::BuildLevelTile(std::shared_ptr<spic::Scene> scene, std::sh
 {
     std::string basePath = "assets/images/foregrounds/" + spriteName;
     if (tag != "") {
-        tileObject->AddTag(tag);
+        tileObject->SetName(tag);
     }
     scene->AddGameObject(tileObject);
     tileObject->AddComponent(tileSprite);
@@ -199,12 +203,6 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
                     std::string levelString = "level" + counterString;
                     std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("EndLevelScript", levelString);
                     endPointObject->AddComponent(scriptPlay);
-
-                    if (EngineController::GetInstance()->GetCurrentLevel() == 1) {
-                        auto PlayerObject = scene->GetGameObjectsByName("Player")[0];
-                        auto PlayerComponent = PlayerObject->GetComponent<Player>();
-                        PlayerComponent->OnStart();
-                    }
                 }
             }
         }
@@ -248,9 +246,7 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
 }
 
 void LevelController::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, std::tuple<int, int> position, const std::string& spriteName, const std::string& colourTag, const std::string& typeTag, int healthPoints, double speed, int damage,int magazine) {
-    std::shared_ptr<spic::GameObject> guardObject = std::make_shared<spic::GameObject>("Guard");
-    guardObject->AddTag(colourTag);
-    guardObject->AddTag(typeTag);
+    std::shared_ptr<spic::GameObject> guardObject = std::make_shared<spic::GameObject>("guard");
     scene->AddGameObject(guardObject);
 
     BuildLevelObjectPosition(guardObject, position);
@@ -276,15 +272,13 @@ void LevelController::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::s
 void LevelController::BuildBoss(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, const std::tuple<int, int> position) {
     std::shared_ptr<spic::GameObject> boss = std::make_shared<spic::GameObject>("Boss");
     scene->AddGameObject(boss);
-    boss->AddTag("BOSS");
-    boss->AddTag("guard");
     spic::Transform transfrom = *boss->getTransform();
     transfrom.position.x = std::get<0>(position);
     transfrom.position.y = std::get<1>(position);
     transfrom.scale = 1.2;
     boss->setTransform(&transfrom);
 
-    std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>();
+    std::shared_ptr<Boss> enemy = std::make_shared<Boss>();
     enemy->setHealthpoints(100);
     enemy->setSpeed(0);
     enemy->setDamagePerBullet(50);

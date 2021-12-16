@@ -4,6 +4,13 @@
 #include "API_Headers/Collision.hpp"
 
 class AIController {
+private:
+	spic::Point vel;
+	std::unique_ptr<spic::GameObject> persuer;
+	std::unique_ptr<spic::GameObject> escapee;
+	spic::Point sight;
+	double wandertheta;
+	double speed;
 public:
 	AIController(spic::GameObject persuerGameObject, spic::Point vel, spic::GameObject escapeeGameObject, double speed);
 	spic::Point Wander();
@@ -12,12 +19,4 @@ public:
 	spic::Point WallAvoidance(spic::Point target);
 	spic::Point GetSight() { return this->sight; };
 	void Update(spic::GameObject persuerGameObject, spic::Point vel, spic::GameObject escapeeGameObject);
-
-private:
-	spic::Point vel;
-	std::unique_ptr<spic::GameObject> persuer;
-	std::unique_ptr<spic::GameObject> escapee;
-	spic::Point sight;
-	double wandertheta;
-	double speed;
 };
