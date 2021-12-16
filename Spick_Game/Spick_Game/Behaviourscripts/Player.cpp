@@ -65,6 +65,7 @@ void Player::OnUpdate()
 	HudComponent->SetHealthPoints(this->healthpoints);
 	HudComponent->SetMagazine(this->magazine);
 	HudComponent->SetCurrentMagazine(this->currentMagazine);
+	HudComponent->SetIsDamageless(this->isDamageless);
 	if (magazine == 0) {
 		coolDown -= 1;
 		if (coolDown == 0) {

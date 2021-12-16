@@ -17,6 +17,7 @@ private:
     int coins;
     int magazine;
     int currentMagazine;
+    bool isDamageless;
     float accumelatedDeltaTime;
     float sec;
     std::shared_ptr<spic::GameObject> InputObject;
@@ -38,6 +39,6 @@ public:
     int GetMagazine() { return this->magazine; };
     void SetCurrentMagazine(int magazine) { this->currentMagazine = magazine; };
     int GetCurrentMagazine() { return this->currentMagazine; };
-    void SetCoins(int coins) { this->coins = coins; };
-    int GetCoins() { return this->coins; };
+    void SetIsDamageless(bool value) { this->isDamageless = value; };
+    bool GetIsDamageLess() { return this->isDamageless; };
 };
