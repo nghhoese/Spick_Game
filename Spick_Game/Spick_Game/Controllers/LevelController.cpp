@@ -17,6 +17,11 @@ void LevelController::BuildLevel(std::shared_ptr<spic::Scene> scene, std::filesy
     for (std::vector<std::pair<std::string, std::any>> object : objects) {
         BuildLevelObjects(scene, object);
     }
+    if (EngineController::GetInstance()->GetCurrentLevel() == 1) {
+        auto PlayerObject = scene->GetGameObjectsByName("Player")[0];
+        auto PlayerComponent = PlayerObject->GetComponent<Player>();
+        PlayerComponent->OnStart();
+    }
     EngineController::GetInstance()->SetCurrentLevel(EngineController::GetInstance()->GetCurrentLevel() + 1);
 }
 
@@ -198,12 +203,6 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
                     std::string levelString = "level" + counterString;
                     std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("EndLevelScript", levelString);
                     endPointObject->AddComponent(scriptPlay);
-
-                    if (EngineController::GetInstance()->GetCurrentLevel() == 1) {
-                        auto PlayerObject = scene->GetGameObjectsByName("Player")[0];
-                        auto PlayerComponent = PlayerObject->GetComponent<Player>();
-                        PlayerComponent->OnStart();
-                    }
                 }
             }
         }

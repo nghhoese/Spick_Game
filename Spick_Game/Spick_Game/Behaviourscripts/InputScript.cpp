@@ -86,15 +86,28 @@ const void InputScript::checkKeys()
 	if (input->GetKey(W)) {
 		if (PlayerComponent != nullptr) {
 			if (PlayerComponent->GetHasCollision()) {
-				if (Collision::AABB(objk1.get(), "wall")) {
-					if (Collision::AABB(objk1.get(), "wall")->GetGameObject()->getTransform()->position.y < PlayerComponent->GetYPlayer()) {
+				if (!Collision::AABB(objk1.get(), "wall").empty()) {
+					bool found = false;
+
+					for (auto b : Collision::AABB(objk1.get(), "wall")) {
+					if (b->GetGameObject()->getTransform()->position.y < PlayerComponent->GetYPlayer() + 10) {
+						std::cout << "collision up" << std::endl;
+						found = true;
 
 					}
 					else {
-						PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() - (PlayerComponent->GetSpeed()));
 					}
 				}
-				else if (Collision::AABB(objk1.get(), "guard")) {
+					if (!found) {
+						PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() - (PlayerComponent->GetSpeed()));
+
+					}
+					else {
+						//PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() + (PlayerComponent->GetSpeed()));
+
+					}
+				}
+				else if (!Collision::AABB(objk1.get(), "guard").empty() ) {
 					PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() + (PlayerComponent->GetSpeed()));
 				}
 				else {
@@ -109,15 +122,28 @@ const void InputScript::checkKeys()
 	if (input->GetKey(A)) {
 		if (PlayerComponent != nullptr) {
 			if (PlayerComponent->GetHasCollision()) {
-				if (Collision::AABB(objk1.get(), "wall")) {
-					if (Collision::AABB(objk1.get(), "wall")->GetGameObject()->getTransform()->position.x < PlayerComponent->GetXPlayer()) {
-	
+				if (!Collision::AABB(objk1.get(), "wall").empty()) {
+					bool found = false;
+
+					for (auto b : Collision::AABB(objk1.get(), "wall")) {
+						if (b->GetGameObject()->getTransform()->position.x < PlayerComponent->GetXPlayer() + 10) {
+							std::cout << "collision left" << std::endl;
+							found = true;
+
+						}
+						else {
+						}
+					}
+					if (!found) {
+						PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() - (PlayerComponent->GetSpeed()));
+
 					}
 					else {
-						PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() - (PlayerComponent->GetSpeed()));
+						//PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() + (PlayerComponent->GetSpeed()));
+
 					}
 				}
-				else if (Collision::AABB(objk1.get(), "guard")) {
+				else if (!Collision::AABB(objk1.get(), "guard").empty()) {
 					PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() + (PlayerComponent->GetSpeed()));
 				}
 				else {
@@ -132,15 +158,28 @@ const void InputScript::checkKeys()
 	if (input->GetKey(S)) {
 		if (PlayerComponent != nullptr) {
 			if (PlayerComponent->GetHasCollision()) {
-				if (Collision::AABB(objk1.get(), "wall")) {
-					if (Collision::AABB(objk1.get(), "wall")->GetGameObject()->getTransform()->position.y > PlayerComponent->GetYPlayer()) {
+				if (!Collision::AABB(objk1.get(), "wall").empty()) {
+					bool found = false;
+
+					for (auto b : Collision::AABB(objk1.get(), "wall")) {
+						if (b->GetGameObject()->getTransform()->position.y > PlayerComponent->GetYPlayer() + 10) {
+							std::cout << "collision down" << std::endl;
+							found = true;
+
+						}
+						else {
+						}
+					}
+					if (!found) {
+						PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() + (PlayerComponent->GetSpeed()));
 
 					}
 					else {
-						PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() + (PlayerComponent->GetSpeed()));
+						//PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() - (PlayerComponent->GetSpeed()));
+
 					}
 				}
-				else if (Collision::AABB(objk1.get(), "guard")) {
+				else if (!Collision::AABB(objk1.get(), "guard").empty()) {
 					PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() - (PlayerComponent->GetSpeed()));
 				}
 				else {
@@ -155,15 +194,26 @@ const void InputScript::checkKeys()
 	if (input->GetKey(D)) {
 		if (PlayerComponent != nullptr) {
 			if (PlayerComponent->GetHasCollision()) {
-				if (Collision::AABB(objk1.get(), "wall")) {
-					if (Collision::AABB(objk1.get(), "wall")->GetGameObject()->getTransform()->position.x > PlayerComponent->GetXPlayer()) {
+				if (!Collision::AABB(objk1.get(), "wall").empty()) {
+					bool found = false;
+					for (auto b : Collision::AABB(objk1.get(), "wall")) {
+						if (b->GetGameObject()->getTransform()->position.x > PlayerComponent->GetXPlayer() + 10) {
+							std::cout << "collision right" << std::endl;
+							found = true;
+						}
+						else {
+						}
+					}
+					if (!found) {
+						PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() + (PlayerComponent->GetSpeed()));
 
 					}
 					else {
-						PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() + (PlayerComponent->GetSpeed()));
+						//PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() - (PlayerComponent->GetSpeed()));
+
 					}
 				}
-				else if (Collision::AABB(objk1.get(), "guard")) {
+				else if (!Collision::AABB(objk1.get(), "guard").empty()) {
 					PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() - (PlayerComponent->GetSpeed()));
 				}
 				else {

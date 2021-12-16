@@ -75,8 +75,8 @@ void Enemy::OnUpdate()
 
     if (isAlive)
     {
-       	if (Collision::AABB(GetGameObject(), "PlayerBullet")) {
-        auto bullet = Collision::AABB(GetGameObject(), "PlayerBullet")->GetGameObject()->GetComponent<spic::BehaviourScript>();
+       	if (!Collision::AABB(GetGameObject(), "PlayerBullet").empty()) {
+        auto bullet = Collision::AABB(GetGameObject(), "PlayerBullet")[0]->GetGameObject()->GetComponent<spic::BehaviourScript>();
         std::shared_ptr<Bullet> bulletObj = std::dynamic_pointer_cast<Bullet>(bullet);
        
            setHealthpoints(getHealthpoints() - bulletObj->GetDamage());

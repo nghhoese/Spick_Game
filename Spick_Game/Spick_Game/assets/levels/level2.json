@@ -83,8 +83,8 @@
                  "type":"Enemy",
                  "visible":true,
                  "width":64,
-                 "x":128,
-                 "y":320
+                 "x":512,
+                 "y":576
                 }, 
                 {
                  "height":64,
@@ -117,7 +117,7 @@
                  "visible":true,
                  "width":64,
                  "x":1088,
-                 "y":448
+                 "y":512
                 }, 
                 {
                  "height":64,
@@ -127,8 +127,30 @@
                  "type":"Enemy",
                  "visible":true,
                  "width":64,
-                 "x":512,
-                 "y":448
+                 "x":128,
+                 "y":320
+                }, 
+                {
+                 "height":64,
+                 "id":19,
+                 "name":"RedGuard",
+                 "rotation":0,
+                 "type":"Enemy",
+                 "visible":true,
+                 "width":64,
+                 "x":1344,
+                 "y":960
+                }, 
+                {
+                 "height":64,
+                 "id":20,
+                 "name":"GreenGuard",
+                 "rotation":0,
+                 "type":"Enemy",
+                 "visible":true,
+                 "width":64,
+                 "x":576,
+                 "y":1088
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -137,7 +159,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":19,
+ "nextobjectid":21,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
