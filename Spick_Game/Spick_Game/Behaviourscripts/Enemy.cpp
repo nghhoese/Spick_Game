@@ -66,6 +66,60 @@ void Enemy::Attack()
     }
 }
 
+void Enemy::BulletHandling() 
+{
+    if (!Collision::AABB(GetGameObject(), "PlayerBullet").empty()) {
+        auto bullet = Collision::AABB(GetGameObject(), "PlayerBullet")[0]->GetGameObject()->GetComponent<spic::BehaviourScript>();
+        std::shared_ptr<Bullet> bulletObj = std::dynamic_pointer_cast<Bullet>(bullet);
+
+        setHealthpoints(getHealthpoints() - bulletObj->GetDamage());
+        bulletObj->SetBroken(true);
+        setPath("assets/enemy_hit.png");
+        hit = true;
+    }
+}
+
+void Enemy::DoEnemyThings()
+{
+    if (isAlive)
+    {
+        BulletHandling();
+
+        if (GetGameObject()->getScene()->GetGameObjectsByName("Player").size() > 0) {
+            if (notInitialized)
+            {
+                notInitialized = false;
+                player = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
+                AI = std::make_unique<AIController>(*GetGameObject(), vel, *player, speed);
+            }
+
+            AI->Update(*GetGameObject(), vel, *player);
+
+            if (IfPlayerNearby() || hit)
+            {
+                Attack();
+            }
+            else {
+                UpdateAIBehaviour(AI->Wander());
+                CalculateRotation(trans.position, AI->GetSight());
+            }
+        }
+    }
+}
+
+void Enemy::HandleHealth() 
+{
+    if (this->healthpoints < 0) {
+        isAlive = false;
+        hit = false;
+        trans.scale = 0.01;
+        trans.position.x = -50;
+        trans.position.y = -10;
+        GetGameObject()->setTransform(&trans);
+        GetGameObject()->GetComponent<spic::Sprite>()->OnRender();
+    }
+}
+
 void Enemy::OnAwake()
 {
 }
@@ -82,48 +136,8 @@ void Enemy::OnStart()
 
 void Enemy::OnUpdate()
 {
-	if (this->healthpoints < 0) {
-        isAlive = false;
-        hit = false;
-		trans.scale = 0.01;
-		trans.position.x = -50;
-		trans.position.y = -10;
-		GetGameObject()->setTransform(&trans);
-		GetGameObject()->GetComponent<spic::Sprite>()->OnRender();
-	}
-
-    if (isAlive)
-    {
-       	if (!Collision::AABB(GetGameObject(), "PlayerBullet").empty()) {
-            auto bullet = Collision::AABB(GetGameObject(), "PlayerBullet")[0]->GetGameObject()->GetComponent<spic::BehaviourScript>();
-            std::shared_ptr<Bullet> bulletObj = std::dynamic_pointer_cast<Bullet>(bullet);
-       
-            setHealthpoints(getHealthpoints() - bulletObj->GetDamage());
-            bulletObj->SetBroken(true);
-            setPath("assets/enemy_hit.png");
-            hit = true;
-        }
-
-        if (GetGameObject()->getScene()->GetGameObjectsByName("Player").size() > 0) {
-            if (notInitialized)
-            {
-                notInitialized = false;
-                player = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
-                AI = std::make_unique<AIController>(*GetGameObject(), vel, *player, speed);
-            }
-            
-            AI->Update(*GetGameObject(), vel, *player);
-            
-            if (IfPlayerNearby() || hit)
-            {
-                Attack();
-            }
-            else {
-                UpdateAIBehaviour(AI->Wander());
-                CalculateRotation(trans.position, AI->GetSight());
-            }
-        }
-    }
+    HandleHealth();
+    DoEnemyThings();
 }
 
 
@@ -200,8 +214,7 @@ void Enemy::FillBucket()
         bulletObject->AddComponent(sprite);
         sprite->SetSprite("assets/bullet.bmp");
         sprite->SetPlayerBool(true);
-        transfrom.position.x = 0;
-        transfrom.position.y = 0;
+        transfrom.position.Set(0);
         transfrom.scale = 0.55;
         std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
         boxCollider->Height(7);
