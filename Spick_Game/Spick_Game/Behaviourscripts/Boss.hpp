@@ -51,6 +51,7 @@ private:
     int bulletSpeed;
     int bulletDamage;
     int bulletCounter = 0;
+    int maxhealthpoints;
     std::vector<std::shared_ptr<Bullet>> bullets;
     std::shared_ptr<spic::GameObject> player;
     std::shared_ptr<spic::Sprite> sprite;

@@ -16,7 +16,7 @@ bool Boss::InShootingRange()
     return true;
 }
 
-Boss::Boss() : speed(0), turnCount(0), isTurned(false), isAlive(true), notInitialized(true), magazine(20), bulletDamage(10), coolDown(90), currentMagazine(magazine), bulletSpeed(20), burstSpeed(3)
+Boss::Boss() : speed(0), turnCount(0), isTurned(false), isAlive(true), notInitialized(true), magazine(20), bulletDamage(10), coolDown(90), currentMagazine(magazine), bulletSpeed(20), burstSpeed(3), healthpoints(1000), maxhealthpoints(healthpoints)
 {
 }
 
@@ -43,6 +43,17 @@ void Boss::OnUpdate()
 {
     if (this->healthpoints <= 0) {
         EngineController::GetInstance()->SetActiveScene("CompletedScene");
+    }
+
+    if (!Collision::AABB(GetGameObject(), "PlayerBullet").empty()) {
+        auto bullet = Collision::AABB(GetGameObject(), "PlayerBullet")[0]->GetGameObject()->GetComponent<spic::BehaviourScript>();
+        std::shared_ptr<Bullet> bulletObj = std::dynamic_pointer_cast<Bullet>(bullet);
+        setHealthpoints(getHealthpoints() - bulletObj->GetDamage());
+        bulletObj->SetBroken(true);
+        std::shared_ptr<spic::GameObject> bossHpObject = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("bosshp")[0];
+        std::shared_ptr<spic::Text> bossHpText = std::dynamic_pointer_cast<spic::Text>(bossHpObject);
+        int percentage = 100 + ((this->healthpoints - this->maxhealthpoints) * 100) / maxhealthpoints;
+        bossHpText->SetText("BOSS: " + std::to_string(percentage) + "%");
     }
 
     if (isAlive)
@@ -166,8 +177,8 @@ void Boss::FillBucket()
         transfrom.position.y = 0;
         transfrom.scale = 1;
         std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
-        boxCollider->Height(7);
-        boxCollider->Width(7);
+        boxCollider->Height(13);
+        boxCollider->Width(13);
         bulletObject->AddComponent(boxCollider);
         std::shared_ptr<Bullet> bullet = std::make_shared<Bullet>(transfrom.position, transfrom.position, 20, bulletDamage);
         bulletObject->AddComponent(bullet);
