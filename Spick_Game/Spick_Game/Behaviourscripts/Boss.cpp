@@ -16,7 +16,7 @@ bool Boss::InShootingRange()
     return true;
 }
 
-Boss::Boss() : speed(0), turnCount(0), isTurned(false), isAlive(true), notInitialized(true), magazine(40), bulletDamage(20), coolDown(100), currentMagazine(magazine), bulletSpeed(20), burstSpeed(5)
+Boss::Boss() : speed(0), turnCount(0), isTurned(false), isAlive(true), notInitialized(true), magazine(20), bulletDamage(10), coolDown(90), currentMagazine(magazine), bulletSpeed(20), burstSpeed(3)
 {
 }
 
@@ -128,7 +128,6 @@ void Boss::Shoot()
                 b->SetPosition(transfrom.position);
                 b->GetGameObject()->setTransform(&transfrom);
                 b->CalculateAmountToMove();
-                return;
             }
             burstCooldown = burstSpeed;
             bulletCounter += 1;
