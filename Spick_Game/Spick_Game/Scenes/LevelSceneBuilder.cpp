@@ -1,5 +1,4 @@
 #include "LevelSceneBuilder.hpp"
-#include "../Behaviourscripts/ReturnToMainMenuBehaviour.hpp"
 
 std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(int levelNumber) {
    
@@ -34,7 +33,8 @@ std::shared_ptr<spic::Scene> LevelSceneBuilder::BuildLevelScene(int levelNumber)
     paused->SetName("paused");
     paused->SetActive(false);
     std::shared_ptr<spic::Button> BackToMenu = std::make_shared<spic::Button>("mainmenubutton", (camera->getAspectWidth() - 500), (camera->getAspectHeight() - 200), 367, 105, "BackToMenuScript");
-    std::shared_ptr<ReturnToMainMenuBehaviour> BackToMenuScript = std::make_shared<ReturnToMainMenuBehaviour>("BackToMenuScript");
+    std::shared_ptr<ChangeSceneBehaviour> BackToMenuScript = std::make_shared<ChangeSceneBehaviour>("BackToMenuScript", "MainMenu");
+    BackToMenuScript->setAlwaysReset(true);
     BackToMenu->AddComponent(BackToMenuScript);
     BackToMenu->SetName("paused");
     BackToMenu->SetActive(false);

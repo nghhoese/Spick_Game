@@ -29,7 +29,7 @@ void ChangeSceneBehaviour::OnClick()
 		}
 	}
 
-	if (EngineController::GetInstance()->GetGameOver()) {
+	if (EngineController::GetInstance()->GetGameOver() || alwaysReset) {
 		std::shared_ptr<LevelSceneBuilder> levelSceneBuilder = std::make_shared<LevelSceneBuilder>();
 		EngineController::GetInstance()->SetCurrentLevel(1);
 		auto level1 = EngineController::GetInstance()->GetSceneByName("level1");
