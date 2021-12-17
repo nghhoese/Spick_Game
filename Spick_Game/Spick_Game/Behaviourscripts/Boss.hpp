@@ -16,7 +16,6 @@
 #include "InputScript.hpp"
 #include "HUD.hpp"
 #include "../Controllers/EngineController.hpp"
-#include "../Controllers/AIController.hpp"
 
 class Boss : public spic::BehaviourScript {
 private:
@@ -41,7 +40,6 @@ private:
     std::shared_ptr<spic::GameObject> player;
     std::shared_ptr<spic::Sprite> sprite;
     spic::Transform trans;
-    std::unique_ptr<AIController> AI;
 
     void Shoot();
     void CalculateRotation(spic::Point object, spic::Point target);

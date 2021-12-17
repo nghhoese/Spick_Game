@@ -283,31 +283,29 @@ const void InputScript::checkKeys()
 			}
 		}
 	}
-	else if (input->GetKey(H)) {;
-		time->TimeScale(1.0);
-	}
 	else if (input->GetKey(PU)) {
 		if (!GetSpeedUp()) {
 			SetSpeedUp(true);
-			if (time->TimeScale() == 0.5) {
-				time->TimeScale(1.0);
-			}
-			else if (time->TimeScale() == 1.0) {
-				time->TimeScale(1.9);
+			if (time->TimeScale() != 2) {
+				time->TimeScale(time->TimeScale() + 0.25);
 			}
 		}
 	}
 	else if (input->GetKey(PD)) {
 		if (!GetSpeedDown()) {
 			SetSpeedDown(true);
-			if (time->TimeScale() == 1.9) {
-				time->TimeScale(1.0);
-			}
-			else if (time->TimeScale() == 1.0) {
-				time->TimeScale(0.5);
+			if (time->TimeScale() != 0.25) {
+				time->TimeScale(time->TimeScale() - 0.25);
 			}
 		}
 		
+	}
+	else if (input->GetKey(H)) {
+		if (!GetSpeedReset()) {
+			SetSpeedReset(true);
+			time->TimeScale(1);
+		}
+
 	}
 	else if (input->GetKey(F)) {
 		if (GetClicked()) {
@@ -428,6 +426,7 @@ const void InputScript::checkKeys()
 		SetSpeedUp(false);
 		SetSpeedDown(false);
 		SetClicked(true);
+		SetSpeedReset(false);
 	}
 
 }
