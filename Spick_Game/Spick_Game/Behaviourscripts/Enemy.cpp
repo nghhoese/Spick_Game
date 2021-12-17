@@ -37,10 +37,7 @@ bool Enemy::InShootingRange()
 
 void Enemy::UpdateAIBehaviour(spic::Point steering)
 {
-    acc.Add(steering);
-    vel.Add(acc);
-    vel.Limit(10);
-    trans.position.Add(vel);
+    trans.position.Add(steering);
     GetGameObject()->setTransform(&trans);
 }
 
@@ -75,6 +72,7 @@ void Enemy::BulletHandling()
         setHealthpoints(getHealthpoints() - bulletObj->GetDamage());
         bulletObj->SetBroken(true);
         setPath("assets/enemy_hit.png");
+
         hit = true;
     }
 }
@@ -90,10 +88,11 @@ void Enemy::DoEnemyThings()
             {
                 notInitialized = false;
                 player = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
-                AI = std::make_unique<AIController>(*GetGameObject(), vel, *player, speed);
+                AI = std::make_unique<spic::AI>(*GetGameObject(), *player, speed, true);
+                AI->SetCollisionObjectName("wall");
             }
 
-            AI->Update(*GetGameObject(), vel, *player);
+            AI->Update(*GetGameObject(), *player);
 
             if (IfPlayerNearby() || hit)
             {
@@ -110,13 +109,27 @@ void Enemy::DoEnemyThings()
 void Enemy::HandleHealth() 
 {
     if (this->healthpoints < 0) {
-        isAlive = false;
-        hit = false;
-        trans.scale = 0.01;
-        trans.position.x = -50;
-        trans.position.y = -10;
-        GetGameObject()->setTransform(&trans);
-        GetGameObject()->GetComponent<spic::Sprite>()->OnRender();
+        if (isAlive) {
+            isAlive = false;
+
+            GetGameObject()->SetName("");
+            GetGameObject()->GetComponent<spic::Animator>()->Play(false);
+        }
+        if (!GetGameObject()->GetComponent<spic::Animator>()->GetRunning()) {
+            setPath("assets/bloodsplatter.png");
+            isAlive = false;
+            hit = false;
+            trans.scale = 0.01;
+            trans.position.x = -50;
+            trans.position.y = -10;
+            GetGameObject()->setTransform(&trans);
+            GetGameObject()->GetComponent<spic::Sprite>()->OnRender();
+           
+        }
+
+
+        
+       
     }
 }
 
@@ -130,8 +143,6 @@ void Enemy::OnStart()
     double Result = (atan2(trans.position.y, trans.position.x) * 180.0000) / 3.14159265;
     trans.rotation = Result + (rand() % 180 + 90);
     GetGameObject()->setTransform(&trans);
-    acc.Set(0);
-    vel.Set(0);
 }
 
 void Enemy::OnUpdate()

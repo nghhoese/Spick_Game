@@ -15,6 +15,7 @@ void HUD::OnStart()
 
 void HUD::OnUpdate()
 {
+
 	InputObject = GetGameObject()->getScene()->GetGameObjectsByName("Input")[0];
 	auto InputComponent = InputObject->GetComponent<InputScript>();
 
