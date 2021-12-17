@@ -125,6 +125,8 @@ void Boss::Shoot()
                 b->SetPosition(transfrom.position);
                 b->GetGameObject()->setTransform(&transfrom);
                 b->CalculateAmountToMove();
+                //b->GetGameObject()->GetComponent<spic::AudioSource>()->Play(true);
+
             }
             burstCooldown = burstSpeed;
             bulletCounter += 1;
@@ -155,6 +157,10 @@ void Boss::FillBucket()
         GetGameObject()->getScene()->AddGameObject(bulletObject);
         spic::Transform transfrom = *bulletObject->getTransform();
         sprite = std::make_shared<spic::Sprite>();
+        std::shared_ptr<spic::AudioSource> biem = std::make_shared<spic::AudioSource>();
+        biem->SetAudioClip("assets/biem.mp3");
+        biem->SetIsMusic(false);
+        bulletObject->AddComponent(biem);
         bulletObject->AddComponent(sprite);
         sprite->SetSprite("assets/bullet.bmp");
         sprite->SetPlayerBool(true);

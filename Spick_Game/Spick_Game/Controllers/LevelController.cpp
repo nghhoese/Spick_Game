@@ -253,7 +253,25 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
 void LevelController::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, std::tuple<int, int> position, const std::string& spriteName, const std::string& colourTag, const std::string& typeTag, int healthPoints, double speed, int damage,int magazine) {
     std::shared_ptr<spic::GameObject> guardObject = std::make_shared<spic::GameObject>("guard");
     scene->AddGameObject(guardObject);
+    std::shared_ptr<spic::Animator> GuardDeathAnimation = std::make_shared<spic::Animator>();
+    guardObject->AddComponent(GuardDeathAnimation);
+    std::vector<std::shared_ptr<spic::Sprite>> sprites = {};
+    std::shared_ptr<spic::Sprite> sprite1 = std::make_shared<spic::Sprite>();
+    sprite1->SetSprite("assets/enemy_hit.png");
+    sprite1->SetGameObject(guardObject.get());
+    std::shared_ptr<spic::Sprite> sprite2 = std::make_shared<spic::Sprite>();
+    sprite2->SetSprite("assets/" + spriteName);
+    sprite2->SetGameObject(guardObject.get());
+    std::shared_ptr<spic::Sprite> sprite3 = std::make_shared<spic::Sprite>();
+    sprite3->SetSprite("assets/bloodsplatter.png");
+    sprite3->SetGameObject(guardObject.get());
+    sprites.push_back(sprite1);
+    sprites.push_back(sprite2);
+    sprites.push_back(sprite3);
 
+
+    GuardDeathAnimation->SetFps(10);
+    GuardDeathAnimation->SetSprites(sprites);
     BuildLevelObjectPosition(guardObject, position);
 
     std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>();

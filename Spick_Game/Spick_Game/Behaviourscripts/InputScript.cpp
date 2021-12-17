@@ -119,7 +119,7 @@ const void InputScript::checkKeys()
 
 					}
 					else {
-						PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() + (PlayerComponent->GetSpeed()));
+						//PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() + (PlayerComponent->GetSpeed()));
 
 					}
 				}
@@ -168,7 +168,7 @@ const void InputScript::checkKeys()
 
 					}
 					else {
-						PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() + (PlayerComponent->GetSpeed()));
+						//PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() + (PlayerComponent->GetSpeed()));
 
 					}
 				}
@@ -217,7 +217,7 @@ const void InputScript::checkKeys()
 
 					}
 					else {
-						PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() - (PlayerComponent->GetSpeed()));
+						//PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() - (PlayerComponent->GetSpeed()));
 
 					}
 				}
@@ -264,7 +264,7 @@ const void InputScript::checkKeys()
 
 					}
 					else {
-						PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() - (PlayerComponent->GetSpeed()));
+						//PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() - (PlayerComponent->GetSpeed()));
 
 					}
 				}
