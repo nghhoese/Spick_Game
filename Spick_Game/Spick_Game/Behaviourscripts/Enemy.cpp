@@ -87,7 +87,8 @@ void Enemy::DoEnemyThings()
             {
                 notInitialized = false;
                 player = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0];
-                AI = std::make_unique<spic::AI>(*GetGameObject(), *player, speed, true, true);
+                AI = std::make_unique<spic::AI>(*GetGameObject(), *player, speed, true);
+                AI->SetCollisionObjectName("wall");
             }
 
             AI->Update(*GetGameObject(), *player);
