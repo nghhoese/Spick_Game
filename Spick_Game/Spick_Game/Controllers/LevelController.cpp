@@ -291,7 +291,6 @@ void LevelController::BuildBoss(std::shared_ptr<spic::Scene> scene, std::shared_
     std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
     boxCollider->Height(143);
     boxCollider->Width(143);
-    boxCollider->ShowBoxBool(true);
     boss->AddComponent(boxCollider);
     boss->AddComponent(sprite);
     sprite->SetSprite(bossScript->getPath());
@@ -302,7 +301,7 @@ void LevelController::BuildBoss(std::shared_ptr<spic::Scene> scene, std::shared_
     spic::Color textColor = spic::Color(1.0, 0.0, 0.0, 1.0);
     int screenwidth = EngineController::GetInstance()->GetScreenWidth();
     int screenheight = EngineController::GetInstance()->GetScreenHeight();
-    std::shared_ptr<spic::Text> bossHP = std::make_shared<spic::Text>("BOSS: 100%", "Capsmall", 60, textColor, screenwidth/3, (screenheight - screenheight) + 80);
+    std::shared_ptr<spic::Text> bossHP = std::make_shared<spic::Text>("BOSS: 100%", "Capsmall", 60, textColor, screenwidth/2, (screenheight - screenheight) + 80);
     bossHP->SetName("bosshp");
     scene->AddGameObject(bossHP);
 }

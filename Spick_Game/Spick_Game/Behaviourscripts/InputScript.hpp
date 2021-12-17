@@ -17,6 +17,7 @@ private:
 	float deltaTime;
 	bool speedup;
 	bool speeddown;
+	bool speedreset;
 	bool pausing;
 	bool clicked;
 	bool cheatsClicked;
@@ -46,6 +47,8 @@ public:
 	bool GetSpeedUp() { return this->speedup; };
 	void SetSpeedDown(bool value) { this->speeddown = value; };
 	bool GetSpeedDown() { return this->speeddown; };
+	void SetSpeedReset(bool value) { this->speedreset = value; };
+	bool GetSpeedReset() { return this->speedreset; }
 	void SetPausing(bool value) { this->pausing = value; };
 	bool GetPausing() { return this->pausing; };
 	void SetClicked(bool value) { this->clicked = value; };

@@ -52,6 +52,17 @@
                  "width":64,
                  "x":512,
                  "y":512
+                }, 
+                {
+                 "height":64,
+                 "id":34,
+                 "name":"Boss",
+                 "rotation":0,
+                 "type":"Enemy",
+                 "visible":true,
+                 "width":64,
+                 "x":512,
+                 "y":512
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -60,7 +71,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":34,
+ "nextobjectid":38,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
