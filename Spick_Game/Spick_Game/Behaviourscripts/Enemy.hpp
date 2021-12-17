@@ -16,15 +16,11 @@
 #include "InputScript.hpp"
 #include "HUD.hpp"
 #include "../Controllers/EngineController.hpp"
-#include "../Controllers/AIController.hpp"
+#include "API_Headers/AI.hpp"
 
 class Enemy : public spic::BehaviourScript {
 private:
     double speed;
-
-    spic::Point sight;
-    spic::Point acc; 
-    spic::Point vel; 
     spic::Transform trans;
 
     int healthpoints;
@@ -41,7 +37,7 @@ private:
     std::vector<std::shared_ptr<Bullet>> bullets;
     std::shared_ptr<spic::GameObject> player;
     std::shared_ptr<spic::Sprite> sprite;
-    std::unique_ptr<AIController> AI;
+    std::unique_ptr<spic::AI> AI;
     std::string path;
 
     bool isAlive;
