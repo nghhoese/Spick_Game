@@ -156,10 +156,9 @@ void LevelController::BuildLevelTile(std::shared_ptr<spic::Scene> scene, std::sh
     }
     scene->AddGameObject(tileObject);
     tileObject->AddComponent(tileSprite);
-    std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
-    boxCollider->Height(64);
-    boxCollider->Width(64);
-    tileObject->AddComponent(boxCollider);
+
+    BuildObjectCollider(tileObject, 64, 64, false);
+
     if (std::filesystem::exists(basePath + bmpFileString)) {
         tileSprite->SetSprite(basePath + bmpFileString);
     }
@@ -184,7 +183,7 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
                     std::shared_ptr<spic::GameObject> startPointObject = std::make_shared<spic::GameObject>("Startpoint");
                     scene->AddGameObject(startPointObject);
-                    BuildLevelObjectPosition(startPointObject, position);
+                    BuildLevelObjectPosition(startPointObject, position, 0.65);
                     if (EngineController::GetInstance()->GetCurrentLevel() == 1) {
                         BuildLevelPlayer(scene, sprite, position);
                     }
@@ -195,15 +194,10 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
             for (std::pair<std::string, std::any> value : object) {
                 if (value.first._Equal("position")) {
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
-
                     std::shared_ptr<spic::GameObject> endPointObject = std::make_shared<spic::GameObject>("Endpoint");
                     scene->AddGameObject(endPointObject);
-                    BuildLevelObjectPosition(endPointObject, position);
-                    std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
-                    boxCollider->Height(64);
-                    boxCollider->Width(64);
-                    endPointObject->AddComponent(boxCollider);
-
+                    BuildLevelObjectPosition(endPointObject, position, 0.65);
+                    BuildObjectCollider(endPointObject, 64, 64, false);
                     std::string levelCountString = std::to_string(EngineController::GetInstance()->GetCurrentLevel());
                     std::string levelString = "level" + levelCountString;
                     std::shared_ptr<ChangeSceneBehaviour> scriptPlay = std::make_shared<ChangeSceneBehaviour>("EndLevelScript", levelString);
@@ -213,12 +207,11 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
         }
     }
     if (get_value<std::string>("type", object) == "Enemy") {
-
         if (get_value<std::string>("name", object) == "GreenGuard") {
             for (std::pair<std::string, std::any> value : object) {
                 if (value.first._Equal("position")) {
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
-                    BuildLevelEnemy(scene, sprite, position, "enemy_green.bmp", "green", "guard", 100, 1.5, 30,1);
+                    BuildLevelEnemy(scene, sprite, position, "enemy_green.bmp", "green", "guard", 100, 1.5, 20, 1);
                 }
             } 
         }
@@ -226,15 +219,15 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
             for (std::pair<std::string, std::any> value : object) {
                 if (value.first._Equal("position")) {
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
-                    BuildLevelEnemy(scene, sprite, position, "enemy_red.bmp", "red", "guard", 75, 2.5, 49,1);
+                    BuildLevelEnemy(scene, sprite, position, "enemy_red.bmp", "red", "guard", 75, 2.5, 30, 1);
                 }
             }
-      }
+        }
         if (get_value<std::string>("name", object) == "BlueGuard") {
             for (std::pair<std::string, std::any> value : object) {
                 if (value.first._Equal("position")) {
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
-                    BuildLevelEnemy(scene, sprite, position, "enemy_blue.bmp", "blue", "guard", 150, 1.5, 50,1);
+                    BuildLevelEnemy(scene, sprite, position, "enemy_blue.bmp", "blue", "guard", 150, 1.0, 40, 1);
                 }             
             }          
         }
@@ -243,7 +236,6 @@ void LevelController::BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std:
                 if (value.first._Equal("position")) {
                     std::tuple<int, int> position = std::any_cast<std::tuple<int, int>>(value.second);
                     BuildBoss(scene, sprite, position);
-                    //BuildLevelEnemy(scene, sprite, position, "boss.png", "blue", "guard", 150, 1.5, 50);
                 }
             }
         }
@@ -269,10 +261,10 @@ void LevelController::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::s
     sprites.push_back(sprite2);
     sprites.push_back(sprite3);
 
-
     GuardDeathAnimation->SetFps(10);
     GuardDeathAnimation->SetSprites(sprites);
-    BuildLevelObjectPosition(guardObject, position);
+
+    BuildLevelObjectPosition(guardObject, position, 0.65);
 
     std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>();
     enemy->setHealthpoints(healthPoints);
@@ -282,10 +274,8 @@ void LevelController::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::s
     guardObject->AddComponent(enemy);
     enemy->setPath("assets/" + spriteName);
 
-    std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
-    boxCollider->Height(58);
-    boxCollider->Width(50);
-    guardObject->AddComponent(boxCollider);
+    BuildObjectCollider(guardObject, 58, 50, false);
+
     guardObject->AddComponent(sprite);
     sprite->SetSprite(enemy->getPath());
     enemy->OnStart();
@@ -293,24 +283,18 @@ void LevelController::BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::s
 }
 
 void LevelController::BuildBoss(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, const std::tuple<int, int> position) {
-    std::shared_ptr<spic::GameObject> boss = std::make_shared<spic::GameObject>("Boss");
-    scene->AddGameObject(boss);
+    std::shared_ptr<spic::GameObject> bossObject = std::make_shared<spic::GameObject>("Boss");
+    scene->AddGameObject(bossObject);
 
-    spic::Transform transfrom = *boss->getTransform();
-    transfrom.position.x = std::get<0>(position);
-    transfrom.position.y = std::get<1>(position);
-    transfrom.scale = 1;
-    boss->setTransform(&transfrom);
+    BuildLevelObjectPosition(bossObject, position, 1);
 
     std::shared_ptr<Boss> bossScript = std::make_shared<Boss>();
-    boss->AddComponent(bossScript);
+    bossObject->AddComponent(bossScript);
     bossScript->setPath("assets/boss.png");
 
-    std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
-    boxCollider->Height(143);
-    boxCollider->Width(143);
-    boss->AddComponent(boxCollider);
-    boss->AddComponent(sprite);
+    BuildObjectCollider(bossObject, 143, 143, false);
+
+    bossObject->AddComponent(sprite);
     sprite->SetSprite(bossScript->getPath());
     
     bossScript->OnStart();
@@ -324,14 +308,6 @@ void LevelController::BuildBoss(std::shared_ptr<spic::Scene> scene, std::shared_
     scene->AddGameObject(bossHP);
 }
 
-void LevelController::BuildLevelObjectPosition(std::shared_ptr<spic::GameObject> object, std::tuple<int, int> position) {
-    spic::Transform transfrom = *object->getTransform();
-    transfrom.position.x = std::get<0>(position);
-    transfrom.position.y = std::get<1>(position);
-    transfrom.scale = 0.65;
-    object->setTransform(&transfrom);
-}
-
 void LevelController::BuildLevelPlayer(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, std::tuple<int, int> position) {
     std::shared_ptr<spic::GameObject> playerObject = std::make_shared<spic::GameObject>("Player");
 
@@ -341,7 +317,7 @@ void LevelController::BuildLevelPlayer(std::shared_ptr<spic::Scene> scene, std::
     sprite->SetSprite("assets/player_pistol_silenced.png");
     sprite->SetPlayerBool(true);
 
-    BuildLevelObjectPosition(playerObject, position);
+    BuildLevelObjectPosition(playerObject, position, 0.65);
 
     std::shared_ptr<Player> player = std::make_shared<Player>();
     playerObject->AddComponent(player);
@@ -355,15 +331,30 @@ void LevelController::BuildLevelPlayer(std::shared_ptr<spic::Scene> scene, std::
     std::shared_ptr<ChangeSceneBehaviour> completedSceneScript = std::make_shared<ChangeSceneBehaviour>("CompletedSceneScript", "CompletedScene");
     playerObject->AddComponent(completedSceneScript);
 
-    std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
-    boxCollider->Height(50);
-    boxCollider->Width(50);
-    boxCollider->SetPlayerBool(true);
-    playerObject->AddComponent(boxCollider);
+    BuildObjectCollider(playerObject, 50, 50, true);
 
     player->FillBucket();
     std::shared_ptr<spic::AudioSource> liedje1 = std::make_shared<spic::AudioSource>();
     playerObject->AddComponent(liedje1);
     liedje1->SetAudioClip("assets/reload.wav");
     liedje1->SetIsMusic(false);
+}
+
+void LevelController::BuildLevelObjectPosition(std::shared_ptr<spic::GameObject> object, std::tuple<int, int> position, double transformScale) {
+    spic::Transform transfrom = *object->getTransform();
+    transfrom.position.x = std::get<0>(position);
+    transfrom.position.y = std::get<1>(position);
+    transfrom.scale = transformScale;
+    object->setTransform(&transfrom);
+}
+
+void LevelController::BuildObjectCollider(std::shared_ptr<spic::GameObject> object, int height, int width, bool IsPlayer)
+{
+    std::shared_ptr<spic::BoxCollider> boxCollider = std::make_shared<spic::BoxCollider>();
+    boxCollider->Height(height);
+    boxCollider->Width(width);
+    if (IsPlayer) {
+        boxCollider->SetPlayerBool(true);
+    }
+    object->AddComponent(boxCollider);
 }
