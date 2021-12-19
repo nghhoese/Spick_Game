@@ -37,6 +37,7 @@ private:
     std::vector<std::shared_ptr<Bullet>> bullets;
     std::shared_ptr<spic::Sprite> sprite;
     std::shared_ptr<spic::GameObject> InputObject;
+    float distance(int x1, int y1, int x2, int y2);
 public:
     Player();
     void FillBucket();
@@ -68,6 +69,7 @@ public:
     bool GetHasCollision() { return this->hasCollision; };
     void SetMagazine(int value) { this->magazine = value; };
     int GetMagazine() { return this->magazine; };
+    bool HandleWallCollision(std::string direction);
     void SetStart();
     void SetEnd();
     spic::Point UpPoint;
