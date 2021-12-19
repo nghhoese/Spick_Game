@@ -45,10 +45,12 @@ void Boss::BulletHandling()
         std::shared_ptr<Bullet> bulletObj = std::dynamic_pointer_cast<Bullet>(bullet);
         setHealthpoints(getHealthpoints() - bulletObj->GetDamage());
         bulletObj->SetBroken(true);
-        std::shared_ptr<spic::GameObject> bossHpObject = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("bosshp")[0];
-        std::shared_ptr<spic::Text> bossHpText = std::dynamic_pointer_cast<spic::Text>(bossHpObject);
-        int percentage = 100 + ((this->healthpoints - this->maxhealthpoints) * 100) / maxhealthpoints;
-        bossHpText->SetText("BOSS: " + std::to_string(percentage) + "%");
+        for (auto boss : EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("bosshp")) {
+            std::shared_ptr<spic::Text> bossHpText = std::dynamic_pointer_cast<spic::Text>(boss);
+            int percentage = 100 + ((this->healthpoints - this->maxhealthpoints) * 100) / maxhealthpoints;
+            bossHpText->SetText("BOSS: " + std::to_string(percentage) + "%");
+        }
+
     }
 }
 
