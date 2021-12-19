@@ -366,19 +366,32 @@ void InputScript::OnTriggerStay2D(const spic::Collider& collider)
 
 void InputScript::SetObjectsHitBox(spic::GameObject playerObject) {
 	auto PlayerBoxColliderComponent = playerObject.GetComponent<BoxCollider>();
-	auto guards = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("Guard");
+	auto guards = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("guard");
+	std::shared_ptr<spic::GameObject> boss;
+	if (EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("Boss").size() > 0) {
+		boss = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("Boss")[0];
+	}
 	if (this->GetHitbox()) {
 		PlayerBoxColliderComponent->ShowBoxBool(true);
-		for (std::shared_ptr<spic::GameObject> g : guards) {
-
-			g->GetComponent<BoxCollider>()->ShowBoxBool(true);
+		if (guards.size() > 0) {
+			for (std::shared_ptr<spic::GameObject> g : guards) {
+				g->GetComponent<BoxCollider>()->ShowBoxBool(true);
+			}
+		}
+		if (boss) {
+			boss->GetComponent<BoxCollider>()->ShowBoxBool(true);
 		}
 		this->SetHitbox(false);
 	}
 	else {
 		PlayerBoxColliderComponent->ShowBoxBool(false);
-		for (std::shared_ptr<spic::GameObject> g : guards) {
-			g->GetComponent<BoxCollider>()->ShowBoxBool(false);
+		if (guards.size() > 0) {
+			for (std::shared_ptr<spic::GameObject> g : guards) {
+				g->GetComponent<BoxCollider>()->ShowBoxBool(false);
+			}
+		}
+		if (boss) {
+			boss->GetComponent<BoxCollider>()->ShowBoxBool(false);
 		}
 		this->SetHitbox(true);
 	}
