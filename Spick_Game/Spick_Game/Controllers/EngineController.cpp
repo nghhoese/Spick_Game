@@ -193,3 +193,15 @@ std::shared_ptr<spic::Scene> EngineController::BuildMainMenu()
 	std::shared_ptr<spic::Scene> mainMenu = mainMenuBuilder->BuildScene();
 	return mainMenu;
 }
+
+void EngineController::ResetLevels()
+{
+	auto level1 = EngineController::GetInstance()->GetSceneByName("level1");
+	level1->SetName("level1-done");
+	auto level2 = EngineController::GetInstance()->GetSceneByName("level2");
+	level2->SetName("level2-done");
+	auto level3 = EngineController::GetInstance()->GetSceneByName("level3");
+	level3->SetName("level3-done");
+	SetCurrentLevel(1);
+	BuildLevels();
+}

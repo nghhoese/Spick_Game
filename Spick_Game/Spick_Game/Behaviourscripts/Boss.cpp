@@ -38,6 +38,7 @@ void Boss::BulletHandling()
 {
     if (this->healthpoints <= 0) {
         EngineController::GetInstance()->SetActiveScene("CompletedScene");
+        EngineController::GetInstance()->ResetLevels();
     }
 
     if (!Collision::AABB(GetGameObject(), "PlayerBullet").empty()) {

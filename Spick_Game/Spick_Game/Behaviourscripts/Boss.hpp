@@ -20,9 +20,8 @@
 class Boss : public spic::BehaviourScript {
 private:
 
-    bool isAlive = true;
+    bool isAlive;
     bool notInitialized;
-
     int magazine;
     int currentMagazine;
     int coolDown;

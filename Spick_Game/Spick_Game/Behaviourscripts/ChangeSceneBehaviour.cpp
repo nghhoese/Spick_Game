@@ -12,43 +12,24 @@ void ChangeSceneBehaviour::OnClick()
 {
 	if (EngineController::GetInstance()->GetIsInLevelTransition()) {
 		if (EngineController::GetInstance()->GetCurrentLevel() != 1) {
-			std::string levelString = "level" + std::to_string(EngineController::GetInstance()->GetCurrentLevel());
-			_scene = levelString;
-
+			_scene = "level" + std::to_string(EngineController::GetInstance()->GetCurrentLevel());
 			std::string previousLevelString = "level" + std::to_string(EngineController::GetInstance()->GetCurrentLevel() - 1);
-
 			std::shared_ptr<spic::GameObject> existingPlayerObject = EngineController::GetInstance()->GetSceneByName(previousLevelString)->GetGameObjectsByName("Player")[0];
-
-			auto currentLevel = EngineController::GetInstance()->GetSceneByName(levelString);
-
+			auto currentLevel = EngineController::GetInstance()->GetSceneByName(_scene);
 			currentLevel->AddGameObject(existingPlayerObject);
-
-			auto PlayerComponent = EngineController::GetInstance()->GetSceneByName(levelString)->GetGameObjectsByName("Player")[0]->GetComponent<Player>();
+			auto PlayerComponent = currentLevel->GetGameObjectsByName("Player")[0]->GetComponent<Player>();
 			PlayerComponent->FillBucket();
 			PlayerComponent->OnStart();
 		}
 	}
 
 	if (EngineController::GetInstance()->GetGameOver() || alwaysReset) {
-		std::shared_ptr<LevelSceneBuilder> levelSceneBuilder = std::make_shared<LevelSceneBuilder>();
-		EngineController::GetInstance()->SetCurrentLevel(1);
-		auto level1 = EngineController::GetInstance()->GetSceneByName("level1");
-		level1->SetName("level1-done");
-		levelSceneBuilder->BuildLevel(1);
-		auto level2 = EngineController::GetInstance()->GetSceneByName("level2");
-		level2->SetName("level2-done");
-		levelSceneBuilder->BuildLevel(2);
-		auto level3 = EngineController::GetInstance()->GetSceneByName("level3");
-		level3->SetName("level3-done");
-		levelSceneBuilder->BuildLevel(3);
-		EngineController::GetInstance()->SetCurrentLevel(1);
+		EngineController::GetInstance()->ResetLevels();
 		EngineController::GetInstance()->SetGameOver(false);
 	}
 
-
 	if (_scene == "MainMenu" || _scene == "level1") {
 		if (!EngineController::GetInstance()->GetSceneByName(_scene)->GetGameObjectsByTag("music").empty()) {
-
 			if (!EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music").empty()) {
 				if (!EngineController::GetInstance()->GetSceneByName(_scene)->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->GetPlaying()) {
 					EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->Stop();
@@ -67,13 +48,9 @@ void ChangeSceneBehaviour::OnClick()
 			}
 			if (!EngineController::GetInstance()->GetSceneByName(_scene)->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->GetPlaying()) {
 				EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->Stop();
-
 			}
 		}
 	}
-
-
-
 
 	EngineController::GetInstance()->SetIsInLevelTransition(false);
 	EngineController::GetInstance()->SetActiveScene(_scene);
@@ -83,10 +60,8 @@ void ChangeSceneBehaviour::OnClick()
 			if (!EngineController::GetInstance()->GetSceneByName(_scene)->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->GetPlaying()) {
 				EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->Play(true);
 			}
-
 		}
 		else {
-
 			if (!EngineController::GetInstance()->GetSceneByName(_scene)->GetGameObjectsByTag("music")[0]->GetComponent <spic::AudioSource>()->GetPlaying()) {
 				if (_scene == "MainMenu") {
 					MusicController::GetInstance()->SetMainMenuMusic(EngineController::GetInstance()->GetSceneByName("MainMenu"));
@@ -95,9 +70,7 @@ void ChangeSceneBehaviour::OnClick()
 					MusicController::GetInstance()->SetLevelMusic();
 
 				}
-
 			}
-
 		}
 	}
 

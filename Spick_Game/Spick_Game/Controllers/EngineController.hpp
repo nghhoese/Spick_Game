@@ -53,4 +53,5 @@ public:
 	void SetScreenWidth(int screenWidth) { this->screenWidth = screenWidth; };
 	int GetScreenHeight() { return this->screenHeight; };
 	void SetScreenHeight(int screenHeight) { this->screenHeight = screenHeight; };
+	void ResetLevels();
 };
