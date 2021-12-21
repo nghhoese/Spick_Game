@@ -92,39 +92,10 @@ const void InputScript::checkKeys()
 	if (input->GetKey(W)) {
 		if (PlayerComponent != nullptr) {
 			if (PlayerComponent->GetHasCollision()) {
-				if (!Collision::AABB(objk1.get(), "wall").empty()) {
-					bool found = false;
-
-					for (auto b : Collision::AABB(objk1.get(), "wall")) {
-						//int distanceLeft = sqrt(pow(PlayerComponent->LeftPoint.x - b->GetGameObject()->getTransform()->position.x, 2) +
-						//	pow(PlayerComponent->LeftPoint.y - (b->GetGameObject()->getTransform()->position.y + 32), 2));
-						int distanceLeft = distance(PlayerComponent->UpPoint.x, PlayerComponent->UpPoint.y, b->GetGameObject()->getTransform()->position.x, b->GetGameObject()->getTransform()->position.y + 32);
-						//int distanceRight = sqrt(pow(PlayerComponent->RightPoint.x - b->GetGameObject()->getTransform()->position.x + 64, 2) +
-						//	pow((PlayerComponent->RightPoint.y) - (b->GetGameObject()->getTransform()->position.y + 32), 2));
-						int distanceRight = distance(PlayerComponent->UpPoint.x, PlayerComponent->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 64, b->GetGameObject()->getTransform()->position.y + 32);
-						//int distanceDown = sqrt(pow(PlayerComponent->DownPoint.x - b->GetGameObject()->getTransform()->position.x + 32, 2) +
-						//	pow((PlayerComponent->DownPoint.y) - (b->GetGameObject()->getTransform()->position.y), 2));
-						int distanceDown = distance(PlayerComponent->UpPoint.x, PlayerComponent->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 32, b->GetGameObject()->getTransform()->position.y);
-						int distanceUp = distance(PlayerComponent->UpPoint.x,PlayerComponent->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 32, b->GetGameObject()->getTransform()->position.y + 64);
-					//if (distanceUp < distanceDown && distanceUp < distanceRight && distanceUp < distanceLeft) {
-						if(b->GetGameObject()->getTransform()->position.y < PlayerComponent->GetYPlayer()){
-						std::cout << "collision up" << std::endl;
-						found = true;
-
-					}
-					else {
-					}
+				if (PlayerComponent->HandleWallCollision("up")) {
 				}
-					if (!found) {
-						PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() - (PlayerComponent->GetSpeed()));
-
-					}
-					else {
-						//PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() + (PlayerComponent->GetSpeed()));
-
-					}
-				}
-				else if (!Collision::AABB(objk1.get(), "guard").empty() ) {
+				else
+				if (!Collision::AABB(objk1.get(), "guard").empty() ) {
 					PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() + (PlayerComponent->GetSpeed()));
 				}
 				else if (!Collision::AABB(objk1.get(), "Endpoint").empty()) {
@@ -142,38 +113,10 @@ const void InputScript::checkKeys()
 	if (input->GetKey(A)) {
 		if (PlayerComponent != nullptr) {
 			if (PlayerComponent->GetHasCollision()) {
-				if (!Collision::AABB(objk1.get(), "wall").empty()) {
-					bool found = false;
-
-					for (auto b : Collision::AABB(objk1.get(), "wall")) {
-						//int distanceLeft = sqrt(pow(PlayerComponent->LeftPoint.x - b->GetGameObject()->getTransform()->position.x, 2) +
-						//	pow(PlayerComponent->LeftPoint.y - (b->GetGameObject()->getTransform()->position.y + 32), 2));
-						int distanceLeft = distance(PlayerComponent->UpPoint.x, PlayerComponent->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 64, b->GetGameObject()->getTransform()->position.y + 32);
-						//int distanceRight = sqrt(pow(PlayerComponent->RightPoint.x - b->GetGameObject()->getTransform()->position.x + 64, 2) +
-						//	pow((PlayerComponent->RightPoint.y) - (b->GetGameObject()->getTransform()->position.y + 32), 2));
-						int distanceRight = distance(PlayerComponent->UpPoint.x, PlayerComponent->UpPoint.y, b->GetGameObject()->getTransform()->position.x, b->GetGameObject()->getTransform()->position.y + 32);
-						//int distanceDown = sqrt(pow(PlayerComponent->DownPoint.x - b->GetGameObject()->getTransform()->position.x + 32, 2) +
-						//	pow((PlayerComponent->DownPoint.y) - (b->GetGameObject()->getTransform()->position.y), 2));
-						int distanceDown = distance(PlayerComponent->UpPoint.x, PlayerComponent->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 32, b->GetGameObject()->getTransform()->position.y);
-						int distanceUp = distance(PlayerComponent->UpPoint.x, PlayerComponent->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 32, b->GetGameObject()->getTransform()->position.y + 64);
-						if (distanceLeft < distanceDown && distanceLeft < distanceUp && distanceLeft < distanceRight) {
-							std::cout << "collision left" << std::endl;
-							found = true;
-
-						}
-						else {
-						}
-					}
-					if (!found) {
-						PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() - (PlayerComponent->GetSpeed()));
-
-					}
-					else {
-						//PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() + (PlayerComponent->GetSpeed()));
-
-					}
+				if (PlayerComponent->HandleWallCollision("left")) {
 				}
-				else if (!Collision::AABB(objk1.get(), "guard").empty()) {
+				else 
+				if (!Collision::AABB(objk1.get(), "guard").empty()) {
 					PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() + (PlayerComponent->GetSpeed()));
 				}
 				else if (!Collision::AABB(objk1.get(), "Endpoint").empty()) {
@@ -191,36 +134,7 @@ const void InputScript::checkKeys()
 	if (input->GetKey(S)) {
 		if (PlayerComponent != nullptr) {
 			if (PlayerComponent->GetHasCollision()) {
-				if (!Collision::AABB(objk1.get(), "wall").empty()) {
-					bool found = false;
-
-					for (auto b : Collision::AABB(objk1.get(), "wall")) {
-						//int distanceLeft = sqrt(pow(PlayerComponent->LeftPoint.x - b->GetGameObject()->getTransform()->position.x, 2) +
-						//	pow(PlayerComponent->LeftPoint.y - (b->GetGameObject()->getTransform()->position.y + 32), 2));
-						int distanceLeft = distance(PlayerComponent->UpPoint.x, PlayerComponent->UpPoint.y, b->GetGameObject()->getTransform()->position.x, b->GetGameObject()->getTransform()->position.y + 32);
-						//int distanceRight = sqrt(pow(PlayerComponent->RightPoint.x - b->GetGameObject()->getTransform()->position.x + 64, 2) +
-						//	pow((PlayerComponent->RightPoint.y) - (b->GetGameObject()->getTransform()->position.y + 32), 2));
-						int distanceRight = distance(PlayerComponent->UpPoint.x, PlayerComponent->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 64, b->GetGameObject()->getTransform()->position.y + 32);
-						//int distanceDown = sqrt(pow(PlayerComponent->DownPoint.x - b->GetGameObject()->getTransform()->position.x + 32, 2) +
-						//	pow((PlayerComponent->DownPoint.y) - (b->GetGameObject()->getTransform()->position.y), 2));
-						int distanceDown = distance(PlayerComponent->UpPoint.x, PlayerComponent->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 32, b->GetGameObject()->getTransform()->position.y);
-						int distanceUp = distance(PlayerComponent->UpPoint.x, PlayerComponent->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 32, b->GetGameObject()->getTransform()->position.y + 64);
-						if (distanceDown < distanceLeft && distanceDown < distanceUp && distanceDown < distanceRight) {
-							std::cout << "collision down" << std::endl;
-							found = true;
-
-						}
-						else {
-						}
-					}
-					if (!found) {
-						PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() + (PlayerComponent->GetSpeed()));
-
-					}
-					else {
-						//PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() - (PlayerComponent->GetSpeed()));
-
-					}
+				if (PlayerComponent->HandleWallCollision("down")) {
 				}
 				else if (!Collision::AABB(objk1.get(), "guard").empty()) {
 					PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() - (PlayerComponent->GetSpeed()));
@@ -240,36 +154,9 @@ const void InputScript::checkKeys()
 	if (input->GetKey(D)) {
 		if (PlayerComponent != nullptr) {
 			if (PlayerComponent->GetHasCollision()) {
-				if (!Collision::AABB(objk1.get(), "wall").empty()) {
-					bool found = false;
-					for (auto b : Collision::AABB(objk1.get(), "wall")) {
-						//int distanceLeft = sqrt(pow(PlayerComponent->LeftPoint.x - b->GetGameObject()->getTransform()->position.x, 2) +
-						//	pow(PlayerComponent->LeftPoint.y - (b->GetGameObject()->getTransform()->position.y + 32), 2));
-						int distanceLeft = distance(PlayerComponent->UpPoint.x, PlayerComponent->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 64, b->GetGameObject()->getTransform()->position.y + 32);
-						//int distanceRight = sqrt(pow(PlayerComponent->RightPoint.x - b->GetGameObject()->getTransform()->position.x + 64, 2) +
-						//	pow((PlayerComponent->RightPoint.y) - (b->GetGameObject()->getTransform()->position.y + 32), 2));
-						int distanceRight = distance(PlayerComponent->UpPoint.x, PlayerComponent->UpPoint.y, b->GetGameObject()->getTransform()->position.x, b->GetGameObject()->getTransform()->position.y + 32);
-						//int distanceDown = sqrt(pow(PlayerComponent->DownPoint.x - b->GetGameObject()->getTransform()->position.x + 32, 2) +
-						//	pow((PlayerComponent->DownPoint.y) - (b->GetGameObject()->getTransform()->position.y), 2));
-						int distanceDown = distance(PlayerComponent->UpPoint.x, PlayerComponent->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 32, b->GetGameObject()->getTransform()->position.y);
-						int distanceUp = distance(PlayerComponent->UpPoint.x, PlayerComponent->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 32, b->GetGameObject()->getTransform()->position.y + 64);
-						if (distanceRight < distanceLeft && distanceRight < distanceUp && distanceRight < distanceDown) {
-							std::cout << "collision right" << std::endl;
-							found = true;
-						}
-						else {
-						}
-					}
-					if (!found) {
-						PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() + (PlayerComponent->GetSpeed()));
-
-					}
-					else {
-						//PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() - (PlayerComponent->GetSpeed()));
-
-					}
+				if (PlayerComponent->HandleWallCollision("right")) {
 				}
-				else if (!Collision::AABB(objk1.get(), "guard").empty()) {
+			    else if (!Collision::AABB(objk1.get(), "guard").empty()) {
 					PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() - (PlayerComponent->GetSpeed()));
 				}
 				else if (!Collision::AABB(objk1.get(), "Endpoint").empty()) {
@@ -479,19 +366,32 @@ void InputScript::OnTriggerStay2D(const spic::Collider& collider)
 
 void InputScript::SetObjectsHitBox(spic::GameObject playerObject) {
 	auto PlayerBoxColliderComponent = playerObject.GetComponent<BoxCollider>();
-	auto guards = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("Guard");
+	auto guards = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("guard");
+	std::shared_ptr<spic::GameObject> boss;
+	if (EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("Boss").size() > 0) {
+		boss = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("Boss")[0];
+	}
 	if (this->GetHitbox()) {
 		PlayerBoxColliderComponent->ShowBoxBool(true);
-		for (std::shared_ptr<spic::GameObject> g : guards) {
-
-			g->GetComponent<BoxCollider>()->ShowBoxBool(true);
+		if (guards.size() > 0) {
+			for (std::shared_ptr<spic::GameObject> g : guards) {
+				g->GetComponent<BoxCollider>()->ShowBoxBool(true);
+			}
+		}
+		if (boss) {
+			boss->GetComponent<BoxCollider>()->ShowBoxBool(true);
 		}
 		this->SetHitbox(false);
 	}
 	else {
 		PlayerBoxColliderComponent->ShowBoxBool(false);
-		for (std::shared_ptr<spic::GameObject> g : guards) {
-			g->GetComponent<BoxCollider>()->ShowBoxBool(false);
+		if (guards.size() > 0) {
+			for (std::shared_ptr<spic::GameObject> g : guards) {
+				g->GetComponent<BoxCollider>()->ShowBoxBool(false);
+			}
+		}
+		if (boss) {
+			boss->GetComponent<BoxCollider>()->ShowBoxBool(false);
 		}
 		this->SetHitbox(true);
 	}

@@ -23,7 +23,629 @@ C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(50,38): warnin
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
 C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(56,16): warning C4251: 'spic::AI::collisionObjectName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::AI'
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
-C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Boss.cpp(125,130): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Boss.cpp(125,73): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-     Creating library C:\Spic\Spick_Game\Spick_Game\Debug\Spick_Game.lib and object C:\Spic\Spick_Game\Spick_Game\Debug\Spick_Game.exp
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Boss.cpp(126,130): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Boss.cpp(126,73): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  ChangeSceneBehaviour.cpp
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14,55): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14): message : see declaration of 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\GameObject.hpp(64,60): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17,46): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17): message : see declaration of 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(181,21): warning C4251: 'spic::Sprite::sprite': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(182,15): warning C4251: 'spic::Sprite::color': class 'spic::Color' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Color.hpp(11): message : see declaration of 'spic::Color'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195,44): warning C4251: 'spic::Sprite::imageFacade': class 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195): message : see declaration of 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20,50): warning C4275: non dll-interface class 'spic::Collider' used as base for dll-interface class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Collider.hpp(11): message : see declaration of 'spic::Collider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20): message : see declaration of 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74,52): warning C4251: 'spic::BoxCollider::rectangleFacade': class 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>' needs to have dll-interface to be used by clients of class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74): message : see declaration of 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49,38): warning C4251: 'spic::AI::persuer': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(50,38): warning C4251: 'spic::AI::escapee': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(56,16): warning C4251: 'spic::AI::collisionObjectName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  Enemy.cpp
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14,55): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14): message : see declaration of 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\GameObject.hpp(64,60): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17,46): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17): message : see declaration of 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(181,21): warning C4251: 'spic::Sprite::sprite': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(182,15): warning C4251: 'spic::Sprite::color': class 'spic::Color' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Color.hpp(11): message : see declaration of 'spic::Color'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195,44): warning C4251: 'spic::Sprite::imageFacade': class 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195): message : see declaration of 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20,50): warning C4275: non dll-interface class 'spic::Collider' used as base for dll-interface class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Collider.hpp(11): message : see declaration of 'spic::Collider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20): message : see declaration of 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74,52): warning C4251: 'spic::BoxCollider::rectangleFacade': class 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>' needs to have dll-interface to be used by clients of class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74): message : see declaration of 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49,38): warning C4251: 'spic::AI::persuer': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(50,38): warning C4251: 'spic::AI::escapee': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(56,16): warning C4251: 'spic::AI::collisionObjectName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Enemy.cpp(206,109): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Enemy.cpp(206,68): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  HUD.cpp
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14,55): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14): message : see declaration of 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\GameObject.hpp(64,60): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17,46): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17): message : see declaration of 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(181,21): warning C4251: 'spic::Sprite::sprite': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(182,15): warning C4251: 'spic::Sprite::color': class 'spic::Color' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Color.hpp(11): message : see declaration of 'spic::Color'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195,44): warning C4251: 'spic::Sprite::imageFacade': class 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195): message : see declaration of 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20,50): warning C4275: non dll-interface class 'spic::Collider' used as base for dll-interface class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Collider.hpp(11): message : see declaration of 'spic::Collider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20): message : see declaration of 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74,52): warning C4251: 'spic::BoxCollider::rectangleFacade': class 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>' needs to have dll-interface to be used by clients of class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74): message : see declaration of 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49,38): warning C4251: 'spic::AI::persuer': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(50,38): warning C4251: 'spic::AI::escapee': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(56,16): warning C4251: 'spic::AI::collisionObjectName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  InputScript.cpp
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14,55): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14): message : see declaration of 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\GameObject.hpp(64,60): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17,46): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17): message : see declaration of 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(181,21): warning C4251: 'spic::Sprite::sprite': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(182,15): warning C4251: 'spic::Sprite::color': class 'spic::Color' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Color.hpp(11): message : see declaration of 'spic::Color'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195,44): warning C4251: 'spic::Sprite::imageFacade': class 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195): message : see declaration of 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20,50): warning C4275: non dll-interface class 'spic::Collider' used as base for dll-interface class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Collider.hpp(11): message : see declaration of 'spic::Collider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20): message : see declaration of 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74,52): warning C4251: 'spic::BoxCollider::rectangleFacade': class 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>' needs to have dll-interface to be used by clients of class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74): message : see declaration of 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49,38): warning C4251: 'spic::AI::persuer': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(50,38): warning C4251: 'spic::AI::escapee': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(56,16): warning C4251: 'spic::AI::collisionObjectName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\InputScript.cpp(82,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Player.cpp
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14,55): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14): message : see declaration of 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\GameObject.hpp(64,60): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17,46): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17): message : see declaration of 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(181,21): warning C4251: 'spic::Sprite::sprite': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(182,15): warning C4251: 'spic::Sprite::color': class 'spic::Color' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Color.hpp(11): message : see declaration of 'spic::Color'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195,44): warning C4251: 'spic::Sprite::imageFacade': class 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195): message : see declaration of 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20,50): warning C4275: non dll-interface class 'spic::Collider' used as base for dll-interface class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Collider.hpp(11): message : see declaration of 'spic::Collider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20): message : see declaration of 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74,52): warning C4251: 'spic::BoxCollider::rectangleFacade': class 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>' needs to have dll-interface to be used by clients of class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74): message : see declaration of 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49,38): warning C4251: 'spic::AI::persuer': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(50,38): warning C4251: 'spic::AI::escapee': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(56,16): warning C4251: 'spic::AI::collisionObjectName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(128,97): warning C4244: 'argument': conversion from 'const double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(128,57): warning C4244: 'argument': conversion from 'const double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(152,58): warning C4244: '=': conversion from 'const double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(153,58): warning C4244: '=': conversion from 'const double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(154,68): warning C4244: '=': conversion from 'const double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(155,69): warning C4244: '=': conversion from 'const double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(207,167): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(207,114): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(207,63): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(207,46): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(207,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(208,163): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(208,112): warning C4244: 'argument': conversion from 'const double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(208,64): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(208,47): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(208,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(209,164): warning C4244: 'argument': conversion from 'const double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(209,114): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(209,63): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(209,46): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(209,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(210,165): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(210,112): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(210,61): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(210,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(210,20): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(222,167): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(222,114): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(222,63): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(222,46): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(222,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(223,163): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(223,112): warning C4244: 'argument': conversion from 'const double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(223,64): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(223,47): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(223,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(224,164): warning C4244: 'argument': conversion from 'const double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(224,114): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(224,63): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(224,46): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(224,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(225,165): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(225,112): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(225,61): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(225,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(225,20): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(249,162): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(249,111): warning C4244: 'argument': conversion from 'const double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(249,63): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(249,46): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(249,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(250,168): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(250,115): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(250,64): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(250,47): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(250,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(251,164): warning C4244: 'argument': conversion from 'const double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(251,114): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(251,63): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(251,46): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(251,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(252,165): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(252,112): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(252,61): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(252,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(252,20): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Behaviourscripts\Player.cpp(270,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Quit.cpp
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14,55): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14): message : see declaration of 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\GameObject.hpp(64,60): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17,46): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17): message : see declaration of 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(181,21): warning C4251: 'spic::Sprite::sprite': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(182,15): warning C4251: 'spic::Sprite::color': class 'spic::Color' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Color.hpp(11): message : see declaration of 'spic::Color'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195,44): warning C4251: 'spic::Sprite::imageFacade': class 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195): message : see declaration of 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20,50): warning C4275: non dll-interface class 'spic::Collider' used as base for dll-interface class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Collider.hpp(11): message : see declaration of 'spic::Collider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20): message : see declaration of 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74,52): warning C4251: 'spic::BoxCollider::rectangleFacade': class 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>' needs to have dll-interface to be used by clients of class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74): message : see declaration of 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49,38): warning C4251: 'spic::AI::persuer': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(50,38): warning C4251: 'spic::AI::escapee': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(56,16): warning C4251: 'spic::AI::collisionObjectName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  EngineController.cpp
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14,55): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14): message : see declaration of 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\GameObject.hpp(64,60): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17,46): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17): message : see declaration of 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(181,21): warning C4251: 'spic::Sprite::sprite': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(182,15): warning C4251: 'spic::Sprite::color': class 'spic::Color' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Color.hpp(11): message : see declaration of 'spic::Color'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195,44): warning C4251: 'spic::Sprite::imageFacade': class 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195): message : see declaration of 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20,50): warning C4275: non dll-interface class 'spic::Collider' used as base for dll-interface class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Collider.hpp(11): message : see declaration of 'spic::Collider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20): message : see declaration of 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74,52): warning C4251: 'spic::BoxCollider::rectangleFacade': class 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>' needs to have dll-interface to be used by clients of class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74): message : see declaration of 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49,38): warning C4251: 'spic::AI::persuer': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(50,38): warning C4251: 'spic::AI::escapee': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(56,16): warning C4251: 'spic::AI::collisionObjectName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  LevelController.cpp
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14,55): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14): message : see declaration of 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\GameObject.hpp(64,60): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17,46): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17): message : see declaration of 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(181,21): warning C4251: 'spic::Sprite::sprite': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(182,15): warning C4251: 'spic::Sprite::color': class 'spic::Color' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Color.hpp(11): message : see declaration of 'spic::Color'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195,44): warning C4251: 'spic::Sprite::imageFacade': class 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195): message : see declaration of 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20,50): warning C4275: non dll-interface class 'spic::Collider' used as base for dll-interface class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Collider.hpp(11): message : see declaration of 'spic::Collider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20): message : see declaration of 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74,52): warning C4251: 'spic::BoxCollider::rectangleFacade': class 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>' needs to have dll-interface to be used by clients of class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74): message : see declaration of 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49,38): warning C4251: 'spic::AI::persuer': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(50,38): warning C4251: 'spic::AI::escapee': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(56,16): warning C4251: 'spic::AI::collisionObjectName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  MusicController.cpp
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14,55): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14): message : see declaration of 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\GameObject.hpp(64,60): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17,46): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17): message : see declaration of 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(181,21): warning C4251: 'spic::Sprite::sprite': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(182,15): warning C4251: 'spic::Sprite::color': class 'spic::Color' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Color.hpp(11): message : see declaration of 'spic::Color'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195,44): warning C4251: 'spic::Sprite::imageFacade': class 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195): message : see declaration of 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20,50): warning C4275: non dll-interface class 'spic::Collider' used as base for dll-interface class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Collider.hpp(11): message : see declaration of 'spic::Collider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20): message : see declaration of 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74,52): warning C4251: 'spic::BoxCollider::rectangleFacade': class 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>' needs to have dll-interface to be used by clients of class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74): message : see declaration of 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49,38): warning C4251: 'spic::AI::persuer': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(50,38): warning C4251: 'spic::AI::escapee': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(56,16): warning C4251: 'spic::AI::collisionObjectName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  CheatsMenuBuilder.cpp
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14,55): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14): message : see declaration of 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\GameObject.hpp(64,60): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17,46): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17): message : see declaration of 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(181,21): warning C4251: 'spic::Sprite::sprite': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(182,15): warning C4251: 'spic::Sprite::color': class 'spic::Color' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Color.hpp(11): message : see declaration of 'spic::Color'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195,44): warning C4251: 'spic::Sprite::imageFacade': class 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195): message : see declaration of 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20,50): warning C4275: non dll-interface class 'spic::Collider' used as base for dll-interface class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Collider.hpp(11): message : see declaration of 'spic::Collider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20): message : see declaration of 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74,52): warning C4251: 'spic::BoxCollider::rectangleFacade': class 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>' needs to have dll-interface to be used by clients of class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74): message : see declaration of 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49,38): warning C4251: 'spic::AI::persuer': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(50,38): warning C4251: 'spic::AI::escapee': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(56,16): warning C4251: 'spic::AI::collisionObjectName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  CompletedSceneBuilder.cpp
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14,55): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14): message : see declaration of 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\GameObject.hpp(64,60): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17,46): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17): message : see declaration of 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(181,21): warning C4251: 'spic::Sprite::sprite': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(182,15): warning C4251: 'spic::Sprite::color': class 'spic::Color' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Color.hpp(11): message : see declaration of 'spic::Color'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195,44): warning C4251: 'spic::Sprite::imageFacade': class 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195): message : see declaration of 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20,50): warning C4275: non dll-interface class 'spic::Collider' used as base for dll-interface class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Collider.hpp(11): message : see declaration of 'spic::Collider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20): message : see declaration of 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74,52): warning C4251: 'spic::BoxCollider::rectangleFacade': class 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>' needs to have dll-interface to be used by clients of class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74): message : see declaration of 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49,38): warning C4251: 'spic::AI::persuer': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(50,38): warning C4251: 'spic::AI::escapee': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(56,16): warning C4251: 'spic::AI::collisionObjectName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xutility(158,77): warning C4244: 'argument': conversion from '_Ty' to 'const int', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2021): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,const char(&)[15],double,int,int,int,const char(&)[15]>(_Ty &,const char (&)[15],double &&,int &&,int &&,int &&,const char (&)[15]) noexcept(false)' being compiled
+          with
+          [
+              _Ty=spic::Button
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2747): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<const char(&)[15],double,int,int,int,const char(&)[15]>(const char (&)[15],double &&,int &&,int &&,int &&,const char (&)[15])' being compiled
+          with
+          [
+              _Ty=spic::Button
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2748): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<const char(&)[15],double,int,int,int,const char(&)[15]>(const char (&)[15],double &&,int &&,int &&,int &&,const char (&)[15])' being compiled
+          with
+          [
+              _Ty=spic::Button
+          ]
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Scenes\CompletedSceneBuilder.cpp(10): message : see reference to function template instantiation 'std::shared_ptr<spic::Button> std::make_shared<spic::Button,const char(&)[15],double,int,int,int,const char(&)[15]>(const char (&)[15],double &&,int &&,int &&,int &&,const char (&)[15])' being compiled
+  CreditsSceneBuilder.cpp
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14,55): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14): message : see declaration of 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\GameObject.hpp(64,60): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17,46): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17): message : see declaration of 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(181,21): warning C4251: 'spic::Sprite::sprite': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(182,15): warning C4251: 'spic::Sprite::color': class 'spic::Color' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Color.hpp(11): message : see declaration of 'spic::Color'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195,44): warning C4251: 'spic::Sprite::imageFacade': class 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195): message : see declaration of 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20,50): warning C4275: non dll-interface class 'spic::Collider' used as base for dll-interface class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Collider.hpp(11): message : see declaration of 'spic::Collider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20): message : see declaration of 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74,52): warning C4251: 'spic::BoxCollider::rectangleFacade': class 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>' needs to have dll-interface to be used by clients of class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74): message : see declaration of 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49,38): warning C4251: 'spic::AI::persuer': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(50,38): warning C4251: 'spic::AI::escapee': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(56,16): warning C4251: 'spic::AI::collisionObjectName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  GameOverSceneBuilder.cpp
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14,55): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14): message : see declaration of 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\GameObject.hpp(64,60): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17,46): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17): message : see declaration of 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(181,21): warning C4251: 'spic::Sprite::sprite': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(182,15): warning C4251: 'spic::Sprite::color': class 'spic::Color' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Color.hpp(11): message : see declaration of 'spic::Color'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195,44): warning C4251: 'spic::Sprite::imageFacade': class 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195): message : see declaration of 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20,50): warning C4275: non dll-interface class 'spic::Collider' used as base for dll-interface class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Collider.hpp(11): message : see declaration of 'spic::Collider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20): message : see declaration of 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74,52): warning C4251: 'spic::BoxCollider::rectangleFacade': class 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>' needs to have dll-interface to be used by clients of class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74): message : see declaration of 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49,38): warning C4251: 'spic::AI::persuer': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(50,38): warning C4251: 'spic::AI::escapee': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(56,16): warning C4251: 'spic::AI::collisionObjectName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xutility(158,77): warning C4244: 'argument': conversion from '_Ty' to 'const int', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2021): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,const char(&)[15],double,int,int,int,const char(&)[15]>(_Ty &,const char (&)[15],double &&,int &&,int &&,int &&,const char (&)[15]) noexcept(false)' being compiled
+          with
+          [
+              _Ty=spic::Button
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2747): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<const char(&)[15],double,int,int,int,const char(&)[15]>(const char (&)[15],double &&,int &&,int &&,int &&,const char (&)[15])' being compiled
+          with
+          [
+              _Ty=spic::Button
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2748): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<const char(&)[15],double,int,int,int,const char(&)[15]>(const char (&)[15],double &&,int &&,int &&,int &&,const char (&)[15])' being compiled
+          with
+          [
+              _Ty=spic::Button
+          ]
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Scenes\GameOverSceneBuilder.cpp(10): message : see reference to function template instantiation 'std::shared_ptr<spic::Button> std::make_shared<spic::Button,const char(&)[15],double,int,int,int,const char(&)[15]>(const char (&)[15],double &&,int &&,int &&,int &&,const char (&)[15])' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xutility(158,77): warning C4244: 'argument': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2021): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,const char(&)[10],const char(&)[9],int,spic::Color&,double,int>(_Ty &,const char (&)[10],const char (&)[9],int &&,spic::Color &,double &&,int &&) noexcept(false)' being compiled
+          with
+          [
+              _Ty=spic::Text
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2747): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<const char(&)[10],const char(&)[9],int,spic::Color&,double,int>(const char (&)[10],const char (&)[9],int &&,spic::Color &,double &&,int &&)' being compiled
+          with
+          [
+              _Ty=spic::Text
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2748): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<const char(&)[10],const char(&)[9],int,spic::Color&,double,int>(const char (&)[10],const char (&)[9],int &&,spic::Color &,double &&,int &&)' being compiled
+          with
+          [
+              _Ty=spic::Text
+          ]
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Scenes\GameOverSceneBuilder.cpp(16): message : see reference to function template instantiation 'std::shared_ptr<spic::Text> std::make_shared<spic::Text,const char(&)[10],const char(&)[9],int,spic::Color&,double,int>(const char (&)[10],const char (&)[9],int &&,spic::Color &,double &&,int &&)' being compiled
+  HelpSceneBuilder.cpp
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14,55): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14): message : see declaration of 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\GameObject.hpp(64,60): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17,46): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17): message : see declaration of 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(181,21): warning C4251: 'spic::Sprite::sprite': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(182,15): warning C4251: 'spic::Sprite::color': class 'spic::Color' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Color.hpp(11): message : see declaration of 'spic::Color'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195,44): warning C4251: 'spic::Sprite::imageFacade': class 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195): message : see declaration of 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20,50): warning C4275: non dll-interface class 'spic::Collider' used as base for dll-interface class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Collider.hpp(11): message : see declaration of 'spic::Collider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20): message : see declaration of 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74,52): warning C4251: 'spic::BoxCollider::rectangleFacade': class 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>' needs to have dll-interface to be used by clients of class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74): message : see declaration of 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49,38): warning C4251: 'spic::AI::persuer': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(50,38): warning C4251: 'spic::AI::escapee': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(56,16): warning C4251: 'spic::AI::collisionObjectName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  LevelSceneBuilder.cpp
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14,55): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14): message : see declaration of 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\GameObject.hpp(64,60): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17,46): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17): message : see declaration of 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(181,21): warning C4251: 'spic::Sprite::sprite': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(182,15): warning C4251: 'spic::Sprite::color': class 'spic::Color' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Color.hpp(11): message : see declaration of 'spic::Color'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195,44): warning C4251: 'spic::Sprite::imageFacade': class 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195): message : see declaration of 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20,50): warning C4275: non dll-interface class 'spic::Collider' used as base for dll-interface class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Collider.hpp(11): message : see declaration of 'spic::Collider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20): message : see declaration of 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74,52): warning C4251: 'spic::BoxCollider::rectangleFacade': class 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>' needs to have dll-interface to be used by clients of class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74): message : see declaration of 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49,38): warning C4251: 'spic::AI::persuer': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(50,38): warning C4251: 'spic::AI::escapee': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(56,16): warning C4251: 'spic::AI::collisionObjectName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xutility(158,77): warning C4244: 'argument': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2021): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,const char(&)[1],const char(&)[9],int,spic::Color&,double,int>(_Ty &,const char (&)[1],const char (&)[9],int &&,spic::Color &,double &&,int &&) noexcept(false)' being compiled
+          with
+          [
+              _Ty=spic::Text
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2747): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<const char(&)[1],const char(&)[9],int,spic::Color&,double,int>(const char (&)[1],const char (&)[9],int &&,spic::Color &,double &&,int &&)' being compiled
+          with
+          [
+              _Ty=spic::Text
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2748): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<const char(&)[1],const char(&)[9],int,spic::Color&,double,int>(const char (&)[1],const char (&)[9],int &&,spic::Color &,double &&,int &&)' being compiled
+          with
+          [
+              _Ty=spic::Text
+          ]
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Scenes\LevelSceneBuilder.cpp(75): message : see reference to function template instantiation 'std::shared_ptr<spic::Text> std::make_shared<spic::Text,const char(&)[1],const char(&)[9],int,spic::Color&,double,int>(const char (&)[1],const char (&)[9],int &&,spic::Color &,double &&,int &&)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xutility(158,77): warning C4244: 'argument': conversion from '_Ty' to 'const int', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2021): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,const char(&)[15],double,double,int,int,const char(&)[17]>(_Ty &,const char (&)[15],double &&,double &&,int &&,int &&,const char (&)[17]) noexcept(false)' being compiled
+          with
+          [
+              _Ty=spic::Button
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2747): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<const char(&)[15],double,double,int,int,const char(&)[17]>(const char (&)[15],double &&,double &&,int &&,int &&,const char (&)[17])' being compiled
+          with
+          [
+              _Ty=spic::Button
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2748): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<const char(&)[15],double,double,int,int,const char(&)[17]>(const char (&)[15],double &&,double &&,int &&,int &&,const char (&)[17])' being compiled
+          with
+          [
+              _Ty=spic::Button
+          ]
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Scenes\LevelSceneBuilder.cpp(86): message : see reference to function template instantiation 'std::shared_ptr<spic::Button> std::make_shared<spic::Button,const char(&)[15],double,double,int,int,const char(&)[17]>(const char (&)[15],double &&,double &&,int &&,int &&,const char (&)[17])' being compiled
+  MainMenuBuilder.cpp
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14,55): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14): message : see declaration of 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\GameObject.hpp(64,60): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17,46): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17): message : see declaration of 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(181,21): warning C4251: 'spic::Sprite::sprite': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(182,15): warning C4251: 'spic::Sprite::color': class 'spic::Color' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Color.hpp(11): message : see declaration of 'spic::Color'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195,44): warning C4251: 'spic::Sprite::imageFacade': class 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195): message : see declaration of 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20,50): warning C4275: non dll-interface class 'spic::Collider' used as base for dll-interface class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Collider.hpp(11): message : see declaration of 'spic::Collider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20): message : see declaration of 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74,52): warning C4251: 'spic::BoxCollider::rectangleFacade': class 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>' needs to have dll-interface to be used by clients of class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74): message : see declaration of 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49,38): warning C4251: 'spic::AI::persuer': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(50,38): warning C4251: 'spic::AI::escapee': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(56,16): warning C4251: 'spic::AI::collisionObjectName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xutility(158,77): warning C4244: 'argument': conversion from '_Ty' to 'const int', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2021): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,const char(&)[11],double,int,double,double,const char(&)[16]>(_Ty &,const char (&)[11],double &&,int &&,double &&,double &&,const char (&)[16]) noexcept(false)' being compiled
+          with
+          [
+              _Ty=spic::Button
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2747): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<const char(&)[11],double,int,double,double,const char(&)[16]>(const char (&)[11],double &&,int &&,double &&,double &&,const char (&)[16])' being compiled
+          with
+          [
+              _Ty=spic::Button
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\memory(2748): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<const char(&)[11],double,int,double,double,const char(&)[16]>(const char (&)[11],double &&,int &&,double &&,double &&,const char (&)[16])' being compiled
+          with
+          [
+              _Ty=spic::Button
+          ]
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Scenes\MainMenuBuilder.cpp(23): message : see reference to function template instantiation 'std::shared_ptr<spic::Button> std::make_shared<spic::Button,const char(&)[11],double,int,double,double,const char(&)[16]>(const char (&)[11],double &&,int &&,double &&,double &&,const char (&)[16])' being compiled
+  main.cpp
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14,55): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BehaviourScript.hpp(14): message : see declaration of 'spic::BehaviourScript'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\GameObject.hpp(64,60): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17,46): warning C4275: non dll-interface class 'spic::Component' used as base for dll-interface class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Component.hpp(17): message : see declaration of 'spic::Component'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(17): message : see declaration of 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(181,21): warning C4251: 'spic::Sprite::sprite': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(182,15): warning C4251: 'spic::Sprite::color': class 'spic::Color' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Color.hpp(11): message : see declaration of 'spic::Color'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195,44): warning C4251: 'spic::Sprite::imageFacade': class 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>' needs to have dll-interface to be used by clients of class 'spic::Sprite'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Sprite.hpp(195): message : see declaration of 'std::unique_ptr<spic::ImageFacade,std::default_delete<spic::ImageFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20,50): warning C4275: non dll-interface class 'spic::Collider' used as base for dll-interface class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\Collider.hpp(11): message : see declaration of 'spic::Collider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(20): message : see declaration of 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74,52): warning C4251: 'spic::BoxCollider::rectangleFacade': class 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>' needs to have dll-interface to be used by clients of class 'spic::BoxCollider'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\BoxCollider.hpp(74): message : see declaration of 'std::unique_ptr<spic::RectangleFacade,std::default_delete<spic::RectangleFacade>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49,38): warning C4251: 'spic::AI::persuer': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(50,38): warning C4251: 'spic::AI::escapee': class 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(49): message : see declaration of 'std::unique_ptr<spic::GameObject,std::default_delete<spic::GameObject>>'
+C:\Spic\Spick_Engine\Spick_Engine\Spick_Engine\API_Headers\AI.hpp(56,16): warning C4251: 'spic::AI::collisionObjectName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'spic::AI'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\include\xstring(4905): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  Generating Code...
+C:\Spic\Spick_Game\Spick_Game\Spick_Game\Controllers\LevelController.hpp(43): warning C4715: 'LevelController::get_value<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >': not all control paths return a value
   Spick_Game.vcxproj -> C:\Spic\Spick_Game\Spick_Game\Debug\Spick_Game.exe

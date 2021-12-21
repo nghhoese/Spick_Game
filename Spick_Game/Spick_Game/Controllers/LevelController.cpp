@@ -334,10 +334,10 @@ void LevelController::BuildLevelPlayer(std::shared_ptr<spic::Scene> scene, std::
     BuildObjectCollider(playerObject, 50, 50, true);
 
     player->FillBucket();
-    std::shared_ptr<spic::AudioSource> liedje1 = std::make_shared<spic::AudioSource>();
-    playerObject->AddComponent(liedje1);
-    liedje1->SetAudioClip("assets/reload.wav");
-    liedje1->SetIsMusic(false);
+    std::shared_ptr<spic::AudioSource> song1 = std::make_shared<spic::AudioSource>();
+    playerObject->AddComponent(song1);
+    song1->SetAudioClip("assets/reload.wav");
+    song1->SetIsMusic(false);
 }
 
 void LevelController::BuildLevelObjectPosition(std::shared_ptr<spic::GameObject> object, std::tuple<int, int> position, double transformScale) {

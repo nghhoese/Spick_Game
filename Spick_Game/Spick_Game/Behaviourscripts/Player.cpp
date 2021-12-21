@@ -198,6 +198,78 @@ void Player::FillBucket()
 	}
 }
 
+bool Player::HandleWallCollision(std::string direction)
+{
+	if (!Collision::AABB(this->GetGameObject(), "wall").empty()) {
+		bool found = false;
+		if (direction == "right") {
+			for (auto b : Collision::AABB(this->GetGameObject(), "wall")) {
+				int distanceLeft = distance(this->UpPoint.x, this->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 64, b->GetGameObject()->getTransform()->position.y + 32);
+				int distanceRight = distance(this->UpPoint.x, this->UpPoint.y, b->GetGameObject()->getTransform()->position.x, b->GetGameObject()->getTransform()->position.y + 32);
+				int distanceDown = distance(this->UpPoint.x, this->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 32, b->GetGameObject()->getTransform()->position.y);
+				int distanceUp = distance(this->UpPoint.x, this->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 32, b->GetGameObject()->getTransform()->position.y + 64);
+				if (distanceRight < distanceLeft && distanceRight < distanceUp && distanceRight < distanceDown) {
+					std::cout << "collision right" << std::endl;
+					found = true;
+				}
+			}
+			if (!found) {
+				this->SetXPlayer(this->GetXPlayer() + (this->GetSpeed()));
+			}
+		}
+		if (direction == "left") {
+			for (auto b : Collision::AABB(this->GetGameObject(), "wall")) {
+				int distanceLeft = distance(this->UpPoint.x, this->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 64, b->GetGameObject()->getTransform()->position.y + 32);
+				int distanceRight = distance(this->UpPoint.x, this->UpPoint.y, b->GetGameObject()->getTransform()->position.x, b->GetGameObject()->getTransform()->position.y + 32);
+				int distanceDown = distance(this->UpPoint.x, this->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 32, b->GetGameObject()->getTransform()->position.y);
+				int distanceUp = distance(this->UpPoint.x, this->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 32, b->GetGameObject()->getTransform()->position.y + 64);
+				if (distanceLeft < distanceDown && distanceLeft < distanceUp && distanceLeft < distanceRight) {
+					std::cout << "collision left" << std::endl;
+					found = true;
+				}
+			}
+			if (!found) {
+				this->SetXPlayer(this->GetXPlayer() - (this->GetSpeed()));
+
+			}
+		}
+		if (direction == "up") {
+			for (auto b : Collision::AABB(this->GetGameObject(), "wall")) {
+				if (b->GetGameObject()->getTransform()->position.y < this->GetYPlayer()) {
+					std::cout << "collision up" << std::endl;
+					found = true;
+				}
+			}
+			if (!found) {
+				this->SetYPlayer(this->GetYPlayer() - (this->GetSpeed()));
+			}
+		}
+		if (direction == "down") {
+			for (auto b : Collision::AABB(this->GetGameObject(), "wall")) {
+				int distanceLeft = distance(this->UpPoint.x, this->UpPoint.y, b->GetGameObject()->getTransform()->position.x, b->GetGameObject()->getTransform()->position.y + 32);
+				int distanceRight = distance(this->UpPoint.x, this->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 64, b->GetGameObject()->getTransform()->position.y + 32);
+				int distanceDown = distance(this->UpPoint.x, this->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 32, b->GetGameObject()->getTransform()->position.y);
+				int distanceUp = distance(this->UpPoint.x, this->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 32, b->GetGameObject()->getTransform()->position.y + 64);
+				if (distanceDown < distanceLeft && distanceDown < distanceUp && distanceDown < distanceRight) {
+					std::cout << "collision down" << std::endl;
+					found = true;
+				}
+			}
+			if (!found) {
+				this->SetYPlayer(this->GetYPlayer() + (this->GetSpeed()));
+			}
+		}
+		return true;
+	}
+	return false;
+	
+}
+float Player::distance(int x1, int y1, int x2, int y2)
+{
+	// Calculating distance
+	return sqrt(pow(x2 - x1, 2) +
+		pow(y2 - y1, 2) * 1.0);
+}
 void Player::SetStart() {
 	if (GetGameObject()->getScene()->GetGameObjectsByName("Startpoint").size() != 0) {
 		auto startPointObject = GetGameObject()->getScene()->GetGameObjectsByName("Startpoint")[0];
