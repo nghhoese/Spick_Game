@@ -28,9 +28,10 @@ public:
 	void BuildLevelObjects(std::shared_ptr<spic::Scene> scene, std::vector<std::pair<std::string, std::any>> object);
 	void BuildLevelTile(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::GameObject> tileObject, std::shared_ptr<spic::Sprite> tileSprite, spic::Transform transform, int x, int y, const std::string& spriteName, const std::string& tag);
 	void BuildLevelEnemy(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, const std::tuple<int, int> position, const std::string& spriteName, const std::string& colourTag, const std::string& typeTag, int healthPoints, double speed, int damage,int magazine);
-	void BuildLevelObjectPosition(std::shared_ptr<spic::GameObject> object, std::tuple<int, int> position);
+	void BuildLevelObjectPosition(std::shared_ptr<spic::GameObject> object, std::tuple<int, int> position, double transformScale);
 	void BuildLevelPlayer(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, std::tuple<int, int> position);
 	void BuildBoss(std::shared_ptr<spic::Scene> scene, std::shared_ptr<spic::Sprite> sprite, const std::tuple<int, int> position);
+	void BuildObjectCollider(std::shared_ptr<spic::GameObject> object, int height, int width, bool IsPlayer);
 
 	template<typename T>
 	const T get_value(const std::string& valueName, const std::vector<std::pair<std::string, std::any>>& object) {

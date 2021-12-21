@@ -7,6 +7,8 @@
 #include "../Behaviourscripts/ChangeSceneBehaviour.hpp"
 #include "../Controllers/LevelController.hpp"
 #include "../Behaviourscripts/HUD.hpp"
+#include <API_Headers/Animator.hpp>
+
 
 class LevelSceneBuilder : public SceneBuilder {
 private:

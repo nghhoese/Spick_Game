@@ -18,7 +18,6 @@
     <ClCompile Include="Scenes\CreditsSceneBuilder.cpp" />
     <ClCompile Include="Behaviourscripts\Quit.cpp" />
     <ClCompile Include="Controllers\MusicController.cpp" />
-    <ClCompile Include="Behaviourscripts\ReturnToMainMenuBehaviour.cpp" />
     <ClCompile Include="Scenes\CompletedSceneBuilder.cpp" />
     <ClCompile Include="Behaviourscripts\Boss.cpp" />
   </ItemGroup>
@@ -40,7 +39,6 @@
     <ClInclude Include="Scenes\CreditsSceneBuilder.hpp" />
     <ClInclude Include="Behaviourscripts\Quit.hpp" />
     <ClInclude Include="Controllers\MusicController.hpp" />
-    <ClInclude Include="Behaviourscripts\ReturnToMainMenuBehaviour.hpp" />
     <ClInclude Include="Scenes\CompletedSceneBuilder.hpp" />
     <ClInclude Include="Behaviourscripts\Boss.hpp" />
   </ItemGroup>

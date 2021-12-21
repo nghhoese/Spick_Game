@@ -38,6 +38,7 @@ void Boss::BulletHandling()
 {
     if (this->healthpoints <= 0) {
         EngineController::GetInstance()->SetActiveScene("CompletedScene");
+        EngineController::GetInstance()->ResetLevels();
     }
 
     if (!Collision::AABB(GetGameObject(), "PlayerBullet").empty()) {
@@ -45,10 +46,12 @@ void Boss::BulletHandling()
         std::shared_ptr<Bullet> bulletObj = std::dynamic_pointer_cast<Bullet>(bullet);
         setHealthpoints(getHealthpoints() - bulletObj->GetDamage());
         bulletObj->SetBroken(true);
-        std::shared_ptr<spic::GameObject> bossHpObject = EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("bosshp")[0];
-        std::shared_ptr<spic::Text> bossHpText = std::dynamic_pointer_cast<spic::Text>(bossHpObject);
-        int percentage = 100 + ((this->healthpoints - this->maxhealthpoints) * 100) / maxhealthpoints;
-        bossHpText->SetText("BOSS: " + std::to_string(percentage) + "%");
+        for (auto boss : EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("bosshp")) {
+            std::shared_ptr<spic::Text> bossHpText = std::dynamic_pointer_cast<spic::Text>(boss);
+            int percentage = 100 + ((this->healthpoints - this->maxhealthpoints) * 100) / maxhealthpoints;
+            bossHpText->SetText("BOSS: " + std::to_string(percentage) + "%");
+        }
+
     }
 }
 
@@ -115,7 +118,6 @@ void Boss::Shoot()
             std::shared_ptr<Bullet> b = bullets[bulletCounter];
             if (b->GetBroken()) {
                 b->SetBroken(false);
-                //auto InputComponent = InputObject->GetComponent<InputScript>();
                 int randomSpreadX = rand() % 181 + (-90);
                 int randomSpreadY = rand() % 181 + (-90);
                 spic::Transform transfrom = *b->GetGameObject()->getTransform();

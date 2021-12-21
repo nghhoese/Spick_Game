@@ -8,6 +8,7 @@
 class ChangeSceneBehaviour : public spic::BehaviourScript {
 private:
 	std::string _scene;
+	bool alwaysReset = false;
 public:
 	ChangeSceneBehaviour(const std::string& name, const std::string& scene);
 	void OnUpdate();
@@ -19,4 +20,5 @@ public:
 	void OnTriggerExit2D(const spic::Collider& collider);
 	void OnTriggerStay2D(const spic::Collider& collider);
 	void sceneChange(const std::string& newScene);
+	void setAlwaysReset(bool value) { alwaysReset = value; }
 };

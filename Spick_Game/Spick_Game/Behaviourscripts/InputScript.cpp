@@ -106,7 +106,8 @@ const void InputScript::checkKeys()
 						//	pow((PlayerComponent->DownPoint.y) - (b->GetGameObject()->getTransform()->position.y), 2));
 						int distanceDown = distance(PlayerComponent->UpPoint.x, PlayerComponent->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 32, b->GetGameObject()->getTransform()->position.y);
 						int distanceUp = distance(PlayerComponent->UpPoint.x,PlayerComponent->UpPoint.y, b->GetGameObject()->getTransform()->position.x + 32, b->GetGameObject()->getTransform()->position.y + 64);
-					if (distanceUp < distanceDown && distanceUp < distanceRight && distanceUp < distanceLeft) {
+					//if (distanceUp < distanceDown && distanceUp < distanceRight && distanceUp < distanceLeft) {
+						if(b->GetGameObject()->getTransform()->position.y < PlayerComponent->GetYPlayer()){
 						std::cout << "collision up" << std::endl;
 						found = true;
 
@@ -119,7 +120,7 @@ const void InputScript::checkKeys()
 
 					}
 					else {
-						PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() + (PlayerComponent->GetSpeed()));
+						//PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() + (PlayerComponent->GetSpeed()));
 
 					}
 				}
@@ -168,7 +169,7 @@ const void InputScript::checkKeys()
 
 					}
 					else {
-						PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() + (PlayerComponent->GetSpeed()));
+						//PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() + (PlayerComponent->GetSpeed()));
 
 					}
 				}
@@ -217,7 +218,7 @@ const void InputScript::checkKeys()
 
 					}
 					else {
-						PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() - (PlayerComponent->GetSpeed()));
+						//PlayerComponent->SetYPlayer(PlayerComponent->GetYPlayer() - (PlayerComponent->GetSpeed()));
 
 					}
 				}
@@ -264,7 +265,7 @@ const void InputScript::checkKeys()
 
 					}
 					else {
-						PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() - (PlayerComponent->GetSpeed()));
+						//PlayerComponent->SetXPlayer(PlayerComponent->GetXPlayer() - (PlayerComponent->GetSpeed()));
 
 					}
 				}

@@ -72,6 +72,7 @@ void Enemy::BulletHandling()
         setHealthpoints(getHealthpoints() - bulletObj->GetDamage());
         bulletObj->SetBroken(true);
         setPath("assets/enemy_hit.png");
+
         hit = true;
     }
 }
@@ -108,13 +109,27 @@ void Enemy::DoEnemyThings()
 void Enemy::HandleHealth() 
 {
     if (this->healthpoints < 0) {
-        isAlive = false;
-        hit = false;
-        trans.scale = 0.01;
-        trans.position.x = -50;
-        trans.position.y = -10;
-        GetGameObject()->setTransform(&trans);
-        GetGameObject()->GetComponent<spic::Sprite>()->OnRender();
+        if (isAlive) {
+            isAlive = false;
+
+            GetGameObject()->SetName("");
+            GetGameObject()->GetComponent<spic::Animator>()->Play(false);
+        }
+        if (!GetGameObject()->GetComponent<spic::Animator>()->GetRunning()) {
+            setPath("assets/bloodsplatter.png");
+            isAlive = false;
+            hit = false;
+            trans.scale = 0.01;
+            trans.position.x = -50;
+            trans.position.y = -10;
+            GetGameObject()->setTransform(&trans);
+            GetGameObject()->GetComponent<spic::Sprite>()->OnRender();
+           
+        }
+
+
+        
+       
     }
 }
 
