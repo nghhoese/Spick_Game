@@ -7,7 +7,7 @@ Enemy::Enemy() : hit(false), speed(1.5), isAlive(true), notInitialized(true), ma
 bool Enemy::IfPlayerNearby()
 {
     auto enemyPos = GetGameObject()->getTransform()->position;
-    auto playerPos = GetGameObject()->getScene()->GetGameObjectsByName("Player")[0]->getTransform()->position;
+    auto playerPos = player->getTransform()->position;
     auto enemyDirection = GetGameObject()->getTransform()->rotation;
     double Delta_x = (enemyPos.x - playerPos.x);
     double Delta_y = (enemyPos.y - playerPos.y);
