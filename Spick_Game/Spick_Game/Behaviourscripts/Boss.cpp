@@ -49,6 +49,9 @@ void Boss::BulletHandling()
         for (auto boss : EngineController::GetInstance()->GetActiveScene()->GetGameObjectsByName("bosshp")) {
             std::shared_ptr<spic::Text> bossHpText = std::dynamic_pointer_cast<spic::Text>(boss);
             int percentage = 100 + ((this->healthpoints - this->maxhealthpoints) * 100) / maxhealthpoints;
+            if (percentage < 0) {
+                percentage = 0;
+            }
             bossHpText->SetText("BOSS: " + std::to_string(percentage) + "%");
         }
 

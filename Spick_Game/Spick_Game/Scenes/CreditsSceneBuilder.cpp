@@ -25,7 +25,7 @@ std::shared_ptr<spic::Scene> CreditsSceneBuilder::BuildScene()
     std::shared_ptr<spic::Text> t1 = std::make_shared<spic::Text>("WITH SPECIAL THANKS TO:", "Capsmall", 60, textColor, ((screenWidth - screenWidth) + 60), ((screenHeight - screenHeight) + 600));
     std::shared_ptr<spic::Text> t2 = std::make_shared<spic::Text>("STACK OVERFLOW | FOR TEACHING US C++", "Segment16CBold", 38, textColor, ((screenWidth - screenWidth) + 60), ((screenHeight - screenHeight) + 680));
     std::shared_ptr<spic::Text> t3 = std::make_shared<spic::Text>("FERRAN | FOR EMOTIONAL SUPPORT", "Segment16CBold", 38, textColor, ((screenWidth - screenWidth) + 60), ((screenHeight - screenHeight) + 720));
-    std::shared_ptr<spic::Text> t4 = std::make_shared<spic::Text>("BAHAR AND KWIBUS | MAKING THESE MONTHS SOMEWHAT BAREABLE", "Segment16CBold", 38, textColor, ((screenWidth - screenWidth) + 60), ((screenHeight - screenHeight) + 760));
+    std::shared_ptr<spic::Text> t4 = std::make_shared<spic::Text>("BAHAR AND KWIBUS | MAKING THESE MONTHS SOMEWHAT BEARABLE", "Segment16CBold", 38, textColor, ((screenWidth - screenWidth) + 60), ((screenHeight - screenHeight) + 760));
 
 
     scene->AddGameObject(title);
